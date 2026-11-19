@@ -1,0 +1,11 @@
+node_modules/
+video3d/modelos/
+video3d/.venv/
+video3d/**/salida/*
+!video3d/**/salida/.gitkeep
+video3d/**/voz/
+video3d/**/audio/
+*.wav
+*.mp3
+*.mp4
+.env
