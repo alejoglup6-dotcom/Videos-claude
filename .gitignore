@@ -9,3 +9,5 @@ video3d/**/audio/
 *.mp3
 *.mp4
 .env
+__pycache__/
+*.pyc
