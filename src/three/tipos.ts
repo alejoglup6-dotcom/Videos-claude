@@ -2,7 +2,7 @@ import type React from 'react';
 import type { CieloTipo } from './piezas';
 
 /** Lo que recibe el componente 3D de cada tipo de escena. */
-export type PropsEscena = { t: number; u: number; k: number; datos?: number[] };   // t: segundo del video · u: avance de la escena (0-1) · k: índice de variante
+export type PropsEscena = { t: number; u: number; k: number; datos?: number[]; f?: number; config?: Record<string, any> };   // f: cuadro dentro de la escena · config: opciones libres del guion (p. ej. el banco de pruebas de costo)   // t: segundo del video · u: avance de la escena (0-1) · k: índice de variante
 export type Luz = { amb: [string, number]; sol: [string, number]; relleno: [string, number] };
 export type DefinicionEscena = {
   variantes: string[];

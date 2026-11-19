@@ -47,7 +47,7 @@ export const VideoVertical: React.FC<Guion> = (g) => {
       <CapasElementos t={t} elementos={tr.escena.elementos} tema={tema} />
       <Grading tema={tema} />
       <TransicionCapas est={est} frame={frame} color={tr.i % 2 ? '#FFB0E0' : '#B0F0FF'} />
-      <Grano frame={frame} opacidad={0.06} />
+      {g.grano === false ? null : <Grano frame={frame} opacidad={0.06} />}
       {etiqueta ? <div style={{ position: 'absolute', left: 54, top: 120, opacity: 0.9 }}><Sello txt={etiqueta} color="#FF3B52" u={t} size={44} /></div> : null}
       <TextoEscena escena={tr.escena} indice={tr.i} u={u} dur={dur} t={t} frame={frame} tema={tema} />
       <Subtitulos t={t} trozos={trozos} tema={tema} />

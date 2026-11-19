@@ -23,7 +23,6 @@ export const Persecucion: React.FC<PropsEscena> = ({ t, u, k }) => {
       {patrullas.map((p, i) => <group key={i} position={[p[0], 0, p[1]]} rotation={[0, Math.PI - 0.1 * Math.cos(t * 1.7 + i), 0]}><Patrulla t={t} fase={i * 0.5} /></group>)}
       {lentos.map((c, i) => <group key={i} position={[c[0], 0, mod(c[1] + t * (vel - c[2]), 150) - 120]} rotation={[0, Math.PI, 0]}><Auto color={['#2F7BE0', '#E85A4F', '#F0C24A', '#8A5FB4'][i]} neon="#FFFFFF" /></group>)}
       <Lluvia t={t} n={150} x={[-14, 14]} z={[-50, 16]} alto={18} vel={26} />
-      <pointLight position={[0, 4, 6]} color="#FFFFFF" intensity={3} distance={18} />
     </>
   );
 };

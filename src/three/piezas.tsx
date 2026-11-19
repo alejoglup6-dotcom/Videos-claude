@@ -87,15 +87,28 @@ const ventanasRep = (k: number, w: number, h: number) => {
   if (!clones[key]) { const c = ventanas(k).clone(); c.repeat.set(rx, ry); c.needsUpdate = true; clones[key] = c; }
   return clones[key];
 };
+const matsEdif = new Map<string, THREE.Material>();
+const matEdif = (tx: THREE.Texture, color: string, emi: number) => { const k = `${tx.uuid}_${color}_${emi}`; let m = matsEdif.get(k); if (!m) { m = new THREE.MeshStandardMaterial({ color, map: tx, emissiveMap: tx, emissive: '#ffffff', emissiveIntensity: emi, roughness: 0.7 }); matsEdif.set(k, m); } return m; };
+const matNeon = new Map<string, THREE.Material>();
+const neonMat = (c: string) => { let m = matNeon.get(c); if (!m) { m = new THREE.MeshBasicMaterial({ color: c }); matNeon.set(c, m); } return m; };
+const geoNeon = new Map<string, THREE.BufferGeometry>();
+// 4 columnas de neón + franja del techo en UNA sola malla
+const neonGeo = (w: number, h: number, d: number) => {
+  const k = `${w.toFixed(2)}_${h.toFixed(2)}_${d.toFixed(2)}`; let g = geoNeon.get(k);
+  if (!g) { const gs: THREE.BufferGeometry[] = []; for (const [cx, cz] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) { const b = new THREE.BoxGeometry(0.1, h, 0.1); b.translate(cx * w / 2, h / 2, cz * d / 2); gs.push(b); } const t = new THREE.BoxGeometry(w + 0.15, 0.14, d + 0.15); t.translate(0, h + 0.05, 0); gs.push(t); g = mergeGeometries(gs)!; geoNeon.set(k, g); }
+  return g;
+};
+let _antena: THREE.BufferGeometry | null = null;
+const antenaGeo = () => { if (!_antena) { const c = new THREE.CylinderGeometry(0.05, 0.08, 2.8, 5); c.translate(0, 1.4, 0); const s = new THREE.SphereGeometry(0.16, 8, 6); s.translate(0, 2.9, 0); _antena = mergeGeometries([colorear(c, new THREE.Color('#8A7AC0')), colorear(s, new THREE.Color('#FF2D55'))])!; } return _antena; };
+const matAntena = new THREE.MeshBasicMaterial({ vertexColors: true });
 export const Edificio: React.FC<{ x: number; z: number; w: number; h: number; d: number; k?: number; neon?: string }> = ({ x, z, w, h, d, k = 0, neon }) => {
   const tx = ventanasRep(k, w, h); const alto2 = h * 0.22; const tx2 = ventanasRep(k + 1, w * 0.7, alto2);
   return (
     <group position={[x, 0, z]}>
-      <mesh position={[0, h / 2, 0]}><boxGeometry args={[w, h, d]} /><meshStandardMaterial color="#1B1650" map={tx} emissiveMap={tx} emissive="#ffffff" emissiveIntensity={1.1} roughness={0.7} /></mesh>
-      {k % 3 !== 1 ? <mesh position={[0, h + alto2 / 2, 0]}><boxGeometry args={[w * 0.7, alto2, d * 0.7]} /><meshStandardMaterial color="#201A60" map={tx2} emissiveMap={tx2} emissive="#ffffff" emissiveIntensity={1.0} roughness={0.7} /></mesh> : null}
-      {k % 3 === 0 ? <group position={[0, h + (k % 3 !== 1 ? alto2 : 0), 0]}><mesh position={[0, 1.4, 0]}><cylinderGeometry args={[0.05, 0.08, 2.8, 5]} /><meshBasicMaterial color="#8A7AC0" /></mesh><mesh position={[0, 2.9, 0]}><sphereGeometry args={[0.16, 8, 6]} /><meshBasicMaterial color="#FF2D55" /></mesh></group> : null}
-      {neon ? [[-1, -1], [1, -1], [-1, 1], [1, 1]].map((c, i) => <mesh key={i} position={[c[0] * w / 2, h / 2, c[1] * d / 2]}><boxGeometry args={[0.1, h, 0.1]} /><meshBasicMaterial color={neon} /></mesh>) : null}
-      {neon ? <mesh position={[0, h + 0.05, 0]}><boxGeometry args={[w + 0.15, 0.14, d + 0.15]} /><meshBasicMaterial color={neon} /></mesh> : null}
+      <mesh position={[0, h / 2, 0]} material={matEdif(tx, '#1B1650', 1.1)}><boxGeometry args={[w, h, d]} /></mesh>
+      {k % 3 !== 1 ? <mesh position={[0, h + alto2 / 2, 0]} material={matEdif(tx2, '#201A60', 1.0)}><boxGeometry args={[w * 0.7, alto2, d * 0.7]} /></mesh> : null}
+      {k % 3 === 0 ? <mesh position={[0, h + (k % 3 !== 1 ? alto2 : 0), 0]} geometry={antenaGeo()} material={matAntena} /> : null}
+      {neon ? <mesh geometry={neonGeo(w, h, d)} material={neonMat(neon)} /> : null}
     </group>
   );
 };

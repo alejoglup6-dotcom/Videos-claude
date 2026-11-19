@@ -50,11 +50,12 @@ export const Escenario3D: React.FC<{ t: number; tr: Tramo; est: Estado; calidad:
   p[0] += der.x * w * 1.2; p[2] += der.z * w * 1.2;
   const fov = cam.fov * (1 - 0.1 * ease) * (1 - 0.07 * punch) * (1 + 0.12 * Math.abs(w));
   const [fc, fn, ff] = e.fondo?.niebla ?? def.niebla; const cielo = e.fondo?.cielo ?? def.cielo(k);
-  const C = CALIDADES[calidad]; const s = C.escala3d; const noche = ['noche', 'ocaso', 'alba', 'estudio'].includes(cielo);
+  const C = CALIDADES[calidad]; const s = C.escala3d; const sombras = e.config?.sombras ?? (e.tipo === 'vice' && e.variante === 'calle');   // sombras solo en la escena principal
+  const noche = ['noche', 'ocaso', 'alba', 'estudio'].includes(cielo);
   return (
     <div style={{ position: 'absolute', left: 0, top: 0, width: 1080, height: 1920, overflow: 'hidden' }}>
       <div style={{ width: 1080 * s, height: 1920 * s, transform: `scale(${1 / s})`, transformOrigin: '0 0' }}>
-        <ThreeCanvas shadows="soft" width={1080 * s} height={1920 * s} gl={{ antialias: C.antialias, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: exposicion }} camera={{ fov: 55, position: [0, 2, 10], near: 0.1, far: 400 }}>
+        <ThreeCanvas shadows="percentage" width={1080 * s} height={1920 * s} gl={{ antialias: C.antialias, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: exposicion }} camera={{ fov: 55, position: [0, 2, 10], near: 0.1, far: 400 }}>
           <Rig p={p} l={l} f={fov} />
           <color attach="background" args={[fc]} />
           <fog attach="fog" args={[fc, fn, ff]} />
@@ -62,10 +63,10 @@ export const Escenario3D: React.FC<{ t: number; tr: Tramo; est: Estado; calidad:
           <Entorno intensidad={noche ? 0.22 : 0.2} />
           <ambientLight intensity={def.luz.amb[1] * 0.8} color={def.luz.amb[0]} />
           <directionalLight position={[0, 14, -30]} intensity={def.luz.sol[1]} color={def.luz.sol[0]} />
-          <directionalLight position={[-8, 9, 12]} intensity={def.luz.relleno[1]} color={def.luz.relleno[0]} castShadow shadow-mapSize-width={1024} shadow-mapSize-height={1024} shadow-camera-left={-14} shadow-camera-right={14} shadow-camera-top={14} shadow-camera-bottom={-14} shadow-camera-near={1} shadow-camera-far={50} shadow-bias={-0.0004} shadow-radius={4} />
+          <directionalLight position={[-8, 9, 12]} intensity={def.luz.relleno[1]} color={def.luz.relleno[0]} castShadow={sombras} shadow-mapSize-width={512} shadow-mapSize-height={512} shadow-camera-left={-14} shadow-camera-right={14} shadow-camera-top={14} shadow-camera-bottom={-14} shadow-camera-near={1} shadow-camera-far={50} shadow-bias={-0.0004} shadow-radius={4} />
           {noche ? <><directionalLight position={[-12, 5, -16]} intensity={0.8} color="#FF4FA8" /><directionalLight position={[12, 5, -16]} intensity={0.8} color="#44E6FF" /></> : null}
           <Cielo tipo={cielo} t={t} />
-          <def.Componente key={tr.i} t={t} u={u} k={k} datos={e.datos} />
+          <def.Componente key={tr.i} t={t} u={u} k={k} datos={e.datos} f={Math.round(dt * 30)} config={e.config} />
         </ThreeCanvas>
       </div>
     </div>

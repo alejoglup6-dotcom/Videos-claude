@@ -22,6 +22,7 @@ export type Escena = {
   sfx?: (string | { nombre: string; t?: number; volumen?: number })[];
   voz?: { texto: string; inicio?: number; claves?: string[] };
   datos?: number[];
+  config?: Record<string, any>;                  // opciones libres que recibe el componente de la escena
 };
 
 export type Guion = {
@@ -38,6 +39,7 @@ export type Guion = {
   fuentes?: { dato: string; estado: 'verificado' | 'no_verificado'; nota?: string }[];
   escenas: Escena[];
   // los inyecta scripts/render.mjs; no van en el JSON del guion:
+  grano?: boolean;                                // grano de película (por defecto sí); cuesta CPU por la mezcla a pantalla completa
   _calidad?: Calidad;
   _voces?: Record<string, { archivo: string; duracion: number; desde?: number; hasta?: number; palabras?: { w: string; s: number; e: number }[] }>;
   _version?: string;                 // hash corto del commit (se imprime en el video)

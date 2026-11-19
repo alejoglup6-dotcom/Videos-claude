@@ -13,7 +13,7 @@ const grano = () => {
 };
 export const Grano: React.FC<{ frame: number; opacidad?: number }> = ({ frame, opacidad = 0.07 }) => {
   const r = (n: number) => ((Math.sin(frame * 12.9898 + n * 78.233) * 43758.5453) % 1 + 1) % 1;
-  return <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${grano()})`, backgroundSize: '192px 192px', backgroundPosition: `${Math.floor(r(1) * 192)}px ${Math.floor(r(2) * 192)}px`, opacity: opacidad, mixBlendMode: 'overlay', pointerEvents: 'none' }} />;
+  return <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${grano()})`, backgroundSize: '192px 192px', backgroundPosition: `${Math.floor(r(1) * 192)}px ${Math.floor(r(2) * 192)}px`, opacity: opacidad * 0.6, pointerEvents: 'none' }} />;   // sin mix-blend-mode: la mezcla «overlay» a pantalla completa costaba ~30 % del render
 };
 export const Destello: React.FC<{ k: number; color?: string }> = ({ k, color = '#FFFFFF' }) => (k > 0.01 ? <div style={{ position: 'absolute', inset: 0, background: color, opacity: 0.6 * k }} /> : null);
 

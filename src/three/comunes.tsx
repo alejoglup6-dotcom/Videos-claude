@@ -29,13 +29,16 @@ export const Caja: React.FC<{ pos: V3; tam: V3; color: string; basico?: boolean;
 export const Reflejo: React.FC<{ x: number; z: number; largo: number; color: string; ancho?: number; op?: number }> = ({ x, z, largo, color, ancho = 0.8, op = 0.3 }) => (
   <mesh rotation={[-Math.PI / 2, 0, 0]} position={[x, 0.03, z]}><planeGeometry args={[ancho, largo]} /><meshBasicMaterial color={color} transparent opacity={op} blending={THREE.AdditiveBlending} depthWrite={false} /></mesh>
 );
-// lluvia: rayas finas que caen (posiciones deterministas según el tiempo)
-export const Lluvia: React.FC<{ t: number; n?: number; x?: [number, number]; z?: [number, number]; alto?: number; vel?: number }> = ({ t, n = 140, x = [-20, 20], z = [-45, 14], alto = 22, vel = 24 }) => (
-  <group>{Array.from({ length: Math.min(n, 40) }, (_, i) => {   // tope de 40 mallas: más no mejora la imagen y cuesta CPU
-    const px = lerp(x[0], x[1], rnd(i * 3 + 1)), pz = lerp(z[0], z[1], rnd(i * 3 + 2)), py = mod(rnd(i * 3 + 3) * alto - t * vel, alto);
-    return <mesh key={i} position={[px, py, pz]}><boxGeometry args={[0.05, 2.2, 0.05]} /><meshBasicMaterial color="#B8E0FF" transparent opacity={0.55} fog={false} /></mesh>;
-  })}</group>
-);
+// lluvia: rayas finas que caen (posiciones deterministas según el tiempo). UNA sola malla instanciada (antes eran 40 mallas sueltas).
+export const Lluvia: React.FC<{ t: number; n?: number; x?: [number, number]; z?: [number, number]; alto?: number; vel?: number }> = ({ t, n = 140, x = [-20, 20], z = [-45, 14], alto = 22, vel = 24 }) => {
+  const N = Math.min(n, 40); const ref = React.useRef<THREE.InstancedMesh>(null);
+  React.useLayoutEffect(() => {
+    const im = ref.current; if (!im) return; const m = new THREE.Matrix4();
+    for (let i = 0; i < N; i++) { m.makeTranslation(lerp(x[0], x[1], rnd(i * 3 + 1)), mod(rnd(i * 3 + 3) * alto - t * vel, alto), lerp(z[0], z[1], rnd(i * 3 + 2))); im.setMatrixAt(i, m); }
+    im.instanceMatrix.needsUpdate = true;
+  });
+  return <instancedMesh ref={ref} args={[undefined, undefined, N]} frustumCulled={false}><boxGeometry args={[0.05, 2.2, 0.05]} /><meshBasicMaterial color="#B8E0FF" transparent opacity={0.55} fog={false} /></instancedMesh>;
+};
 // cartel de neón (marco luminoso sin texto)
 export const Rotulo: React.FC<{ pos: V3; w: number; h: number; color: string; rot?: number }> = ({ pos, w, h, color, rot = 0 }) => (
   <group position={pos} rotation={[0, rot, 0]}>

@@ -6,6 +6,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import type { GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { clone } from 'three/examples/jsm/utils/SkeletonUtils.js';
 import { staticFile, useDelayRender } from 'remotion';
+import { aLite } from './lite';
 
 export const urlModelo = (rel: string) => staticFile('modelos/' + rel);
 const cache = new Map<string, Promise<GLTF>>();
@@ -25,7 +26,7 @@ export const useModelos = (rels: string[]): GLTF[] | null => {
   return m;
 };
 
-export const Modelo: React.FC<{ archivo: string; pos?: [number, number, number]; rot?: [number, number, number]; escala?: number | [number, number, number]; sombra?: boolean; recibe?: boolean; color?: string; envMap?: number; ocultar?: RegExp }> = ({ archivo, pos, rot, escala = 1, sombra = false, recibe = false, color, envMap, ocultar }) => {
+export const Modelo: React.FC<{ archivo: string; pos?: [number, number, number]; rot?: [number, number, number]; escala?: number | [number, number, number]; sombra?: boolean; recibe?: boolean; color?: string; envMap?: number; ocultar?: RegExp; lite?: boolean }> = ({ archivo, pos, rot, escala = 1, sombra = false, recibe = false, color, envMap, ocultar, lite }) => {
   const gs = useModelos([archivo]); const g = gs ? gs[0] : null;
   const obj = useMemo(() => {
     if (!g) return null; const c = clone(g.scene);
@@ -40,7 +41,8 @@ export const Modelo: React.FC<{ archivo: string; pos?: [number, number, number];
         m.material = Array.isArray(m.material) ? m.material.map(f) : f(m.material);
       }
     });
+    if (lite) aLite(c, ocultar);
     return c;
-  }, [g, sombra, recibe, color, envMap, ocultar]);
+  }, [g, sombra, recibe, color, envMap, ocultar, lite]);
   return obj ? <primitive object={obj} position={pos} rotation={rot} scale={escala} /> : null;
 };
