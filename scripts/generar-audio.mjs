@@ -25,6 +25,16 @@ const sfx = {
   riser: () => { const n = SR * 2.2, x = new Float32Array(n), r = rng(3); let ph = 0, lp = 0; for (let i = 0; i < n; i++) { const t = i / n; ph += (110 + 1500 * t * t) / SR; lp += (0.05 + 0.6 * t) * ((r() * 2 - 1) - lp); x[i] = (saw(ph) * 0.4 + lp * 1.2) * t * t; } return norm(x, 0.75); },
   glitch: () => { const n = SR * 0.4, x = new Float32Array(n), r = rng(4); let v = 0; for (let i = 0; i < n; i++) { if (i % 441 === 0) v = r() > 0.5 ? 1 : -1; x[i] = (v * (r() > 0.6 ? 1 : 0.2) + (r() * 2 - 1) * 0.3) * Math.exp(-(i / SR) * 6); } return norm(x, 0.6); },
   suave: () => { const n = SR * 0.9, x = new Float32Array(n); for (let i = 0; i < n; i++) { const t = i / SR; x[i] = (Math.sin(2 * Math.PI * 220 * t) + Math.sin(2 * Math.PI * 330 * t) * 0.6) * Math.sin(Math.PI * i / n) ** 2; } return norm(x, 0.5); },
+  // motor de moto de agua: zumbido con vibrato y algo de ruido
+  motor: () => { const n = SR * 1.8, x = new Float32Array(n), r = rng(5); let ph = 0; for (let i = 0; i < n; i++) { const t = i / SR; const f = 70 + 25 * Math.min(1, t * 2) + 6 * Math.sin(t * 38); ph += f / SR; x[i] = (saw(ph) * 0.6 + (r() * 2 - 1) * 0.25) * Math.min(1, t * 6) * Math.min(1, (n - i) / (SR * 0.4)); } return norm(x, 0.7); },
+  // agua: chapoteo (ruido filtrado con varios golpes)
+  agua: () => { const n = SR * 1.2, x = new Float32Array(n), r = rng(6); let lp = 0; for (let i = 0; i < n; i++) { const t = i / SR; const env = Math.exp(-t * 4) + 0.5 * Math.exp(-Math.max(0, t - 0.25) * 9) * (t > 0.25 ? 1 : 0); lp += 0.18 * ((r() * 2 - 1) - lp); x[i] = lp * env * 2.5; } return norm(x, 0.6); },
+  // rugido bajo (sin samples): seno grave modulado + ruido
+  rugido: () => { const n = SR * 1.4, x = new Float32Array(n), r = rng(7); let lp = 0; for (let i = 0; i < n; i++) { const t = i / SR; lp += 0.05 * ((r() * 2 - 1) - lp); const am = 0.6 + 0.4 * Math.sin(t * 2 * Math.PI * 11); x[i] = (Math.sin(2 * Math.PI * (55 + 10 * Math.sin(t * 3)) * t) * 0.7 + lp * 3) * am * Math.sin(Math.PI * Math.min(1, t / 1.4)); } return norm(x, 0.65); },
+  // chirrido pequeño (lagartija)
+  chirrido: () => { const n = SR * 0.35, x = new Float32Array(n); for (let i = 0; i < n; i++) { const t = i / SR; const g = (Math.floor(t * 28) % 2) ? 1 : 0.2; x[i] = Math.sin(2 * Math.PI * (2600 + 900 * Math.sin(t * 60)) * t) * g * Math.exp(-t * 6); } return norm(x, 0.45); },
+  // cierre: golpe con cola larga tipo reverb
+  cierre: () => { const n = SR * 3, x = new Float32Array(n), r = rng(8); let lp = 0; for (let i = 0; i < n; i++) { const t = i / SR; lp += 0.08 * ((r() * 2 - 1) - lp); x[i] = Math.sin(2 * Math.PI * (45 + 60 * Math.exp(-t * 10)) * t) * Math.exp(-t * 2.2) + lp * 1.4 * Math.exp(-t * 1.1); } return norm(x, 0.8); },
   ping: () => { const n = SR * 0.8, x = new Float32Array(n); for (let i = 0; i < n; i++) { const t = i / SR; x[i] = (Math.sin(2 * Math.PI * 1318 * t) + 0.4 * Math.sin(2 * Math.PI * 2637 * t)) * Math.exp(-t * 6); } return norm(x, 0.6); },
 };
 

@@ -21,7 +21,7 @@ export const catalogo = () => {
 export const TRANSICIONES = ['corte', 'flash', 'zoom', 'whip', 'glitch', 'fade', 'slide', 'camara_rapida'];
 export const ESTILOS = ['slam', 'letras', 'glitch', 'neon', 'escribir'];
 export const ELEMENTOS = ['lluvia', 'particulas', 'neon', 'lineas_velocidad'];
-export const SFX = ['impacto', 'riser_corto', 'riser', 'whoosh', 'glitch', 'suave', 'ping'];
+export const SFX = ['impacto', 'riser_corto', 'riser', 'whoosh', 'glitch', 'suave', 'ping', 'motor', 'agua', 'rugido', 'chirrido', 'cierre'];
 
 import { execFileSync } from 'node:child_process';
 /** Hash corto del commit (en Actions: GITHUB_SHA). Un «+» al final significa que hay cambios sin confirmar. */

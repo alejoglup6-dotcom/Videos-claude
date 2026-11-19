@@ -99,6 +99,16 @@ Solo usa datos que Rockstar ha publicado (ver `fuentes` en el guion). Dos datos 
 1. La frase «depender el uno del otro para sobrevivir» (no se localizó la redacción exacta en una fuente primaria).
 2. «**Salió** el 19 de noviembre de 2026»: la fecha es la oficial, pero el pasado «salió» solo es cierto si el juego ya está a la venta el día que publiques.
 
+## Video 2: «GTA 6: detalles que nadie esperaba» (37,5 s)
+
+- Guion: `guiones/gta6-detalles-35s.json` · prompts: `guiones/gta6-detalles-35s.prompts.md` · voz ya generada: `public/voces/gta6-detalles-35s/`.
+- Desde el móvil: Actions → **Renderizar video** → **Run workflow** → guion `gta6-detalles-35s`, calidad `normal`, **voz desactivada** (la voz de ElevenLabs ya está en el repositorio; Piper no se usa).
+- Datos: cada curiosidad tiene su fuente en `fuentes` del guion. Dos ajustes respecto a la idea original, por no encontrarse en fuentes:
+  «osos» se quitó de la lista de especies y «milkshake» se cambió por «vaso» (Kotaku confirma tirar el vaso vacío de una bebida al basurero).
+- Fauna (perro, moto de agua, caimán, lagartija, vaso, basurero): piezas 3D procedurales propias (`src/three/fauna.tsx`); la biblioteca CC0 no trae animales.
+- Música y efectos: generados por código (sin pistas externas ni licencias de terceros).
+- Costo medido (renders cortos, 1 proceso): ~7,5 min estimados en esta máquina; en GitHub suele tardar algo más.
+
 ## Límites y avisos honestos
 
 - **Tiempo de render:** medido localmente en 4 núcleos: ~5,5 min para los 35 s en calidad `normal`. En el runner depende de la máquina que te toque; el workflow corta a los 25 min.

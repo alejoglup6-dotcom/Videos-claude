@@ -11,7 +11,7 @@ export const TextoEscena: React.FC<{ escena: Escena; indice: number; u: number; 
   const tx = escena.texto; if (!tx || !tx.contenido) return null;
   const txt = tx.contenido; const col = tx.color ?? tema.textos[indice % tema.textos.length];
   const palabras = txt.split(' ');
-  const lineas = palabras.length > 2 && txt.length > 12 ? [palabras.slice(0, Math.ceil(palabras.length / 2)).join(' '), palabras.slice(Math.ceil(palabras.length / 2)).join(' ')] : [txt];
+  const lineas = txt.includes(' · ') ? txt.split(' · ') : palabras.length > 2 && txt.length > 12 ? [palabras.slice(0, Math.ceil(palabras.length / 2)).join(' '), palabras.slice(Math.ceil(palabras.length / 2)).join(' ')] : [txt];
   const base = tx.tam ?? (indice === 0 ? 240 : txt.length > 12 ? 130 : 160);
   const size = Math.min(base, Math.floor(880 / (Math.max(...lineas.map((l) => l.length)) * 0.58)));
   const salida = 1 - cl((u - (dur - 0.12)) / 0.12);

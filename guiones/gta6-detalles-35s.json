@@ -1,0 +1,492 @@
+{
+  "id": "gta6-detalles-35s",
+  "titulo": "GTA 6: detalles que nadie esperaba",
+  "tema": "neon-costero",
+  "etiqueta": {
+    "txt": "FAN VIDEO"
+  },
+  "audio": {
+    "musica": {
+      "generar": {
+        "bpm": 120,
+        "escala": "Em",
+        "semilla": 11
+      },
+      "volumen": 0.5
+    },
+    "voz": {
+      "volumen": 1
+    },
+    "sfx": {
+      "volumen": 0.8
+    },
+    "ducking": 0.55
+  },
+  "fuentes": [
+    {
+      "dato": "Leonida tiene más de 170 especies animales",
+      "estado": "verificado",
+      "nota": "Cifra de Rockstar (portada de Game Informer). Recogida por Vandal, Insider Gaming, 80.lv, Dexerto"
+    },
+    {
+      "dato": "Hay perros, serpientes, tiburones y caimanes",
+      "estado": "verificado",
+      "nota": "Kotaku (clips de perros, serpiente y caimanes); Yahoo Tech (tiburones en las aguas de Leonida). Los OSOS no se usan: solo una fuente débil los menciona"
+    },
+    {
+      "dato": "Un perro puede acompañarte en moto de agua",
+      "estado": "verificado",
+      "nota": "Yahoo Tech («A jet-skiing dog is among the wild surprises…»); Game8 («How to Find the Jetski Dog»)"
+    },
+    {
+      "dato": "Los caimanes pueden atacar al jugador",
+      "estado": "verificado",
+      "nota": "Kotaku («…Jason Petting, Fighting, And Being Eaten By Animals»)"
+    },
+    {
+      "dato": "Se puede tirar el vaso vacío de una bebida a un basurero",
+      "estado": "verificado",
+      "nota": "Kotaku («Wow, GTA 6 Has Some Incredible Animations»): al vaciar la bebida se puede tirar a un basurero. La palabra «milkshake» NO se encontró en fuentes: se dice «vaso»"
+    },
+    {
+      "dato": "Hay lagartijas que aparecen al azar",
+      "estado": "verificado",
+      "nota": "Kotaku («18 Coolest Details Players Have Spotted In GTA 6 So Far»)"
+    },
+    {
+      "dato": "Lanzamiento el 19 de noviembre de 2026 en PS5 y Xbox Series X|S",
+      "estado": "verificado",
+      "nota": "Fecha y plataformas de Rockstar; Kotaku lo describe como ya disponible en PS5 y Xbox"
+    }
+  ],
+  "escenas": [
+    {
+      "id": "e1-jetski",
+      "tipo": "agua",
+      "variante": "jetski",
+      "duracion": 4.5,
+      "camara": "agua-baja",
+      "elementos": [
+        {
+          "tipo": "neon"
+        },
+        {
+          "tipo": "particulas",
+          "intensidad": 0.6
+        }
+      ],
+      "texto": {
+        "contenido": "EN GTA 6…",
+        "estilo": "slam",
+        "tam": 230,
+        "posicion": "arriba"
+      },
+      "animacion": {
+        "shake": 0.3
+      },
+      "transicion": {
+        "tipo": "flash",
+        "duracion": 0.3
+      },
+      "musica": {
+        "intensidad": 0.9,
+        "golpe": true
+      },
+      "sfx": [
+        "motor",
+        "impacto"
+      ],
+      "voz": {
+        "texto": "En GTA 6, hasta un perro puede ir contigo en jet ski.",
+        "claves": [
+          "perro",
+          "jet"
+        ]
+      }
+    },
+    {
+      "id": "e2a-especies",
+      "tipo": "mapafauna",
+      "variante": "costa",
+      "duracion": 3.5,
+      "camara": "mapa-fauna",
+      "elementos": [
+        {
+          "tipo": "particulas"
+        }
+      ],
+      "texto": {
+        "contenido": "MÁS DE 170 ESPECIES",
+        "estilo": "letras",
+        "posicion": "abajo"
+      },
+      "transicion": {
+        "tipo": "slide",
+        "duracion": 0.5
+      },
+      "musica": {
+        "intensidad": 0.65
+      },
+      "sfx": [],
+      "voz": {
+        "texto": "Leonida tiene más de 170 especies:",
+        "claves": [
+          "170",
+          "especies"
+        ]
+      },
+      "config": {
+        "pines": false
+      }
+    },
+    {
+      "id": "e2b-fauna",
+      "tipo": "mapafauna",
+      "variante": "costa",
+      "duracion": 4.0,
+      "camara": "mapa-costa",
+      "elementos": [
+        {
+          "tipo": "particulas"
+        }
+      ],
+      "transicion": {
+        "tipo": "zoom",
+        "duracion": 0.35
+      },
+      "musica": {
+        "intensidad": 0.65
+      },
+      "sfx": [
+        {
+          "nombre": "ping",
+          "t": 0.3,
+          "volumen": 0.6
+        },
+        {
+          "nombre": "ping",
+          "t": 0.9,
+          "volumen": 0.6
+        },
+        {
+          "nombre": "ping",
+          "t": 1.5,
+          "volumen": 0.6
+        },
+        {
+          "nombre": "ping",
+          "t": 2.1,
+          "volumen": 0.6
+        }
+      ],
+      "voz": {
+        "texto": "perros, serpientes, tiburones y caimanes.",
+        "claves": [
+          "perros",
+          "serpientes",
+          "tiburones",
+          "caimanes"
+        ]
+      },
+      "config": {
+        "pines": true
+      }
+    },
+    {
+      "id": "e3-caiman",
+      "tipo": "agua",
+      "variante": "caiman",
+      "duracion": 3.0,
+      "camara": "agua-caiman",
+      "elementos": [
+        {
+          "tipo": "neon"
+        }
+      ],
+      "texto": {
+        "contenido": "CUIDADO CON EL CAIMÁN",
+        "estilo": "glitch"
+      },
+      "animacion": {
+        "zoom_punch": false
+      },
+      "transicion": {
+        "tipo": "zoom",
+        "duracion": 0.6
+      },
+      "musica": {
+        "intensidad": 0.7
+      },
+      "sfx": [
+        "agua",
+        {
+          "nombre": "rugido",
+          "t": 1.6
+        }
+      ],
+      "voz": {
+        "texto": "Y sí, los caimanes pueden atacarte.",
+        "claves": [
+          "caimanes",
+          "atacarte"
+        ]
+      }
+    },
+    {
+      "id": "e4-vaso",
+      "tipo": "detalle",
+      "variante": "basura",
+      "duracion": 3.0,
+      "camara": "detalle-basura",
+      "texto": {
+        "contenido": "HASTA ESO IMPORTA",
+        "estilo": "slam",
+        "posicion": "arriba"
+      },
+      "transicion": {
+        "tipo": "corte"
+      },
+      "musica": {
+        "intensidad": 0.6
+      },
+      "sfx": [
+        {
+          "nombre": "whoosh",
+          "t": 0.6,
+          "volumen": 0.5
+        },
+        {
+          "nombre": "suave",
+          "t": 1.8
+        }
+      ],
+      "voz": {
+        "texto": "Hasta puedes tirar tu vaso vacío al basurero.",
+        "claves": [
+          "vaso",
+          "basurero"
+        ]
+      }
+    },
+    {
+      "id": "e5-lagartija",
+      "tipo": "detalle",
+      "variante": "lagartija",
+      "duracion": 3.0,
+      "camara": "detalle-pared",
+      "texto": {
+        "contenido": "LAGARTIJAS RANDOM",
+        "estilo": "neon",
+        "posicion": "arriba"
+      },
+      "transicion": {
+        "tipo": "whip",
+        "duracion": 0.36
+      },
+      "musica": {
+        "intensidad": 0.65
+      },
+      "sfx": [
+        {
+          "nombre": "chirrido",
+          "t": 0.7
+        },
+        {
+          "nombre": "chirrido",
+          "t": 1.9,
+          "volumen": 0.7
+        }
+      ],
+      "voz": {
+        "texto": "También hay lagartijas que aparecen por ahí.",
+        "claves": [
+          "lagartijas"
+        ]
+      }
+    },
+    {
+      "id": "e6a-montaje",
+      "tipo": "agua",
+      "variante": "jetski",
+      "duracion": 1.0,
+      "camara": "agua-montaje",
+      "texto": {
+        "contenido": "ROCKSTAR NO DEJA NADA AL AZAR",
+        "estilo": "neon",
+        "tam": 120
+      },
+      "transicion": {
+        "tipo": "camara_rapida",
+        "duracion": 0.3
+      },
+      "musica": {
+        "intensidad": 1.0,
+        "golpe": true
+      },
+      "voz": {
+        "texto": "Rockstar metió detalles que nadie esperaba encontrar.",
+        "claves": [
+          "detalles",
+          "nadie"
+        ]
+      }
+    },
+    {
+      "id": "e6b-montaje",
+      "tipo": "agua",
+      "variante": "caiman",
+      "duracion": 1.0,
+      "camara": "agua-caiman",
+      "texto": {
+        "contenido": "ROCKSTAR NO DEJA NADA AL AZAR",
+        "estilo": "neon",
+        "tam": 120
+      },
+      "transicion": {
+        "tipo": "flash",
+        "duracion": 0.2
+      },
+      "musica": {
+        "intensidad": 1.0
+      }
+    },
+    {
+      "id": "e6c-montaje",
+      "tipo": "detalle",
+      "variante": "basura",
+      "duracion": 1.0,
+      "camara": "detalle-basura",
+      "texto": {
+        "contenido": "ROCKSTAR NO DEJA NADA AL AZAR",
+        "estilo": "neon",
+        "tam": 120
+      },
+      "transicion": {
+        "tipo": "camara_rapida",
+        "duracion": 0.3
+      },
+      "musica": {
+        "intensidad": 1.0
+      }
+    },
+    {
+      "id": "e6d-montaje",
+      "tipo": "detalle",
+      "variante": "lagartija",
+      "duracion": 1.0,
+      "camara": "detalle-pared",
+      "texto": {
+        "contenido": "ROCKSTAR NO DEJA NADA AL AZAR",
+        "estilo": "neon",
+        "tam": 120
+      },
+      "transicion": {
+        "tipo": "flash",
+        "duracion": 0.2
+      },
+      "musica": {
+        "intensidad": 1.0,
+        "riser": true
+      }
+    },
+    {
+      "id": "e7a-fecha",
+      "tipo": "fondo",
+      "variante": "particulas",
+      "duracion": 5.0,
+      "camara": "fondo-frente",
+      "elementos": [
+        {
+          "tipo": "particulas",
+          "intensidad": 1.3
+        },
+        {
+          "tipo": "neon"
+        }
+      ],
+      "texto": {
+        "contenido": "GTA 6 · 19.11.2026",
+        "estilo": "glitch"
+      },
+      "transicion": {
+        "tipo": "glitch",
+        "duracion": 0.4
+      },
+      "musica": {
+        "intensidad": 0.95,
+        "golpe": true
+      },
+      "sfx": [
+        "glitch",
+        "impacto"
+      ],
+      "voz": {
+        "texto": "GTA 6 llegó el 19 de noviembre de 2026,",
+        "claves": [
+          "19",
+          "noviembre",
+          "2026"
+        ]
+      }
+    },
+    {
+      "id": "e7b-plataformas",
+      "tipo": "vice",
+      "variante": "aerea",
+      "duracion": 4.5,
+      "camara": "vice-aerea",
+      "elementos": [
+        {
+          "tipo": "neon"
+        }
+      ],
+      "texto": {
+        "contenido": "PS5 | XBOX SERIES X|S",
+        "estilo": "letras",
+        "tam": 110
+      },
+      "transicion": {
+        "tipo": "flash",
+        "duracion": 0.3
+      },
+      "musica": {
+        "intensidad": 0.85
+      },
+      "voz": {
+        "texto": "a PS5 y Xbox Series X y S.",
+        "claves": [
+          "PS5",
+          "Xbox"
+        ]
+      }
+    },
+    {
+      "id": "e8-pregunta",
+      "tipo": "fondo",
+      "variante": "negro",
+      "duracion": 3.0,
+      "camara": "fondo-frente",
+      "texto": {
+        "contenido": "¿CUÁL DETALLE TE SORPRENDIÓ MÁS?",
+        "estilo": "slam",
+        "tam": 120
+      },
+      "transicion": {
+        "tipo": "fade",
+        "duracion": 0.6
+      },
+      "musica": {
+        "intensidad": 0.4
+      },
+      "sfx": [
+        "cierre"
+      ],
+      "voz": {
+        "texto": "¿Cuál detalle te sorprendió más?",
+        "claves": [
+          "sorprendió"
+        ]
+      }
+    }
+  ]
+}
