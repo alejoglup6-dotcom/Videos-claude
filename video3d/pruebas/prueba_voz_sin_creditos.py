@@ -9,6 +9,10 @@ alineación por letra) y apunta el script ahí con ELEVENLABS_BASE_URL. Comprueb
   C. --simulacro: cambiar voz, modelo, idioma, estabilidad, similitud, estilo, velocidad o texto obliga a llamar
      de nuevo; sin cambios no; y el simulacro nunca llama al servidor.
   D. Una llamada real tras cambiar un ajuste vuelve a llamar (el cuerpo enviado trae los ajustes nuevos).
+  E. Rangos: velocidad fuera de 0.7-1.2, o estabilidad/similitud/estilo fuera de 0-1 (también NaN o texto):
+     el script termina SIN llamar al servidor. Los límites exactos sí se aceptan.
+  F. Respuesta guardada sin .meta.json: se detiene (real y --simulacro) sin llamar; solo se reutiliza con
+     --reutilizar-sin-meta; con el texto cambiado no se reutiliza ni se bloquea.
 Uso:  python3 video3d/pruebas/prueba_voz_sin_creditos.py        (necesita ffmpeg; no necesita red ni clave)
 Sale con código 0 si todo pasa, 1 si algo falla.
 """
@@ -48,11 +52,11 @@ class H(BaseHTTPRequestHandler):
         data = json.dumps(r).encode()
         self.send_response(200); self.send_header('Content-Type', 'application/json'); self.send_header('Content-Length', str(len(data))); self.end_headers(); self.wfile.write(data)
 
-def correr(trabajo, args, path_extra=None, clave=CLAVE, base=None):
+def correr(trabajo, args, path_extra=None, clave=CLAVE, base=None, veloc='1.1'):
     env = {k: v for k, v in os.environ.items() if k.lower() not in ('http_proxy', 'https_proxy', 'all_proxy')}
     env.update({'ELEVENLABS_API_KEY': clave, 'ELEVENLABS_BASE_URL': base, 'NO_PROXY': '127.0.0.1,localhost', 'no_proxy': '127.0.0.1,localhost'})
     if path_extra: env['PATH'] = path_extra + os.pathsep + env['PATH']
-    return subprocess.run([sys.executable, '-I', str(SCRIPT), VOZ, '1.1', '--guion', str(trabajo / 'guion.json')] + args,
+    return subprocess.run([sys.executable, '-I', str(SCRIPT), VOZ, veloc, '--guion', str(trabajo / 'guion.json')] + args,
                           cwd=trabajo, env=env, capture_output=True, text=True, timeout=120)
 
 def main():
@@ -138,6 +142,47 @@ def main():
         antes = Estado.llamadas
         r = correr(trabajo, ['--estabilidad', '0.5'], base=base)
         comprueba(r.returncode == 0 and Estado.llamadas == antes, 'con los mismos ajustes nuevos, otra vez 0 llamadas')
+
+        print('\nE. Rangos fuera de límites: terminar sin llamar a la API')
+        antes = Estado.llamadas
+        malos = [('velocidad 1.3', [], '1.3'), ('velocidad 0.69', [], '0.69'), ('velocidad nan', [], 'nan'), ('velocidad abc', [], 'abc'),
+                 ('estabilidad 1.01', ['--estabilidad', '1.01'], '1.1'), ('estabilidad -0.1', ['--estabilidad', '-0.1'], '1.1'),
+                 ('similitud 2', ['--similitud', '2'], '1.1'), ('estilo -1', ['--estilo', '-1'], '1.1'), ('estilo nan', ['--estilo', 'nan'], '1.1'),
+                 ('estabilidad abc', ['--estabilidad', 'abc'], '1.1')]
+        for nombre, a, v in malos:
+            for modo in ([], ['--simulacro']):
+                r = correr(trabajo, a + modo, base=base, veloc=v)
+                comprueba(r.returncode != 0 and 'no se llamó a la API' in r.stdout + r.stderr, f'{nombre}{" (simulacro)" if modo else ""}: termina con error sin llamar', (r.stdout + r.stderr)[:150])
+        comprueba(Estado.llamadas == antes, 'ningún valor fuera de rango llegó al servidor', f'{Estado.llamadas - antes} llamadas')
+        for nombre, a, v in [('velocidad 0.7', [], '0.7'), ('velocidad 1.2', [], '1.2'), ('estabilidad 0', ['--estabilidad', '0'], '1.1'), ('estabilidad 1', ['--estabilidad', '1'], '1.1'),
+                             ('similitud 0', ['--similitud', '0'], '1.1'), ('estilo 1', ['--estilo', '1'], '1.1')]:
+            r = correr(trabajo, a + ['--simulacro'], base=base, veloc=v)
+            comprueba(r.returncode == 0, f'límite exacto aceptado: {nombre}', (r.stdout + r.stderr)[:150])
+
+        print('\nF. Respuesta guardada sin metadatos')
+        vozdir = trabajo / 'voz'
+        (vozdir / 'r_p02.meta.json').unlink()                       # solo p02 queda sin metadatos
+        antes = Estado.llamadas
+        r = correr(trabajo, ['--estabilidad', '0.5', '--simulacro'], base=base)
+        sal = r.stdout + r.stderr
+        comprueba(r.returncode == 1 and 'BLOQUEADA' in sal and 'sin metadatos' in sal and 'p02' in sal.split('DETENIDO')[-1] and 'p01' not in sal.split('DETENIDO')[-1].split('\n')[0],
+                  '--simulacro lo muestra (BLOQUEADA) y nombra solo p02', sal[-300:])
+        r = correr(trabajo, ['--estabilidad', '0.5'], base=base)
+        comprueba(r.returncode == 1 and 'sin metadatos' in r.stdout and 'no se llamó a la API' in r.stdout, 'ejecución real: se detiene con mensaje claro')
+        comprueba(Estado.llamadas == antes, 'ni el simulacro ni la ejecución real llamaron al servidor')
+        r = correr(trabajo, ['--estabilidad', '0.5', '--reutilizar-sin-meta'], base=base)
+        comprueba(r.returncode == 0 and Estado.llamadas == antes and 'sin metadatos' in r.stdout.lower(), 'con --reutilizar-sin-meta: reutiliza, avisa y 0 llamadas', (r.stdout + r.stderr)[-250:])
+        r = correr(trabajo, ['--estabilidad', '0.5', '--reutilizar-sin-meta', '--simulacro'], base=base)
+        comprueba(r.returncode == 0 and 'SIN METADATOS' in r.stdout, '--simulacro con el flag lo muestra como reutilizada sin metadatos')
+        (trabajo / 'guion.json').write_text(json.dumps(g2, ensure_ascii=False), encoding='utf-8')   # cambia el texto de p02 (que no tiene meta)
+        r = correr(trabajo, ['--estabilidad', '0.5', '--simulacro'], base=base)
+        m = re.search(r'(\d+) llamada\(s\)', r.stdout)
+        comprueba(r.returncode == 0 and m and int(m.group(1)) == 1 and 'BLOQUEADA' not in r.stdout, 'texto cambiado + sin meta: no se reutiliza ni se bloquea (1 llamada prevista)', r.stdout[:200])
+        (trabajo / 'guion.json').write_text(json.dumps(GUION, ensure_ascii=False), encoding='utf-8')
+        (vozdir / 'r_p01.meta.json').unlink()                       # ahora ninguna tiene metadatos
+        r = correr(trabajo, ['--estabilidad', '0.5', '--simulacro'], base=base)
+        comprueba(r.returncode == 1 and 'p01, p02' in r.stdout, 'sin metadatos en ambas: se bloquean las dos')
+        comprueba(Estado.llamadas == antes, 'en total, F no llamó al servidor')
         srv.shutdown()
     finally:
         shutil.rmtree(tmp, ignore_errors=True)

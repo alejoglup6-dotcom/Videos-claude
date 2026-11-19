@@ -3,7 +3,7 @@
 
 Uso (desde la carpeta del proyecto, donde está guion.json):
   ELEVENLABS_API_KEY=... python3 herramientas/voz_elevenlabs.py <voice_id> [velocidad=1.1] [--simulacro] [--guion ruta.json]
-      [--modelo ID] [--idioma es] [--estabilidad 0.35] [--similitud 0.8] [--estilo 0.55]
+      [--modelo ID] [--idioma es] [--estabilidad 0.35] [--similitud 0.8] [--estilo 0.55] [--reutilizar-sin-meta]
 
 Orden de seguridad (para no perder créditos):
   1. Valida todo SIN llamar a la API: clave, voice_id, guion, ffmpeg, carpeta voz/.
@@ -13,6 +13,9 @@ Orden de seguridad (para no perder créditos):
 --simulacro: valida y muestra cuántos caracteres se gastarían, sin llamar a la API.
 Clave: variable de entorno ELEVENLABS_API_KEY (nunca en archivos ni en el repo).
 ELEVENLABS_BASE_URL: dirección base de la API (por defecto https://api.elevenlabs.io); sirve para pruebas con un servidor local.
+Rangos (se validan antes de llamar): velocidad 0.7-1.2; estabilidad, similitud y estilo 0-1.
+Si existe voz/r_<id>.json pero no su .meta.json, NO se reutiliza: no se puede saber con qué voz y ajustes se generó.
+Se detiene con un aviso; solo se reutiliza con --reutilizar-sin-meta (bajo tu responsabilidad).
 La respuesta guardada solo se reutiliza si coinciden texto, voz, modelo, idioma y todos los ajustes de voz (voz/r_<id>.meta.json).
 """
 import json, sys, re, base64, shutil, subprocess, urllib.request, urllib.error, os
@@ -23,7 +26,8 @@ def fallo(msg):
 # ---------- 1. validación previa (sin red) ----------
 args = sys.argv[1:]
 simulacro = '--simulacro' in args
-args = [a for a in args if a != '--simulacro']
+sin_meta_ok = '--reutilizar-sin-meta' in args
+args = [a for a in args if a not in ('--simulacro', '--reutilizar-sin-meta')]
 ruta_guion = 'guion.json'
 if '--guion' in args:
     i = args.index('--guion')
@@ -92,7 +96,9 @@ def cache_valida(f):
         if ''.join(r['alignment']['characters']) != f['texto']: return None, 'el texto de la frase cambió'
         if not r.get('audio_base64'): return None, 'la respuesta guardada no trae audio'
     except (json.JSONDecodeError, KeyError, TypeError): return None, 'la respuesta guardada está dañada'
-    if os.path.exists(meta_ruta(f)):
+    if not os.path.exists(meta_ruta(f)):
+        return (r, 'sin metadatos, reutilizada por --reutilizar-sin-meta') if sin_meta_ok else (None, 'BLOQUEADA')
+    if True:
         try: m = json.load(open(meta_ruta(f), encoding='utf-8'))
         except json.JSONDecodeError: return None, 'metadatos dañados'
         if 'voice_settings' not in m:                      # metadatos de la versión anterior: solo voz y velocidad
@@ -107,11 +113,22 @@ def cache_valida(f):
     return r, 'ok'
 
 plan = [(f,) + cache_valida(f) for f in frs]
-a_gastar = sum(len(f['texto']) for f, r, _ in plan if r is None)
-nuevas = sum(1 for _, r, _ in plan if r is None)
+bloqueadas = [f for f, r, m in plan if r is None and m == 'BLOQUEADA']
+a_gastar = sum(len(f['texto']) for f, r, m in plan if r is None and m != 'BLOQUEADA')
+nuevas = sum(1 for _, r, m in plan if r is None and m != 'BLOQUEADA')
 print(f'{len(frs)} frase(s) · voz {voz_id} · velocidad {veloc} · {nuevas} llamada(s) a la API · {a_gastar} caracteres a gastar')
 for f, r, motivo in plan:
-    print(f'  {f["id"]}: {"usando respuesta guardada" if r else "llamará a la API (" + motivo + ")"} · {len(f["texto"])} caracteres')
+    if r is not None: est = 'usando respuesta guardada' + (' (SIN METADATOS, por --reutilizar-sin-meta)' if motivo.startswith('sin metadatos') else '')
+    elif motivo == 'BLOQUEADA': est = 'BLOQUEADA: respuesta guardada SIN metadatos'
+    else: est = f'llamará a la API ({motivo})'
+    print(f'  {f["id"]}: {est} · {len(f["texto"])} caracteres')
+if bloqueadas:
+    ids = ', '.join(f['id'] for f in bloqueadas)
+    print(f'\nDETENIDO (no se llamó a la API): hay respuesta guardada sin metadatos para: {ids}.\n'
+          f'  Existe voz/r_<id>.json pero no su .meta.json, así que no se puede comprobar con qué voz y ajustes se generó.\n'
+          f'  Opciones: borrar o mover esa respuesta para generarla de nuevo (gasta créditos), o reutilizarla bajo tu\n'
+          f'  responsabilidad con --reutilizar-sin-meta.')
+    sys.exit(1)
 if simulacro:
     print('SIMULACRO: todo válido; no se llamó a la API ni se escribió nada.'); sys.exit(0)
 
@@ -119,7 +136,7 @@ if simulacro:
 llamadas = 0; respuestas = {}
 for i, (f, r, _) in enumerate(plan):
     if r is not None:
-        print(f'{f["id"]}: usando respuesta guardada', flush=True); respuestas[f['id']] = r; continue
+        print(f'{f["id"]}: usando respuesta guardada' + (' (sin metadatos)' if os.path.exists(meta_ruta(f)) is False else ''), flush=True); respuestas[f['id']] = r; continue
     cuerpo = {'text': f['texto'], **json.loads(json.dumps(AJUSTES))}
     if i > 0: cuerpo['previous_text'] = textos[i - 1]
     if i < len(textos) - 1: cuerpo['next_text'] = textos[i + 1]
