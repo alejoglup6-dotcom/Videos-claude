@@ -23,3 +23,11 @@ export function resolverProps({ config, tiempos, ejemplo }, proyecto, raiz) {
   console.log(`configuración: ${config ? path.resolve(config) : 'plantilla/src/video.config.json'} · tiempos: ${tiempos ? path.resolve(tiempos) : 'plantilla/src/tiempos.json'}`);
   return props;
 }
+
+// Igual que resolverProps, pero si no se pide nada devuelve los de plantilla/src (los que usa el render por defecto).
+export function cargarProps(opciones, proyecto, raiz) {
+  const r = resolverProps(opciones, proyecto, raiz);
+  if (r) return r;
+  const leer = (n) => JSON.parse(fs.readFileSync(path.join(proyecto, 'src', n), 'utf8'));
+  return { config: leer('video.config.json'), tiempos: leer('tiempos.json') };
+}

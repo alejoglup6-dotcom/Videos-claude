@@ -6,7 +6,7 @@ export type V3 = [number, number, number];
 export type Pal = { w: string; s: number; e: number };
 export type Frase = { id: string; texto: string; ini: number; fin: number; palabras: Pal[] };
 export type Tiempos = { dur: number; frases: Frase[] };
-export type CamaraCfg = { pos: V3; mira: V3; fov: number; empuje: number };
+export type CamaraCfg = { pos: V3; mira: V3; fov: number; empuje: number; para?: string[] };   // para = decorados para los que está pensada (solo orienta al generador y al validador)
 export type TextoCfg = { txt: string; color: string; sub?: string };
 export type TomaCfg = { frase: string; decorado: string; variante?: string; camara: string | CamaraCfg; texto: TextoCfg };
 export type ConfigVideo = {

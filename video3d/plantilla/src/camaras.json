@@ -1,8 +1,8 @@
 {
-  "torre-suelo":  { "pos": [5, 0.8, 6],        "mira": [0, 13, -6],    "fov": 70, "empuje": 5 },
-  "torre-cima":   { "pos": [2.4, 21.7, -1.8],  "mira": [0, 20.7, -6],  "fov": 42, "empuje": 1.4 },
-  "fachada-izq":  { "pos": [-13, 3, 9],        "mira": [0, 3.8, -8],   "fov": 46, "empuje": 3 },
-  "fachada-alta": { "pos": [3.5, 4.6, 3],      "mira": [0, 4.2, -8],   "fov": 38, "empuje": 2 },
-  "fachada-der":  { "pos": [15, 2, 7],         "mira": [0, 4.5, -8],   "fov": 48, "empuje": 3 },
-  "bahia-ancha":  { "pos": [4, 1.5, 13],       "mira": [0, 1, -2],     "fov": 42, "empuje": 1.5 }
+  "torre-suelo": { "para": ["torre"], "pos": [5, 0.8, 6], "mira": [0, 13, -6], "fov": 70, "empuje": 5 },
+  "torre-cima": { "para": ["torre"], "pos": [2.4, 21.7, -1.8], "mira": [0, 20.7, -6], "fov": 42, "empuje": 1.4 },
+  "fachada-izq": { "para": ["apto"], "pos": [-13, 3, 9], "mira": [0, 3.8, -8], "fov": 46, "empuje": 3 },
+  "fachada-alta": { "para": ["apto"], "pos": [3.5, 4.6, 3], "mira": [0, 4.2, -8], "fov": 38, "empuje": 2 },
+  "fachada-der": { "para": ["apto"], "pos": [15, 2, 7], "mira": [0, 4.5, -8], "fov": 48, "empuje": 3 },
+  "bahia-ancha": { "para": ["bahia"], "pos": [4, 1.5, 13], "mira": [0, 1, -2], "fov": 42, "empuje": 1.5 }
 }

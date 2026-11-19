@@ -27,7 +27,8 @@ Los scripts de voz y música se corren **desde la carpeta de tu proyecto** (dond
    Con Kokoro: `voz_kokoro.py` y luego `tiempos_whisper.py` (usa `MODELOS_DIR`).
    Después limita los picos de la voz: `./herramientas/limitar_voz.sh` → `voz/narracion.wav` (para que la mezcla no pase de −1 dBTP).
 3. **Música:** `python3 herramientas/musica_synthwave.py` → `audio/musica.wav` y `audio/efectos.wav`.
-4. **Contenido del video:** edita `plantilla/src/video.config.json` (o crea el tuyo; ejemplo en `ejemplos/villaluna/video.config.json`): por cada toma, la frase, el `decorado` (y su `variante`), la `camara` (nombre de `plantilla/src/camaras.json` o valores propios) y el `texto` grande; además las palabras clave de cada frase, los colores de las píldoras y la etiqueta fija. Los decorados y sus variantes están en `plantilla/src/escena3d/decorados.tsx`. Ya no se edita código para cambiar de tema, salvo que necesites un decorado nuevo.
+4. **Contenido del video:** parte de un borrador automático: `node herramientas/nuevo_video.mjs --tiempos voz/tiempos.json --salida video.config.json` (reparte tomas por duración, elige decorados y cámaras, saca textos y palabras clave del guion; `--decorados a,b`, `--toma-seg 1.8`, `--etiqueta "..."`; no sobrescribe sin `--forzar`). Antes de renderizar, **valídalo**: `node herramientas/validar_config.mjs --config video.config.json --tiempos voz/tiempos.json` (frases, decorados, variantes, cámaras, textos, orden, duración de las tomas y palabras clave; no renderices si dice ERROR).
+   Después retócalo a mano: edita `plantilla/src/video.config.json` (o crea el tuyo; ejemplo en `ejemplos/villaluna/video.config.json`): por cada toma, la frase, el `decorado` (y su `variante`), la `camara` (nombre de `plantilla/src/camaras.json` o valores propios) y el `texto` grande; además las palabras clave de cada frase, los colores de las píldoras y la etiqueta fija. Los decorados y sus variantes están en `plantilla/src/escena3d/decorados.tsx`. Ya no se edita código para cambiar de tema, salvo que necesites un decorado nuevo.
 5. **Render:** `node herramientas/render.mjs --modo borrador|normal|final [--frames 0-59] [--salida ruta.mp4]`
    con tu contenido: `--config mi.config.json --tiempos voz/tiempos.json` (o `--ejemplo villaluna`); sin esas opciones usa `plantilla/src/video.config.json` y `tiempos.json` (el ejemplo de GTA 6).
    Funciona desde cualquier carpeta; salida por defecto `plantilla/salida/render.mp4`; `--proyecto` o `VIDEO3D_PROYECTO` para otra plantilla.
@@ -47,6 +48,7 @@ ffmpeg -i final.mp4 -vf "fps=1,scale=270:-1,tile=6x4" -frames:v 1 hoja.png
 (La comparación de la transcripción contra el guion, que hace `medir`, no tiene reemplazo simple: usa `faster-whisper` del `.venv`.)
 
 ## Pruebas
+Sin red ni créditos: `node pruebas/prueba_validador.mjs` (45 comprobaciones del validador), `node pruebas/prueba_generador.mjs [--con-render]` (generador) y `python3 pruebas/prueba_voz_sin_creditos.py` (voz).
 `cd plantilla && npm run tipos` revisa los tipos con `tsc --noEmit`. `herramientas/comparar_cuadros.sh carpetaA carpetaB` compara cuadros PNG (SSIM y PSNR con ffmpeg), útil para comprobar que un cambio de código no altera la imagen.
 `python3 pruebas/prueba_voz_sin_creditos.py` prueba la ruta de voz contra un servidor local falso (sin red, sin clave, sin créditos): que la respuesta se guarda antes de procesarla, que se reutiliza con 0 llamadas y qué cambios obligan a llamar de nuevo.
 
