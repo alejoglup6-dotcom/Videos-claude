@@ -1,0 +1,15 @@
+{
+  "nombre": "TrafficLight_2",
+  "tipo": "prop",
+  "archivo": "props/TrafficLight_2.glb",
+  "licencia": "CC0 1.0 Universal (dominio público)",
+  "licencia_archivo": "licencias/quaternius-lowpoly-modular-street_CC0.txt",
+  "fuente": "Quaternius — LowPoly Modular Street · https://quaternius.itch.io/lowpoly-modular-street",
+  "peso_mb": 0.034,
+  "atribucion": "No requerida (CC0). Crédito de cortesía: Quaternius (https://quaternius.com).",
+  "uso_permitido": true,
+  "notas": "Semáforo con brazo. Escala sugerida 5.",
+  "triangulos": 398,
+  "texturas": [],
+  "peso_texturas_mb": 0
+}

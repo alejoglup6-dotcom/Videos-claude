@@ -1,0 +1,15 @@
+{
+  "nombre": "Streetlight_Single",
+  "tipo": "prop",
+  "archivo": "props/Streetlight_Single.glb",
+  "licencia": "CC0 1.0 Universal (dominio público)",
+  "licencia_archivo": "licencias/quaternius-lowpoly-modular-street_CC0.txt",
+  "fuente": "Quaternius — LowPoly Modular Street · https://quaternius.itch.io/lowpoly-modular-street",
+  "peso_mb": 0.082,
+  "atribucion": "No requerida (CC0). Crédito de cortesía: Quaternius (https://quaternius.com).",
+  "uso_permitido": true,
+  "notas": "Farola. Mide ~1 m: escala sugerida 5. Convertida de OBJ a GLB.",
+  "triangulos": 1028,
+  "texturas": [],
+  "peso_texturas_mb": 0
+}

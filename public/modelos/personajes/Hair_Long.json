@@ -1,0 +1,17 @@
+{
+  "nombre": "Hair_Long",
+  "tipo": "personaje",
+  "archivo": "personajes/Hair_Long.gltf",
+  "licencia": "CC0 1.0 Universal (dominio público)",
+  "licencia_archivo": "licencias/quaternius-universal-base-characters_License_Standard.txt",
+  "fuente": "Quaternius — Universal Base Characters (versión Standard gratuita) · https://quaternius.itch.io/universal-base-characters · https://quaternius.com/packs/universalbasecharacters.html",
+  "peso_mb": 0.117,
+  "atribucion": "No requerida (CC0). Crédito de cortesía: Quaternius (https://quaternius.com).",
+  "uso_permitido": true,
+  "notas": "Peinado largo (malla estática) para el personaje femenino.",
+  "triangulos": 2906,
+  "texturas": [
+    "T_Hair_2_BaseColor.jpg"
+  ],
+  "peso_texturas_mb": 0.113
+}

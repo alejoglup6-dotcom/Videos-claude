@@ -190,7 +190,7 @@ export const Carretera: React.FC<{ t: number; largo?: number; ancho?: number; co
   );
 };
 
-export { AutoPro as Auto } from './AutoPro';
+export { Auto } from './Vehiculos';
 
 export const Persona: React.FC<{ t: number; camisa?: string; pelo?: string; brazos?: number; mira?: number }> = ({ t, camisa = '#FF4FA8', pelo = '#2A1A10', brazos = 0, mira = 0 }) => {
   const piel = '#E8A878';

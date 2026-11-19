@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 import * as THREE from 'three';
 import { useThree } from '@react-three/fiber';
 import { lienzo } from './piezas';
+import { Modelo } from './Modelo';
 
 export const Acera: React.FC<{ x: number; z: number; largo: number; ancho?: number }> = ({ x, z, largo, ancho = 2.4 }) => (
   <group position={[x, 0, z]}>
@@ -51,7 +52,7 @@ export const Entorno: React.FC<{ intensidad?: number }> = ({ intensidad = 0.55 }
   useMemo(() => {
     const env = new THREE.Scene();
     const mat = new THREE.ShaderMaterial({ side: THREE.BackSide, depthWrite: false, vertexShader: 'varying vec3 vP; void main(){ vP = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
-      fragmentShader: 'varying vec3 vP; void main(){ float h = normalize(vP).y; vec3 top = vec3(0.07,0.05,0.28); vec3 hor = vec3(0.95,0.30,0.62); vec3 bot = vec3(0.02,0.02,0.07); vec3 c = h > 0.0 ? mix(hor, top, pow(h, 0.55)) : mix(hor * 0.25, bot, pow(-h, 0.5)); gl_FragColor = vec4(c, 1.0); }' });
+      fragmentShader: 'varying vec3 vP; void main(){ float h = normalize(vP).y; vec3 top = vec3(0.07,0.05,0.28); vec3 hor = vec3(0.55,0.34,0.62); vec3 bot = vec3(0.02,0.02,0.07); vec3 c = h > 0.0 ? mix(hor, top, pow(h, 0.55)) : mix(hor * 0.25, bot, pow(-h, 0.5)); gl_FragColor = vec4(c, 1.0); }' });
     env.add(new THREE.Mesh(new THREE.SphereGeometry(60, 32, 16), mat));
     const tira = (c: string, k: number, p: [number, number, number], s: [number, number, number]) => { const m = new THREE.Mesh(new THREE.BoxGeometry(...s), new THREE.MeshBasicMaterial({ color: new THREE.Color(c).multiplyScalar(k) })); m.position.set(...p); env.add(m); };
     tira('#44E6FF', 6, [-28, 8, -10], [1.2, 14, 1.2]); tira('#FF4FA8', 6, [28, 8, -14], [1.2, 14, 1.2]); tira('#FFE2A0', 5, [0, 16, -30], [18, 1, 1]); tira('#FFFFFF', 3, [0, 40, 0], [10, 0.5, 10]);
@@ -60,3 +61,12 @@ export const Entorno: React.FC<{ intensidad?: number }> = ({ intensidad = 0.55 }
   }, [gl, scene, intensidad]);
   return null;
 };
+
+/** Farola de la biblioteca (Streetlight_Single/Double, 1 m de alto → escala 5) con halo y mancha de luz en el suelo. */
+export const FarolaLib: React.FC<{ x: number; z: number; modelo?: 'Streetlight_Single' | 'Streetlight_Double'; rot?: number; color?: string }> = ({ x, z, modelo = 'Streetlight_Single', rot = 0, color = '#FFE2A0' }) => (
+  <group position={[x, 0, z]}>
+    <Modelo archivo={`props/${modelo}.glb`} escala={5} rot={[0, rot, 0]} />
+    <sprite position={[0, 5.3, 0]} scale={[3.4, 3.4, 1]}><spriteMaterial map={haloTex()} transparent opacity={0.8} depthWrite={false} blending={THREE.AdditiveBlending} fog={false} /></sprite>
+    <mesh position={[0, 0.2, 0]} rotation={[-Math.PI / 2, 0, 0]}><circleGeometry args={[3.4, 20]} /><meshBasicMaterial color={color} transparent opacity={0.12} blending={THREE.AdditiveBlending} depthWrite={false} /></mesh>
+  </group>
+);

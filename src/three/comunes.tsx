@@ -68,12 +68,8 @@ export const Patrulla: React.FC<{ t: number; fase?: number }> = ({ t, fase = 0 }
   const a = Math.sin((t * 4 + fase) * Math.PI) > 0;
   return (
     <group>
-      <Auto color="#E8ECF4" neon="#2A2A70" />
-      <Caja pos={[0, 1.14, -0.15]} tam={[1.1, 0.1, 0.3]} color="#101018" />
-      <Caja pos={[-0.36, 1.25, -0.15]} tam={[0.4, 0.14, 0.28]} color={a ? '#FF2030' : '#3A0810'} basico />
-      <Caja pos={[0.36, 1.25, -0.15]} tam={[0.4, 0.14, 0.28]} color={a ? '#10143A' : '#2A5BFF'} basico />
-      <Brillo pos={[a ? -0.36 : 0.36, 1.4, -0.15]} esc={4.2} color={a ? '#FF2030' : '#2A5BFF'} op={0.8} />
-      <pointLight position={[0, 2.4, 0]} color={a ? '#FF3040' : '#3A6BFF'} intensity={8} distance={16} />
+      <Auto modelo="Cop" neon="#2A2A70" />
+      <Brillo pos={[a ? -0.3 : 0.3, 1.32, -0.2]} esc={4.2} color={a ? '#FF2030' : '#2A5BFF'} op={0.8} />   {/* destello alterno de la barra de luces (sin luces puntuales) */}
     </group>
   );
 };

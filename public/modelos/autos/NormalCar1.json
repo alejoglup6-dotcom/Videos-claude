@@ -1,0 +1,15 @@
+{
+  "nombre": "NormalCar1",
+  "tipo": "auto",
+  "archivo": "autos/NormalCar1.glb",
+  "licencia": "CC0 1.0 Universal (dominio público)",
+  "licencia_archivo": "licencias/quaternius-lowpoly-cars_License.txt",
+  "fuente": "Quaternius — LowPoly Cars (Realistic Car Pack, nov. 2018) · https://quaternius.itch.io/lowpoly-cars",
+  "peso_mb": 0.237,
+  "atribucion": "No requerida (CC0). Crédito de cortesía: Quaternius (https://quaternius.com).",
+  "uso_permitido": true,
+  "notas": "Sedán low-poly. Convertido de OBJ/MTL a GLB.",
+  "triangulos": 2954,
+  "texturas": [],
+  "peso_texturas_mb": 0
+}

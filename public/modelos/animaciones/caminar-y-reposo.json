@@ -1,0 +1,15 @@
+{
+  "nombre": "caminar-y-reposo",
+  "tipo": "animacion",
+  "archivo": "animaciones/caminar-y-reposo.glb",
+  "licencia": "CC0 1.0 Universal (dominio público)",
+  "licencia_archivo": "licencias/quaternius-universal-animation-library_License.txt",
+  "fuente": "Quaternius — Universal Animation Library (Standard) · https://quaternius.itch.io/universal-animation-library",
+  "peso_mb": 0.943,
+  "atribucion": "No requerida (CC0). Crédito de cortesía: Quaternius (https://quaternius.com).",
+  "uso_permitido": true,
+  "notas": "Clips: Walk_Loop, Walk_Formal_Loop, Idle_Loop, Idle_Talking_Loop, Jog_Fwd_Loop. Solo animación (sin malla); los huesos tienen los mismos nombres que los de Universal Base Characters.",
+  "triangulos": 0,
+  "texturas": [],
+  "peso_texturas_mb": 0
+}

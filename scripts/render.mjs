@@ -20,7 +20,7 @@ const crudo = path.join(RAIZ, 'build', `${guion.id}.crudo.mp4`); const final = p
 const run = (cmd, a) => { const r = spawnSync(cmd, a, { stdio: 'inherit', cwd: RAIZ }); if (r.status !== 0) { console.error(`\n✗ Falló: ${cmd} ${a.slice(0, 3).join(' ')}… (código ${r.status})`); process.exit(r.status || 1); } };
 
 const t0 = Date.now();
-const ra = ['remotion', 'render', 'src/index.ts', 'VideoVertical', crudo, `--props=${props}`, '--gl=swangle', '--codec=h264', '--crf=20', '--pixel-format=yuv420p', '--image-format=jpeg', '--jpeg-quality=92', '--color-space=bt709', '--log=info'];
+const ra = ['remotion', 'render', 'src/index.ts', 'VideoVertical', crudo, `--props=${props}`, '--gl=swangle', '--codec=h264', '--crf=20', '--pixel-format=yuv420p', '--image-format=jpeg', '--jpeg-quality=92', '--color-space=bt709', '--log=info', '--timeout=180000'];
 if (opt('concurrencia')) ra.push(`--concurrency=${opt('concurrencia')}`);
 if (opt('frames')) ra.push(`--frames=${opt('frames')}`);
 run('npx', ra);

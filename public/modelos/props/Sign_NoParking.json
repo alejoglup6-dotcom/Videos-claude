@@ -1,0 +1,15 @@
+{
+  "nombre": "Sign_NoParking",
+  "tipo": "prop",
+  "archivo": "props/Sign_NoParking.glb",
+  "licencia": "CC0 1.0 Universal (dominio público)",
+  "licencia_archivo": "licencias/quaternius-lowpoly-modular-street_CC0.txt",
+  "fuente": "Quaternius — LowPoly Modular Street · https://quaternius.itch.io/lowpoly-modular-street",
+  "peso_mb": 0.021,
+  "atribucion": "No requerida (CC0). Crédito de cortesía: Quaternius (https://quaternius.com).",
+  "uso_permitido": true,
+  "notas": "Señal de no estacionar. Escala sugerida 5.",
+  "triangulos": 244,
+  "texturas": [],
+  "peso_texturas_mb": 0
+}

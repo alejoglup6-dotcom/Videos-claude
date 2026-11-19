@@ -1,0 +1,22 @@
+{
+  "nombre": "Superhero_Female_FullBody",
+  "tipo": "personaje",
+  "archivo": "personajes/Superhero_Female_FullBody.gltf",
+  "licencia": "CC0 1.0 Universal (dominio público)",
+  "licencia_archivo": "licencias/quaternius-universal-base-characters_License_Standard.txt",
+  "fuente": "Quaternius — Universal Base Characters (versión Standard gratuita) · https://quaternius.itch.io/universal-base-characters · https://quaternius.com/packs/universalbasecharacters.html",
+  "peso_mb": 1.014,
+  "atribucion": "No requerida (CC0). Crédito de cortesía: Quaternius (https://quaternius.com).",
+  "uso_permitido": true,
+  "notas": "Cuerpo femenino orgánico con esqueleto humanoide, manos y rostro. Viene en ropa interior: la ropa se colorea por código.",
+  "triangulos": 15060,
+  "texturas": [
+    "T_Hair_2_BaseColor.jpg",
+    "T_Eye_Normal.png",
+    "T_Eye_Brown.jpg",
+    "T_Superhero_Female_Normal.png",
+    "T_Superhero_Female_Dark_BaseColor.jpg",
+    "T_Superhero_Female_Roughness.jpg"
+  ],
+  "peso_texturas_mb": 1.146
+}

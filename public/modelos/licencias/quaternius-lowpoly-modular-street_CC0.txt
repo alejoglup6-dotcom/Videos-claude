@@ -1,0 +1,10 @@
+LowPoly Modular Street (Quaternius) — constancia de licencia
+
+El ZIP descargado NO trae un archivo de licencia. La licencia se verificó el 2026-11-19 en dos páginas oficiales del autor:
+
+1) https://quaternius.itch.io/lowpoly-modular-street — descripción del pack, textualmente:
+   "Modular street pack in FBX,OBJ and Blend format. CC0 License https://creativecommons.org/publicdomain/zero/1.0/"
+
+2) https://quaternius.com/packs/modularstreets.html — campo "License: CC0".
+
+CC0 1.0 Universal (dominio público): https://creativecommons.org/publicdomain/zero/1.0/

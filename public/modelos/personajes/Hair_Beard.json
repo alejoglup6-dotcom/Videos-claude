@@ -1,0 +1,17 @@
+{
+  "nombre": "Hair_Beard",
+  "tipo": "personaje",
+  "archivo": "personajes/Hair_Beard.gltf",
+  "licencia": "CC0 1.0 Universal (dominio público)",
+  "licencia_archivo": "licencias/quaternius-universal-base-characters_License_Standard.txt",
+  "fuente": "Quaternius — Universal Base Characters (versión Standard gratuita) · https://quaternius.itch.io/universal-base-characters · https://quaternius.com/packs/universalbasecharacters.html",
+  "peso_mb": 0.027,
+  "atribucion": "No requerida (CC0). Crédito de cortesía: Quaternius (https://quaternius.com).",
+  "uso_permitido": true,
+  "notas": "Barba (malla estática).",
+  "triangulos": 1034,
+  "texturas": [
+    "T_Hair_1_BaseColor.jpg"
+  ],
+  "peso_texturas_mb": 0.094
+}

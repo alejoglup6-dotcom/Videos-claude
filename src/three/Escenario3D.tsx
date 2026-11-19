@@ -59,11 +59,11 @@ export const Escenario3D: React.FC<{ t: number; tr: Tramo; est: Estado; calidad:
           <color attach="background" args={[fc]} />
           <fog attach="fog" args={[fc, fn, ff]} />
           {/* iluminación de cine: ambiente + luz principal con sombras suaves + relleno + dos luces de contorno (rim) de neón */}
-          <Entorno intensidad={noche ? 0.28 : 0.2} />
+          <Entorno intensidad={noche ? 0.22 : 0.2} />
           <ambientLight intensity={def.luz.amb[1] * 0.8} color={def.luz.amb[0]} />
           <directionalLight position={[0, 14, -30]} intensity={def.luz.sol[1]} color={def.luz.sol[0]} />
           <directionalLight position={[-8, 9, 12]} intensity={def.luz.relleno[1]} color={def.luz.relleno[0]} castShadow shadow-mapSize-width={1024} shadow-mapSize-height={1024} shadow-camera-left={-14} shadow-camera-right={14} shadow-camera-top={14} shadow-camera-bottom={-14} shadow-camera-near={1} shadow-camera-far={50} shadow-bias={-0.0004} shadow-radius={4} />
-          {noche ? <><directionalLight position={[-12, 5, -16]} intensity={1.1} color="#FF4FA8" /><directionalLight position={[12, 5, -16]} intensity={1.1} color="#44E6FF" /></> : null}
+          {noche ? <><directionalLight position={[-12, 5, -16]} intensity={0.8} color="#FF4FA8" /><directionalLight position={[12, 5, -16]} intensity={0.8} color="#44E6FF" /></> : null}
           <Cielo tipo={cielo} t={t} />
           <def.Componente key={tr.i} t={t} u={u} k={k} datos={e.datos} />
         </ThreeCanvas>

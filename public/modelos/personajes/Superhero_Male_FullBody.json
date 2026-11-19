@@ -1,0 +1,22 @@
+{
+  "nombre": "Superhero_Male_FullBody",
+  "tipo": "personaje",
+  "archivo": "personajes/Superhero_Male_FullBody.gltf",
+  "licencia": "CC0 1.0 Universal (dominio público)",
+  "licencia_archivo": "licencias/quaternius-universal-base-characters_License_Standard.txt",
+  "fuente": "Quaternius — Universal Base Characters (versión Standard gratuita) · https://quaternius.itch.io/universal-base-characters · https://quaternius.com/packs/universalbasecharacters.html",
+  "peso_mb": 0.742,
+  "atribucion": "No requerida (CC0). Crédito de cortesía: Quaternius (https://quaternius.com).",
+  "uso_permitido": true,
+  "notas": "Cuerpo masculino orgánico con esqueleto humanoide (65 huesos), manos y rostro. Viene en ropa interior: la ropa se colorea por código (src/three/Personaje.tsx). Proporciones «Superhero» (anchas).",
+  "triangulos": 14318,
+  "texturas": [
+    "T_Hair_1_BaseColor.jpg",
+    "T_Eye_Normal.png",
+    "T_Eye_Brown.jpg",
+    "T_Superhero_Male_Normal.png",
+    "T_Superhero_Male_Dark.jpg",
+    "T_Superhero_Male_Roughness.jpg"
+  ],
+  "peso_texturas_mb": 1.262
+}

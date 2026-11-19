@@ -1,0 +1,19 @@
+{
+  "nombre": "Sidewalk_Straight_3m",
+  "tipo": "prop",
+  "archivo": "props/Sidewalk_Straight_3m.gltf",
+  "licencia": "CC0 1.0 Universal (dominio público)",
+  "licencia_archivo": "licencias/quaternius-downtown-city-megakit_License_Standard.txt",
+  "fuente": "Quaternius — Downtown City MegaKit (versión Standard gratuita) · https://quaternius.itch.io/downtown-city-megakit",
+  "peso_mb": 0.006,
+  "atribucion": "No requerida (CC0). Crédito de cortesía: Quaternius (https://quaternius.com).",
+  "uso_permitido": true,
+  "notas": "Acera recta de 3 m con bordillo.",
+  "triangulos": 60,
+  "texturas": [
+    "../texturas/downtown/T_MetalConcrete_Normal.png",
+    "../texturas/downtown/T_MetalConcrete_BaseColor.jpg",
+    "../texturas/downtown/T_MetalConcrete_ORM.jpg"
+  ],
+  "peso_texturas_mb": 0.429
+}

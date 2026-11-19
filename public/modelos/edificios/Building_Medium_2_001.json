@@ -1,0 +1,31 @@
+{
+  "nombre": "Building_Medium_2_001",
+  "tipo": "edificio",
+  "archivo": "edificios/Building_Medium_2_001.gltf",
+  "licencia": "CC0 1.0 Universal (dominio público)",
+  "licencia_archivo": "licencias/quaternius-downtown-city-megakit_License_Standard.txt",
+  "fuente": "Quaternius — Downtown City MegaKit (versión Standard gratuita) · https://quaternius.itch.io/downtown-city-megakit",
+  "peso_mb": 2.462,
+  "atribucion": "No requerida (CC0). Crédito de cortesía: Quaternius (https://quaternius.com).",
+  "uso_permitido": true,
+  "notas": "Edificio completo mediano con ventanas e interiores. ~25 600 triángulos: usar solo como protagonista.",
+  "triangulos": 25612,
+  "texturas": [
+    "../texturas/downtown/T_MarbleFloor_Normal.png",
+    "../texturas/downtown/T_MarbleFloor_BaseColor.jpg",
+    "../texturas/downtown/T_MarbleFloor_ORM.jpg",
+    "../texturas/downtown/T_Trim_Normal.png",
+    "../texturas/downtown/T_Trim_BaseColor.jpg",
+    "../texturas/downtown/T_Trim_ORM.jpg",
+    "../texturas/downtown/T_lit_interior_1.jpg",
+    "../texturas/downtown/T_lit_interior_2.jpg",
+    "../texturas/downtown/T_dark_interior.jpg",
+    "../texturas/downtown/T_RedBrick_Normal.png",
+    "../texturas/downtown/T_RedBrick_BaseColor.jpg",
+    "../texturas/downtown/T_RedBrick_ORM.jpg",
+    "../texturas/downtown/T_Concrete_Normal.png",
+    "../texturas/downtown/T_Concrete_Asphalt_BaseColor.jpg",
+    "../texturas/downtown/T_Concrete_ORM.jpg"
+  ],
+  "peso_texturas_mb": 1.85
+}

@@ -1,0 +1,15 @@
+{
+  "nombre": "Tree_3",
+  "tipo": "prop",
+  "archivo": "props/Tree_3.glb",
+  "licencia": "CC0 1.0 Universal (dominio público)",
+  "licencia_archivo": "licencias/quaternius-textured-stylized-trees_License.txt",
+  "fuente": "Quaternius — Textured LowPoly Trees (Textured Stylized Trees, mayo 2020) · https://quaternius.itch.io/textured-lowpoly-trees",
+  "peso_mb": 0.165,
+  "atribucion": "No requerida (CC0). Crédito de cortesía: Quaternius (https://quaternius.com).",
+  "uso_permitido": true,
+  "notas": "Árbol low-poly.",
+  "triangulos": 2088,
+  "texturas": [],
+  "peso_texturas_mb": 0
+}

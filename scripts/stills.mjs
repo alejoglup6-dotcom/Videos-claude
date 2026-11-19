@@ -12,7 +12,7 @@ const dir = path.join(RAIZ, 'build/stills', guion.id); fs.mkdirSync(dir, { recur
 const props = path.join(RAIZ, 'build', `${guion.id}.stills.json`); fs.writeFileSync(props, JSON.stringify(guion));
 for (const t of ts) {
   const f = Math.round(t * 30); const out = path.join(dir, `t_${t}.png`);
-  const r = spawnSync('npx', ['remotion', 'still', 'src/index.ts', 'VideoVertical', out, `--props=${props}`, `--frame=${f}`, '--gl=swangle', '--log=error'], { cwd: RAIZ, stdio: 'inherit' });
+  const r = spawnSync('npx', ['remotion', 'still', 'src/index.ts', 'VideoVertical', out, `--props=${props}`, `--frame=${f}`, '--gl=swangle', '--log=error', '--timeout=180000'], { cwd: RAIZ, stdio: 'inherit' });
   if (r.status !== 0) { console.error('✗ falló el still de t=' + t); process.exit(1); }
   console.log('✔ ' + path.relative(RAIZ, out));
 }

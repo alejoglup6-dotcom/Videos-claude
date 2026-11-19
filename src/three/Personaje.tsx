@@ -3,14 +3,11 @@
 // unos centímetros para darle volumen. La pose se calcula por código en cada cuadro (determinista).
 import React, { useMemo } from 'react';
 import * as THREE from 'three';
-import { useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { clone as clonarSkinned } from 'three/examples/jsm/utils/SkeletonUtils.js';
-import { staticFile } from 'remotion';
+import { useModelos } from './Modelo';
 
-const RUTA = 'modelos/personajes/';
-/** Carga con Suspense (useLoader): <ThreeCanvas> de Remotion espera a que termine y recién entonces dibuja el cuadro. */
-const useModelos = (archivos: string[]) => useLoader(GLTFLoader, archivos.map((a) => staticFile(RUTA + a))).map((g) => g.scene as THREE.Group);
+const RUTA = 'personajes/';
 
 export type Ropa = { chaqueta: string; pantalon: string; zapatos: string; piel?: string };
 type Zona = 'chaqueta' | 'pantalon' | 'zapatos' | 'piel';
@@ -98,7 +95,7 @@ const Cuerpo: React.FC<{ modelo: THREE.Group; ropa: Ropa; pelos: { modelo: THREE
 
 export const PersonajeA: React.FC<{ genero: 'h' | 'm'; ropa: Ropa; pelo: string; barba?: boolean; pose: PosePersonaje; escala?: number }> = ({ genero, ropa, pelo, barba, pose, escala }) => {
   const arch = genero === 'h' ? ['Superhero_Male_FullBody.gltf', 'Hair_SimpleParted.gltf', 'Hair_Beard.gltf'] : ['Superhero_Female_FullBody.gltf', 'Hair_Long.gltf'];
-  const ms = useModelos(arch);
+  const gs = useModelos(arch.map((a) => RUTA + a)); if (!gs) return null; const ms = gs.map((g) => g.scene as THREE.Group);
     if (!ms) return null;
   const pelos = genero === 'h' ? [{ modelo: ms[1], color: pelo }, ...(barba ? [{ modelo: ms[2], color: pelo }] : [])] : [{ modelo: ms[1], color: pelo }];
   return <Cuerpo modelo={ms[0]} ropa={ropa} pelos={pelos} pose={pose} escala={escala} />;
