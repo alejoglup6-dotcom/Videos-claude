@@ -3,6 +3,7 @@
 #   ./instalar.sh            plantilla + whisper (large-v3-turbo)
 #   ./instalar.sh --kokoro   además Kokoro (voz abierta; ~6 GB con torch y modelo)
 # Variables: NAVEGADOR (ruta a Chromium/Chrome), PYTHON (intérprete base), MODELOS_DIR (carpeta de modelos)
+# Nota: av<17 porque faster-whisper 1.2.1 no abre archivos con av 19 (metadata_errors).
 set -euo pipefail
 AQUI="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 VENV="$AQUI/.venv"; MODELOS_DIR="${MODELOS_DIR:-$AQUI/modelos}"
@@ -30,11 +31,11 @@ PY="${PYTHON:-python3}"
 prueba(){ "$VENV/bin/python" -I -c 'import faster_whisper, numpy, soundfile' 2>/dev/null; }
 if [ ! -x "$VENV/bin/python" ] || ! prueba; then
   rm -rf "$VENV"; "$PY" -m venv "$VENV" 2>/dev/null || true
-  [ -x "$VENV/bin/python" ] && "$VENV/bin/pip" install -q faster-whisper numpy soundfile 2>/dev/null || true
+  [ -x "$VENV/bin/python" ] && "$VENV/bin/pip" install -q faster-whisper numpy soundfile "av<17" 2>/dev/null || true
   if ! prueba; then
     echo "  faster-whisper no instaló con $("$PY" --version 2>&1); pruebo Python 3.11 con uv"
     command -v uv >/dev/null || falla "faster-whisper no funciona con el Python del sistema y no hay 'uv' (pip install --user uv)."
-    rm -rf "$VENV"; uv python install 3.11 && uv venv --python 3.11 "$VENV" && uv pip install -q --python "$VENV/bin/python" faster-whisper numpy soundfile
+    rm -rf "$VENV"; uv python install 3.11 && uv venv --python 3.11 "$VENV" && uv pip install -q --python "$VENV/bin/python" faster-whisper numpy soundfile "av<17"
     prueba || falla "faster-whisper no se pudo instalar ni con Python 3.11."
   fi
 fi
