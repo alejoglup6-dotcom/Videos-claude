@@ -1,0 +1,25 @@
+name: Comprobar proyecto
+
+on:
+  push:
+    paths: ['src/**', 'scripts/**', 'guiones/**', 'package.json', 'package-lock.json', 'tsconfig.json', '.github/workflows/**']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Tipos (TypeScript)
+        run: npm run tipos
+      - name: Pruebas y validación de guiones
+        run: npm test

@@ -19,3 +19,10 @@ video3d/guion.json
 pipeline/build/
 pipeline/salida/
 pipeline/.venv/
+
+# proyecto Remotion (raíz)
+out/
+build/
+modelos/
+public/audio/
+.venv-piper/

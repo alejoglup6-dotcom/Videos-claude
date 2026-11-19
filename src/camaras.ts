@@ -1,0 +1,15 @@
+// Cámaras con nombre. pos = dónde está · mira = a dónde mira · fov = campo de visión (grados) · empuje = cuánto avanza durante la escena.
+import type { Camara } from './lib/guion';
+const c = (pos: Camara['pos'], mira: Camara['mira'], fov: number, empuje: number): Camara => ({ pos, mira, fov, empuje });
+export const CAMARAS: Record<string, Camara> = {
+  'vice-aerea': c([16, 66, 54], [-30, 6, -44], 60, 28), 'vice-aerea-lateral': c([-34, 30, 8], [0, 5, -40], 55, 8),
+  'vice-calle': c([0, 1.7, 6], [0, 1.6, -12], 50, 2), 'vice-calle-baja': c([1.5, 0.7, 4], [0, 1.2, -10], 45, 1.5), 'vice-playa': c([-6, 1.8, 10], [4, 2, -20], 55, 4),
+  'mapa-cenital': c([0, 18, 10], [0, 0, -0.5], 60, 3), 'mapa-costa': c([8, 15, 11], [3, 0, -0.5], 55, 3), 'mapa-ciudad': c([6, 9, 8], [3, 0.5, 0.8], 50, 2),
+  'mapa-pantano': c([-3, 10, 14], [-0.5, 0, 5], 50, 2), 'mapa-carreteras': c([0, 15, 11], [0, 0, -1], 55, 3),
+  'persecucion-detras': c([0, 3.2, 10], [0, 1.2, -12], 60, 3), 'persecucion-lateral': c([9, 2.2, -6], [0, 1, -13], 55, 2), 'persecucion-alta': c([0, 8, 6], [0, 0, -10], 60, 3),
+  'atardecer-aerea': c([16, 42, 58], [-14, 0, -28], 55, 6), 'atardecer-heli': c([36, 16, -6], [0, 13, -30], 50, 8), 'atardecer-costa': c([6, 2.5, 24], [-2, 3, -30], 55, 3),
+  'fondo-frente': c([0, 3, 14], [0, 3, 0], 50, 2),
+  'calle-avenida': c([0, 1.7, 14], [0, 3.2, -30], 55, 6), 'calle-plaza': c([0, 2.2, 16], [0, 2.5, -10], 55, 4), 'calle-plaza-alta': c([7, 6, 12], [0, 1.2, -6], 50, 3), 'calle-esquina': c([7, 3.2, 13], [-1.5, 2, -3], 55, 3),
+  'interior-frente': c([0, 2.4, 7], [0, 1.6, -8], 55, 3), 'interior-mesa': c([3.5, 2.2, -1], [0, 1.2, -6], 45, 2.5), 'interior-detalle': c([1, 1.8, -3], [0, 1.2, -6], 38, 1.5), 'interior-ventana': c([-4, 2.2, 2], [0, 3, -12], 52, 2),
+  'datos-frente': c([0, 3.4, 22], [0, 2.4, 0], 55, 3), 'datos-lateral': c([12, 4.5, 16], [0, 2.4, 0], 50, 2), 'datos-cerca': c([0, 3.2, 15], [0, 2.4, 0], 46, 1.5),
+};

@@ -1,0 +1,115 @@
+name: Renderizar video
+
+on:
+  workflow_dispatch:
+    inputs:
+      guion:
+        description: 'Nombre del guion (archivo de la carpeta guiones/, sin .json)'
+        required: true
+        default: vice-city-35s
+      calidad:
+        description: 'Calidad del 3D (rapido = borrador, normal = recomendado, alta = más lento)'
+        type: choice
+        default: normal
+        options: [rapido, normal, alta]
+      voz:
+        description: 'Generar voz en off gratis con Piper'
+        type: boolean
+        default: true
+      publicar_release:
+        description: 'Publicar también como Release (descarga directa del MP4 desde el móvil)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write   # solo se usa si marcas publicar_release
+
+concurrency:
+  group: render-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      GUION: ${{ inputs.guion }}
+      CALIDAD: ${{ inputs.calidad }}
+      PIPER_MODEL: ${{ github.workspace }}/modelos/es_MX-claude-high.onnx
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias de Node
+        run: npm ci
+
+      - name: Validar guion
+        run: node scripts/validar-guion.mjs "$GUION"
+
+      - name: Librerías del navegador (Chromium de Remotion)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libnss3 libdbus-1-3 libatk1.0-0t64 libatk-bridge2.0-0t64 libcups2t64 libgbm1 libasound2t64 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libpango-1.0-0 libcairo2 libxfixes3 libxshmfence1 || true
+
+      - name: Música y efectos (se generan por código)
+        run: node scripts/generar-audio.mjs "$GUION"
+
+      - uses: actions/setup-python@v5
+        if: ${{ inputs.voz }}
+        with:
+          python-version: '3.12'
+
+      - name: Cache del modelo de voz
+        if: ${{ inputs.voz }}
+        uses: actions/cache@v4
+        with:
+          path: modelos
+          key: piper-es_MX-claude-high-v1
+
+      - name: Voz en off con Piper (si falla, el video se hace sin voz)
+        if: ${{ inputs.voz }}
+        continue-on-error: true
+        run: |
+          python -m venv .venv-piper
+          .venv-piper/bin/pip install --quiet piper-tts==1.8.0
+          mkdir -p modelos
+          base=https://huggingface.co/rhasspy/piper-voices/resolve/main/es/es_MX/claude/high
+          [ -f modelos/es_MX-claude-high.onnx ] || curl -fsSL --retry 3 -o modelos/es_MX-claude-high.onnx "$base/es_MX-claude-high.onnx"
+          [ -f modelos/es_MX-claude-high.onnx.json ] || curl -fsSL --retry 3 -o modelos/es_MX-claude-high.onnx.json "$base/es_MX-claude-high.onnx.json"
+          PIPER_PYTHON=.venv-piper/bin/python node scripts/voz-piper.mjs "$GUION"
+
+      - name: Renderizar MP4
+        run: node scripts/render.mjs "$GUION" --calidad "$CALIDAD" --salida "out/$GUION.mp4"
+
+      - name: Comprobar el MP4
+        run: |
+          npx remotion ffprobe "out/$GUION.mp4" 2>&1 | grep -E "Duration|Stream" | tee -a "$GITHUB_STEP_SUMMARY"
+          ls -la out
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: video-${{ inputs.guion }}
+          path: out/${{ inputs.guion }}.mp4
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 0   # el MP4 ya está comprimido
+
+      - name: Publicar Release (opcional)
+        if: ${{ inputs.publicar_release }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="video-${GUION}-${{ github.run_number }}"
+          gh release create "$tag" "out/$GUION.mp4" --title "Video $GUION (#${{ github.run_number }})" --notes "Generado por el workflow Renderizar video." 
+
+      - name: Resumen
+        run: |
+          {
+            echo "## Video listo"
+            echo "- Guion: \`$GUION\` · calidad: \`$CALIDAD\`"
+            echo "- Descarga: baja a **Artifacts** al final de esta página y toca **video-$GUION**."
+          } >> "$GITHUB_STEP_SUMMARY"

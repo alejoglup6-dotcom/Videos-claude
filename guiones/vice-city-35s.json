@@ -1,0 +1,346 @@
+{
+  "id": "vice-city-35s",
+  "titulo": "GTA 6: La nueva era de Vice City",
+  "tema": "neon-costero",
+  "etiqueta": {
+    "txt": "FAN VIDEO"
+  },
+  "audio": {
+    "musica": {
+      "generar": {
+        "bpm": 120,
+        "escala": "Am",
+        "semilla": 6
+      },
+      "volumen": 0.55
+    },
+    "voz": {
+      "volumen": 1
+    },
+    "sfx": {
+      "volumen": 0.8
+    },
+    "ducking": 0.5
+  },
+  "fuentes": [
+    {
+      "dato": "Ambientado en el estado de Leonida, con una Vice City moderna",
+      "estado": "verificado",
+      "nota": "Rockstar Games (comunicado y página oficial)"
+    },
+    {
+      "dato": "Protagonistas: Jason y Lucia",
+      "estado": "verificado",
+      "nota": "Rockstar Games"
+    },
+    {
+      "dato": "Un golpe fácil sale mal y deriva en una conspiración criminal",
+      "estado": "verificado",
+      "nota": "Descripción oficial de la historia"
+    },
+    {
+      "dato": "Deben depender el uno del otro para sobrevivir",
+      "estado": "no_verificado",
+      "nota": "Redacción exacta no confirmada en fuente primaria; revisar antes de publicar"
+    },
+    {
+      "dato": "«La mayor y más inmersiva evolución de la saga»",
+      "estado": "verificado",
+      "nota": "Frase atribuida a Rockstar en su comunicado"
+    },
+    {
+      "dato": "Plataformas: PlayStation 5 y Xbox Series X|S",
+      "estado": "verificado",
+      "nota": "Rockstar Games"
+    },
+    {
+      "dato": "Fecha: 19 de noviembre de 2026; «salió» (ya disponible)",
+      "estado": "no_verificado",
+      "nota": "La fecha es oficial; el pasado «salió» se mantiene por indicación del autor. Confirmar que ya está a la venta el día de publicar"
+    }
+  ],
+  "escenas": [
+    {
+      "id": "e1-gancho",
+      "tipo": "vice",
+      "variante": "aerea",
+      "duracion": 3.5,
+      "camara": "vice-aerea",
+      "elementos": [
+        {
+          "tipo": "particulas"
+        },
+        {
+          "tipo": "neon"
+        }
+      ],
+      "texto": {
+        "contenido": "VICE CITY",
+        "estilo": "slam",
+        "tam": 260
+      },
+      "animacion": {
+        "shake": 0.6
+      },
+      "transicion": {
+        "tipo": "flash",
+        "duracion": 0.3
+      },
+      "musica": {
+        "intensidad": 0.9,
+        "golpe": true
+      },
+      "sfx": [
+        "impacto"
+      ],
+      "voz": {
+        "texto": "Bienvenido a Leonida.",
+        "claves": [
+          "Leonida"
+        ]
+      }
+    },
+    {
+      "id": "e2-leonida",
+      "tipo": "mapa",
+      "variante": "costa",
+      "duracion": 4,
+      "camara": "mapa-costa",
+      "elementos": [
+        {
+          "tipo": "neon"
+        }
+      ],
+      "texto": {
+        "contenido": "LEONIDA",
+        "estilo": "letras",
+        "sub": "UN ESTADO ENTERO"
+      },
+      "transicion": {
+        "tipo": "whip",
+        "duracion": 0.36
+      },
+      "musica": {
+        "intensidad": 0.6
+      },
+      "voz": {
+        "texto": "Leonida, el estado donde vive la nueva Vice City.",
+        "claves": [
+          "Leonida",
+          "nueva"
+        ]
+      }
+    },
+    {
+      "id": "e3-ciudad",
+      "tipo": "vice",
+      "variante": "calle",
+      "duracion": 4,
+      "camara": "vice-calle",
+      "elementos": [
+        {
+          "tipo": "lluvia"
+        },
+        {
+          "tipo": "neon"
+        }
+      ],
+      "texto": {
+        "contenido": "CIUDAD MODERNA",
+        "estilo": "glitch"
+      },
+      "transicion": {
+        "tipo": "zoom",
+        "duracion": 0.35
+      },
+      "musica": {
+        "intensidad": 0.7
+      },
+      "voz": {
+        "texto": "Una Vice City moderna, de neón y de noche.",
+        "claves": [
+          "moderna",
+          "neón"
+        ]
+      }
+    },
+    {
+      "id": "e4-protagonistas",
+      "tipo": "persecucion",
+      "variante": "detras",
+      "duracion": 4,
+      "camara": "persecucion-detras",
+      "elementos": [
+        {
+          "tipo": "neon"
+        }
+      ],
+      "texto": {
+        "contenido": "JASON Y LUCIA",
+        "estilo": "neon"
+      },
+      "animacion": {
+        "shake": 0.35
+      },
+      "transicion": {
+        "tipo": "camara_rapida",
+        "duracion": 0.4
+      },
+      "musica": {
+        "intensidad": 0.85
+      },
+      "voz": {
+        "texto": "Conoce a Jason y a Lucia.",
+        "claves": [
+          "Jason",
+          "Lucia"
+        ]
+      }
+    },
+    {
+      "id": "e5-golpe",
+      "tipo": "vice",
+      "variante": "playa",
+      "duracion": 5,
+      "camara": "vice-playa",
+      "elementos": [
+        {
+          "tipo": "lluvia"
+        }
+      ],
+      "texto": {
+        "contenido": "UN GOLPE FÁCIL",
+        "estilo": "slam",
+        "sub": "SALE MAL"
+      },
+      "transicion": {
+        "tipo": "glitch",
+        "duracion": 0.4
+      },
+      "musica": {
+        "intensidad": 0.65
+      },
+      "sfx": [
+        {
+          "nombre": "ping",
+          "t": 2.5,
+          "volumen": 0.7
+        }
+      ],
+      "voz": {
+        "texto": "Un golpe fácil sale mal y se vuelve una conspiración criminal.",
+        "claves": [
+          "golpe",
+          "mal",
+          "conspiración"
+        ]
+      }
+    },
+    {
+      "id": "e6-sobrevivir",
+      "tipo": "atardecer",
+      "variante": "helicoptero",
+      "duracion": 4,
+      "camara": "atardecer-heli",
+      "elementos": [
+        {
+          "tipo": "particulas"
+        }
+      ],
+      "texto": {
+        "contenido": "SOBREVIVIR JUNTOS",
+        "estilo": "letras"
+      },
+      "transicion": {
+        "tipo": "flash",
+        "duracion": 0.3
+      },
+      "musica": {
+        "intensidad": 0.8,
+        "riser": true
+      },
+      "voz": {
+        "texto": "Para sobrevivir, tendrán que depender el uno del otro.",
+        "claves": [
+          "sobrevivir",
+          "depender"
+        ]
+      }
+    },
+    {
+      "id": "e7-evolucion",
+      "tipo": "fondo",
+      "variante": "particulas",
+      "duracion": 5,
+      "camara": "fondo-frente",
+      "elementos": [
+        {
+          "tipo": "particulas",
+          "intensidad": 1.4
+        },
+        {
+          "tipo": "neon"
+        }
+      ],
+      "texto": {
+        "contenido": "LA MAYOR EVOLUCIÓN",
+        "estilo": "glitch",
+        "sub": "SEGÚN ROCKSTAR"
+      },
+      "transicion": {
+        "tipo": "slide",
+        "duracion": 0.5
+      },
+      "musica": {
+        "intensidad": 0.9
+      },
+      "voz": {
+        "texto": "Rockstar la llama la mayor y más inmersiva evolución de la saga.",
+        "claves": [
+          "mayor",
+          "inmersiva",
+          "evolución"
+        ]
+      }
+    },
+    {
+      "id": "e8-cierre",
+      "tipo": "atardecer",
+      "variante": "orbita",
+      "duracion": 5.5,
+      "camara": "atardecer-aerea",
+      "elementos": [
+        {
+          "tipo": "neon"
+        },
+        {
+          "tipo": "particulas"
+        }
+      ],
+      "texto": {
+        "contenido": "19 NOV 2026",
+        "estilo": "slam",
+        "sub": "PS5 · XBOX SERIES X|S"
+      },
+      "transicion": {
+        "tipo": "zoom",
+        "duracion": 0.35
+      },
+      "musica": {
+        "intensidad": 1.0,
+        "golpe": true
+      },
+      "sfx": [
+        "impacto"
+      ],
+      "voz": {
+        "texto": "Salió el 19 de noviembre de 2026, en PS5 y Xbox.",
+        "claves": [
+          "19",
+          "noviembre",
+          "2026"
+        ]
+      }
+    }
+  ]
+}

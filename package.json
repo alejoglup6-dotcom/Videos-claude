@@ -1,0 +1,32 @@
+{
+  "name": "videos-verticales",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Videos verticales 9:16 de 30 a 40 s con Remotion + React + Three.js, renderizados gratis en GitHub Actions",
+  "scripts": {
+    "estudio": "remotion studio src/index.ts",
+    "validar": "node scripts/validar-guion.mjs",
+    "audio": "node scripts/generar-audio.mjs",
+    "voz": "node scripts/voz-piper.mjs",
+    "render": "node scripts/render.mjs",
+    "tipos": "tsc --noEmit",
+    "test": "node --test scripts/guiones.test.mjs"
+  },
+  "dependencies": {
+    "@fontsource/lilita-one": "5.3.0",
+    "@react-three/fiber": "8.17.10",
+    "@remotion/bundler": "4.0.535",
+    "@remotion/cli": "4.0.535",
+    "@remotion/renderer": "4.0.535",
+    "@remotion/three": "4.0.535",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.535",
+    "three": "0.169.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "@types/three": "0.169.0",
+    "typescript": "5.6.3"
+  }
+}
