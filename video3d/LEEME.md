@@ -14,7 +14,7 @@ plantilla/                       proyecto Remotion listo (copiar, npm install, e
   src/lib/efectos.tsx            LineasVelocidad · Aberracion · EstelaLatigazo · Glitch · FugaDeLuz · Destello · Grano (opcional)
   src/lib/transiciones.ts        latigazo(t) y tipo de corte por toma
   src/calidad.ts                 interruptores de velocidad/calidad (se leen de REMOTION_*)
-  herramientas/render.mjs        render con modos borrador / normal / final y acabado (viñeta + grano en ffmpeg)
+  (render.mjs ahora vive en herramientas/ de video3d)  render con modos borrador / normal / final y acabado (viñeta + grano en ffmpeg)
 herramientas/
   voz_elevenlabs.py              narración por frase con ElevenLabs (tiempos exactos por letra, pausas por bloque)
   voz_kokoro.py + tiempos_whisper.py   alternativa abierta (Kokoro) y alineación palabra por palabra con faster-whisper
@@ -26,7 +26,7 @@ herramientas/
 2. Voz → `voz/narracion.wav` y `voz/tiempos.json` (`python3 herramientas/voz_elevenlabs.py <voice_id> 1.1`).
 3. Música → `audio/musica.wav` y `audio/efectos.wav`.
 4. Copiar `tiempos.json` a `plantilla/src/tiempos.json`; ajustar `PLAN`, `DEFS` (cámaras), `TEXTOS` y `CLAVES`.
-5. `node herramientas/render.mjs --modo borrador` para revisar; luego `--modo normal` (o `final`).
+5. `node herramientas/render.mjs --modo borrador` (desde video3d/) para revisar; luego `--modo normal` (o `final`).
 6. Mezcla final con el plugin (`ia.py acabado`) y medición (`ia.py medir`).
 
 ## Velocidad: medido, no supuesto (60 cuadros de la escena más pesada, 3 núcleos, sin GPU)

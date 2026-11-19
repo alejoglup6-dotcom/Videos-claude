@@ -1,4 +1,7 @@
 import json, sys, base64, subprocess, urllib.request, urllib.error, os
+# Clave: variable de entorno ELEVENLABS_API_KEY (nunca en archivos ni en el repo)
+CLAVE = os.environ.get('ELEVENLABS_API_KEY', '')
+if not CLAVE: sys.exit('Falta la variable de entorno ELEVENLABS_API_KEY (api.elevenlabs.io).')
 voz_id = sys.argv[1]; veloc = float(sys.argv[2]) if len(sys.argv) > 2 else 1.1
 guion = json.load(open('guion.json'))
 PAUSA = {'gancho': 0.0, 'desarrollo': 0.4, 'giro': 0.4, 'cierre': 0.35}
@@ -10,7 +13,7 @@ for i, f in enumerate(guion['frases']):
     if i > 0: cuerpo['previous_text'] = textos[i - 1]
     if i < len(textos) - 1: cuerpo['next_text'] = textos[i + 1]
     req = urllib.request.Request(f'https://api.elevenlabs.io/v1/text-to-speech/{voz_id}/with-timestamps?output_format=mp3_44100_128',
-                                 data=json.dumps(cuerpo).encode(), headers={'Content-Type': 'application/json'}, method='POST')
+                                 data=json.dumps(cuerpo).encode(), headers={'Content-Type': 'application/json', 'xi-api-key': CLAVE}, method='POST')
     cache = f'voz/r_{f["id"]}.json'
     try:
         r = json.load(open(cache)) if os.path.exists(cache) else json.load(urllib.request.urlopen(req, timeout=120))
