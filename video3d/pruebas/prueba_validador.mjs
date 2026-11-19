@@ -6,10 +6,10 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { validar, leerDecorados, cargarCamaras } from '../herramientas/validar_config.mjs';
+import { validar, leerDecorados, leerUsaDatos, cargarCamaras } from '../herramientas/validar_config.mjs';
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'); const PROYECTO = path.join(RAIZ, 'plantilla');
-const camaras = cargarCamaras(PROYECTO), decorados = leerDecorados(PROYECTO);
+const camaras = cargarCamaras(PROYECTO), decorados = leerDecorados(PROYECTO), usaDatos = leerUsaDatos(PROYECTO);
 const cfg0 = JSON.parse(fs.readFileSync(path.join(RAIZ, 'ejemplos/villaluna/video.config.json'), 'utf8'));
 const tie0 = JSON.parse(fs.readFileSync(path.join(RAIZ, 'ejemplos/villaluna/tiempos.json'), 'utf8'));
 const clona = (x) => JSON.parse(JSON.stringify(x));
@@ -18,7 +18,7 @@ const ok = (c, m, extra = '') => { console.log(`  [${c ? 'OK' : 'FALLA'}] ${m}${
 
 console.log('Configuraciones buenas');
 for (const [n, c, t] of [['Villaluna', cfg0, tie0], ['GTA 6', JSON.parse(fs.readFileSync(path.join(PROYECTO, 'src/video.config.json'), 'utf8')), JSON.parse(fs.readFileSync(path.join(PROYECTO, 'src/tiempos.json'), 'utf8'))]]) {
-  const r = validar(c, t, { camaras, decorados }); ok(!r.errores.length && !r.avisos.length, `${n}: 0 errores y 0 avisos`, [...r.errores, ...r.avisos].join(' | '));
+  const r = validar(c, t, { camaras, decorados, usaDatos }); ok(!r.errores.length && !r.avisos.length, `${n}: 0 errores y 0 avisos`, [...r.errores, ...r.avisos].join(' | '));
 }
 
 // [nombre, cómo se rompe, tipo esperado, texto del mensaje]
@@ -57,11 +57,22 @@ const casos = [
   ['cámara pensada para otro decorado', (c) => { c.tomas[2].camara = 'torre-suelo'; }, 'A', 'está pensada para torre'],
   ['texto muy largo', (c) => { c.tomas[0].texto.txt = 'UN TEXTO LARGUISIMO DE VERDAD'; }, 'A', 'es largo'],
   ['sin la clave "etiqueta"', (c) => { delete c.etiqueta; }, 'A', 'Falta "etiqueta"'],
+  // decorado «datos»: la base es una toma de cifra válida
+  ['datos: falta la lista', (c) => { Object.assign(c.tomas[0], DATOS_OK); delete c.tomas[0].datos; }, 'E', 'necesita "datos"'],
+  ['datos: la cifra pide exactamente 1 valor', (c) => { Object.assign(c.tomas[0], DATOS_OK); c.tomas[0].datos = [1, 2]; }, 'E', 'pide 1 valor'],
+  ['datos: demasiadas barras (11)', (c) => { Object.assign(c.tomas[0], DATOS_OK, { variante: 'barras' }); c.tomas[0].datos = Array.from({ length: 11 }, (_, i) => i + 1); }, 'E', 'pide 1 a 10 valor'],
+  ['datos: el ascenso pide al menos 2 puntos', (c) => { Object.assign(c.tomas[0], DATOS_OK, { variante: 'ascenso' }); c.tomas[0].datos = [5]; }, 'E', 'pide 2 a 12 valor'],
+  ['datos: números negativos', (c) => { Object.assign(c.tomas[0], DATOS_OK); c.tomas[0].datos = [-3]; }, 'E', 'solo admite números'],
+  ['datos: un valor que no es número', (c) => { Object.assign(c.tomas[0], DATOS_OK); c.tomas[0].datos = ['mil']; }, 'E', 'solo admite números'],
+  ['datos: cifra de más de 8 dígitos', (c) => { Object.assign(c.tomas[0], DATOS_OK); c.tomas[0].datos = [123456789]; }, 'E', 'no cabe en pantalla'],
+  ['datos en un decorado que no los usa', (c) => { c.tomas[0].datos = [1, 2, 3]; }, 'A', 'no usa "datos"'],
 ];
+const DATOS_OK = { decorado: 'datos', variante: 'cifra', camara: 'datos-frente', datos: [1250] };
+{ const c = clona(cfg0); Object.assign(c.tomas[0], DATOS_OK); const r = validar(c, tie0, { camaras, decorados, usaDatos }); ok(!r.errores.length && !r.avisos.length, 'una toma de datos válida (cifra 1250) pasa limpia', [...r.errores, ...r.avisos].join(' | ')); }
 console.log('\nDefectos (cada uno debe producir su mensaje)');
 for (const [nombre, rompe, tipo, msg] of casos) {
   const c = clona(cfg0), t = clona(tie0); rompe(c, t);
-  let r; try { r = validar(c, t, { camaras, decorados }); } catch (e) { ok(false, nombre, 'el validador se cayó: ' + e.message); continue; }
+  let r; try { r = validar(c, t, { camaras, decorados, usaDatos }); } catch (e) { ok(false, nombre, 'el validador se cayó: ' + e.message); continue; }
   const lista = tipo === 'E' ? r.errores : r.avisos;
   const acierta = lista.some((m) => m.includes(msg));
   ok(acierta && (tipo === 'A' || r.errores.length > 0), `${tipo === 'E' ? 'ERROR' : 'AVISO'}: ${nombre}`, `esperaba «${msg}»; salió: ${[...r.errores, ...r.avisos].join(' | ') || '(nada)'}`);

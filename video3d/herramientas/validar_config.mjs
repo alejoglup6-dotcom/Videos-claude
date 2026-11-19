@@ -23,8 +23,15 @@ export function leerDecorados(proyecto) {
   if (!Object.keys(out).length) throw new Error('No pude leer el registro DECORADOS de decorados.tsx');
   return out;
 }
+// Decorados que leen "datos": [números] de la toma (los marca usaDatos: true en el registro).
+export function leerUsaDatos(proyecto) {
+  const txt = fs.readFileSync(path.join(proyecto, 'src', 'escena3d', 'decorados.tsx'), 'utf8');
+  return new Set([...txt.slice(txt.indexOf('export const DECORADOS')).matchAll(/^\s{2}(\w+): \{ variantes: \[[^\]]*\], usaDatos: true/gm)].map((m) => m[1]));
+}
+// Cuántos números pide cada variante de un decorado con datos: [mínimo, máximo].
+const REGLAS_DATOS = { barras: [1, 10], cifra: [1, 1], ascenso: [2, 12] };
 
-export function validar(config, tiempos, { camaras, decorados, minToma = 0.6 }) {
+export function validar(config, tiempos, { camaras, decorados, usaDatos = new Set(), minToma = 0.6 }) {
   const errores = []; const avisos = [];
   const E = (m) => errores.push(m); const A = (m) => avisos.push(m);
   if (!config || typeof config !== 'object') { E('La configuración no es un objeto JSON.'); return { errores, avisos }; }
@@ -54,6 +61,13 @@ export function validar(config, tiempos, { camaras, decorados, minToma = 0.6 }) 
         else if (!v.includes(t.variante)) E(`${n}: el decorado «${t.decorado}» no tiene la variante «${t.variante}» (hay: ${v.join(', ')}).`);
       }
     }
+    if (usaDatos.has(t.decorado)) {
+      const [mn, mx] = REGLAS_DATOS[t.variante ?? Object.keys(REGLAS_DATOS)[0]] ?? [1, 12];
+      if (!Array.isArray(t.datos)) E(`${n}: el decorado «${t.decorado}» necesita "datos": [números] (${mn === mx ? mn : mn + ' a ' + mx} valor(es) para «${t.variante ?? 'barras'}»).`);
+      else if (!t.datos.every((x) => esNum(x) && x >= 0)) E(`${n}: "datos" solo admite números ≥ 0.`);
+      else if (t.datos.length < mn || t.datos.length > mx) E(`${n}: «${t.variante ?? 'barras'}» pide ${mn === mx ? mn : mn + ' a ' + mx} valor(es) en "datos" y hay ${t.datos.length}.`);
+      else if (t.variante === 'cifra' && t.datos[0] > 99999999) E(`${n}: la cifra ${t.datos[0]} no cabe en pantalla (máximo 8 dígitos).`);
+    } else if (t.datos !== undefined) A(`${n}: el decorado «${t.decorado}» no usa "datos"; se ignorarán.`);
     if (typeof t.camara === 'string') {
       const c = camaras[t.camara];
       if (!c) E(`${n}: la cámara «${t.camara}» no existe en camaras.json (hay: ${Object.keys(camaras).join(', ')}).`);
@@ -117,7 +131,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
   const a = process.argv.slice(2); const arg = (n) => { const i = a.indexOf('--' + n); return i >= 0 ? a[i + 1] : undefined; };
   const proyecto = path.resolve(arg('proyecto') || process.env.VIDEO3D_PROYECTO || path.join(AQUI, '..', 'plantilla'));
   const { config, tiempos } = cargarProps({ config: arg('config'), tiempos: arg('tiempos'), ejemplo: arg('ejemplo') }, proyecto, path.join(AQUI, '..'));
-  const { errores, avisos } = validar(config, tiempos, { camaras: cargarCamaras(proyecto), decorados: leerDecorados(proyecto) });
+  const { errores, avisos } = validar(config, tiempos, { camaras: cargarCamaras(proyecto), decorados: leerDecorados(proyecto), usaDatos: leerUsaDatos(proyecto) });
   for (const m of errores) console.log('  ERROR ' + m);
   for (const m of avisos) console.log('  AVISO ' + m);
   console.log(`${config.tomas?.length ?? 0} toma(s) · ${errores.length} error(es) · ${avisos.length} aviso(s)${errores.length ? ' → NO renderizar todavía' : ' → listo para renderizar'}`);

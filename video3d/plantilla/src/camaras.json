@@ -4,5 +4,16 @@
   "fachada-izq": { "para": ["apto"], "pos": [-13, 3, 9], "mira": [0, 3.8, -8], "fov": 46, "empuje": 3 },
   "fachada-alta": { "para": ["apto"], "pos": [3.5, 4.6, 3], "mira": [0, 4.2, -8], "fov": 38, "empuje": 2 },
   "fachada-der": { "para": ["apto"], "pos": [15, 2, 7], "mira": [0, 4.5, -8], "fov": 48, "empuje": 3 },
-  "bahia-ancha": { "para": ["bahia"], "pos": [4, 1.5, 13], "mira": [0, 1, -2], "fov": 42, "empuje": 1.5 }
+  "bahia-ancha": { "para": ["bahia"], "pos": [4, 1.5, 13], "mira": [0, 1, -2], "fov": 42, "empuje": 1.5 },
+  "calle-avenida": { "para": ["calle"], "pos": [0, 1.7, 14], "mira": [0, 3.2, -30], "fov": 55, "empuje": 6 },
+  "calle-plaza": { "para": ["calle"], "pos": [0, 2.2, 16], "mira": [0, 2.5, -10], "fov": 55, "empuje": 4 },
+  "calle-plaza-alta": { "para": ["calle"], "pos": [7, 6, 12], "mira": [0, 1.2, -6], "fov": 50, "empuje": 3 },
+  "calle-esquina": { "para": ["calle"], "pos": [7, 3.2, 13], "mira": [-1.5, 2, -3], "fov": 55, "empuje": 3 },
+  "interior-frente": { "para": ["interior"], "pos": [0, 2.4, 7], "mira": [0, 1.6, -8], "fov": 55, "empuje": 3 },
+  "interior-mesa": { "para": ["interior"], "pos": [3.5, 2.2, -1], "mira": [0, 1.2, -6], "fov": 45, "empuje": 2.5 },
+  "interior-detalle": { "para": ["interior"], "pos": [1, 1.8, -3], "mira": [0, 1.2, -6], "fov": 38, "empuje": 1.5 },
+  "interior-ventana": { "para": ["interior"], "pos": [-4, 2.2, 2], "mira": [0, 3, -12], "fov": 52, "empuje": 2 },
+  "datos-frente": { "para": ["datos"], "pos": [0, 3.4, 22], "mira": [0, 2.4, 0], "fov": 55, "empuje": 3 },
+  "datos-lateral": { "para": ["datos"], "pos": [12, 4.5, 16], "mira": [0, 2.4, 0], "fov": 50, "empuje": 2 },
+  "datos-cerca": { "para": ["datos"], "pos": [0, 3.2, 15], "mira": [0, 2.4, 0], "fov": 46, "empuje": 1.5 }
 }

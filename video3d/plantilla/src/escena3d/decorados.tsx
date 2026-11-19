@@ -3,10 +3,13 @@
 // En video.config.json cada toma elige "decorado" y, si hace falta, "variante" (p. ej. "torre" + "cima").
 import React from 'react';
 import { lerp, rnd, sale, cl } from '../motor';
+import { Calle, Interior, Datos } from './decoradosGenericos';
 import { Auto, Ovni, Persona, Skyline, Palmera, Carretera, Sol, Mar, Huevo, Bigfoot, Hedor, Perro, MotoAcuatica, Estela, ArtDeco, Torre, Cipres, CieloTipo, Farolas, Nubes } from './Piezas';
 
-export type PropsDecorado = { t: number; u: number; k: number };
-export type Decorado = { variantes: string[]; niebla: [string, number, number]; cielo: (k: number) => CieloTipo; Mundo: React.FC<PropsDecorado> };
+export type PropsDecorado = { t: number; u: number; k: number; datos?: number[] };
+// luz = [color, intensidad] de la luz ambiente, del sol y del relleno; si falta, se usa la de ocaso/noche/pantano de Escena.tsx.
+export type Luz = { amb: [string, number]; sol: [string, number]; relleno: [string, number] };
+export type Decorado = { variantes: string[]; usaDatos?: boolean; niebla: [string, number, number]; cielo: (k: number) => CieloTipo; luz?: Luz; Mundo: React.FC<PropsDecorado> };
 
 const Suelo: React.FC<{ color?: string }> = ({ color = '#160B38' }) => (
   <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.01, -60]} receiveShadow><planeGeometry args={[400, 400]} /><meshStandardMaterial color={color} roughness={0.55} metalness={0.3} /></mesh>
@@ -149,4 +152,8 @@ export const DECORADOS: Record<string, Decorado> = {
   bahia: { variantes: [], niebla: ['#8A2A7A', 25, 150], cielo: () => 'ocaso', Mundo: Bahia },
   apto: { variantes: [], niebla: ['#8A3A8A', 28, 150], cielo: () => 'ocaso', Mundo: Apto },
   cierre: { variantes: [], niebla: ['#6A2088', 25, 140], cielo: () => 'ocaso', Mundo: Cierre },
+  // genéricos (decoradosGenericos.tsx)
+  calle: { variantes: ['avenida', 'plaza', 'esquina'], niebla: ['#CFE6FA', 45, 180], cielo: () => 'dia', luz: { amb: ['#FFFFFF', 1.0], sol: ['#FFF1D0', 2.4], relleno: ['#BFD8FF', 0.9] }, Mundo: Calle },
+  interior: { variantes: ['mesa', 'ventana', 'estante'], niebla: ['#EBDCC8', 40, 120], cielo: () => 'dia', luz: { amb: ['#FFE9CC', 1.0], sol: ['#FFF0DA', 1.7], relleno: ['#FFD9A8', 0.9] }, Mundo: Interior },
+  datos: { variantes: ['barras', 'cifra', 'ascenso'], usaDatos: true, niebla: ['#0B1030', 30, 110], cielo: () => 'estudio', luz: { amb: ['#9AA8FF', 0.9], sol: ['#FFFFFF', 1.6], relleno: ['#FF4FA8', 0.8] }, Mundo: Datos },
 };

@@ -23,12 +23,14 @@ const lienzo = (k: string, w: number, h: number, dibuja: (c: CanvasRenderingCont
   if (repite) { tx.wrapS = tx.wrapT = THREE.RepeatWrapping; }
   return (cache[k] = tx);
 };
-export type CieloTipo = 'ocaso' | 'noche' | 'alba' | 'pantano';
+export type CieloTipo = 'ocaso' | 'noche' | 'alba' | 'pantano' | 'dia' | 'estudio';
 const CIELOS: Record<CieloTipo, [number, string][]> = {
   ocaso: [[0, '#1E0B52'], [0.3, '#6A1B9A'], [0.42, '#E0307A'], [0.47, '#FF6A4A'], [0.5, '#FFC15A'], [0.5001, '#7A2A7A'], [1, '#2A0E4A']],
   noche: [[0, '#02010F'], [0.3, '#0A0A3A'], [0.45, '#40128A'], [0.5, '#C23A9A'], [0.5001, '#1A0B3A'], [1, '#050515']],
   alba: [[0, '#16256A'], [0.3, '#5B4DB0'], [0.43, '#E08AB0'], [0.48, '#FFB38A'], [0.5, '#FFE2A0'], [0.5001, '#6A3A6A'], [1, '#2A1A4A']],
   pantano: [[0, '#0B1A14'], [0.35, '#1B3A2A'], [0.48, '#6A8A4A'], [0.5, '#9AAA5A'], [0.5001, '#1B2A1A'], [1, '#0B1A10']],
+  dia: [[0, '#2F7BE0'], [0.3, '#5E9FEA'], [0.46, '#A9D3F7'], [0.5, '#EAF6FF'], [0.5001, '#C9D6E0'], [1, '#9AA8B5']],
+  estudio: [[0, '#0B1030'], [0.35, '#141C52'], [0.5, '#2A3A8A'], [0.5001, '#0B1030'], [1, '#060818']],
 };
 export const Cielo: React.FC<{ tipo: CieloTipo; t: number }> = ({ tipo }) => {
   const tx = lienzo('cielo_' + tipo, 8, 512, (c) => {

@@ -7,10 +7,10 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { generar } from '../herramientas/nuevo_video.mjs';
-import { validar, leerDecorados, cargarCamaras } from '../herramientas/validar_config.mjs';
+import { validar, leerDecorados, leerUsaDatos, cargarCamaras } from '../herramientas/validar_config.mjs';
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'); const PROYECTO = path.join(RAIZ, 'plantilla');
-const camaras = cargarCamaras(PROYECTO), decorados = leerDecorados(PROYECTO);
+const camaras = cargarCamaras(PROYECTO), decorados = leerDecorados(PROYECTO), usaDatos = leerUsaDatos(PROYECTO);
 const limpia = (s) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
 let fallas = 0; const ok = (c, m, extra = '') => { console.log(`  [${c ? 'OK' : 'FALLA'}] ${m}${!c && extra ? '  → ' + extra : ''}`); if (!c) fallas++; };
 const cargar = (r) => JSON.parse(fs.readFileSync(path.join(RAIZ, r), 'utf8'));
@@ -19,7 +19,7 @@ const opts = { decorados, camaras, listaDecorados: ['apto', 'bahia'] };
 
 for (const [nombre, T] of guiones) {
   console.log(`\n${nombre}`);
-  const { config, resumen } = generar(T, opts); const v = validar(config, T, { camaras, decorados });
+  const { config, resumen } = generar(T, opts); const v = validar(config, T, { camaras, decorados, usaDatos });
   ok(!v.errores.length && !v.avisos.length, 'el borrador pasa el validador sin errores ni avisos', [...v.errores, ...v.avisos].join(' | '));
   ok(T.frases.every((f) => config.tomas.some((t) => t.frase === f.id)), 'cada frase tiene al menos una toma');
   ok(resumen.every((r) => r.seg >= 0.7), 'ninguna toma dura menos de 0,7 s', JSON.stringify(resumen.map((r) => r.seg)));
@@ -28,8 +28,13 @@ for (const [nombre, T] of guiones) {
   ok(JSON.stringify(generar(T, opts).config) === JSON.stringify(config), 'es reproducible (misma entrada, mismo resultado)');
   const corto = generar(T, { ...opts, tomaSeg: 4 }).config.tomas.length;
   ok(corto < config.tomas.length, `--toma-seg 4 da menos tomas que 1,8 (${corto} < ${config.tomas.length})`);
-  const conVar = generar(T, { ...opts, listaDecorados: ['torre'] }); const vv = validar(conVar.config, T, { camaras, decorados });
+  const conVar = generar(T, { ...opts, listaDecorados: ['torre'] }); const vv = validar(conVar.config, T, { camaras, decorados, usaDatos });
   ok(!vv.errores.length && conVar.config.tomas.every((t) => ['base', 'cima', 'lanza', 'splat'].includes(t.variante)), 'con un decorado con variantes («torre») recorre sus variantes y valida', vv.errores.join(' | '));
+  const gen = generar(T, { ...opts, listaDecorados: ['calle', 'interior'] }); const vg = validar(gen.config, T, { camaras, decorados, usaDatos });
+  ok(!vg.errores.length && !vg.avisos.length, 'con los decorados genéricos por defecto (calle, interior) valida limpio', [...vg.errores, ...vg.avisos].join(' | '));
+  const vars = new Set(gen.config.tomas.map((t) => t.decorado + '/' + t.variante)); ok(vars.size >= Math.min(3, gen.config.tomas.length), `usa variedad de variantes (${vars.size} combinaciones distintas)`);
+  const dd = generar(T, { ...opts, listaDecorados: ['datos'] }); const vd = validar(dd.config, T, { camaras, decorados, usaDatos });
+  ok(vd.errores.some((m) => m.includes('necesita "datos"')), 'con el decorado «datos» el borrador pide los números (el validador lo marca como ERROR)', vd.errores.slice(0, 1).join(' | '));
 }
 
 console.log('\nErrores de uso');

@@ -8,10 +8,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { validar, leerDecorados, cargarCamaras } from './validar_config.mjs';
+import { validar, leerDecorados, leerUsaDatos, cargarCamaras } from './validar_config.mjs';
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
-const DECORADOS_POR_DEFECTO = 'apto,bahia';
+const DECORADOS_POR_DEFECTO = 'calle,interior';
 const PALETA = ['#FFFFFF', '#FFE86A', '#FF4FA8', '#44E6FF', '#7CFF3A'];
 const PILDORAS = ['#FF2E93', '#1FB6FF', '#FF8A1F', '#25C98B'];
 const SIN_PESO = new Set('para pero como esta este esto esos esas unos unas sobre entre desde hasta cuando donde porque también tiene tienen todo todos todas cada otro otra otros otras sido está están'.split(' '));
@@ -63,7 +63,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
   let r; try { r = generar(tiempos, { decorados, camaras, listaDecorados: arg('decorados', DECORADOS_POR_DEFECTO).split(',').map((s) => s.trim()).filter(Boolean), tomaSeg, etiqueta: arg('etiqueta') || null }); } catch (e) { fallo(e.message); }
   fs.mkdirSync(path.dirname(salida), { recursive: true }); fs.writeFileSync(salida, compacto(r.config));
   console.log(`Borrador escrito en ${salida}`); for (const x of r.resumen) console.log(`  ${x.id}: ${x.decorado} · ${x.tomas} toma(s) de ${x.seg} s`);
-  const v = validar(r.config, tiempos, { camaras, decorados });
+  const v = validar(r.config, tiempos, { camaras, decorados, usaDatos: leerUsaDatos(proyecto) });
   for (const m of v.errores) console.log('  ERROR ' + m); for (const m of v.avisos) console.log('  AVISO ' + m);
   console.log(`Validación: ${v.errores.length} error(es), ${v.avisos.length} aviso(s). Siguiente: retoca textos y cámaras, y renderiza con  node herramientas/render.mjs --config ${path.relative(process.cwd(), salida) || salida} --tiempos ${path.relative(process.cwd(), rt) || rt}`);
   process.exit(v.errores.length ? 1 : 0);

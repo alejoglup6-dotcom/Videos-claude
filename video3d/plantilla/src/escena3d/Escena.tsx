@@ -46,11 +46,11 @@ export const Escena3D: React.FC<{ t: number; T: Tiempos; tomas: Toma[] }> = ({ t
       <Camara p={p} l={lw} f={f * (1 + 0.12 * Math.abs(wp))} />
       <color attach="background" args={[fogC]} />
       <fog attach="fog" args={[fogC, fogN, fogF]} />
-      <ambientLight intensity={pant ? 0.5 : 0.75} color={pant ? '#8AFFA0' : d.set === 'noche' ? '#7A7AFF' : '#E08AFF'} />
-      <directionalLight position={[0, 14, -30]} intensity={pant ? 0.6 : 2.2} color={d.set === 'noche' ? '#8AA0FF' : '#FF9A5A'} />
-      <directionalLight position={[-8, 6, 10]} intensity={1.1} color={d.set === 'noche' ? '#5A8AFF' : '#FF4FA8'} />
+      <ambientLight intensity={dec.luz ? dec.luz.amb[1] : pant ? 0.5 : 0.75} color={dec.luz ? dec.luz.amb[0] : pant ? '#8AFFA0' : d.set === 'noche' ? '#7A7AFF' : '#E08AFF'} />
+      <directionalLight position={[0, 14, -30]} intensity={dec.luz ? dec.luz.sol[1] : pant ? 0.6 : 2.2} color={dec.luz ? dec.luz.sol[0] : d.set === 'noche' ? '#8AA0FF' : '#FF9A5A'} />
+      <directionalLight position={[-8, 6, 10]} intensity={dec.luz ? dec.luz.relleno[1] : 1.1} color={dec.luz ? dec.luz.relleno[0] : d.set === 'noche' ? '#5A8AFF' : '#FF4FA8'} />
       <Cielo tipo={cielo} t={t} />
-      <dec.Mundo t={t} u={u} k={kv} />
+      <dec.Mundo t={t} u={u} k={kv} datos={tm.datos} />
     </ThreeCanvas>
     </div>
     </div>

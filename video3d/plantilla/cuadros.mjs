@@ -9,6 +9,8 @@ const AQUI = path.dirname(fileURLToPath(import.meta.url));
 
 const NAV = process.env.NAVEGADOR || undefined;
 const OPC = { gl: 'swangle', enableMultiProcessOnLinux: true };
+// Las variables REMOTION_* (calidad del 3D, capas apagadas) hay que pasarlas al navegador; si no, se ignoran.
+const envVariables = Object.fromEntries(Object.entries(process.env).filter(([k, v]) => k.startsWith('REMOTION_') && v !== undefined));
 const pedidos = (process.argv[2] || '').split(',').filter(Boolean).map((x) => {
   const i = x.indexOf(':');
   return { cuadro: Number(x.slice(0, i)), archivo: x.slice(i + 1) };
@@ -20,9 +22,9 @@ if (!pedidos.length) {
 const a = process.argv.slice(3); const flag = (n) => { const i = a.indexOf('--' + n); return i >= 0 ? a[i + 1] : undefined; };
 const inputProps = resolverProps({ config: flag('config'), tiempos: flag('tiempos'), ejemplo: flag('ejemplo') }, AQUI, path.join(AQUI, '..')) ?? undefined;
 const serveUrl = await bundle({ entryPoint: path.join(AQUI, 'src', 'index.ts') });
-const composition = await selectComposition({ serveUrl, id: 'Video', inputProps, browserExecutable: NAV, chromiumOptions: OPC });
+const composition = await selectComposition({ serveUrl, id: 'Video', inputProps, envVariables, browserExecutable: NAV, chromiumOptions: OPC });
 for (const p of pedidos) {
   const frame = Math.min(Math.max(0, p.cuadro), composition.durationInFrames - 1);
-  await renderStill({ composition, serveUrl, inputProps, output: p.archivo, frame, browserExecutable: NAV, chromiumOptions: OPC });
+  await renderStill({ composition, serveUrl, inputProps, envVariables, output: p.archivo, frame, browserExecutable: NAV, chromiumOptions: OPC });
   console.log(`cuadro ${frame} → ${p.archivo}`);
 }

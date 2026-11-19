@@ -8,7 +8,7 @@ export type Frase = { id: string; texto: string; ini: number; fin: number; palab
 export type Tiempos = { dur: number; frases: Frase[] };
 export type CamaraCfg = { pos: V3; mira: V3; fov: number; empuje: number; para?: string[] };   // para = decorados para los que está pensada (solo orienta al generador y al validador)
 export type TextoCfg = { txt: string; color: string; sub?: string };
-export type TomaCfg = { frase: string; decorado: string; variante?: string; camara: string | CamaraCfg; texto: TextoCfg };
+export type TomaCfg = { frase: string; decorado: string; variante?: string; camara: string | CamaraCfg; texto: TextoCfg; datos?: number[] };
 export type ConfigVideo = {
   version: 1;
   titulo?: string;
@@ -21,7 +21,7 @@ export type PropsVideo = { config: ConfigVideo; tiempos: Tiempos };
 
 // Cámara de una toma: la de este 3D (set = decorado). p = posición, l = punto al que mira, f = campo de visión, push = cuánto avanza.
 export type Def = { set: string; p: V3; l: V3; f: number; push: number };
-export type Toma = { id: string; k: number; n: number; t0: number; t1: number; i: number; def: Def; variante?: string; texto: TextoCfg };
+export type Toma = { id: string; k: number; n: number; t0: number; t1: number; i: number; def: Def; variante?: string; texto: TextoCfg; datos?: number[] };
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 export const camaraDe = (c: string | CamaraCfg, camaras: Record<string, CamaraCfg> = CAMARAS as unknown as Record<string, CamaraCfg>): CamaraCfg => {
@@ -41,7 +41,7 @@ export const crearTomas = (cfg: ConfigVideo, T: Tiempos): Toma[] => {
     const t1 = pi === orden.length - 1 ? T.dur : T.frases[pi + 1].ini - 0.05;
     propias.forEach((x, k) => {
       const c = camaraDe(x.camara);
-      out.push({ id, k, n, t0: lerp(t0, t1, k / n), t1: lerp(t0, t1, (k + 1) / n), i: i++, variante: x.variante, texto: x.texto,
+      out.push({ id, k, n, t0: lerp(t0, t1, k / n), t1: lerp(t0, t1, (k + 1) / n), i: i++, variante: x.variante, texto: x.texto, datos: x.datos,
         def: { set: x.decorado, p: c.pos, l: c.mira, f: c.fov, push: c.empuje } });
     });
   });
