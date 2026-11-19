@@ -11,3 +11,6 @@ video3d/**/audio/
 .env
 __pycache__/
 *.pyc
+
+# guion de trabajo en la raíz de video3d (los ejemplos viven en video3d/ejemplos/)
+video3d/guion.json
