@@ -19,7 +19,8 @@ Variables: `NAVEGADOR`, `PYTHON`, `MODELOS_DIR` (por defecto `video3d/modelos`).
 ## Hacer un video
 Los scripts de voz y música se corren **desde la carpeta de tu proyecto** (donde está `guion.json`) y usan el Python de `.venv`.
 1. **Guion:** `guion.json` con frases (`id`, `bloque`, `texto`) y `fuentes.md` (marca como DUDA lo no confirmado).
-2. **Voz:** `export ELEVENLABS_API_KEY=...` y `python3 herramientas/voz_elevenlabs.py <voice_id> 1.1` → `voz/narracion.wav` y `voz/tiempos.json`.
+2. **Voz:** `export ELEVENLABS_API_KEY=...`, luego `python3 herramientas/voz_elevenlabs.py <voice_id> 1.1 --simulacro` (valida y muestra cuántos caracteres gastaría, sin llamar a la API) y, si todo está bien, sin `--simulacro`.
+   Genera `voz/narracion_raw.wav` y `voz/tiempos.json`. Guarda cada respuesta en `voz/r_<id>.json` antes de procesarla y la reutiliza si el texto no cambió (no vuelve a gastar créditos). Hay un guion de ejemplo en `ejemplos/guion_ejemplo.json` (`--guion ruta` para usarlo).
    Con Kokoro: `voz_kokoro.py` y luego `tiempos_whisper.py` (usa `MODELOS_DIR`).
 3. **Música:** `python3 herramientas/musica_synthwave.py` → `audio/musica.wav` y `audio/efectos.wav`.
 4. Copia `tiempos.json` a `plantilla/src/tiempos.json` y ajusta `PLAN`, `DEFS`, `TEXTOS` y `CLAVES` en `plantilla/src/`.
