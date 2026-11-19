@@ -80,7 +80,8 @@ const TextoGrande: React.FC<{ t: number; frame: number }> = ({ t, frame }) => {
   const u = t - tm.t0; const dur = tm.t1 - tm.t0;
   const salida = 1 - cl((u - (dur - 0.12)) / 0.12);
   const lineas = txt.split(' ').length > 2 && txt.length > 12 ? [txt.split(' ').slice(0, 2).join(' '), txt.split(' ').slice(2).join(' ')] : [txt];
-  const size = tm.i === 0 ? 260 : txt.length > 12 ? 120 : 150;
+  const base = tm.i === 0 ? 260 : txt.length > 12 ? 120 : 150;
+  const size = Math.min(base, Math.floor(880 / (Math.max(...lineas.map((l) => l.length)) * 0.58))); // que quepa en 1080 px con margen
   const estilo = tm.i % 4; // alterna: slam · letras · glitch · neón
   return (
     <div style={{ position: 'absolute', left: 0, right: 0, top: 430, textAlign: 'center', opacity: salida, lineHeight: 1, transform: `rotate(${-3 + 1.5 * Math.sin(t * 3)}deg)` }}>
