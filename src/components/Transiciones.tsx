@@ -6,7 +6,7 @@ import { Aberracion, Destello, EstelaLatigazo, Glitch, LineasVelocidad } from '.
 export const TransicionCapas: React.FC<{ est: Estado; frame: number; color: string }> = ({ est, frame, color }) => (
   <>
     {est.tipo === 'zoom' || est.tipo === 'camara_rapida' ? <LineasVelocidad k={est.k * 0.7} /> : null}
-    {est.tipo === 'whip' || est.tipo === 'camara_rapida' ? <EstelaLatigazo w={est.w} color={color} /> : null}
+    {est.tipo === 'whip' || est.tipo === 'camara_rapida' ? <EstelaLatigazo w={est.tipo === 'camara_rapida' ? est.w * 0.4 : est.w} color={color} /> : null}
     {est.tipo === 'flash' ? <Destello k={est.k} /> : null}
     {est.tipo === 'glitch' ? <Glitch k={est.k} frame={frame} /> : null}
     {est.tipo === 'fade' ? <div style={{ position: 'absolute', inset: 0, background: '#000', opacity: est.negro }} /> : null}

@@ -39,7 +39,9 @@ export type Guion = {
   escenas: Escena[];
   // los inyecta scripts/render.mjs; no van en el JSON del guion:
   _calidad?: Calidad;
-  _voces?: Record<string, { archivo: string; duracion: number }>;
+  _voces?: Record<string, { archivo: string; duracion: number; desde?: number; hasta?: number; palabras?: { w: string; s: number; e: number }[] }>;
+  _version?: string;                 // hash corto del commit (se imprime en el video)
+  _vozProveedor?: string;
 };
 
 export const FPS = 30;

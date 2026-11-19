@@ -22,3 +22,27 @@ export const TRANSICIONES = ['corte', 'flash', 'zoom', 'whip', 'glitch', 'fade',
 export const ESTILOS = ['slam', 'letras', 'glitch', 'neon', 'escribir'];
 export const ELEMENTOS = ['lluvia', 'particulas', 'neon', 'lineas_velocidad'];
 export const SFX = ['impacto', 'riser_corto', 'riser', 'whoosh', 'glitch', 'suave', 'ping'];
+
+import { execFileSync } from 'node:child_process';
+/** Hash corto del commit (en Actions: GITHUB_SHA). Un «+» al final significa que hay cambios sin confirmar. */
+export const versionGit = () => {
+  try {
+    if (process.env.GITHUB_SHA) return process.env.GITHUB_SHA.slice(0, 7);
+    const sha = execFileSync('git', ['rev-parse', '--short=7', 'HEAD'], { cwd: RAIZ, encoding: 'utf8' }).trim();
+    const sucio = execFileSync('git', ['status', '--porcelain', '--untracked-files=no'], { cwd: RAIZ, encoding: 'utf8' }).trim() !== '';
+    return sha + (sucio ? '+' : '');
+  } catch { return 'sin-git'; }
+};
+/** Guion + voz (ElevenLabs ya generada si existe; si no, Piper) + calidad + versión = props que recibe Remotion. */
+export const prepararProps = (nombre, calidad) => {
+  const { guion } = leerGuion(nombre);
+  const el = path.join(RAIZ, 'public/voces', guion.id, 'voz.json'); const pi = path.join(RAIZ, 'public/audio', guion.id, 'voz.json');
+  if (fs.existsSync(el)) {
+    const m = JSON.parse(fs.readFileSync(el, 'utf8')); guion._vozProveedor = `${m.proveedor} (${m.voz})`; guion._voces = {};
+    for (const [id, x] of Object.entries(m.escenas)) guion._voces[id] = { archivo: m.archivo, duracion: x.duracion, desde: x.desde, hasta: x.hasta, palabras: x.palabras };
+  } else if (fs.existsSync(pi)) { guion._vozProveedor = 'Piper'; guion._voces = JSON.parse(fs.readFileSync(pi, 'utf8')); }
+  for (const x of Object.values(guion._voces ?? {})) if (!fs.existsSync(path.join(RAIZ, 'public', x.archivo))) throw new Error(`Falta el audio de voz ${x.archivo}`);
+  if (guion.audio?.musica?.generar && !fs.existsSync(path.join(RAIZ, 'public/audio', guion.id, 'musica.wav'))) throw new Error('Falta la música: ejecuta antes node scripts/generar-audio.mjs ' + guion.id);
+  guion._calidad = calidad; guion._version = versionGit();
+  return guion;
+};

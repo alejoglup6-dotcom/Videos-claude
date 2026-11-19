@@ -26,3 +26,7 @@ build/
 modelos/
 public/audio/
 .venv-piper/
+
+# La voz generada con ElevenLabs sí se sube al repositorio (el audio procedural y de Piper no)
+!public/voces/
+!public/voces/**

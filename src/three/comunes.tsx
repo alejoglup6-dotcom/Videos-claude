@@ -31,9 +31,9 @@ export const Reflejo: React.FC<{ x: number; z: number; largo: number; color: str
 );
 // lluvia: rayas finas que caen (posiciones deterministas según el tiempo)
 export const Lluvia: React.FC<{ t: number; n?: number; x?: [number, number]; z?: [number, number]; alto?: number; vel?: number }> = ({ t, n = 140, x = [-20, 20], z = [-45, 14], alto = 22, vel = 24 }) => (
-  <group>{Array.from({ length: n }, (_, i) => {
+  <group>{Array.from({ length: Math.min(n, 40) }, (_, i) => {   // tope de 40 mallas: más no mejora la imagen y cuesta CPU
     const px = lerp(x[0], x[1], rnd(i * 3 + 1)), pz = lerp(z[0], z[1], rnd(i * 3 + 2)), py = mod(rnd(i * 3 + 3) * alto - t * vel, alto);
-    return <mesh key={i} position={[px, py, pz]}><boxGeometry args={[0.03, 1.5, 0.03]} /><meshBasicMaterial color="#B8E0FF" transparent opacity={0.5} fog={false} /></mesh>;
+    return <mesh key={i} position={[px, py, pz]}><boxGeometry args={[0.05, 2.2, 0.05]} /><meshBasicMaterial color="#B8E0FF" transparent opacity={0.55} fog={false} /></mesh>;
   })}</group>
 );
 // cartel de neón (marco luminoso sin texto)

@@ -31,14 +31,17 @@ export const Escenario3D: React.FC<{ t: number; tr: Tramo; est: Estado; calidad:
   const k = Math.max(0, def.variantes.indexOf(e.variante ?? ''));
   const u = cl((t - tr.t0) / (tr.t1 - tr.t0)); const dt = t - tr.t0;
   const cam = resolverCamara(e, def.camara);
-  const empuje = e.animacion?.empuje ?? cam.empuje; const ease = 1 - Math.pow(1 - u, 3);
+  const empuje = e.animacion?.empuje ?? cam.empuje;
+  const ease = 0.35 * (1 - Math.pow(1 - u, 3)) + 0.65 * u;   // mezcla frenado + avance lineal: la cámara no se queda quieta al final de la escena
   const dir = new THREE.Vector3(...cam.mira).sub(new THREE.Vector3(...cam.pos)).normalize();
   const der = new THREE.Vector3().crossVectors(dir, new THREE.Vector3(0, 1, 0)).normalize();
   const shake = (e.animacion?.shake ?? 0) + est.sacude * 0.5;
+  const dist = Math.hypot(cam.mira[0] - cam.pos[0], cam.mira[1] - cam.pos[1], cam.mira[2] - cam.pos[2]);
+  const deriva = dist * 0.03 * Math.sin(t * 1.1 + tr.i * 1.7); const vuelo = dist * 0.012 * Math.sin(t * 0.9 + 1);   // deriva lateral lenta (siempre en movimiento)
   const p: [number, number, number] = [
-    cam.pos[0] + dir.x * empuje * ease + 0.03 * Math.sin(t * 7) + shake * 0.25 * Math.sin(t * 61),
-    cam.pos[1] + dir.y * empuje * ease + 0.03 * Math.sin(t * 6 + 1) + shake * 0.25 * Math.sin(t * 73 + 2),
-    cam.pos[2] + dir.z * empuje * ease];
+    cam.pos[0] + dir.x * empuje * ease + der.x * deriva + shake * 0.06 * Math.sin(t * 13),        // temblor: ~2 Hz y amplitud pequeña (antes ~10 Hz, que a 30 fps se veía a tirones)
+    cam.pos[1] + dir.y * empuje * ease + vuelo + shake * 0.06 * Math.sin(t * 17 + 2),
+    cam.pos[2] + dir.z * empuje * ease + der.z * deriva];
   const punchPropio = e.animacion?.zoom_punch === false ? 0 : Math.exp(-dt * 14);
   const punch = Math.max(punchPropio, est.punch);
   const w = est.w;

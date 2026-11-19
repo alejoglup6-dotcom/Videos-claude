@@ -19,7 +19,9 @@ export const crearTrozos = (g: Guion, tl: Tramo[], porTrozo = 3): Trozo[] => {
     const ini = tr.t0 + (v.inicio ?? 0.15); const ws = v.texto.trim().split(/\s+/);
     const pesos = ws.map((w) => Math.max(2, w.length)); const tot = pesos.reduce((a, b) => a + b, 0);
     const claves = new Set((v.claves ?? []).map(norm)); let c = ini; const pal: Palabra[] = [];
-    ws.forEach((w, i) => { const d = (pesos[i] / tot) * dur; pal.push({ w, s: c, e: c + d, clave: claves.has(norm(w)) }); c += d; });
+    const reales = g._voces?.[tr.escena.id]?.palabras;   // tiempos por palabra medidos por ElevenLabs
+    if (reales && reales.length === ws.length) reales.forEach((p) => pal.push({ w: p.w, s: ini + p.s, e: ini + p.e, clave: claves.has(norm(p.w)) }));
+    else ws.forEach((w, i) => { const d = (pesos[i] / tot) * dur; pal.push({ w, s: c, e: c + d, clave: claves.has(norm(w)) }); c += d; });
     for (let i = 0; i < pal.length; i += porTrozo) { const z = pal.slice(i, i + porTrozo); out.push({ ini: z[0].s, fin: z[z.length - 1].e + 0.12, palabras: z }); }
   }
   return out;

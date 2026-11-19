@@ -27,7 +27,7 @@ export const estadoTransicion = (t: number, tl: Tramo[]): Estado => {
       case 'flash': e.k = pos ? Math.exp(-s * 11) : a * a * 0.6; e.punch = pos ? 0.35 * Math.exp(-s * 12) : 0; break;
       case 'zoom': e.k = a; e.punch = pos ? Math.exp(-s * 8) : a * a * 0.8; break;
       case 'whip': e.k = a; e.w = pos ? -a * a : a * a; break;
-      case 'camara_rapida': e.k = a; e.w = (pos ? -a * a : a * a) * 1.3; e.punch = pos ? 0.6 * Math.exp(-s * 9) : 0.4 * a * a; e.sacude = pos ? Math.exp(-s * 8) : 0; break;
+      case 'camara_rapida': e.k = a; e.w = (pos ? -a * a : a * a) * 0.6; e.punch = pos ? 0.25 * Math.exp(-s * 9) : 0.15 * a * a; e.sacude = pos ? 0.3 * Math.exp(-s * 8) : 0; break;
       case 'glitch': e.k = pos ? Math.exp(-s * 8) : a * a * a; e.sacude = 0.5 * e.k; break;
       case 'fade': e.negro = cl(a * 1.15); e.k = e.negro; break;
       case 'slide': e.panel = (s / d) * 2.0; e.k = a; break;

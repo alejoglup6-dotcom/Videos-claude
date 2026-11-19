@@ -34,8 +34,9 @@ export const AudioVideo: React.FC<{ g: Guion; tl: Tramo[] }> = ({ g, tl }) => {
       {tl.map((tr) => {
         const v = tr.escena.voz; const info = g._voces?.[tr.escena.id]; if (!v?.texto || !info) return null;
         return (
-          <Sequence key={`v${tr.i}`} from={Math.round((tr.t0 + (v.inicio ?? 0.15)) * FPS)} layout="none">
-            <Audio src={staticFile(info.archivo)} volume={vv} />
+          <Sequence key={`v${tr.i}`} from={Math.round((tr.t0 + (v.inicio ?? 0.15) - (info.desde !== undefined ? 0.05 : 0)) * FPS)} layout="none">
+            {/* ElevenLabs: un solo MP3 con toda la locución; cada escena toma su frase (desde/hasta, en segundos del archivo). Piper: un WAV por escena. */}
+            <Audio src={staticFile(info.archivo)} volume={vv} startFrom={info.desde !== undefined ? Math.round(Math.max(0, info.desde - 0.05) * FPS) : undefined} endAt={info.hasta !== undefined ? Math.round((info.hasta + 0.15) * FPS) : undefined} />
           </Sequence>
         );
       })}

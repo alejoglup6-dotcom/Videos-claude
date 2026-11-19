@@ -4,6 +4,8 @@ import React from 'react';
 
 type Img = { url: string; w: number; h: number; pad: number };
 const cache: Record<string, Img> = {};
+/** Margen transparente que añade rasterizaTexto alrededor del texto (brillo + contorno). */
+export const padTexto = (stroke = 14, glow = 40) => Math.ceil(glow * 1.6 + stroke * 1.7 + 16);
 export const rasterizaTexto = (txt: string, o: { color: string; size: number; stroke?: number; glow?: number; borde?: string; fuente?: string }): Img => {
   const fuente = o.fuente ?? 'Lilita'; const stroke = o.stroke ?? 14; const glow = o.glow ?? 40; const borde = o.borde ?? '#12082E';
   const listo = (document as any).fonts?.check?.(`${o.size}px ${fuente}`) ? 1 : 0;

@@ -64,7 +64,7 @@
       "id": "e1-gancho",
       "tipo": "vice",
       "variante": "aerea",
-      "duracion": 3.5,
+      "duracion": 3.0,
       "camara": "vice-aerea",
       "elementos": [
         {
@@ -104,7 +104,7 @@
       "id": "e2-leonida",
       "tipo": "mapa",
       "variante": "costa",
-      "duracion": 4,
+      "duracion": 4.0,
       "camara": "mapa-costa",
       "elementos": [
         {
@@ -135,12 +135,9 @@
       "id": "e3-ciudad",
       "tipo": "vice",
       "variante": "calle",
-      "duracion": 4,
+      "duracion": 3.5,
       "camara": "vice-calle",
       "elementos": [
-        {
-          "tipo": "lluvia"
-        },
         {
           "tipo": "neon"
         }
@@ -168,7 +165,7 @@
       "id": "e4-protagonistas",
       "tipo": "persecucion",
       "variante": "detras",
-      "duracion": 4,
+      "duracion": 3.0,
       "camara": "persecucion-detras",
       "elementos": [
         {
@@ -201,13 +198,9 @@
       "id": "e5-golpe",
       "tipo": "vice",
       "variante": "playa",
-      "duracion": 5,
+      "duracion": 4.5,
       "camara": "vice-playa",
-      "elementos": [
-        {
-          "tipo": "lluvia"
-        }
-      ],
+      "elementos": [],
       "texto": {
         "contenido": "UN GOLPE FÁCIL",
         "estilo": "slam",
@@ -240,7 +233,7 @@
       "id": "e6-sobrevivir",
       "tipo": "atardecer",
       "variante": "helicoptero",
-      "duracion": 4,
+      "duracion": 4.0,
       "camara": "atardecer-heli",
       "elementos": [
         {
@@ -271,7 +264,7 @@
       "id": "e7-evolucion",
       "tipo": "fondo",
       "variante": "particulas",
-      "duracion": 5,
+      "duracion": 4.5,
       "camara": "fondo-frente",
       "elementos": [
         {
@@ -304,10 +297,10 @@
       }
     },
     {
-      "id": "e8-cierre",
+      "id": "e8a-fecha",
       "tipo": "atardecer",
       "variante": "orbita",
-      "duracion": 5.5,
+      "duracion": 3.0,
       "camara": "atardecer-aerea",
       "elementos": [
         {
@@ -319,8 +312,7 @@
       ],
       "texto": {
         "contenido": "19 NOV 2026",
-        "estilo": "slam",
-        "sub": "PS5 · XBOX SERIES X|S"
+        "estilo": "slam"
       },
       "transicion": {
         "tipo": "zoom",
@@ -334,11 +326,45 @@
         "impacto"
       ],
       "voz": {
-        "texto": "Salió el 19 de noviembre de 2026, en PS5 y Xbox.",
+        "texto": "Salió el 19 de noviembre de 2026,",
         "claves": [
           "19",
           "noviembre",
           "2026"
+        ]
+      }
+    },
+    {
+      "id": "e8b-plataformas",
+      "tipo": "atardecer",
+      "variante": "costa",
+      "duracion": 4.5,
+      "camara": "atardecer-costa",
+      "elementos": [
+        {
+          "tipo": "neon"
+        },
+        {
+          "tipo": "particulas"
+        }
+      ],
+      "texto": {
+        "contenido": "PS5 Y XBOX",
+        "estilo": "letras",
+        "sub": "XBOX SERIES X|S"
+      },
+      "transicion": {
+        "tipo": "whip",
+        "duracion": 0.36
+      },
+      "musica": {
+        "intensidad": 0.9
+      },
+      "voz": {
+        "texto": "para PlayStation 5 y Xbox Series X y S.",
+        "claves": [
+          "PlayStation",
+          "Xbox"
         ]
       }
     }

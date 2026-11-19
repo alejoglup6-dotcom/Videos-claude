@@ -3,21 +3,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { RAIZ, leerGuion } from './comun.mjs';
+import { RAIZ, prepararProps } from './comun.mjs';
 import { validar } from './validar-guion.mjs';
 
 const args = process.argv.slice(2); const nombre = args.find((a) => !a.startsWith('--') && !args[args.indexOf(a) - 1]?.startsWith('--'));
 const opt = (k, d) => { const i = args.indexOf('--' + k); return i >= 0 ? args[i + 1] : d; };
 if (!nombre) { console.error('Uso: node scripts/render.mjs <guion> [--calidad rapido|normal|alta] [--frames a-b] [--salida ruta] [--concurrencia N]'); process.exit(2); }
 const calidad = opt('calidad', 'normal'); if (!['rapido', 'normal', 'alta'].includes(calidad)) { console.error('calidad debe ser rapido, normal o alta'); process.exit(2); }
-const { guion } = leerGuion(nombre);
+let guion; try { guion = prepararProps(nombre, calidad); } catch (e) { console.error('✗ ' + e.message); process.exit(1); }
 const v = validar(guion); v.av.forEach((a) => console.log('⚠ ' + a)); if (v.err.length) { v.err.forEach((e) => console.error('✗ ' + e)); process.exit(1); }
-
-const vozJson = path.join(RAIZ, 'public/audio', guion.id, 'voz.json');
-if (fs.existsSync(vozJson)) guion._voces = JSON.parse(fs.readFileSync(vozJson, 'utf8'));
-for (const [id, x] of Object.entries(guion._voces ?? {})) if (!fs.existsSync(path.join(RAIZ, 'public', x.archivo))) { console.error(`Falta el audio de voz ${x.archivo}`); process.exit(1); }
-if (guion.audio?.musica?.generar && !fs.existsSync(path.join(RAIZ, 'public/audio', guion.id, 'musica.wav'))) { console.error('Falta la música: ejecuta antes node scripts/generar-audio.mjs ' + guion.id); process.exit(1); }
-guion._calidad = calidad;
+console.log(`Versión: ${guion._version} · voz: ${guion._vozProveedor ?? 'sin voz'} · calidad: ${calidad}`);
 
 fs.mkdirSync(path.join(RAIZ, 'build'), { recursive: true }); fs.mkdirSync(path.join(RAIZ, 'out'), { recursive: true });
 const props = path.join(RAIZ, 'build', `${guion.id}.props.json`); fs.writeFileSync(props, JSON.stringify(guion));
