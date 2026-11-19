@@ -3,6 +3,8 @@
 import { bundle } from '@remotion/bundler';
 import { renderStill, selectComposition } from '@remotion/renderer';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const AQUI = path.dirname(fileURLToPath(import.meta.url));
 
 const NAV = process.env.NAVEGADOR || undefined;
 const OPC = { gl: 'swangle', enableMultiProcessOnLinux: true };
@@ -14,7 +16,7 @@ if (!pedidos.length) {
   console.error('Uso: node cuadros.mjs "0:salida/c0.png,135:salida/c1.png"');
   process.exit(2);
 }
-const serveUrl = await bundle({ entryPoint: path.resolve('src/index.ts') });
+const serveUrl = await bundle({ entryPoint: path.join(AQUI, 'src', 'index.ts') });
 const composition = await selectComposition({ serveUrl, id: 'Video', browserExecutable: NAV, chromiumOptions: OPC });
 for (const p of pedidos) {
   const frame = Math.min(Math.max(0, p.cuadro), composition.durationInFrames - 1);

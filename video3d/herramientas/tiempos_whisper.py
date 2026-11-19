@@ -1,6 +1,7 @@
 import json, sys, re
-sys.path.insert(0, '/root/.claude/plugins/cache/animaciones-con-ia/animaciones-ia/0.3.5/herramientas')
-from comun import MODELOS
+import os, pathlib
+# Carpeta de modelos: variable MODELOS_DIR (por defecto video3d/modelos, ignorada por git)
+MODELOS = pathlib.Path(os.environ.get('MODELOS_DIR') or pathlib.Path(__file__).resolve().parent.parent / 'modelos')
 from faster_whisper import WhisperModel
 import soundfile as sf, numpy as np
 guion = json.load(open('guion.json')); marcas = json.load(open('voz/marcas_k.json'))
