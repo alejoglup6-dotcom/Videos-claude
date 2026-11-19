@@ -1,4 +1,5 @@
-import json, sys, numpy as np, soundfile as sf, subprocess
+import json, sys, os, numpy as np, soundfile as sf, subprocess
+os.makedirs('audio', exist_ok=True)   # carpeta de salida (ignorada por git)
 SR = 44100
 T = json.load(open('voz/tiempos.json')); dur = T['dur']
 bpm = 104; beat = 60 / bpm
@@ -57,4 +58,5 @@ def guarda(x, nombre):
     sf.write('audio/_tmp.wav', np.stack([x, np.roll(x, 40)], 1), SR)
     subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', 'audio/_tmp.wav', '-af', 'lowpass=f=9000' if nombre == 'musica' else 'anull', f'audio/{nombre}.wav'], check=True)
 guarda(mus, 'musica'); guarda(fx, 'efectos')
+os.remove('audio/_tmp.wav')
 print('musica', dur, 's, 104 bpm, La menor, golpes en', [round(i, 1) for i in inicios])
