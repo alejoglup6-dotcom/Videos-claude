@@ -15,7 +15,7 @@ export const RB: React.FC<{ a: [number, number, number]; r?: number }> = ({ a, r
 
 // ---------- texturas (se dibujan una sola vez) ----------
 const cache: Record<string, THREE.Texture> = {};
-const lienzo = (k: string, w: number, h: number, dibuja: (c: CanvasRenderingContext2D) => void, repite = false) => {
+export const lienzo = (k: string, w: number, h: number, dibuja: (c: CanvasRenderingContext2D) => void, repite = false) => {
   if (cache[k]) return cache[k];
   const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
   dibuja(cv.getContext('2d')!);
@@ -190,29 +190,7 @@ export const Carretera: React.FC<{ t: number; largo?: number; ancho?: number; co
   );
 };
 
-export const Auto: React.FC<{ color?: string; neon?: string }> = ({ color = '#E8EEF8', neon = '#44E6FF' }) => (
-  <group>
-    <mesh position={[0, 0.42, 0]} castShadow><RB a={[1.95, 0.4, 4.3]} r={0.17} /><meshStandardMaterial color={color} roughness={0.22} metalness={0.7} /></mesh>
-    <mesh position={[0, 0.62, 1.35]} rotation={[0.12, 0, 0]}><RB a={[1.8, 0.14, 1.5]} r={0.07} /><meshStandardMaterial color={color} roughness={0.22} metalness={0.7} /></mesh>
-    <mesh position={[0, 0.84, -0.15]}><RB a={[1.6, 0.42, 1.85]} r={0.18} /><meshStandardMaterial color="#10102A" roughness={0.08} metalness={0.9} /></mesh>
-    <mesh position={[0, 0.86, 0.82]} rotation={[-0.75, 0, 0]}><boxGeometry args={[1.45, 0.02, 0.62]} /><meshBasicMaterial color="#6A5AFF" transparent opacity={0.55} /></mesh>
-    <mesh position={[0, 0.86, -1.1]} rotation={[0.75, 0, 0]}><boxGeometry args={[1.45, 0.02, 0.5]} /><meshBasicMaterial color="#6A5AFF" transparent opacity={0.45} /></mesh>
-    <mesh position={[0, 0.98, -1.95]}><RB a={[1.7, 0.07, 0.5]} r={0.03} /><meshStandardMaterial color="#10102A" metalness={0.8} roughness={0.2} /></mesh>
-    {[-0.7, 0.7].map((s) => <mesh key={s} position={[s, 0.9, -1.95]}><boxGeometry args={[0.06, 0.34, 0.06]} /><meshBasicMaterial color="#10102A" /></mesh>)}
-    {[-1, 1].map((s) => <mesh key={s} position={[s * 0.62, 0.64, 2.16]}><boxGeometry args={[0.45, 0.07, 0.04]} /><meshBasicMaterial color="#FFF6D0" /></mesh>)}
-    <mesh position={[0, 0.66, -2.16]}><boxGeometry args={[1.7, 0.07, 0.04]} /><meshBasicMaterial color="#FF2D55" /></mesh>
-    <sprite position={[0, 0.66, -2.5]} scale={[2.6, 1.0, 1]}><spriteMaterial map={lienzo('halo_r', 64, 64, (c) => { const g = c.createRadialGradient(32, 32, 0, 32, 32, 32); g.addColorStop(0, 'rgba(255,60,90,0.9)'); g.addColorStop(1, 'rgba(255,60,90,0)'); c.fillStyle = g; c.fillRect(0, 0, 64, 64); })} transparent blending={THREE.AdditiveBlending} depthWrite={false} /></sprite>
-    {[[-1, 1.4], [1, 1.4], [-1, -1.4], [1, -1.4]].map((w, i) => (
-      <group key={i} position={[w[0] * 0.97, 0.34, w[1]]} rotation={[0, 0, Math.PI / 2]}>
-        <mesh><cylinderGeometry args={[0.35, 0.35, 0.28, 16]} /><meshStandardMaterial color="#0A0A12" roughness={0.6} /></mesh>
-        <mesh position={[0, w[0] * 0.15, 0]}><cylinderGeometry args={[0.22, 0.22, 0.04, 14]} /><meshStandardMaterial color="#C8D0E8" metalness={0.9} roughness={0.2} /></mesh>
-      </group>
-    ))}
-    <mesh position={[0, 0.5, 0]}><boxGeometry args={[1.98, 0.05, 3.2]} /><meshBasicMaterial color={neon} /></mesh>
-    <mesh position={[0, 0.06, 0]} rotation={[-Math.PI / 2, 0, 0]}><planeGeometry args={[2.5, 4.8]} /><meshBasicMaterial color={neon} transparent opacity={0.5} blending={THREE.AdditiveBlending} depthWrite={false} /></mesh>
-    <pointLight position={[0, 0.3, 0]} color={neon} intensity={1.6} distance={5} />
-  </group>
-);
+export { AutoPro as Auto } from './AutoPro';
 
 export const Persona: React.FC<{ t: number; camisa?: string; pelo?: string; brazos?: number; mira?: number }> = ({ t, camisa = '#FF4FA8', pelo = '#2A1A10', brazos = 0, mira = 0 }) => {
   const piel = '#E8A878';

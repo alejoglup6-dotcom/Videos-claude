@@ -20,7 +20,7 @@ export const Brillo: React.FC<{ pos: V3; esc: number | [number, number, number];
   <sprite position={pos} scale={typeof esc === 'number' ? [esc, esc, 1] : esc}><spriteMaterial map={halo(color)} transparent opacity={op} depthWrite={false} blending={THREE.AdditiveBlending} fog={false} /></sprite>
 );
 export const Plano: React.FC<{ pos: V3; tam: [number, number]; color: string; metal?: number; rough?: number }> = ({ pos, tam, color, metal = 0.1, rough = 0.9 }) => (
-  <mesh rotation={[-Math.PI / 2, 0, 0]} position={pos}><planeGeometry args={tam} /><meshStandardMaterial color={color} metalness={metal} roughness={rough} /></mesh>
+  <mesh rotation={[-Math.PI / 2, 0, 0]} position={pos} receiveShadow><planeGeometry args={tam} /><meshStandardMaterial color={color} metalness={metal} roughness={rough} /></mesh>
 );
 export const Caja: React.FC<{ pos: V3; tam: V3; color: string; basico?: boolean; rot?: V3 }> = ({ pos, tam, color, basico, rot }) => (
   <mesh position={pos} rotation={rot}><boxGeometry args={tam} />{basico ? <meshBasicMaterial color={color} /> : <meshStandardMaterial color={color} roughness={0.8} />}</mesh>

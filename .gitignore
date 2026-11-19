@@ -30,3 +30,7 @@ public/audio/
 # La voz generada con ElevenLabs sí se sube al repositorio (el audio procedural y de Piper no)
 !public/voces/
 !public/voces/**
+
+# modelos 3D de terceros usados en el video (CC0, ver public/modelos/LICENCIAS.md)
+!public/modelos/
+!public/modelos/**
