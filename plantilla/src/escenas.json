@@ -1,0 +1,13 @@
+{
+  "paleta": "calor",
+  "frases": [
+    { "id": "p01", "juntar": [["dos mil veinticuatro", "2024"]], "claves": ["récord"], "golpe": "récord" },
+    { "id": "p02", "juntar": [["mil ochocientos ochenta", "1880"]], "claves": ["temperatura"] },
+    { "id": "p03", "claves": ["superó", "mucho"], "golpe": "mucho" },
+    { "id": "p04", "claves": ["nasa"], "contador": { "desde": 0, "hasta": 1.47, "unidad": "°C", "inicia": "uno", "termina": "siete", "decimales": 2 } },
+    { "id": "p05", "juntar": [["uno punto cinco", "1.5 °C"]], "claves": ["preindustrial"], "golpe": "cinco" },
+    { "id": "p06", "juntar": [["uno punto seis", "1.6 °C"]], "claves": ["copernicus", "pasó"], "golpe": "seis" },
+    { "id": "p07", "claves": ["solo", "promedio"], "golpe": "solo" },
+    { "id": "p08", "claves": ["llegó", "promedio"], "golpe": "llegó" }
+  ]
+}

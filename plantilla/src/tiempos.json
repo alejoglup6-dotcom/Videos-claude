@@ -1,0 +1,509 @@
+{
+ "dur": 34.85,
+ "frases": [
+  {
+   "id": "p01",
+   "texto": "Dicen que un OVNI te roba tres días en GTA 6.",
+   "ini": 0.0,
+   "fin": 3.251,
+   "palabras": [
+    {
+     "w": "Dicen",
+     "s": 0.0,
+     "e": 0.29
+    },
+    {
+     "w": "que",
+     "s": 0.337,
+     "e": 0.418
+    },
+    {
+     "w": "un",
+     "s": 0.476,
+     "e": 0.569
+    },
+    {
+     "w": "OVNI",
+     "s": 0.627,
+     "e": 0.824
+    },
+    {
+     "w": "te",
+     "s": 0.871,
+     "e": 0.94
+    },
+    {
+     "w": "roba",
+     "s": 0.998,
+     "e": 1.207
+    },
+    {
+     "w": "tres",
+     "s": 1.265,
+     "e": 1.474
+    },
+    {
+     "w": "días",
+     "s": 1.521,
+     "e": 1.765
+    },
+    {
+     "w": "en",
+     "s": 1.823,
+     "e": 1.892
+    },
+    {
+     "w": "GTA",
+     "s": 1.997,
+     "e": 2.334
+    },
+    {
+     "w": "6.",
+     "s": 2.368,
+     "e": 3.251
+    }
+   ],
+   "oido": "Dicen que un OVNI te roba tres días en GTA 6."
+  },
+  {
+   "id": "p02",
+   "texto": "Uno: de noche, al este de la ciudad, presencias una abducción y despiertas tres días después.",
+   "ini": 3.711,
+   "fin": 11.188,
+   "palabras": [
+    {
+     "w": "Uno:",
+     "s": 3.711,
+     "e": 4.187
+    },
+    {
+     "w": "de",
+     "s": 4.477,
+     "e": 4.582
+    },
+    {
+     "w": "noche,",
+     "s": 4.651,
+     "e": 5.185
+    },
+    {
+     "w": "al",
+     "s": 5.371,
+     "e": 5.511
+    },
+    {
+     "w": "este",
+     "s": 5.569,
+     "e": 5.754
+    },
+    {
+     "w": "de",
+     "s": 5.801,
+     "e": 5.859
+    },
+    {
+     "w": "la",
+     "s": 5.905,
+     "e": 5.975
+    },
+    {
+     "w": "ciudad,",
+     "s": 6.01,
+     "e": 6.532
+    },
+    {
+     "w": "presencias",
+     "s": 6.822,
+     "e": 7.368
+    },
+    {
+     "w": "una",
+     "s": 7.449,
+     "e": 7.612
+    },
+    {
+     "w": "abducción",
+     "s": 7.635,
+     "e": 8.181
+    },
+    {
+     "w": "y",
+     "s": 8.587,
+     "e": 8.692
+    },
+    {
+     "w": "despiertas",
+     "s": 8.75,
+     "e": 9.261
+    },
+    {
+     "w": "tres",
+     "s": 9.319,
+     "e": 9.528
+    },
+    {
+     "w": "días",
+     "s": 9.574,
+     "e": 9.795
+    },
+    {
+     "w": "después.",
+     "s": 9.829,
+     "e": 11.188
+    }
+   ],
+   "oido": "Uno: de noche, al este de la ciudad, presencias una abducción y despiertas tres días después."
+  },
+  {
+   "id": "p03",
+   "texto": "Dos: dicen que en la torre más alta de Vice City hay un nido con huevos que puedes lanzarle a la gente.",
+   "ini": 11.648,
+   "fin": 18.614,
+   "palabras": [
+    {
+     "w": "Dos:",
+     "s": 11.648,
+     "e": 12.17
+    },
+    {
+     "w": "dicen",
+     "s": 12.716,
+     "e": 13.03
+    },
+    {
+     "w": "que",
+     "s": 13.088,
+     "e": 13.181
+    },
+    {
+     "w": "en",
+     "s": 13.227,
+     "e": 13.273
+    },
+    {
+     "w": "la",
+     "s": 13.331,
+     "e": 13.401
+    },
+    {
+     "w": "torre",
+     "s": 13.459,
+     "e": 13.761
+    },
+    {
+     "w": "más",
+     "s": 13.819,
+     "e": 13.982
+    },
+    {
+     "w": "alta",
+     "s": 14.04,
+     "e": 14.237
+    },
+    {
+     "w": "de",
+     "s": 14.283,
+     "e": 14.353
+    },
+    {
+     "w": "Vice",
+     "s": 14.434,
+     "e": 14.701
+    },
+    {
+     "w": "City",
+     "s": 14.736,
+     "e": 15.108
+    },
+    {
+     "w": "hay",
+     "s": 15.247,
+     "e": 15.468
+    },
+    {
+     "w": "un",
+     "s": 15.526,
+     "e": 15.584
+    },
+    {
+     "w": "nido",
+     "s": 15.607,
+     "e": 15.793
+    },
+    {
+     "w": "con",
+     "s": 15.851,
+     "e": 15.979
+    },
+    {
+     "w": "huevos",
+     "s": 16.013,
+     "e": 16.28
+    },
+    {
+     "w": "que",
+     "s": 16.327,
+     "e": 16.408
+    },
+    {
+     "w": "puedes",
+     "s": 16.443,
+     "e": 16.71
+    },
+    {
+     "w": "lanzarle",
+     "s": 16.768,
+     "e": 17.198
+    },
+    {
+     "w": "a",
+     "s": 17.232,
+     "e": 17.256
+    },
+    {
+     "w": "la",
+     "s": 17.302,
+     "e": 17.372
+    },
+    {
+     "w": "gente.",
+     "s": 17.418,
+     "e": 18.614
+    }
+   ],
+   "oido": "Dos: dicen que en la torre más alta de Vice City hay un nido con huevos que puedes lanzarle a la gente."
+  },
+  {
+   "id": "p04",
+   "texto": "Tres: Bigfoot volvió a los pantanos, y huele horrible. Y también hay un perro en moto acuática.",
+   "ini": 19.074,
+   "fin": 25.204,
+   "palabras": [
+    {
+     "w": "Tres:",
+     "s": 19.074,
+     "e": 19.608
+    },
+    {
+     "w": "Bigfoot",
+     "s": 20.247,
+     "e": 20.676
+    },
+    {
+     "w": "volvió",
+     "s": 20.723,
+     "e": 21.001
+    },
+    {
+     "w": "a",
+     "s": 21.036,
+     "e": 21.059
+    },
+    {
+     "w": "los",
+     "s": 21.083,
+     "e": 21.21
+    },
+    {
+     "w": "pantanos,",
+     "s": 21.257,
+     "e": 21.826
+    },
+    {
+     "w": "y",
+     "s": 21.907,
+     "e": 21.988
+    },
+    {
+     "w": "huele",
+     "s": 22.046,
+     "e": 22.29
+    },
+    {
+     "w": "horrible.",
+     "s": 22.313,
+     "e": 22.801
+    },
+    {
+     "w": "Y",
+     "s": 23.149,
+     "e": 23.207
+    },
+    {
+     "w": "también",
+     "s": 23.277,
+     "e": 23.602
+    },
+    {
+     "w": "hay",
+     "s": 23.637,
+     "e": 23.741
+    },
+    {
+     "w": "un",
+     "s": 23.799,
+     "e": 23.846
+    },
+    {
+     "w": "perro",
+     "s": 23.892,
+     "e": 24.09
+    },
+    {
+     "w": "en",
+     "s": 24.124,
+     "e": 24.171
+    },
+    {
+     "w": "moto",
+     "s": 24.217,
+     "e": 24.403
+    },
+    {
+     "w": "acuática.",
+     "s": 24.438,
+     "e": 25.204
+    }
+   ],
+   "oido": "Tres: Bigfoot volvió a los pantanos, y huele horrible. Y también hay un perro en moto acuática."
+  },
+  {
+   "id": "p05",
+   "texto": "Y los fans creen que recrearon el apartamento de Dexter en Miami, casi idéntico.",
+   "ini": 25.664,
+   "fin": 30.354,
+   "palabras": [
+    {
+     "w": "Y",
+     "s": 25.664,
+     "e": 25.768
+    },
+    {
+     "w": "los",
+     "s": 25.827,
+     "e": 25.943
+    },
+    {
+     "w": "fans",
+     "s": 26.001,
+     "e": 26.233
+    },
+    {
+     "w": "creen",
+     "s": 26.279,
+     "e": 26.512
+    },
+    {
+     "w": "que",
+     "s": 26.558,
+     "e": 26.628
+    },
+    {
+     "w": "recrearon",
+     "s": 26.686,
+     "e": 27.092
+    },
+    {
+     "w": "el",
+     "s": 27.138,
+     "e": 27.197
+    },
+    {
+     "w": "apartamento",
+     "s": 27.243,
+     "e": 27.8
+    },
+    {
+     "w": "de",
+     "s": 27.847,
+     "e": 27.916
+    },
+    {
+     "w": "Dexter",
+     "s": 27.974,
+     "e": 28.299
+    },
+    {
+     "w": "en",
+     "s": 28.358,
+     "e": 28.404
+    },
+    {
+     "w": "Miami,",
+     "s": 28.462,
+     "e": 28.961
+    },
+    {
+     "w": "casi",
+     "s": 29.251,
+     "e": 29.542
+    },
+    {
+     "w": "idéntico.",
+     "s": 29.577,
+     "e": 30.354
+    }
+   ],
+   "oido": "Y los fans creen que recrearon el apartamento de Dexter en Miami, casi idéntico."
+  },
+  {
+   "id": "p06",
+   "texto": "¿Cuál buscas primero? Comenta y sígueme para la parte dos.",
+   "ini": 30.764,
+   "fin": 34.386,
+   "palabras": [
+    {
+     "w": "¿Cuál",
+     "s": 30.764,
+     "e": 31.136
+    },
+    {
+     "w": "buscas",
+     "s": 31.182,
+     "e": 31.484
+    },
+    {
+     "w": "primero?",
+     "s": 31.542,
+     "e": 32.041
+    },
+    {
+     "w": "Comenta",
+     "s": 32.227,
+     "e": 32.691
+    },
+    {
+     "w": "y",
+     "s": 32.749,
+     "e": 32.784
+    },
+    {
+     "w": "sígueme",
+     "s": 32.854,
+     "e": 33.179
+    },
+    {
+     "w": "para",
+     "s": 33.214,
+     "e": 33.353
+    },
+    {
+     "w": "la",
+     "s": 33.399,
+     "e": 33.469
+    },
+    {
+     "w": "parte",
+     "s": 33.527,
+     "e": 33.771
+    },
+    {
+     "w": "dos.",
+     "s": 33.817,
+     "e": 34.386
+    }
+   ],
+   "oido": "¿Cuál buscas primero? Comenta y sígueme para la parte dos."
+  }
+ ]
+}
