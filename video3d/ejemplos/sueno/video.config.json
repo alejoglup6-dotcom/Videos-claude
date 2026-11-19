@@ -1,0 +1,216 @@
+{
+  "version": 1,
+  "titulo": "Tres hábitos para dormir mejor (cifras de ejemplo)",
+  "etiqueta": {
+    "txt": "CIFRAS DE EJEMPLO"
+  },
+  "pildoras": ["#FF2E93", "#1FB6FF", "#FF8A1F", "#25C98B"],
+  "frases": {
+    "p01": {
+      "claves": ["hábitos", "dormir", "ejemplos"]
+    },
+    "p02": {
+      "claves": ["misma", "hora", "diez", "media"]
+    },
+    "p03": {
+      "claves": ["pantallas", "treinta", "minutos"]
+    },
+    "p04": {
+      "claves": ["fresco", "oscuro", "dieciocho", "grados"]
+    },
+    "p05": {
+      "claves": ["médico", "ideas"]
+    },
+    "p06": {
+      "claves": ["elige", "semana"]
+    },
+    "p07": {
+      "claves": ["empezarás", "noche"]
+    }
+  },
+  "tomas": [
+    {
+      "frase": "p01",
+      "decorado": "interior",
+      "variante": "ventana",
+      "camara": "interior-ventana",
+      "texto": {
+        "txt": "DORMIR MEJOR",
+        "color": "#FFFFFF",
+        "sub": "3 HÁBITOS"
+      }
+    },
+    {
+      "frase": "p01",
+      "decorado": "interior",
+      "variante": "mesa",
+      "camara": "interior-frente",
+      "texto": {
+        "txt": "3 HÁBITOS",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p01",
+      "decorado": "interior",
+      "variante": "estante",
+      "camara": "interior-mesa",
+      "texto": {
+        "txt": "SOLO EJEMPLOS",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p02",
+      "decorado": "interior",
+      "variante": "ventana",
+      "camara": "interior-ventana",
+      "texto": {
+        "txt": "UNO",
+        "color": "#FFFFFF",
+        "sub": "MISMA HORA"
+      }
+    },
+    {
+      "frase": "p02",
+      "decorado": "datos",
+      "variante": "cifra",
+      "camara": "datos-frente",
+      "texto": {
+        "txt": "10:30",
+        "color": "#44E6FF",
+        "sub": "EJEMPLO"
+      },
+      "datos": [1030]
+    },
+    {
+      "frase": "p02",
+      "decorado": "interior",
+      "variante": "mesa",
+      "camara": "interior-detalle",
+      "texto": {
+        "txt": "TODOS LOS DÍAS",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p03",
+      "decorado": "interior",
+      "variante": "estante",
+      "camara": "interior-frente",
+      "texto": {
+        "txt": "DOS",
+        "color": "#FFFFFF",
+        "sub": "SIN PANTALLAS"
+      }
+    },
+    {
+      "frase": "p03",
+      "decorado": "datos",
+      "variante": "cifra",
+      "camara": "datos-frente",
+      "texto": {
+        "txt": "30 MIN",
+        "color": "#44E6FF",
+        "sub": "EJEMPLO"
+      },
+      "datos": [30]
+    },
+    {
+      "frase": "p03",
+      "decorado": "interior",
+      "variante": "mesa",
+      "camara": "interior-mesa",
+      "texto": {
+        "txt": "CELULAR FUERA",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p04",
+      "decorado": "interior",
+      "variante": "ventana",
+      "camara": "interior-ventana",
+      "texto": {
+        "txt": "TRES",
+        "color": "#FFFFFF",
+        "sub": "CUARTO FRESCO"
+      }
+    },
+    {
+      "frase": "p04",
+      "decorado": "datos",
+      "variante": "cifra",
+      "camara": "datos-frente",
+      "texto": {
+        "txt": "18 °C",
+        "color": "#44E6FF",
+        "sub": "EJEMPLO"
+      },
+      "datos": [18]
+    },
+    {
+      "frase": "p04",
+      "decorado": "interior",
+      "variante": "estante",
+      "camara": "interior-frente",
+      "texto": {
+        "txt": "Y OSCURO",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p05",
+      "decorado": "interior",
+      "variante": "mesa",
+      "camara": "interior-mesa",
+      "texto": {
+        "txt": "NO ES CONSEJO MÉDICO",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p05",
+      "decorado": "interior",
+      "variante": "ventana",
+      "camara": "interior-ventana",
+      "texto": {
+        "txt": "SON IDEAS",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p06",
+      "decorado": "interior",
+      "variante": "estante",
+      "camara": "interior-frente",
+      "texto": {
+        "txt": "ELIGE UNO",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "frase": "p06",
+      "decorado": "datos",
+      "variante": "barras",
+      "camara": "datos-frente",
+      "texto": {
+        "txt": "UNA SEMANA",
+        "color": "#7CFF3A",
+        "sub": "7 DÍAS"
+      },
+      "datos": [1, 1, 1, 1, 1, 1, 1]
+    },
+    {
+      "frase": "p07",
+      "decorado": "interior",
+      "variante": "ventana",
+      "camara": "interior-ventana",
+      "texto": {
+        "txt": "¿CUÁL EMPIEZAS?",
+        "color": "#FFE86A",
+        "sub": "ESTA NOCHE"
+      }
+    }
+  ]
+}

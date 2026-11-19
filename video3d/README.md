@@ -69,3 +69,15 @@ python3.11 <carpeta-del-plugin>/herramientas/ia.py instalar   # una vez; pide Py
 - El 3D se dibuja por CPU y es estilizado, no fotorrealista.
 - Con ElevenLabs gratis solo funcionan las voces predefinidas.
 - Quien revisa el resultado sin verlo ni oírlo solo puede mirar cuadros fijos y mediciones.
+
+## Costo de render medido (esta máquina: 4 núcleos, concurrencia 3, modo normal, 60 cuadros)
+Con `node pruebas/medir_render.mjs` (mediana de 2 corridas; incluye ~10 s fijos de arranque, textos y subtítulos).
+
+| Escena | Segundos |
+|---|---|
+| decorados nuevos: avenida 19 · esquina 17 · mesa 16 · estante 16 · plaza 15 · ventana 15 · barras 15 · cifra 15 · ascenso 15 | 15 a 19 |
+| sin 3D (solo el costo fijo) | 10 |
+| GTA 6: cierre 29 · apto 26 · noche 25 · ciudad 24 · pantano 19 · torre 16 | 16 a 29 |
+
+Referencia del `LEEME.md` original: 31 s (otra máquina). Un video completo de 30 s (901 cuadros) tardó 225 s en modo normal.
+

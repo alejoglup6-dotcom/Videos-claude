@@ -20,11 +20,13 @@ for f in sys.argv[1:]: compile(open(f, encoding='utf-8').read(), f, 'exec')
 PY
 }
 sintaxis_sh() { for f in "$RAIZ"/*.sh "$RAIZ"/herramientas/*.sh "$RAIZ"/pruebas/*.sh; do bash -n "$f" || return 1; done; }
+ejemplos_validos() { local n=0; for d in "$RAIZ"/ejemplos/*/; do [ -f "$d/video.config.json" ] || continue; n=$((n+1)); node "$RAIZ/herramientas/validar_config.mjs" --config "$d/video.config.json" --tiempos "$d/tiempos.json" >/dev/null || { echo "no valida: $d"; return 1; }; done; node "$RAIZ/herramientas/validar_config.mjs" >/dev/null || return 1; [ "$n" -ge 1 ] || { echo "no hay ejemplos"; return 1; }; echo "$n ejemplo(s) + la plantilla validan"; }
 sintaxis_js() { for f in "$RAIZ"/herramientas/*.mjs "$RAIZ"/pruebas/*.mjs "$RAIZ"/plantilla/*.mjs; do node --check "$f" || return 1; done; }
 echo "Pruebas del kit (sin créditos):"
 corre "sintaxis de scripts (.sh, .mjs, .py)" bash -c "$(declare -f sintaxis_sh sintaxis_js sintaxis_py); RAIZ='$RAIZ'; sintaxis_sh && sintaxis_js && sintaxis_py"
 corre "tipos (npm run tipos)" bash -c "cd plantilla && npm run tipos"
 corre "validador de configuración" node pruebas/prueba_validador.mjs
+corre "ejemplos y plantilla validan (validar_config)" bash -c "$(declare -f ejemplos_validos); RAIZ='$RAIZ'; ejemplos_validos"
 if [ "$SIN_RENDER" = 1 ]; then corre "generador de borrador (sin render)" node pruebas/prueba_generador.mjs; else corre "generador de borrador (con render de 3 cuadros)" node pruebas/prueba_generador.mjs --con-render; corre "decorados genéricos (render de 15 cuadros)" node pruebas/prueba_decorados.mjs; fi
 corre "voz con servidor falso (python)" python3 pruebas/prueba_voz_sin_creditos.py
 echo

@@ -1,0 +1,203 @@
+{
+  "version": 1,
+  "titulo": "Borrador generado: retócalo",
+  "etiqueta": {
+    "txt": "EJEMPLOS, NO CONSEJO MÉDICO"
+  },
+  "pildoras": ["#FF2E93", "#1FB6FF", "#FF8A1F", "#25C98B"],
+  "frases": {
+    "p01": {
+      "claves": ["ejemplos", "hábitos", "dormir"]
+    },
+    "p02": {
+      "claves": ["acuéstate", "siempre", "ejemplo"]
+    },
+    "p03": {
+      "claves": ["pantallas", "ejemplo", "treinta"]
+    },
+    "p04": {
+      "claves": ["dieciocho", "ejemplo", "cuarto"]
+    },
+    "p05": {
+      "claves": ["consejo", "médico", "probar"]
+    },
+    "p06": {
+      "claves": ["pruébalo", "semana", "elige"]
+    },
+    "p07": {
+      "claves": ["empezarás", "noche", "cuál"]
+    }
+  },
+  "tomas": [
+    {
+      "frase": "p01",
+      "decorado": "calle",
+      "variante": "avenida",
+      "camara": "calle-avenida",
+      "texto": {
+        "txt": "EJEMPLOS",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "frase": "p01",
+      "decorado": "calle",
+      "variante": "plaza",
+      "camara": "calle-plaza",
+      "texto": {
+        "txt": "HÁBITOS",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p01",
+      "decorado": "calle",
+      "variante": "esquina",
+      "camara": "calle-plaza-alta",
+      "texto": {
+        "txt": "DORMIR",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p02",
+      "decorado": "interior",
+      "variante": "mesa",
+      "camara": "interior-ventana",
+      "texto": {
+        "txt": "ACUÉSTATE",
+        "color": "#44E6FF"
+      }
+    },
+    {
+      "frase": "p02",
+      "decorado": "interior",
+      "variante": "ventana",
+      "camara": "interior-frente",
+      "texto": {
+        "txt": "SIEMPRE",
+        "color": "#7CFF3A"
+      }
+    },
+    {
+      "frase": "p02",
+      "decorado": "interior",
+      "variante": "estante",
+      "camara": "interior-mesa",
+      "texto": {
+        "txt": "EJEMPLO",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "frase": "p03",
+      "decorado": "calle",
+      "variante": "avenida",
+      "camara": "calle-plaza-alta",
+      "texto": {
+        "txt": "PANTALLAS",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p03",
+      "decorado": "calle",
+      "variante": "plaza",
+      "camara": "calle-esquina",
+      "texto": {
+        "txt": "EJEMPLO",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p03",
+      "decorado": "calle",
+      "variante": "esquina",
+      "camara": "calle-avenida",
+      "texto": {
+        "txt": "TREINTA",
+        "color": "#44E6FF"
+      }
+    },
+    {
+      "frase": "p04",
+      "decorado": "interior",
+      "variante": "mesa",
+      "camara": "interior-mesa",
+      "texto": {
+        "txt": "DIECIOCHO",
+        "color": "#7CFF3A"
+      }
+    },
+    {
+      "frase": "p04",
+      "decorado": "interior",
+      "variante": "ventana",
+      "camara": "interior-detalle",
+      "texto": {
+        "txt": "EJEMPLO",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "frase": "p04",
+      "decorado": "interior",
+      "variante": "estante",
+      "camara": "interior-ventana",
+      "texto": {
+        "txt": "CUARTO",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p05",
+      "decorado": "calle",
+      "variante": "avenida",
+      "camara": "calle-avenida",
+      "texto": {
+        "txt": "CONSEJO",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p05",
+      "decorado": "calle",
+      "variante": "plaza",
+      "camara": "calle-plaza",
+      "texto": {
+        "txt": "MÉDICO",
+        "color": "#44E6FF"
+      }
+    },
+    {
+      "frase": "p06",
+      "decorado": "interior",
+      "variante": "mesa",
+      "camara": "interior-detalle",
+      "texto": {
+        "txt": "PRUÉBALO",
+        "color": "#7CFF3A"
+      }
+    },
+    {
+      "frase": "p06",
+      "decorado": "interior",
+      "variante": "ventana",
+      "camara": "interior-ventana",
+      "texto": {
+        "txt": "SEMANA",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "frase": "p07",
+      "decorado": "calle",
+      "variante": "avenida",
+      "camara": "calle-avenida",
+      "texto": {
+        "txt": "EMPEZARÁS",
+        "color": "#FFE86A"
+      }
+    }
+  ]
+}

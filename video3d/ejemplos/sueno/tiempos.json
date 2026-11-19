@@ -1,0 +1,353 @@
+{
+ "dur": 30.01,
+ "frases": [
+  {
+   "id": "p01",
+   "texto": "Tres hábitos para dormir mejor. Las cifras son solo ejemplos.",
+   "ini": 0.0,
+   "fin": 4.272,
+   "palabras": [
+    {
+     "w": "Tres",
+     "s": 0.0,
+     "e": 0.279
+    },
+    {
+     "w": "hábitos",
+     "s": 0.337,
+     "e": 0.662
+    },
+    {
+     "w": "para",
+     "s": 0.72,
+     "e": 0.871
+    },
+    {
+     "w": "dormir",
+     "s": 0.906,
+     "e": 1.196
+    },
+    {
+     "w": "mejor.",
+     "s": 1.242,
+     "e": 1.683
+    },
+    {
+     "w": "Las",
+     "s": 2.09,
+     "e": 2.229
+    },
+    {
+     "w": "cifras",
+     "s": 2.252,
+     "e": 2.577
+    },
+    {
+     "w": "son",
+     "s": 2.601,
+     "e": 2.728
+    },
+    {
+     "w": "solo",
+     "s": 2.786,
+     "e": 3.007
+    },
+    {
+     "w": "ejemplos.",
+     "s": 3.042,
+     "e": 4.272
+    }
+   ],
+   "oido": "Tres hábitos para dormir mejor. Las cifras son solo ejemplos."
+  },
+  {
+   "id": "p02",
+   "texto": "Uno: acuéstate siempre a la misma hora. Ejemplo: diez y media.",
+   "ini": 4.732,
+   "fin": 9.933,
+   "palabras": [
+    {
+     "w": "Uno:",
+     "s": 4.732,
+     "e": 5.196
+    },
+    {
+     "w": "acuéstate",
+     "s": 5.487,
+     "e": 5.939
+    },
+    {
+     "w": "siempre",
+     "s": 5.986,
+     "e": 6.346
+    },
+    {
+     "w": "a",
+     "s": 6.369,
+     "e": 6.392
+    },
+    {
+     "w": "la",
+     "s": 6.415,
+     "e": 6.485
+    },
+    {
+     "w": "misma",
+     "s": 6.532,
+     "e": 6.775
+    },
+    {
+     "w": "hora.",
+     "s": 6.81,
+     "e": 7.17
+    },
+    {
+     "w": "Ejemplo:",
+     "s": 7.518,
+     "e": 8.145
+    },
+    {
+     "w": "diez",
+     "s": 8.436,
+     "e": 8.679
+    },
+    {
+     "w": "y",
+     "s": 8.737,
+     "e": 8.761
+    },
+    {
+     "w": "media.",
+     "s": 8.819,
+     "e": 9.933
+    }
+   ],
+   "oido": "Uno: acuéstate siempre a la misma hora. Ejemplo: diez y media."
+  },
+  {
+   "id": "p03",
+   "texto": "Dos: sin pantallas antes de dormir. Ejemplo: treinta minutos.",
+   "ini": 10.393,
+   "fin": 15.13,
+   "palabras": [
+    {
+     "w": "Dos:",
+     "s": 10.393,
+     "e": 10.834
+    },
+    {
+     "w": "sin",
+     "s": 11.02,
+     "e": 11.194
+    },
+    {
+     "w": "pantallas",
+     "s": 11.241,
+     "e": 11.705
+    },
+    {
+     "w": "antes",
+     "s": 11.786,
+     "e": 12.076
+    },
+    {
+     "w": "de",
+     "s": 12.123,
+     "e": 12.193
+    },
+    {
+     "w": "dormir.",
+     "s": 12.239,
+     "e": 12.68
+    },
+    {
+     "w": "Ejemplo:",
+     "s": 13.087,
+     "e": 13.702
+    },
+    {
+     "w": "treinta",
+     "s": 13.864,
+     "e": 14.213
+    },
+    {
+     "w": "minutos.",
+     "s": 14.259,
+     "e": 15.13
+    }
+   ],
+   "oido": "Dos: sin pantallas antes de dormir. Ejemplo: treinta minutos."
+  },
+  {
+   "id": "p04",
+   "texto": "Tres: un cuarto fresco y oscuro. Ejemplo: dieciocho grados.",
+   "ini": 15.59,
+   "fin": 20.745,
+   "palabras": [
+    {
+     "w": "Tres:",
+     "s": 15.59,
+     "e": 16.112
+    },
+    {
+     "w": "un",
+     "s": 16.519,
+     "e": 16.635
+    },
+    {
+     "w": "cuarto",
+     "s": 16.693,
+     "e": 16.995
+    },
+    {
+     "w": "fresco",
+     "s": 17.053,
+     "e": 17.378
+    },
+    {
+     "w": "y",
+     "s": 17.436,
+     "e": 17.471
+    },
+    {
+     "w": "oscuro.",
+     "s": 17.506,
+     "e": 18.051
+    },
+    {
+     "w": "Ejemplo:",
+     "s": 18.342,
+     "e": 18.992
+    },
+    {
+     "w": "dieciocho",
+     "s": 19.282,
+     "e": 19.874
+    },
+    {
+     "w": "grados.",
+     "s": 19.921,
+     "e": 20.745
+    }
+   ],
+   "oido": "Tres: un cuarto fresco y oscuro. Ejemplo: dieciocho grados."
+  },
+  {
+   "id": "p05",
+   "texto": "No es consejo médico, son ideas para probar.",
+   "ini": 21.205,
+   "fin": 24.409,
+   "palabras": [
+    {
+     "w": "No",
+     "s": 21.205,
+     "e": 21.344
+    },
+    {
+     "w": "es",
+     "s": 21.379,
+     "e": 21.437
+    },
+    {
+     "w": "consejo",
+     "s": 21.495,
+     "e": 21.867
+    },
+    {
+     "w": "médico,",
+     "s": 21.925,
+     "e": 22.47
+    },
+    {
+     "w": "son",
+     "s": 22.633,
+     "e": 22.807
+    },
+    {
+     "w": "ideas",
+     "s": 22.865,
+     "e": 23.155
+    },
+    {
+     "w": "para",
+     "s": 23.214,
+     "e": 23.364
+    },
+    {
+     "w": "probar.",
+     "s": 23.399,
+     "e": 24.409
+    }
+   ],
+   "oido": "No es consejo médico, son ideas para probar."
+  },
+  {
+   "id": "p06",
+   "texto": "Elige uno y pruébalo una semana.",
+   "ini": 24.869,
+   "fin": 27.377,
+   "palabras": [
+    {
+     "w": "Elige",
+     "s": 24.869,
+     "e": 25.264
+    },
+    {
+     "w": "uno",
+     "s": 25.333,
+     "e": 25.484
+    },
+    {
+     "w": "y",
+     "s": 25.519,
+     "e": 25.554
+    },
+    {
+     "w": "pruébalo",
+     "s": 25.624,
+     "e": 26.018
+    },
+    {
+     "w": "una",
+     "s": 26.076,
+     "e": 26.204
+    },
+    {
+     "w": "semana.",
+     "s": 26.251,
+     "e": 27.377
+    }
+   ],
+   "oido": "Elige uno y pruébalo una semana."
+  },
+  {
+   "id": "p07",
+   "texto": "¿Cuál empezarás esta noche?",
+   "ini": 27.787,
+   "fin": 29.552,
+   "palabras": [
+    {
+     "w": "¿Cuál",
+     "s": 27.787,
+     "e": 28.147
+    },
+    {
+     "w": "empezarás",
+     "s": 28.193,
+     "e": 28.635
+    },
+    {
+     "w": "esta",
+     "s": 28.704,
+     "e": 28.878
+    },
+    {
+     "w": "noche?",
+     "s": 28.936,
+     "e": 29.552
+    }
+   ],
+   "oido": "¿Cuál empezarás esta noche?"
+  }
+ ]
+}
