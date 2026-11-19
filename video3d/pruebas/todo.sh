@@ -27,7 +27,7 @@ corre "sintaxis de scripts (.sh, .mjs, .py)" bash -c "$(declare -f sintaxis_sh s
 corre "tipos (npm run tipos)" bash -c "cd plantilla && npm run tipos"
 corre "validador de configuración" node pruebas/prueba_validador.mjs
 corre "ejemplos y plantilla validan (validar_config)" bash -c "$(declare -f ejemplos_validos); RAIZ='$RAIZ'; ejemplos_validos"
-if [ "$SIN_RENDER" = 1 ]; then corre "generador de borrador (sin render)" node pruebas/prueba_generador.mjs; else corre "generador de borrador (con render de 3 cuadros)" node pruebas/prueba_generador.mjs --con-render; corre "decorados genéricos (render de 15 cuadros)" node pruebas/prueba_decorados.mjs; fi
+if [ "$SIN_RENDER" = 1 ]; then corre "generador de borrador (sin render)" node pruebas/prueba_generador.mjs; else corre "generador de borrador (con render de 3 cuadros)" node pruebas/prueba_generador.mjs --con-render; corre "decorados genéricos (render de 15 cuadros)" node pruebas/prueba_decorados.mjs; corre "decorados cinemáticos (render de 45 cuadros)" node pruebas/prueba_decorados_cine.mjs; fi
 corre "voz con servidor falso (python)" python3 pruebas/prueba_voz_sin_creditos.py
 echo
 if [ ${#FALLAS[@]} -eq 0 ]; then echo "TODO OK: $TOTAL pruebas en $(( $(date +%s)-T0 )) s"; exit 0; fi

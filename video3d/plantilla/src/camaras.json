@@ -15,5 +15,22 @@
   "interior-ventana": { "para": ["interior"], "pos": [-4, 2.2, 2], "mira": [0, 3, -12], "fov": 52, "empuje": 2 },
   "datos-frente": { "para": ["datos"], "pos": [0, 3.4, 22], "mira": [0, 2.4, 0], "fov": 55, "empuje": 3 },
   "datos-lateral": { "para": ["datos"], "pos": [12, 4.5, 16], "mira": [0, 2.4, 0], "fov": 50, "empuje": 2 },
-  "datos-cerca": { "para": ["datos"], "pos": [0, 3.2, 15], "mira": [0, 2.4, 0], "fov": 46, "empuje": 1.5 }
+  "datos-cerca": { "para": ["datos"], "pos": [0, 3.2, 15], "mira": [0, 2.4, 0], "fov": 46, "empuje": 1.5 },
+  "vice-aerea": { "para": ["vice"], "pos": [16, 66, 54], "mira": [-30, 6, -44], "fov": 60, "empuje": 28 },
+  "vice-aerea-lateral": { "para": ["vice"], "pos": [-34, 30, 8], "mira": [0, 5, -40], "fov": 55, "empuje": 8 },
+  "vice-calle": { "para": ["vice"], "pos": [0, 1.7, 6], "mira": [0, 1.6, -12], "fov": 50, "empuje": 2 },
+  "vice-calle-baja": { "para": ["vice"], "pos": [1.5, 0.7, 4], "mira": [0, 1.2, -10], "fov": 45, "empuje": 1.5 },
+  "vice-playa": { "para": ["vice"], "pos": [-6, 1.8, 10], "mira": [4, 2, -20], "fov": 55, "empuje": 4 },
+  "mapa-cenital": { "para": ["mapa"], "pos": [0, 18, 10], "mira": [0, 0, -0.5], "fov": 60, "empuje": 3 },
+  "mapa-costa": { "para": ["mapa"], "pos": [8, 15, 11], "mira": [3, 0, -0.5], "fov": 55, "empuje": 3 },
+  "mapa-ciudad": { "para": ["mapa"], "pos": [6, 9, 8], "mira": [3, 0.5, 0.8], "fov": 50, "empuje": 2 },
+  "mapa-pantano": { "para": ["mapa"], "pos": [-3, 10, 14], "mira": [-0.5, 0, 5], "fov": 50, "empuje": 2 },
+  "mapa-carreteras": { "para": ["mapa"], "pos": [0, 15, 11], "mira": [0, 0, -1], "fov": 55, "empuje": 3 },
+  "persecucion-detras": { "para": ["persecucion"], "pos": [0, 3.2, 10], "mira": [0, 1.2, -12], "fov": 60, "empuje": 3 },
+  "persecucion-lateral": { "para": ["persecucion"], "pos": [9, 2.2, -6], "mira": [0, 1, -13], "fov": 55, "empuje": 2 },
+  "persecucion-alta": { "para": ["persecucion"], "pos": [0, 8, 6], "mira": [0, 0, -10], "fov": 60, "empuje": 3 },
+  "atardecer-aerea": { "para": ["atardecer"], "pos": [16, 42, 58], "mira": [-14, 0, -28], "fov": 55, "empuje": 6 },
+  "atardecer-heli": { "para": ["atardecer"], "pos": [36, 16, -6], "mira": [0, 13, -30], "fov": 50, "empuje": 8 },
+  "atardecer-costa": { "para": ["atardecer"], "pos": [6, 2.5, 24], "mira": [-2, 3, -30], "fov": 55, "empuje": 3 },
+  "fondo-frente": { "para": ["fondo"], "pos": [0, 3, 14], "mira": [0, 3, 0], "fov": 50, "empuje": 2 }
 }
