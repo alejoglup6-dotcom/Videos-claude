@@ -27,9 +27,10 @@ Los scripts de voz y música se corren **desde la carpeta de tu proyecto** (dond
    Con Kokoro: `voz_kokoro.py` y luego `tiempos_whisper.py` (usa `MODELOS_DIR`).
    Después limita los picos de la voz: `./herramientas/limitar_voz.sh` → `voz/narracion.wav` (para que la mezcla no pase de −1 dBTP).
 3. **Música:** `python3 herramientas/musica_synthwave.py` → `audio/musica.wav` y `audio/efectos.wav`.
-4. Copia `tiempos.json` a `plantilla/src/tiempos.json` y ajusta `PLAN`, `DEFS`, `TEXTOS` y `CLAVES` en `plantilla/src/`.
+4. **Contenido del video:** edita `plantilla/src/video.config.json` (o crea el tuyo; ejemplo en `ejemplos/villaluna/video.config.json`): por cada toma, la frase, el `decorado` (y su `variante`), la `camara` (nombre de `plantilla/src/camaras.json` o valores propios) y el `texto` grande; además las palabras clave de cada frase, los colores de las píldoras y la etiqueta fija. Los decorados y sus variantes están en `plantilla/src/escena3d/decorados.tsx`. Ya no se edita código para cambiar de tema, salvo que necesites un decorado nuevo.
 5. **Render:** `node herramientas/render.mjs --modo borrador|normal|final [--frames 0-59] [--salida ruta.mp4]`
-   (funciona desde cualquier carpeta; salida por defecto `plantilla/salida/render.mp4`; `--proyecto` o `VIDEO3D_PROYECTO` para otra plantilla).
+   con tu contenido: `--config mi.config.json --tiempos voz/tiempos.json` (o `--ejemplo villaluna`); sin esas opciones usa `plantilla/src/video.config.json` y `tiempos.json` (el ejemplo de GTA 6).
+   Funciona desde cualquier carpeta; salida por defecto `plantilla/salida/render.mp4`; `--proyecto` o `VIDEO3D_PROYECTO` para otra plantilla.
 6. **Mezcla y medición:** `herramientas/ia.sh acabado|medir|hoja ...` (plug-in, ver abajo) o los reemplazos con ffmpeg.
 
 ### Sin el plug-in (ffmpeg)
@@ -46,6 +47,7 @@ ffmpeg -i final.mp4 -vf "fps=1,scale=270:-1,tile=6x4" -frames:v 1 hoja.png
 (La comparación de la transcripción contra el guion, que hace `medir`, no tiene reemplazo simple: usa `faster-whisper` del `.venv`.)
 
 ## Pruebas
+`cd plantilla && npm run tipos` revisa los tipos con `tsc --noEmit`. `herramientas/comparar_cuadros.sh carpetaA carpetaB` compara cuadros PNG (SSIM y PSNR con ffmpeg), útil para comprobar que un cambio de código no altera la imagen.
 `python3 pruebas/prueba_voz_sin_creditos.py` prueba la ruta de voz contra un servidor local falso (sin red, sin clave, sin créditos): que la respuesta se guarda antes de procesarla, que se reutiliza con 0 llamadas y qué cambios obligan a llamar de nuevo.
 
 ## Plug-in `animaciones-ia` (opcional)

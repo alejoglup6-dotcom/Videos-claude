@@ -1,0 +1,265 @@
+{
+  "version": 1,
+  "titulo": "GTA 6 · 3 rumores",
+  "etiqueta": {
+    "txt": "SIN CONFIRMAR",
+    "desdeToma": 2,
+    "hastaToma": 15
+  },
+  "pildoras": ["#FF2E93", "#1FB6FF", "#FF8A1F", "#25C98B"],
+  "frases": {
+    "p01": {
+      "claves": ["ovni", "tres", "días", "gta"]
+    },
+    "p02": {
+      "claves": ["noche", "abducción", "tres", "días"]
+    },
+    "p03": {
+      "claves": ["torre", "nido", "huevos", "lanzarle"]
+    },
+    "p04": {
+      "claves": ["bigfoot", "horrible", "perro", "acuática"]
+    },
+    "p05": {
+      "claves": ["fans", "apartamento", "dexter", "idéntico"]
+    },
+    "p06": {
+      "claves": ["cuál", "comenta", "sígueme", "dos"]
+    }
+  },
+  "tomas": [
+    {
+      "frase": "p01",
+      "decorado": "ciudad",
+      "camara": {
+        "pos": [0.8, 0.9, 16],
+        "mira": [0, 7.5, -22],
+        "fov": 58,
+        "empuje": 7
+      },
+      "texto": {
+        "txt": "GTA 6",
+        "color": "#FFFFFF",
+        "sub": "19 NOV · PS5 · XBOX SERIES X|S"
+      }
+    },
+    {
+      "frase": "p01",
+      "decorado": "ciudad",
+      "camara": {
+        "pos": [-10, 3, -2],
+        "mira": [0, 6.5, -22],
+        "fov": 46,
+        "empuje": 6
+      },
+      "texto": {
+        "txt": "OVNI = 3 DÍAS",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p02",
+      "decorado": "noche",
+      "variante": "llega",
+      "camara": {
+        "pos": [0, 2.2, 13],
+        "mira": [0, 6, -8],
+        "fov": 55,
+        "empuje": 4
+      },
+      "texto": {
+        "txt": "1 · ABDUCCIÓN",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p02",
+      "decorado": "noche",
+      "variante": "cerca",
+      "camara": {
+        "pos": [0.3, 0.9, -0.6],
+        "mira": [0, 6.5, -9],
+        "fov": 70,
+        "empuje": 2
+      },
+      "texto": {
+        "txt": "DE NOCHE",
+        "color": "#44E6FF"
+      }
+    },
+    {
+      "frase": "p02",
+      "decorado": "noche",
+      "variante": "sube",
+      "camara": {
+        "pos": [6, 2.5, 3],
+        "mira": [0, 3.5, -3],
+        "fov": 50,
+        "empuje": 2.5
+      },
+      "texto": {
+        "txt": "¡TE LLEVAN!",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p02",
+      "decorado": "noche",
+      "variante": "alba",
+      "camara": {
+        "pos": [-3.5, 1.2, 2],
+        "mira": [0, 0.8, -3],
+        "fov": 55,
+        "empuje": 2
+      },
+      "texto": {
+        "txt": "+3 DÍAS",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p03",
+      "decorado": "torre",
+      "variante": "base",
+      "camara": "torre-suelo",
+      "texto": {
+        "txt": "2 · EL NIDO",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p03",
+      "decorado": "torre",
+      "variante": "cima",
+      "camara": "torre-cima",
+      "texto": {
+        "txt": "HUEVOS",
+        "color": "#44E6FF"
+      }
+    },
+    {
+      "frase": "p03",
+      "decorado": "torre",
+      "variante": "lanza",
+      "camara": {
+        "pos": [-3.2, 19.2, -1.2],
+        "mira": [1.2, 20.7, -6],
+        "fov": 50,
+        "empuje": 2.2
+      },
+      "texto": {
+        "txt": "¡LANZA!",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p03",
+      "decorado": "torre",
+      "variante": "splat",
+      "camara": {
+        "pos": [-2.5, 1.5, 9],
+        "mira": [2, 1.6, 4],
+        "fov": 48,
+        "empuje": 2
+      },
+      "texto": {
+        "txt": "¡SPLAT!",
+        "color": "#7CFF3A"
+      }
+    },
+    {
+      "frase": "p04",
+      "decorado": "pantano",
+      "variante": "asoma",
+      "camara": {
+        "pos": [0, 1.3, 7],
+        "mira": [0, 2.7, -6],
+        "fov": 52,
+        "empuje": 2.5
+      },
+      "texto": {
+        "txt": "3 · BIGFOOT",
+        "color": "#7CFF3A"
+      }
+    },
+    {
+      "frase": "p04",
+      "decorado": "pantano",
+      "variante": "huele",
+      "camara": {
+        "pos": [1.6, 2.6, -1],
+        "mira": [0, 3, -6],
+        "fov": 40,
+        "empuje": 1
+      },
+      "texto": {
+        "txt": "HUELE HORRIBLE",
+        "color": "#C8FF6A"
+      }
+    },
+    {
+      "frase": "p04",
+      "decorado": "bahia",
+      "camara": "bahia-ancha",
+      "texto": {
+        "txt": "PERRO + MOTO",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p05",
+      "decorado": "apto",
+      "camara": "fachada-izq",
+      "texto": {
+        "txt": "¿IDÉNTICO?",
+        "color": "#44E6FF"
+      }
+    },
+    {
+      "frase": "p05",
+      "decorado": "apto",
+      "camara": "fachada-alta",
+      "texto": {
+        "txt": "MIAMI",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p05",
+      "decorado": "apto",
+      "camara": "fachada-der",
+      "texto": {
+        "txt": "TEORÍA DE FANS",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p06",
+      "decorado": "cierre",
+      "camara": {
+        "pos": [0, 1.6, 10],
+        "mira": [0, 2.2, -30],
+        "fov": 60,
+        "empuje": 6
+      },
+      "texto": {
+        "txt": "¿CUÁL PRIMERO?",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p06",
+      "decorado": "cierre",
+      "camara": {
+        "pos": [5, 1, 3],
+        "mira": [-1, 1.3, -20],
+        "fov": 46,
+        "empuje": 3
+      },
+      "texto": {
+        "txt": "PARTE 2",
+        "color": "#FF4FA8"
+      }
+    }
+  ]
+}

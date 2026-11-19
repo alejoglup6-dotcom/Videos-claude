@@ -1,4 +1,4 @@
-// Estilo del video: paleta y tipografía. Se elige con "paleta" en escenas.json; cambia los colores aquí para darle a tu video su propia esencia.
+// Estilo del video: paleta y tipografía. Cambia los colores aquí para darle a tu video su propia esencia.
 import { definirEstilo } from './motor';
 
 export type Paleta = {

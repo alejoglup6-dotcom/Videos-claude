@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Render rápido con modos y acabado (grano + viñeta) en ffmpeg.
 //   node herramientas/render.mjs --modo borrador|normal|final [--frames 0-59] [--salida ruta.mp4] [--sin-post] [--concurrencia N] [--proyecto ruta]
-// Variables: NAVEGADOR (ejecutable de Chromium/Chrome), VIDEO3D_PROYECTO (carpeta del proyecto Remotion).
+//     [--config video.config.json] [--tiempos voz/tiempos.json] [--ejemplo villaluna]
+// Variables: NAVEGADOR (ejecutable de Chromium/Chrome), VIDEO3D_PROYECTO (carpeta del proyecto Remotion), VIDEO3D_CONFIG, VIDEO3D_TIEMPOS.
 // borrador: 540×960 y 3D al 50 % (≈4× más rápido, para revisar movimiento y tiempos)
 // normal:   1080×1920, 3D al 75 % sin antialias (el texto y los efectos van a resolución completa)
 // final:    1080×1920, 3D al 100 % con antialias
@@ -10,6 +11,7 @@ import os from 'node:os';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { resolverProps } from './props.mjs';
 
 // Funciona desde cualquier carpeta: el proyecto Remotion se busca junto a este script (../plantilla)
 // o con --proyecto <ruta> / la variable VIDEO3D_PROYECTO.
@@ -35,6 +37,9 @@ else console.log(`navegador: ${nav}`);
 fs.mkdirSync(path.dirname(salida), { recursive: true });
 const bruto = post ? salida.replace(/\.mp4$/, '_bruto.mp4') : salida;
 const args = ['remotion', 'render', 'src/index.ts', 'Video', bruto, '--codec', 'h264', '--crf', '18', '--color-space=bt709', '--muted', '--gl=swangle', `--concurrency=${conc}`, `--scale=${M.scale}`];
+const props = resolverProps({ config: arg('config'), tiempos: arg('tiempos'), ejemplo: arg('ejemplo') }, proyecto, path.join(AQUI, '..'));
+let propsArchivo = null;
+if (props) { propsArchivo = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'video3d-')), 'props.json'); fs.writeFileSync(propsArchivo, JSON.stringify(props)); args.push(`--props=${propsArchivo}`); }
 if (frames) args.push(`--frames=${frames}`); if (nav) args.push(`--browser-executable=${nav}`);
 const env = { ...process.env, REMOTION_ESCALA3D: M.esc, REMOTION_AA: M.aa };
 const t0 = Date.now();

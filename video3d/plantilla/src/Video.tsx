@@ -1,47 +1,26 @@
-// Video de GTA 6 (3 rumores): escena 3D con cortes cada ~2 s + textos grandes animados + subtítulos con píldoras en todo el video.
-import React, { useEffect, useState } from 'react';
+// Video vertical 9:16: escena 3D con cortes cada ~2 s + textos grandes animados + subtítulos con píldoras en todo el video.
+import React, { useEffect, useMemo, useState } from 'react';
 import { AbsoluteFill, continueRender, delayRender, useCurrentFrame } from 'remotion';
-import T0 from './tiempos.json';
 import { cl, sale } from './motor';
 import { TextoImg } from './lib/textoImg';
 import { Slam, Letras, Sello, TextoGlitch, NeonParpadeo } from './lib/textoAnim';
 import { Aberracion, Destello, EstelaLatigazo, FugaDeLuz, Glitch, Grano, LineasVelocidad } from './lib/efectos';
 import { latigazo, tipoCorte, tomaEn } from './lib/transiciones';
-import { Escena3D, Tiempos, crearTomas } from './escena3d/Escena';
+import { Escena3D } from './escena3d/Escena';
+import { crearTomas, crearTrozos } from './config';
+import type { PropsVideo, Toma, Trozo } from './config';
 // @ts-ignore fuente local (SIL OFL)
 import fuenteUrl from '@fontsource/lilita-one/files/lilita-one-latin-400-normal.woff2';
 
-type Pal = { w: string; s: number; e: number };
-type Frase = { id: string; texto: string; ini: number; fin: number; palabras: Pal[] };
-const T = T0 as unknown as { dur: number; frases: Frase[] } & Tiempos;
 const fps = 30;
 const SIN = ((typeof process !== 'undefined' && (process as any).env?.REMOTION_SIN) || '').split(',');
-const TOMAS = crearTomas(T);
 
-// ---------- subtítulos con píldoras ----------
-const CLAVES: Record<string, string[]> = {
-  p01: ['ovni', 'tres', 'días', 'gta'], p02: ['noche', 'abducción', 'tres', 'días'], p03: ['torre', 'nido', 'huevos', 'lanzarle'],
-  p04: ['bigfoot', 'horrible', 'perro', 'acuática'], p05: ['fans', 'apartamento', 'dexter', 'idéntico'], p06: ['cuál', 'comenta', 'sígueme', 'dos'],
-};
-const PILDORAS = ['#FF2E93', '#1FB6FF', '#FF8A1F', '#25C98B'];
-const limpia = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
-type Trozo = { id: string; palabras: (Pal & { clave: boolean; col: string })[]; ini: number; fin: number };
-const TROZOS: Trozo[] = [];
-for (const f of T.frases) {
-  let cur: Trozo['palabras'] = []; let k = 0;
-  const cierra = () => { if (cur.length) { TROZOS.push({ id: f.id, palabras: cur, ini: cur[0].s - 0.05, fin: cur[cur.length - 1].e + 0.3 }); cur = []; } };
-  f.palabras.forEach((p) => {
-    const clave = (CLAVES[f.id] ?? []).includes(limpia(p.w));
-    cur.push({ ...p, clave, col: PILDORAS[k++ % PILDORAS.length] });
-    if (/[.,:?!…]$/.test(p.w) || cur.length >= 4) cierra();
-  });
-  cierra();
-}
+// ---------- subtítulos con píldoras (los trozos salen de config.ts) ----------
 const trazo: React.CSSProperties = { fontFamily: 'Lilita, sans-serif', WebkitTextStroke: '10px #12082E', paintOrder: 'stroke fill', textShadow: '0 7px 0 rgba(0,0,0,0.4)' };
-const Subtitulos: React.FC<{ t: number }> = ({ t }) => {
+const Subtitulos: React.FC<{ t: number; trozos: Trozo[] }> = ({ t, trozos }) => {
   let idx = -1;
-  TROZOS.forEach((z, i) => { if (t >= z.ini) idx = i; });
-  const z = TROZOS[idx];
+  trozos.forEach((z, i) => { if (t >= z.ini) idx = i; });
+  const z = trozos[idx];
   if (!z || t > z.fin) return null;
   const n = z.palabras.length; const corte = n >= 3 ? Math.ceil(n / 2) : n;
   const lineas = [z.palabras.slice(0, corte), z.palabras.slice(corte)].filter((l) => l.length);
@@ -65,18 +44,10 @@ const Subtitulos: React.FC<{ t: number }> = ({ t }) => {
   );
 };
 
-// ---------- textos grandes animados (uno por toma) ----------
-const TEXTOS: [string, string, string?][] = [
-  ['GTA 6', '#FFFFFF', '19 NOV · PS5 · XBOX SERIES X|S'], ['OVNI = 3 DÍAS', '#FFE86A'],
-  ['1 · ABDUCCIÓN', '#FF4FA8'], ['DE NOCHE', '#44E6FF'], ['¡TE LLEVAN!', '#FFE86A'], ['+3 DÍAS', '#FF4FA8'],
-  ['2 · EL NIDO', '#FFE86A'], ['HUEVOS', '#44E6FF'], ['¡LANZA!', '#FF4FA8'], ['¡SPLAT!', '#7CFF3A'],
-  ['3 · BIGFOOT', '#7CFF3A'], ['HUELE HORRIBLE', '#C8FF6A'], ['PERRO + MOTO', '#FF4FA8'],
-  ['¿IDÉNTICO?', '#44E6FF'], ['MIAMI', '#FF4FA8'], ['TEORÍA DE FANS', '#FFE86A'],
-  ['¿CUÁL PRIMERO?', '#FFE86A'], ['PARTE 2', '#FF4FA8'],
-];
-const TextoGrande: React.FC<{ t: number; frame: number }> = ({ t, frame }) => {
-  const tm = tomaEn(t, TOMAS);
-  const [txt, col, sub] = TEXTOS[tm.i] ?? ['', '#fff'];
+// ---------- textos grandes animados (uno por toma; el texto sale de video.config.json) ----------
+const TextoGrande: React.FC<{ t: number; frame: number; tomas: Toma[] }> = ({ t, frame, tomas }) => {
+  const tm = tomaEn(t, tomas);
+  const { txt, color: col, sub } = tm.texto ?? { txt: '', color: '#fff', sub: undefined };
   const u = t - tm.t0; const dur = tm.t1 - tm.t0;
   const salida = 1 - cl((u - (dur - 0.12)) / 0.12);
   const lineas = txt.split(' ').length > 2 && txt.length > 12 ? [txt.split(' ').slice(0, 2).join(' '), txt.split(' ').slice(2).join(' ')] : [txt];
@@ -97,11 +68,12 @@ const TextoGrande: React.FC<{ t: number; frame: number }> = ({ t, frame }) => {
   );
 };
 
-// etiqueta honesta: los datos del guion no están confirmados
-const SinConfirmar: React.FC<{ t: number }> = ({ t }) => {
-  const a = TOMAS[2].t0; const b = TOMAS[15].t1;
+// etiqueta fija sobre un rango de tomas (por ejemplo «SIN CONFIRMAR» o «100% FICCIÓN»); null = sin etiqueta
+const Etiqueta: React.FC<{ t: number; tomas: Toma[]; etiqueta: PropsVideo['config']['etiqueta'] }> = ({ t, tomas, etiqueta }) => {
+  if (!etiqueta) return null;
+  const a = tomas[etiqueta.desdeToma ?? 0].t0; const b = tomas[etiqueta.hastaToma ?? tomas.length - 1].t1;
   if (t < a || t > b) return null;
-  return <div style={{ position: 'absolute', left: 54, top: 330, opacity: 0.85 + 0.15 * Math.sin(t * 6) }}><Sello txt="SIN CONFIRMAR" color="#FF3B52" u={t - a} size={48} /></div>;
+  return <div style={{ position: 'absolute', left: 54, top: 330, opacity: 0.85 + 0.15 * Math.sin(t * 6) }}><Sello txt={etiqueta.txt} color="#FF3B52" u={t - a} size={48} /></div>;
 };
 
 const useFuente = () => {
@@ -112,8 +84,11 @@ const useFuente = () => {
   }, [h]);
 };
 
-export const Video: React.FC = () => {
+export const Video: React.FC<PropsVideo> = ({ config, tiempos }) => {
   useFuente();
+  const T = tiempos;
+  const TOMAS = useMemo(() => crearTomas(config, tiempos), [config, tiempos]);
+  const TROZOS = useMemo(() => crearTrozos(config, tiempos), [config, tiempos]);
   const c = useCurrentFrame(); const t = c / fps;
   const tm = tomaEn(t, TOMAS);
   const dt = t - tm.t0; const tipo = tipoCorte(tm.i);
@@ -131,11 +106,10 @@ export const Video: React.FC = () => {
       {SIN.includes('glitch') ? null : <Glitch k={tipo === 'glitch' ? k : 0} frame={c} />}
       {SIN.includes('fuga') ? null : <FugaDeLuz k={tipo === 'zoom' ? k * 0.8 : 0} />}
       {(typeof process !== 'undefined' && (process as any).env?.REMOTION_GRANO === '1') ? <Grano frame={c} opacidad={0.08} /> : null}
-      <SinConfirmar t={t} />
-      {SIN.includes('txt') ? null : <TextoGrande t={t} frame={c} />}
-      {SIN.includes('sub') ? null : <Subtitulos t={t} />}
+      <Etiqueta t={t} tomas={TOMAS} etiqueta={config.etiqueta} />
+      {SIN.includes('txt') ? null : <TextoGrande t={t} frame={c} tomas={TOMAS} />}
+      {SIN.includes('sub') ? null : <Subtitulos t={t} trozos={TROZOS} />}
     </AbsoluteFill>
   );
 };
 
-export const CUADROS = Math.ceil(T.dur * fps);

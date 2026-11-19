@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "titulo": "Villaluna · ciudad inventada",
+  "etiqueta": {
+    "txt": "100% FICCIÓN",
+    "desdeToma": 0
+  },
+  "pildoras": ["#FF2E93", "#1FB6FF", "#FF8A1F", "#25C98B"],
+  "frases": {
+    "p01": {
+      "claves": ["villaluna", "inventada", "relojes", "revés"]
+    },
+    "p02": {
+      "claves": ["tres", "mil", "gatos", "voto"]
+    },
+    "p03": {
+      "claves": ["martes", "río", "color"]
+    }
+  },
+  "tomas": [
+    {
+      "frase": "p01",
+      "decorado": "torre",
+      "variante": "base",
+      "camara": "torre-suelo",
+      "texto": {
+        "txt": "VILLALUNA",
+        "color": "#FFFFFF",
+        "sub": "CIUDAD INVENTADA"
+      }
+    },
+    {
+      "frase": "p01",
+      "decorado": "torre",
+      "variante": "cima",
+      "camara": "torre-cima",
+      "texto": {
+        "txt": "RELOJES",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p01",
+      "decorado": "apto",
+      "camara": "fachada-izq",
+      "texto": {
+        "txt": "AL REVÉS",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p02",
+      "decorado": "apto",
+      "camara": "fachada-alta",
+      "texto": {
+        "txt": "3000 GATOS",
+        "color": "#44E6FF"
+      }
+    },
+    {
+      "frase": "p02",
+      "decorado": "apto",
+      "camara": "fachada-der",
+      "texto": {
+        "txt": "¡VOTAN!",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p03",
+      "decorado": "bahia",
+      "camara": "bahia-ancha",
+      "texto": {
+        "txt": "CADA MARTES",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p03",
+      "decorado": "bahia",
+      "camara": {
+        "pos": [-6, 2.2, 10],
+        "mira": [0, 1, -2],
+        "fov": 48,
+        "empuje": 2
+      },
+      "texto": {
+        "txt": "¡NUEVO COLOR!",
+        "color": "#7CFF3A"
+      }
+    }
+  ]
+}
