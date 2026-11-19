@@ -57,7 +57,8 @@ Cada escena dura 3–5 s (múltiplos de 0.5 s para que el corte caiga en el puls
 ```jsonc
 {
   "id": "mi-video", "titulo": "…", "tema": "neon-costero",     // temas: neon-costero · atardecer-dorado · mapa-frio
-  "etiqueta": { "txt": "FAN VIDEO" },                           // sello opcional, siempre visible
+  "etiqueta": { "txt": "…" },                                     // sello opcional, siempre visible (los videos de ejemplo NO lo usan)
+  "marcaVersion": false,                                          // true = imprime versión/calidad/voz abajo a la izquierda (solo pruebas)
   "audio": { "musica": { "generar": { "bpm": 120, "escala": "Am" }, "volumen": 0.55 }, "ducking": 0.5 },
   "fuentes": [ { "dato": "…", "estado": "verificado | no_verificado", "nota": "…" } ],
   "escenas": [{
@@ -108,6 +109,9 @@ Solo usa datos que Rockstar ha publicado (ver `fuentes` en el guion). Dos datos 
 - Fauna (perro, moto de agua, caimán, lagartija, vaso, basurero): piezas 3D procedurales propias (`src/three/fauna.tsx`); la biblioteca CC0 no trae animales.
 - Música y efectos: generados por código (sin pistas externas ni licencias de terceros).
 - Costo medido (renders cortos, 1 proceso): ~7,5 min estimados en esta máquina; en GitHub suele tardar algo más.
+
+## Versión del video
+El video final no lleva textos técnicos en pantalla. La versión (commit), la calidad y la voz quedan en los metadatos del MP4 (`comment`) y en el log del workflow (línea «Versión: …»).
 
 ## Límites y avisos honestos
 

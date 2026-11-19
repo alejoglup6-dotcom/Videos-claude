@@ -51,7 +51,7 @@ export const VideoVertical: React.FC<Guion> = (g) => {
       {etiqueta ? <div style={{ position: 'absolute', left: 54, top: 120, opacity: 0.9 }}><Sello txt={etiqueta} color="#FF3B52" u={t} size={44} /></div> : null}
       <TextoEscena escena={tr.escena} indice={tr.i} u={u} dur={dur} t={t} frame={frame} tema={tema} />
       <Subtitulos t={t} trozos={trozos} tema={tema} />
-      {g._version ? <div style={{ position: 'absolute', left: 36, bottom: 40, fontFamily: 'monospace', fontSize: 30, color: '#fff', background: 'rgba(0,0,0,0.55)', padding: '4px 12px', borderRadius: 8 }}>v{g._version} · {g._calidad} · {g._vozProveedor ?? 'sin voz'}</div> : null}
+      {g._version && g.marcaVersion ? <div style={{ position: 'absolute', left: 36, bottom: 40, fontFamily: 'monospace', fontSize: 30, color: '#fff', background: 'rgba(0,0,0,0.55)', padding: '4px 12px', borderRadius: 8 }}>v{g._version} · {g._calidad} · {g._vozProveedor ?? 'sin voz'}</div> : null}
       <AudioVideo g={g} tl={tl} />
     </AbsoluteFill>
   );

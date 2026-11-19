@@ -39,6 +39,7 @@ export type Guion = {
   fuentes?: { dato: string; estado: 'verificado' | 'no_verificado'; nota?: string }[];
   escenas: Escena[];
   // los inyecta scripts/render.mjs; no van en el JSON del guion:
+  marcaVersion?: boolean;                         // texto de versión en pantalla (solo para pruebas; por defecto NO sale en el video)
   grano?: boolean;                                // grano de película (por defecto sí); cuesta CPU por la mezcla a pantalla completa
   _calidad?: Calidad;
   _voces?: Record<string, { archivo: string; duracion: number; desde?: number; hasta?: number; palabras?: { w: string; s: number; e: number }[] }>;
