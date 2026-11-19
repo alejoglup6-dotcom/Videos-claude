@@ -1,0 +1,162 @@
+{
+ "dur": 9.78,
+ "frases": [
+  {
+   "id": "p01",
+   "texto": "En Villaluna, una ciudad inventada, los relojes van al revés.",
+   "ini": 0.0,
+   "fin": 3.855,
+   "palabras": [
+    {
+     "w": "En",
+     "s": 0.0,
+     "e": 0.139
+    },
+    {
+     "w": "Villaluna,",
+     "s": 0.174,
+     "e": 0.778
+    },
+    {
+     "w": "una",
+     "s": 0.836,
+     "e": 0.998
+    },
+    {
+     "w": "ciudad",
+     "s": 1.033,
+     "e": 1.312
+    },
+    {
+     "w": "inventada,",
+     "s": 1.358,
+     "e": 1.997
+    },
+    {
+     "w": "los",
+     "s": 2.287,
+     "e": 2.426
+    },
+    {
+     "w": "relojes",
+     "s": 2.496,
+     "e": 2.844
+    },
+    {
+     "w": "van",
+     "s": 2.902,
+     "e": 3.007
+    },
+    {
+     "w": "al",
+     "s": 3.053,
+     "e": 3.1
+    },
+    {
+     "w": "revés.",
+     "s": 3.158,
+     "e": 3.855
+    }
+   ],
+   "oido": "En Villaluna, una ciudad inventada, los relojes van al revés."
+  },
+  {
+   "id": "p02",
+   "texto": "Sus tres mil gatos tienen derecho a voto.",
+   "ini": 4.315,
+   "fin": 6.776,
+   "palabras": [
+    {
+     "w": "Sus",
+     "s": 4.315,
+     "e": 4.559
+    },
+    {
+     "w": "tres",
+     "s": 4.605,
+     "e": 4.779
+    },
+    {
+     "w": "mil",
+     "s": 4.837,
+     "e": 4.965
+    },
+    {
+     "w": "gatos",
+     "s": 5.023,
+     "e": 5.29
+    },
+    {
+     "w": "tienen",
+     "s": 5.348,
+     "e": 5.604
+    },
+    {
+     "w": "derecho",
+     "s": 5.662,
+     "e": 6.056
+    },
+    {
+     "w": "a",
+     "s": 6.103,
+     "e": 6.126
+    },
+    {
+     "w": "voto.",
+     "s": 6.173,
+     "e": 6.776
+    }
+   ],
+   "oido": "Sus tres mil gatos tienen derecho a voto."
+  },
+  {
+   "id": "p03",
+   "texto": "Y cada martes, el río cambia de color.",
+   "ini": 7.186,
+   "fin": 9.322,
+   "palabras": [
+    {
+     "w": "Y",
+     "s": 7.186,
+     "e": 7.29
+    },
+    {
+     "w": "cada",
+     "s": 7.36,
+     "e": 7.534
+    },
+    {
+     "w": "martes,",
+     "s": 7.581,
+     "e": 7.906
+    },
+    {
+     "w": "el",
+     "s": 7.929,
+     "e": 7.999
+    },
+    {
+     "w": "río",
+     "s": 8.057,
+     "e": 8.243
+    },
+    {
+     "w": "cambia",
+     "s": 8.277,
+     "e": 8.591
+    },
+    {
+     "w": "de",
+     "s": 8.626,
+     "e": 8.695
+    },
+    {
+     "w": "color.",
+     "s": 8.73,
+     "e": 9.322
+    }
+   ],
+   "oido": "Y cada martes, el río cambia de color."
+  }
+ ]
+}

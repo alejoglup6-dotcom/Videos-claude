@@ -1,0 +1,107 @@
+diff --git a/video3d/plantilla/src/Video.tsx b/video3d/plantilla/src/Video.tsx
+index e1b020d..34dee8d 100644
+--- a/video3d/plantilla/src/Video.tsx
++++ b/video3d/plantilla/src/Video.tsx
+@@ -1,4 +1,4 @@
+-// Video de GTA 6 (3 rumores): escena 3D con cortes cada ~2 s + textos grandes animados + subtítulos con píldoras en todo el video.
++// Video de Villaluna (ciudad inventada, 3 datos): escena 3D con cortes cada ~2 s + textos grandes animados + subtítulos con píldoras en todo el video.
+ import React, { useEffect, useState } from 'react';
+ import { AbsoluteFill, continueRender, delayRender, useCurrentFrame } from 'remotion';
+ import T0 from './tiempos.json';
+@@ -20,8 +20,7 @@ const TOMAS = crearTomas(T);
+ 
+ // ---------- subtítulos con píldoras ----------
+ const CLAVES: Record<string, string[]> = {
+-  p01: ['ovni', 'tres', 'días', 'gta'], p02: ['noche', 'abducción', 'tres', 'días'], p03: ['torre', 'nido', 'huevos', 'lanzarle'],
+-  p04: ['bigfoot', 'horrible', 'perro', 'acuática'], p05: ['fans', 'apartamento', 'dexter', 'idéntico'], p06: ['cuál', 'comenta', 'sígueme', 'dos'],
++  p01: ['villaluna', 'inventada', 'relojes', 'revés'], p02: ['tres', 'mil', 'gatos', 'voto'], p03: ['martes', 'río', 'color'],
+ };
+ const PILDORAS = ['#FF2E93', '#1FB6FF', '#FF8A1F', '#25C98B'];
+ const limpia = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+@@ -67,12 +66,9 @@ const Subtitulos: React.FC<{ t: number }> = ({ t }) => {
+ 
+ // ---------- textos grandes animados (uno por toma) ----------
+ const TEXTOS: [string, string, string?][] = [
+-  ['GTA 6', '#FFFFFF', '19 NOV · PS5 · XBOX SERIES X|S'], ['OVNI = 3 DÍAS', '#FFE86A'],
+-  ['1 · ABDUCCIÓN', '#FF4FA8'], ['DE NOCHE', '#44E6FF'], ['¡TE LLEVAN!', '#FFE86A'], ['+3 DÍAS', '#FF4FA8'],
+-  ['2 · EL NIDO', '#FFE86A'], ['HUEVOS', '#44E6FF'], ['¡LANZA!', '#FF4FA8'], ['¡SPLAT!', '#7CFF3A'],
+-  ['3 · BIGFOOT', '#7CFF3A'], ['HUELE HORRIBLE', '#C8FF6A'], ['PERRO + MOTO', '#FF4FA8'],
+-  ['¿IDÉNTICO?', '#44E6FF'], ['MIAMI', '#FF4FA8'], ['TEORÍA DE FANS', '#FFE86A'],
+-  ['¿CUÁL PRIMERO?', '#FFE86A'], ['PARTE 2', '#FF4FA8'],
++  ['VILLALUNA', '#FFFFFF', 'CIUDAD INVENTADA'], ['RELOJES', '#FFE86A'], ['AL REVÉS', '#FF4FA8'],
++  ['3000 GATOS', '#44E6FF'], ['¡VOTAN!', '#FF4FA8'],
++  ['CADA MARTES', '#FFE86A'], ['¡NUEVO COLOR!', '#7CFF3A'],
+ ];
+ const TextoGrande: React.FC<{ t: number; frame: number }> = ({ t, frame }) => {
+   const tm = tomaEn(t, TOMAS);
+@@ -99,9 +95,9 @@ const TextoGrande: React.FC<{ t: number; frame: number }> = ({ t, frame }) => {
+ 
+ // etiqueta honesta: los datos del guion no están confirmados
+ const SinConfirmar: React.FC<{ t: number }> = ({ t }) => {
+-  const a = TOMAS[2].t0; const b = TOMAS[15].t1;
++  const a = TOMAS[0].t0; const b = TOMAS[TOMAS.length - 1].t1;
+   if (t < a || t > b) return null;
+-  return <div style={{ position: 'absolute', left: 54, top: 330, opacity: 0.85 + 0.15 * Math.sin(t * 6) }}><Sello txt="SIN CONFIRMAR" color="#FF3B52" u={t - a} size={48} /></div>;
++  return <div style={{ position: 'absolute', left: 54, top: 330, opacity: 0.85 + 0.15 * Math.sin(t * 6) }}><Sello txt="100% FICCIÓN" color="#FF3B52" u={t - a} size={48} /></div>;
+ };
+ 
+ const useFuente = () => {
+diff --git a/video3d/plantilla/src/escena3d/Escena.tsx b/video3d/plantilla/src/escena3d/Escena.tsx
+index 44bb7ee..45ba41d 100644
+--- a/video3d/plantilla/src/escena3d/Escena.tsx
++++ b/video3d/plantilla/src/escena3d/Escena.tsx
+@@ -1,4 +1,4 @@
+-// Escena 3D del video de GTA 6: 18 tomas de ~2 s sobre 6 decorados originales (ciudad de neón, noche, torre, pantano, edificio art déco y cierre).
++// Escena 3D del video de Villaluna: 7 tomas sobre 3 decorados (torre, edificio art déco y bahía).
+ import React from 'react';
+ import * as THREE from 'three';
+ import { useThree } from '@react-three/fiber';
+@@ -13,7 +13,7 @@ type V3 = [number, number, number];
+ type Toma = { id: string; k: number; n: number; t0: number; t1: number; i: number };
+ type Def = { set: 'ciudad' | 'noche' | 'torre' | 'pantano' | 'bahia' | 'apto' | 'cierre'; p: V3; l: V3; f: number; push: number };
+ 
+-const PLAN: [string, number][] = [['p01', 2], ['p02', 4], ['p03', 4], ['p04', 3], ['p05', 3], ['p06', 2]];
++const PLAN: [string, number][] = [['p01', 3], ['p02', 2], ['p03', 2]];
+ export const crearTomas = (T: Tiempos): Toma[] => {
+   const out: Toma[] = []; let i = 0;
+   PLAN.forEach(([id, n], pi) => {
+@@ -26,34 +26,17 @@ export const crearTomas = (T: Tiempos): Toma[] => {
+ 
+ const DEFS: Record<string, Def[]> = {
+   p01: [
+-    { set: 'ciudad', p: [0.8, 0.9, 16], l: [0, 7.5, -22], f: 58, push: 7 },
+-    { set: 'ciudad', p: [-10, 3, -2], l: [0, 6.5, -22], f: 46, push: 6 },
+-  ],
+-  p02: [
+-    { set: 'noche', p: [0, 2.2, 13], l: [0, 6, -8], f: 55, push: 4 },
+-    { set: 'noche', p: [0.3, 0.9, -0.6], l: [0, 6.5, -9], f: 70, push: 2 },
+-    { set: 'noche', p: [6, 2.5, 3], l: [0, 3.5, -3], f: 50, push: 2.5 },
+-    { set: 'noche', p: [-3.5, 1.2, 2], l: [0, 0.8, -3], f: 55, push: 2 },
+-  ],
+-  p03: [
+     { set: 'torre', p: [5, 0.8, 6], l: [0, 13, -6], f: 70, push: 5 },
+     { set: 'torre', p: [2.4, 21.7, -1.8], l: [0, 20.7, -6], f: 42, push: 1.4 },
+-    { set: 'torre', p: [-3.2, 19.2, -1.2], l: [1.2, 20.7, -6], f: 50, push: 2.2 },
+-    { set: 'torre', p: [-2.5, 1.5, 9], l: [2, 1.6, 4], f: 48, push: 2 },
+-  ],
+-  p04: [
+-    { set: 'pantano', p: [0, 1.3, 7], l: [0, 2.7, -6], f: 52, push: 2.5 },
+-    { set: 'pantano', p: [1.6, 2.6, -1.0], l: [0, 3.0, -6], f: 40, push: 1.0 },
+-    { set: 'bahia', p: [4, 1.5, 13], l: [0, 1.0, -2], f: 42, push: 1.5 },
+-  ],
+-  p05: [
+     { set: 'apto', p: [-13, 3, 9], l: [0, 3.8, -8], f: 46, push: 3 },
++  ],
++  p02: [
+     { set: 'apto', p: [3.5, 4.6, 3], l: [0, 4.2, -8], f: 38, push: 2 },
+     { set: 'apto', p: [15, 2, 7], l: [0, 4.5, -8], f: 48, push: 3 },
+   ],
+-  p06: [
+-    { set: 'cierre', p: [0, 1.6, 10], l: [0, 2.2, -30], f: 60, push: 6 },
+-    { set: 'cierre', p: [5, 1.0, 3], l: [-1, 1.3, -20], f: 46, push: 3 },
++  p03: [
++    { set: 'bahia', p: [4, 1.5, 13], l: [0, 1.0, -2], f: 42, push: 1.5 },
++    { set: 'bahia', p: [-6, 2.2, 10], l: [0, 1.0, -2], f: 48, push: 2 },
+   ],
+ };
+ 

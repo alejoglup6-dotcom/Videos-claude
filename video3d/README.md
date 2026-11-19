@@ -25,6 +25,7 @@ Los scripts de voz y música se corren **desde la carpeta de tu proyecto** (dond
    `ELEVENLABS_BASE_URL` cambia la dirección de la API (solo para pruebas).
    Si existe `voz/r_<id>.json` sin su `.meta.json`, se detiene (no se sabe con qué voz y ajustes se generó); `--reutilizar-sin-meta` la reutiliza bajo tu responsabilidad. Rangos: velocidad 0.7-1.2; estabilidad, similitud y estilo 0-1 (se validan antes de llamar).
    Con Kokoro: `voz_kokoro.py` y luego `tiempos_whisper.py` (usa `MODELOS_DIR`).
+   Después limita los picos de la voz: `./herramientas/limitar_voz.sh` → `voz/narracion.wav` (para que la mezcla no pase de −1 dBTP).
 3. **Música:** `python3 herramientas/musica_synthwave.py` → `audio/musica.wav` y `audio/efectos.wav`.
 4. Copia `tiempos.json` a `plantilla/src/tiempos.json` y ajusta `PLAN`, `DEFS`, `TEXTOS` y `CLAVES` en `plantilla/src/`.
 5. **Render:** `node herramientas/render.mjs --modo borrador|normal|final [--frames 0-59] [--salida ruta.mp4]`
