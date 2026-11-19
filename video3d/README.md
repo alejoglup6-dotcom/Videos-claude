@@ -21,6 +21,8 @@ Los scripts de voz y música se corren **desde la carpeta de tu proyecto** (dond
 1. **Guion:** `guion.json` con frases (`id`, `bloque`, `texto`) y `fuentes.md` (marca como DUDA lo no confirmado).
 2. **Voz:** `export ELEVENLABS_API_KEY=...`, luego `python3 herramientas/voz_elevenlabs.py <voice_id> 1.1 --simulacro` (valida y muestra cuántos caracteres gastaría, sin llamar a la API) y, si todo está bien, sin `--simulacro`.
    Genera `voz/narracion_raw.wav` y `voz/tiempos.json`. Guarda cada respuesta en `voz/r_<id>.json` antes de procesarla y la reutiliza si el texto no cambió (no vuelve a gastar créditos). Hay un guion de ejemplo en `ejemplos/guion_ejemplo.json` (`--guion ruta` para usarlo).
+   La respuesta guardada solo se reutiliza si coinciden texto, voz, modelo, idioma y ajustes (`--modelo`, `--idioma`, `--estabilidad`, `--similitud`, `--estilo`, velocidad); si cambia algo, vuelve a llamar.
+   `ELEVENLABS_BASE_URL` cambia la dirección de la API (solo para pruebas).
    Con Kokoro: `voz_kokoro.py` y luego `tiempos_whisper.py` (usa `MODELOS_DIR`).
 3. **Música:** `python3 herramientas/musica_synthwave.py` → `audio/musica.wav` y `audio/efectos.wav`.
 4. Copia `tiempos.json` a `plantilla/src/tiempos.json` y ajusta `PLAN`, `DEFS`, `TEXTOS` y `CLAVES` en `plantilla/src/`.
@@ -40,6 +42,9 @@ ffmpeg -nostats -i final.mp4 -af ebur128=peak=true -f null - 2>&1 | grep -E "I:|
 ffmpeg -i final.mp4 -vf "fps=1,scale=270:-1,tile=6x4" -frames:v 1 hoja.png
 ```
 (La comparación de la transcripción contra el guion, que hace `medir`, no tiene reemplazo simple: usa `faster-whisper` del `.venv`.)
+
+## Pruebas
+`python3 pruebas/prueba_voz_sin_creditos.py` prueba la ruta de voz contra un servidor local falso (sin red, sin clave, sin créditos): que la respuesta se guarda antes de procesarla, que se reutiliza con 0 llamadas y qué cambios obligan a llamar de nuevo.
 
 ## Plug-in `animaciones-ia` (opcional)
 ```bash

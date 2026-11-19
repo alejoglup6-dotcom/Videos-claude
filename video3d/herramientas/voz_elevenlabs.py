@@ -3,6 +3,7 @@
 
 Uso (desde la carpeta del proyecto, donde está guion.json):
   ELEVENLABS_API_KEY=... python3 herramientas/voz_elevenlabs.py <voice_id> [velocidad=1.1] [--simulacro] [--guion ruta.json]
+      [--modelo ID] [--idioma es] [--estabilidad 0.35] [--similitud 0.8] [--estilo 0.55]
 
 Orden de seguridad (para no perder créditos):
   1. Valida todo SIN llamar a la API: clave, voice_id, guion, ffmpeg, carpeta voz/.
@@ -11,6 +12,8 @@ Orden de seguridad (para no perder créditos):
   3. Solo después decodifica el audio y une los archivos.
 --simulacro: valida y muestra cuántos caracteres se gastarían, sin llamar a la API.
 Clave: variable de entorno ELEVENLABS_API_KEY (nunca en archivos ni en el repo).
+ELEVENLABS_BASE_URL: dirección base de la API (por defecto https://api.elevenlabs.io); sirve para pruebas con un servidor local.
+La respuesta guardada solo se reutiliza si coinciden texto, voz, modelo, idioma y todos los ajustes de voz (voz/r_<id>.meta.json).
 """
 import json, sys, re, base64, shutil, subprocess, urllib.request, urllib.error, os
 
@@ -26,6 +29,21 @@ if '--guion' in args:
     i = args.index('--guion')
     if i + 1 >= len(args): fallo('--guion necesita una ruta.')
     ruta_guion = args[i + 1]; del args[i:i + 2]
+AJUSTES_VOZ = {'stability': 0.35, 'similarity_boost': 0.8, 'style': 0.55, 'use_speaker_boost': True}
+MODELO = 'eleven_multilingual_v2'; IDIOMA = 'es'
+OPCIONES = {'--estabilidad': 'stability', '--similitud': 'similarity_boost', '--estilo': 'style', '--modelo': 'model_id', '--idioma': 'language_code'}
+for flag, clave_aj in OPCIONES.items():
+    if flag in args:
+        i = args.index(flag)
+        if i + 1 >= len(args): fallo(f'{flag} necesita un valor.')
+        v = args[i + 1]; del args[i:i + 2]
+        if clave_aj == 'model_id': MODELO = v
+        elif clave_aj == 'language_code': IDIOMA = v
+        else:
+            try: AJUSTES_VOZ[clave_aj] = float(v)
+            except ValueError: fallo(f'{flag}: valor no numérico {v!r}')
+            if not 0.0 <= AJUSTES_VOZ[clave_aj] <= 1.0: fallo(f'{flag} debe estar entre 0 y 1 (recibí {v}).')
+if not MODELO.strip() or not IDIOMA.strip(): fallo('--modelo e --idioma no pueden estar vacíos.')
 if not args or not args[0].strip(): fallo('falta el voice_id. Uso: voz_elevenlabs.py <voice_id> [velocidad] [--simulacro]')
 voz_id = args[0].strip()
 if not re.fullmatch(r'[A-Za-z0-9]{10,40}', voz_id): fallo(f'voice_id con formato raro: {voz_id!r}')
@@ -33,6 +51,10 @@ try: veloc = float(args[1]) if len(args) > 1 else 1.1
 except ValueError: fallo(f'velocidad no válida: {args[1]!r}')
 if not 0.7 <= veloc <= 1.2: fallo(f'la velocidad debe estar entre 0.7 y 1.2 (recibí {veloc}).')
 
+AJUSTES = {'model_id': MODELO, 'language_code': IDIOMA, 'voice_settings': {**AJUSTES_VOZ, 'speed': veloc}}
+BASE = os.environ.get('ELEVENLABS_BASE_URL', 'https://api.elevenlabs.io').rstrip('/')
+if not re.fullmatch(r'https?://[^\s/]+(/[^\s]*)?', BASE): fallo(f'ELEVENLABS_BASE_URL no es una dirección http(s) válida: {BASE!r}')
+if BASE != 'https://api.elevenlabs.io': print(f'aviso: usando un servidor distinto del oficial: {BASE}')
 CLAVE = os.environ.get('ELEVENLABS_API_KEY', '')
 if not CLAVE and not simulacro: fallo('falta la variable de entorno ELEVENLABS_API_KEY.')
 if not CLAVE: print('aviso: ELEVENLABS_API_KEY no está definida (en simulacro no hace falta, pero sí para la ejecución real).')
@@ -71,10 +93,17 @@ def cache_valida(f):
         if not r.get('audio_base64'): return None, 'la respuesta guardada no trae audio'
     except (json.JSONDecodeError, KeyError, TypeError): return None, 'la respuesta guardada está dañada'
     if os.path.exists(meta_ruta(f)):
-        try:
-            m = json.load(open(meta_ruta(f), encoding='utf-8'))
-            if m.get('voz_id') != voz_id or m.get('veloc') != veloc: return None, 'cambió la voz o la velocidad'
+        try: m = json.load(open(meta_ruta(f), encoding='utf-8'))
         except json.JSONDecodeError: return None, 'metadatos dañados'
+        if 'voice_settings' not in m:                      # metadatos de la versión anterior: solo voz y velocidad
+            if m.get('voz_id') != voz_id or m.get('veloc') != veloc: return None, 'cambió la voz o la velocidad'
+        else:
+            esperado = {'voz_id': voz_id, **AJUSTES}; dif = []
+            for k, v in esperado.items():
+                if k == 'voice_settings':
+                    dif += [f'voice_settings.{kk}' for kk in sorted(set(v) | set(m.get(k, {}))) if m.get(k, {}).get(kk) != v.get(kk)]
+                elif m.get(k) != v: dif.append(k)
+            if dif: return None, 'cambió: ' + ', '.join(dif)
     return r, 'ok'
 
 plan = [(f,) + cache_valida(f) for f in frs]
@@ -91,11 +120,10 @@ llamadas = 0; respuestas = {}
 for i, (f, r, _) in enumerate(plan):
     if r is not None:
         print(f'{f["id"]}: usando respuesta guardada', flush=True); respuestas[f['id']] = r; continue
-    cuerpo = {'text': f['texto'], 'model_id': 'eleven_multilingual_v2', 'language_code': 'es',
-              'voice_settings': {'stability': 0.35, 'similarity_boost': 0.8, 'style': 0.55, 'use_speaker_boost': True, 'speed': veloc}}
+    cuerpo = {'text': f['texto'], **json.loads(json.dumps(AJUSTES))}
     if i > 0: cuerpo['previous_text'] = textos[i - 1]
     if i < len(textos) - 1: cuerpo['next_text'] = textos[i + 1]
-    req = urllib.request.Request(f'https://api.elevenlabs.io/v1/text-to-speech/{voz_id}/with-timestamps?output_format=mp3_44100_128',
+    req = urllib.request.Request(f'{BASE}/v1/text-to-speech/{voz_id}/with-timestamps?output_format=mp3_44100_128',
                                  data=json.dumps(cuerpo).encode(), headers={'Content-Type': 'application/json', 'xi-api-key': CLAVE}, method='POST')
     llamadas += 1
     try: crudo = urllib.request.urlopen(req, timeout=120).read()
@@ -105,7 +133,7 @@ for i, (f, r, _) in enumerate(plan):
         print('Error de red:', e); sys.exit(1)
     tmp = cache_ruta(f) + '.tmp'
     open(tmp, 'wb').write(crudo); os.replace(tmp, cache_ruta(f))      # respuesta completa, tal cual llegó
-    json.dump({'voz_id': voz_id, 'veloc': veloc, 'texto': f['texto']}, open(meta_ruta(f), 'w', encoding='utf-8'), ensure_ascii=False)
+    json.dump({'voz_id': voz_id, 'texto': f['texto'], **json.loads(json.dumps(AJUSTES))}, open(meta_ruta(f), 'w', encoding='utf-8'), ensure_ascii=False)
     print(f'{f["id"]}: respuesta guardada en {cache_ruta(f)} ({len(crudo)} bytes)', flush=True)
     r, motivo = cache_valida(f)
     if r is None: print(f'La respuesta quedó guardada pero no sirve ({motivo}). Revisa {cache_ruta(f)}.'); sys.exit(1)
