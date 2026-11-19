@@ -1,0 +1,4 @@
+# Opcionales: nada del núcleo los necesita todavía.
+moviepy>=2.1          # edición programática alternativa (MoviePy 2.x: from moviepy import ...)
+websocket-client>=1.7 # progreso en vivo de ComfyUI por /ws (el pipeline usa sondeo de /history y no lo requiere)
+numpy>=1.26           # los scripts de Blender usan el numpy que trae Blender, no este

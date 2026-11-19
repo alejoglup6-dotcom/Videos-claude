@@ -14,3 +14,8 @@ __pycache__/
 
 # guion de trabajo en la raíz de video3d (los ejemplos viven en video3d/ejemplos/)
 video3d/guion.json
+
+# pipeline generativo: intermedios y videos finales
+pipeline/build/
+pipeline/salida/
+pipeline/.venv/

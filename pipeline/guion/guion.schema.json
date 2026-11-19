@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Guion del pipeline de video vertical",
+  "type": "object",
+  "required": ["proyecto", "formato", "escenas"],
+  "additionalProperties": false,
+  "properties": {
+    "proyecto": { "type": "string", "pattern": "^[a-z0-9_-]+$", "description": "Nombre de carpeta en build/ y del MP4 final" },
+    "titulo": { "type": "string" },
+    "formato": {
+      "type": "object", "required": ["ancho", "alto", "fps"], "additionalProperties": false,
+      "properties": { "ancho": { "type": "integer", "minimum": 144, "multipleOf": 2 }, "alto": { "type": "integer", "minimum": 256, "multipleOf": 2 }, "fps": { "enum": [24, 25, 30, 50, 60] } }
+    },
+    "estilo": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "look": { "enum": ["neutro", "neon_nocturno", "calido_atardecer", "frio_cinematografico"] },
+        "lut": { "type": "string", "description": "Archivo .cube opcional (lut3d de FFmpeg)" },
+        "grano": { "type": "number", "minimum": 0, "maximum": 40 },
+        "vineta": { "type": "boolean" },
+        "paleta": { "type": "array", "items": { "$ref": "#/$defs/color" }, "minItems": 2, "maxItems": 6 }
+      }
+    },
+    "audio": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "musica": { "type": ["object", "null"], "additionalProperties": false, "required": ["archivo"],
+          "properties": { "archivo": { "type": "string" }, "volumen_db": { "type": "number", "maximum": 6 }, "fade_in": { "type": "number", "minimum": 0 }, "fade_out": { "type": "number", "minimum": 0 } } },
+        "ducking": { "type": "boolean", "description": "Bajar la música cuando habla la voz (sidechaincompress)" },
+        "lufs": { "type": "number", "minimum": -30, "maximum": -8 }
+      }
+    },
+    "escenas": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/escena" } }
+  },
+  "$defs": {
+    "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+    "efecto": {
+      "oneOf": [
+        { "enum": ["shake", "glitch", "flash", "motion_blur", "bloom", "aberracion", "zoom_punch"] },
+        { "type": "object", "required": ["tipo"], "additionalProperties": false,
+          "properties": {
+            "tipo": { "enum": ["shake", "glitch", "flash", "motion_blur", "bloom", "aberracion", "zoom_punch"] },
+            "t": { "type": "number", "minimum": 0, "description": "Segundo (dentro de la escena) en que ocurre" },
+            "duracion": { "type": "number", "exclusiveMinimum": 0 },
+            "intensidad": { "type": "number", "minimum": 0, "maximum": 1 },
+            "periodo": { "type": "number", "exclusiveMinimum": 0, "description": "Si se da, el efecto se repite cada N segundos" }
+          } }
+      ]
+    },
+    "escena": {
+      "type": "object", "required": ["id", "duracion", "backend"], "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+        "duracion": { "type": "number", "minimum": 0.5, "maximum": 30 },
+        "backend": { "enum": ["lavfi", "imagen", "blender", "comfy_t2v", "comfy_i2v"] },
+        "prompt_visual": { "type": "string" },
+        "prompt_negativo": { "type": "string" },
+        "imagen": { "type": "string", "description": "Imagen de partida (backend imagen o comfy_i2v)" },
+        "camara": { "type": "object", "additionalProperties": false,
+          "properties": { "tipo": { "enum": ["fija", "dolly_in", "dolly_out", "orbita", "grua", "mano_alzada", "travelling"] },
+                          "lente_mm": { "type": "number", "minimum": 10, "maximum": 200 }, "apertura_f": { "type": "number", "minimum": 0.95, "maximum": 22 } } },
+        "movimiento": { "type": "object", "additionalProperties": false,
+          "properties": {
+            "zoom": { "type": "object", "additionalProperties": false, "properties": { "desde": { "type": "number", "minimum": 1 }, "hasta": { "type": "number", "minimum": 1 }, "curva": { "enum": ["lineal", "ease_in", "ease_out", "ease_in_out"] } } },
+            "pan": { "type": "object", "additionalProperties": false, "properties": { "dx": { "type": "number", "minimum": -0.3, "maximum": 0.3 }, "dy": { "type": "number", "minimum": -0.3, "maximum": 0.3 } } },
+            "shake": { "type": "number", "minimum": 0, "maximum": 0.1 }
+          } },
+        "texto": { "type": "object", "required": ["contenido"], "additionalProperties": false,
+          "properties": { "contenido": { "type": "string", "minLength": 1 }, "estilo": { "enum": ["slam", "fade", "pop"] }, "color": { "$ref": "#/$defs/color" },
+                          "tam": { "type": "number", "minimum": 0.02, "maximum": 0.2, "description": "Alto de letra como fracción del alto del video" },
+                          "posicion": { "enum": ["arriba", "centro", "abajo"] }, "inicio": { "type": "number", "minimum": 0 }, "fin": { "type": "number", "minimum": 0 } } },
+        "voz": { "type": "object", "additionalProperties": false, "properties": { "texto": { "type": "string" }, "archivo": { "type": "string" }, "inicio": { "type": "number", "minimum": 0 } } },
+        "musica": { "type": "object", "required": ["archivo"], "additionalProperties": false, "description": "Pieza musical que arranca en esta escena (además de la música global)",
+          "properties": { "archivo": { "type": "string" }, "volumen_db": { "type": "number", "maximum": 6 }, "inicio": { "type": "number", "minimum": 0 }, "fade_out": { "type": "number", "minimum": 0 } } },
+        "sfx": { "type": "array", "items": { "type": "object", "required": ["archivo"], "additionalProperties": false,
+                 "properties": { "archivo": { "type": "string" }, "t": { "type": "number", "minimum": 0 }, "volumen_db": { "type": "number", "maximum": 12 } } } },
+        "efectos": { "type": "array", "items": { "$ref": "#/$defs/efecto" } },
+        "transicion": { "type": "object", "additionalProperties": false, "description": "Transición HACIA la escena siguiente (se ignora en la última)",
+          "properties": { "tipo": { "type": "string" }, "duracion": { "type": "number", "minimum": 0, "maximum": 3 } } },
+        "ajustes": { "type": "object", "additionalProperties": false,
+          "properties": { "blender": { "type": "object" }, "comfy": { "type": "object" }, "lavfi": { "type": "object" } } }
+      }
+    }
+  }
+}

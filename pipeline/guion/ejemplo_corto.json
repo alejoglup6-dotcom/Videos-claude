@@ -1,0 +1,22 @@
+{
+  "proyecto": "ejemplo_corto",
+  "titulo": "Prueba rápida sin dependencias (backend lavfi)",
+  "formato": { "ancho": 1080, "alto": 1920, "fps": 30 },
+  "estilo": { "look": "neon_nocturno", "grano": 6, "vineta": true, "paleta": ["#1E0B52", "#E0307A", "#1FB6FF"] },
+  "escenas": [
+    { "id": "e01", "duracion": 2.5, "backend": "lavfi", "prompt_visual": "relleno de prueba",
+      "movimiento": { "zoom": { "desde": 1.0, "hasta": 1.25, "curva": "ease_out" }, "shake": 0.004 },
+      "texto": { "contenido": "PRUEBA DEL PIPELINE", "estilo": "slam", "color": "#FFFFFF" },
+      "efectos": [{ "tipo": "flash", "t": 0.0, "intensidad": 0.8 }, "bloom"],
+      "transicion": { "tipo": "wipeleft", "duracion": 0.5 } },
+    { "id": "e02", "duracion": 2.5, "backend": "lavfi", "ajustes": { "lavfi": { "c0": "#0B3A52", "c1": "#30E0A0", "tipo": "radial" } },
+      "movimiento": { "zoom": { "desde": 1.3, "hasta": 1.0, "curva": "ease_in_out" }, "pan": { "dx": 0.04 } },
+      "texto": { "contenido": "EFECTOS Y TEXTO", "estilo": "pop", "color": "#FFE86A", "posicion": "centro" },
+      "efectos": [{ "tipo": "glitch", "t": 1.0, "duracion": 0.3, "intensidad": 0.7 }, { "tipo": "shake", "t": 1.0, "duracion": 0.4, "intensidad": 0.6 }],
+      "transicion": { "tipo": "circleopen", "duracion": 0.5 } },
+    { "id": "e03", "duracion": 2.5, "backend": "lavfi", "ajustes": { "lavfi": { "c0": "#52200B", "c1": "#E0A030", "tipo": "spiral" } },
+      "movimiento": { "zoom": { "desde": 1.0, "hasta": 1.2 } },
+      "texto": { "contenido": "LISTO PARA TIKTOK", "estilo": "fade", "color": "#44E6FF", "posicion": "abajo" },
+      "efectos": ["aberracion", { "tipo": "zoom_punch", "t": 0.2 }, "motion_blur"] }
+  ]
+}
