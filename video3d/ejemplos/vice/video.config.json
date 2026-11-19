@@ -1,0 +1,175 @@
+{
+  "version": 1,
+  "titulo": "GTA 6: La nueva era de Vice City",
+  "etiqueta": null,
+  "pildoras": ["#FF2E93", "#1FB6FF", "#FF8A1F", "#25C98B"],
+  "frases": {
+    "p01": {
+      "claves": ["vice", "city", "vuelto", "grande"]
+    },
+    "p02": {
+      "claves": ["leonida", "ficticio", "florida"]
+    },
+    "p03": {
+      "claves": ["jason", "lucia", "conspiración"]
+    },
+    "p04": {
+      "claves": ["golpe", "sobrevivir", "oscuro", "soleado"]
+    },
+    "p05": {
+      "claves": ["rockstar", "evolución", "saga"]
+    },
+    "p06": {
+      "claves": ["llegó", "noviembre", "2026"]
+    },
+    "p07": {
+      "claves": ["nueva", "era", "vice"]
+    },
+    "p08": {
+      "claves": ["volverás", "vice", "city"]
+    }
+  },
+  "tomas": [
+    {
+      "frase": "p01",
+      "decorado": "vice",
+      "variante": "aerea",
+      "camara": "vice-aerea",
+      "texto": {
+        "txt": "VICE CITY HA VUELTO",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "frase": "p02",
+      "decorado": "mapa",
+      "variante": "costa",
+      "camara": "mapa-costa",
+      "texto": {
+        "txt": "BIENVENIDOS A LEONIDA",
+        "color": "#44E6FF"
+      }
+    },
+    {
+      "frase": "p02",
+      "decorado": "mapa",
+      "variante": "ciudad",
+      "camara": "mapa-ciudad",
+      "texto": {
+        "txt": "ESTADO FICTICIO",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p03",
+      "decorado": "vice",
+      "variante": "calle",
+      "camara": "vice-calle",
+      "texto": {
+        "txt": "JASON Y LUCIA",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p03",
+      "decorado": "vice",
+      "variante": "calle",
+      "camara": "vice-calle-baja",
+      "texto": {
+        "txt": "CONSPIRACIÓN",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "frase": "p04",
+      "decorado": "persecucion",
+      "variante": "detras",
+      "camara": "persecucion-detras",
+      "texto": {
+        "txt": "UN GOLPE QUE SALIÓ MAL",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p04",
+      "decorado": "persecucion",
+      "variante": "lateral",
+      "camara": "persecucion-lateral",
+      "texto": {
+        "txt": "SOBREVIVIR",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p05",
+      "decorado": "atardecer",
+      "variante": "orbita",
+      "camara": "atardecer-aerea",
+      "texto": {
+        "txt": "EL LADO OSCURO DEL SOL",
+        "color": "#FFE86A",
+        "tam": 92
+      }
+    },
+    {
+      "frase": "p06",
+      "decorado": "fondo",
+      "variante": "particulas",
+      "camara": "fondo-frente",
+      "texto": {
+        "txt": "19.11.2026",
+        "color": "#44E6FF"
+      }
+    },
+    {
+      "frase": "p06",
+      "decorado": "fondo",
+      "variante": "particulas",
+      "camara": "fondo-frente",
+      "texto": {
+        "txt": "PS5 | XBOX SERIES X|S",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "frase": "p07",
+      "decorado": "vice",
+      "variante": "calle",
+      "camara": "vice-calle-baja",
+      "texto": {
+        "txt": "LA NUEVA",
+        "color": "#FF4FA8"
+      }
+    },
+    {
+      "frase": "p07",
+      "decorado": "atardecer",
+      "variante": "helicoptero",
+      "camara": "atardecer-heli",
+      "texto": {
+        "txt": "ERA DE",
+        "color": "#FFE86A"
+      }
+    },
+    {
+      "frase": "p07",
+      "decorado": "vice",
+      "variante": "aerea",
+      "camara": "vice-aerea-lateral",
+      "texto": {
+        "txt": "GTA",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "frase": "p08",
+      "decorado": "fondo",
+      "variante": "negro",
+      "camara": "fondo-frente",
+      "texto": {
+        "txt": "¿VOLVERÁS A VICE CITY?",
+        "color": "#FFFFFF"
+      }
+    }
+  ]
+}

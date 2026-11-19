@@ -81,6 +81,7 @@ export function validar(config, tiempos, { camaras, decorados, usaDatos = new Se
     if (!t.texto || typeof t.texto.txt !== 'string' || !t.texto.txt.trim()) E(`${n}: texto.txt vacío o ausente.`);
     else if (t.texto.txt.length > 20) A(`${n}: el texto «${t.texto.txt}» es largo (${t.texto.txt.length} letras); se encogerá mucho para caber.`);
     if (t.texto && !HEX.test(t.texto.color ?? '')) E(`${n}: texto.color «${t.texto?.color}» no es un color #RRGGBB.`);
+    if (t.texto?.tam !== undefined && (!esNum(t.texto.tam) || t.texto.tam < 30 || t.texto.tam > 300)) E(`${n}: texto.tam debe ser un número entre 30 y 300 (es ${JSON.stringify(t.texto.tam)}).`);
     if (t.texto?.sub !== undefined && (typeof t.texto.sub !== 'string' || !t.texto.sub.trim())) E(`${n}: texto.sub debe ser un texto no vacío (o quitarlo).`);
   });
 

@@ -1,0 +1,10 @@
+{
+  "p01": [{ "tipo": "lluvia", "nivel": 0.8 }, { "tipo": "viento", "nivel": 0.5 }],
+  "p02": [{ "tipo": "whoosh", "hasta": 1.2, "nivel": 0.8 }, { "tipo": "pulso", "nivel": 0.5 }],
+  "p03": [{ "tipo": "motor", "nivel": 0.6 }, { "tipo": "tension", "nivel": 0.7 }],
+  "p04": [{ "tipo": "sirena", "nivel": 0.7 }, { "tipo": "motor", "rpm0": 40, "rpm1": 70, "nivel": 0.7 }, { "tipo": "llantas", "n": 4, "nivel": 0.7 }],
+  "p05": [{ "tipo": "viento", "nivel": 0.6 }],
+  "p06": [{ "tipo": "glitch", "n": 3, "hasta": 4.5, "nivel": 0.8 }, { "tipo": "riser", "desde": 5.0, "nivel": 0.7 }],
+  "p07": [{ "tipo": "impacto", "hasta": 1.8, "nivel": 0.9 }, { "tipo": "impacto", "desde": 2.6, "nivel": 1.0 }],
+  "p08": [{ "tipo": "impacto", "hasta": 1.5, "nivel": 0.5 }, { "tipo": "cola", "nivel": 0.8 }]
+}

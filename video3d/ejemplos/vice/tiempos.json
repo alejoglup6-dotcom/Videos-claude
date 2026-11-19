@@ -1,0 +1,587 @@
+{
+ "dur": 38.78,
+ "frases": [
+  {
+   "id": "p01",
+   "texto": "Vice City ha vuelto… y esta vez es más grande que nunca.",
+   "ini": 0.0,
+   "fin": 4.133,
+   "palabras": [
+    {
+     "w": "Vice",
+     "s": 0.0,
+     "e": 0.337
+    },
+    {
+     "w": "City",
+     "s": 0.372,
+     "e": 0.685
+    },
+    {
+     "w": "ha",
+     "s": 0.743,
+     "e": 0.801
+    },
+    {
+     "w": "vuelto…",
+     "s": 0.859,
+     "e": 1.416
+    },
+    {
+     "w": "y",
+     "s": 1.939,
+     "e": 1.997
+    },
+    {
+     "w": "esta",
+     "s": 2.055,
+     "e": 2.206
+    },
+    {
+     "w": "vez",
+     "s": 2.241,
+     "e": 2.357
+    },
+    {
+     "w": "es",
+     "s": 2.415,
+     "e": 2.485
+    },
+    {
+     "w": "más",
+     "s": 2.554,
+     "e": 2.717
+    },
+    {
+     "w": "grande",
+     "s": 2.752,
+     "e": 2.972
+    },
+    {
+     "w": "que",
+     "s": 3.007,
+     "e": 3.077
+    },
+    {
+     "w": "nunca.",
+     "s": 3.111,
+     "e": 4.133
+    }
+   ],
+   "oido": "Vice City ha vuelto… y esta vez es más grande que nunca."
+  },
+  {
+   "id": "p02",
+   "texto": "El juego ocurre en Leonida, un estado ficticio inspirado en Florida.",
+   "ini": 4.593,
+   "fin": 9.191,
+   "palabras": [
+    {
+     "w": "El",
+     "s": 4.593,
+     "e": 4.79
+    },
+    {
+     "w": "juego",
+     "s": 4.848,
+     "e": 5.139
+    },
+    {
+     "w": "ocurre",
+     "s": 5.22,
+     "e": 5.626
+    },
+    {
+     "w": "en",
+     "s": 5.684,
+     "e": 5.754
+    },
+    {
+     "w": "Leonida,",
+     "s": 5.812,
+     "e": 6.334
+    },
+    {
+     "w": "un",
+     "s": 6.613,
+     "e": 6.706
+    },
+    {
+     "w": "estado",
+     "s": 6.741,
+     "e": 7.008
+    },
+    {
+     "w": "ficticio",
+     "s": 7.078,
+     "e": 7.658
+    },
+    {
+     "w": "inspirado",
+     "s": 7.693,
+     "e": 8.076
+    },
+    {
+     "w": "en",
+     "s": 8.111,
+     "e": 8.169
+    },
+    {
+     "w": "Florida.",
+     "s": 8.204,
+     "e": 9.191
+    }
+   ],
+   "oido": "El juego ocurre en Leonida, un estado ficticio inspirado en Florida."
+  },
+  {
+   "id": "p03",
+   "texto": "Los protagonistas son Jason y Lucia, una pareja atrapada en una conspiración criminal.",
+   "ini": 9.651,
+   "fin": 15.038,
+   "palabras": [
+    {
+     "w": "Los",
+     "s": 9.651,
+     "e": 9.814
+    },
+    {
+     "w": "protagonistas",
+     "s": 9.86,
+     "e": 10.464
+    },
+    {
+     "w": "son",
+     "s": 10.522,
+     "e": 10.731
+    },
+    {
+     "w": "Jason",
+     "s": 10.812,
+     "e": 11.16
+    },
+    {
+     "w": "y",
+     "s": 11.195,
+     "e": 11.23
+    },
+    {
+     "w": "Lucia,",
+     "s": 11.288,
+     "e": 11.787
+    },
+    {
+     "w": "una",
+     "s": 12.124,
+     "e": 12.252
+    },
+    {
+     "w": "pareja",
+     "s": 12.286,
+     "e": 12.588
+    },
+    {
+     "w": "atrapada",
+     "s": 12.612,
+     "e": 13.006
+    },
+    {
+     "w": "en",
+     "s": 13.03,
+     "e": 13.076
+    },
+    {
+     "w": "una",
+     "s": 13.111,
+     "e": 13.215
+    },
+    {
+     "w": "conspiración",
+     "s": 13.273,
+     "e": 13.865
+    },
+    {
+     "w": "criminal.",
+     "s": 13.9,
+     "e": 15.038
+    }
+   ],
+   "oido": "Los protagonistas son Jason y Lucia, una pareja atrapada en una conspiración criminal."
+  },
+  {
+   "id": "p04",
+   "texto": "Cuando un golpe fácil sale mal, deben sobrevivir en el lado más oscuro del lugar más soleado de América.",
+   "ini": 15.498,
+   "fin": 21.396,
+   "palabras": [
+    {
+     "w": "Cuando",
+     "s": 15.498,
+     "e": 15.73
+    },
+    {
+     "w": "un",
+     "s": 15.777,
+     "e": 15.823
+    },
+    {
+     "w": "golpe",
+     "s": 15.858,
+     "e": 16.067
+    },
+    {
+     "w": "fácil",
+     "s": 16.102,
+     "e": 16.357
+    },
+    {
+     "w": "sale",
+     "s": 16.404,
+     "e": 16.578
+    },
+    {
+     "w": "mal,",
+     "s": 16.613,
+     "e": 16.938
+    },
+    {
+     "w": "deben",
+     "s": 17.147,
+     "e": 17.356
+    },
+    {
+     "w": "sobrevivir",
+     "s": 17.402,
+     "e": 17.855
+    },
+    {
+     "w": "en",
+     "s": 17.913,
+     "e": 17.983
+    },
+    {
+     "w": "el",
+     "s": 18.029,
+     "e": 18.087
+    },
+    {
+     "w": "lado",
+     "s": 18.157,
+     "e": 18.331
+    },
+    {
+     "w": "más",
+     "s": 18.412,
+     "e": 18.586
+    },
+    {
+     "w": "oscuro",
+     "s": 18.644,
+     "e": 18.935
+    },
+    {
+     "w": "del",
+     "s": 18.969,
+     "e": 19.074
+    },
+    {
+     "w": "lugar",
+     "s": 19.097,
+     "e": 19.411
+    },
+    {
+     "w": "más",
+     "s": 19.689,
+     "e": 19.863
+    },
+    {
+     "w": "soleado",
+     "s": 19.887,
+     "e": 20.235
+    },
+    {
+     "w": "de",
+     "s": 20.27,
+     "e": 20.316
+    },
+    {
+     "w": "América.",
+     "s": 20.351,
+     "e": 21.396
+    }
+   ],
+   "oido": "Cuando un golpe fácil sale mal, deben sobrevivir en el lado más oscuro del lugar más soleado de América."
+  },
+  {
+   "id": "p05",
+   "texto": "Rockstar lo describe como la evolución más grande e inmersiva de la saga.",
+   "ini": 21.856,
+   "fin": 25.943,
+   "palabras": [
+    {
+     "w": "Rockstar",
+     "s": 21.856,
+     "e": 22.239
+    },
+    {
+     "w": "lo",
+     "s": 22.286,
+     "e": 22.344
+    },
+    {
+     "w": "describe",
+     "s": 22.39,
+     "e": 22.715
+    },
+    {
+     "w": "como",
+     "s": 22.762,
+     "e": 22.924
+    },
+    {
+     "w": "la",
+     "s": 22.959,
+     "e": 23.017
+    },
+    {
+     "w": "evolución",
+     "s": 23.052,
+     "e": 23.47
+    },
+    {
+     "w": "más",
+     "s": 23.516,
+     "e": 23.656
+    },
+    {
+     "w": "grande",
+     "s": 23.702,
+     "e": 24.039
+    },
+    {
+     "w": "e",
+     "s": 24.143,
+     "e": 24.224
+    },
+    {
+     "w": "inmersiva",
+     "s": 24.259,
+     "e": 24.724
+    },
+    {
+     "w": "de",
+     "s": 24.758,
+     "e": 24.817
+    },
+    {
+     "w": "la",
+     "s": 24.851,
+     "e": 24.921
+    },
+    {
+     "w": "saga.",
+     "s": 24.956,
+     "e": 25.943
+    }
+   ],
+   "oido": "Rockstar lo describe como la evolución más grande e inmersiva de la saga."
+  },
+  {
+   "id": "p06",
+   "texto": "GTA 6 llegó el 19 de noviembre de 2026 a PlayStation 5 y Xbox Series X|S.",
+   "ini": 26.403,
+   "fin": 32.533,
+   "palabras": [
+    {
+     "w": "GTA",
+     "s": 26.403,
+     "e": 26.775
+    },
+    {
+     "w": "6",
+     "s": 26.821,
+     "e": 26.949
+    },
+    {
+     "w": "llegó",
+     "s": 27.018,
+     "e": 27.216
+    },
+    {
+     "w": "el",
+     "s": 27.239,
+     "e": 27.285
+    },
+    {
+     "w": "19",
+     "s": 27.332,
+     "e": 27.645
+    },
+    {
+     "w": "de",
+     "s": 27.75,
+     "e": 27.808
+    },
+    {
+     "w": "noviembre",
+     "s": 27.843,
+     "e": 28.191
+    },
+    {
+     "w": "de",
+     "s": 28.214,
+     "e": 28.272
+    },
+    {
+     "w": "2026",
+     "s": 28.33,
+     "e": 29.015
+    },
+    {
+     "w": "a",
+     "s": 29.352,
+     "e": 29.433
+    },
+    {
+     "w": "PlayStation",
+     "s": 29.491,
+     "e": 29.99
+    },
+    {
+     "w": "5",
+     "s": 30.06,
+     "e": 30.211
+    },
+    {
+     "w": "y",
+     "s": 30.362,
+     "e": 30.443
+    },
+    {
+     "w": "Xbox",
+     "s": 30.513,
+     "e": 30.861
+    },
+    {
+     "w": "Series",
+     "s": 30.966,
+     "e": 31.291
+    },
+    {
+     "w": "X|S.",
+     "s": 31.36,
+     "e": 32.533
+    }
+   ],
+   "oido": "GTA 6 llegó el 19 de noviembre de 2026 a PlayStation 5 y Xbox Series X|S."
+  },
+  {
+   "id": "p07",
+   "texto": "GTA 6 no es solo un juego… es una nueva era de Vice City.",
+   "ini": 32.993,
+   "fin": 36.522,
+   "palabras": [
+    {
+     "w": "GTA",
+     "s": 32.993,
+     "e": 33.318
+    },
+    {
+     "w": "6",
+     "s": 33.388,
+     "e": 33.573
+    },
+    {
+     "w": "no",
+     "s": 33.655,
+     "e": 33.736
+    },
+    {
+     "w": "es",
+     "s": 33.771,
+     "e": 33.829
+    },
+    {
+     "w": "solo",
+     "s": 33.852,
+     "e": 34.038
+    },
+    {
+     "w": "un",
+     "s": 34.073,
+     "e": 34.131
+    },
+    {
+     "w": "juego…",
+     "s": 34.166,
+     "e": 34.746
+    },
+    {
+     "w": "es",
+     "s": 34.932,
+     "e": 35.036
+    },
+    {
+     "w": "una",
+     "s": 35.094,
+     "e": 35.199
+    },
+    {
+     "w": "nueva",
+     "s": 35.234,
+     "e": 35.431
+    },
+    {
+     "w": "era",
+     "s": 35.466,
+     "e": 35.582
+    },
+    {
+     "w": "de",
+     "s": 35.617,
+     "e": 35.675
+    },
+    {
+     "w": "Vice",
+     "s": 35.721,
+     "e": 35.907
+    },
+    {
+     "w": "City.",
+     "s": 35.942,
+     "e": 36.522
+    }
+   ],
+   "oido": "GTA 6 no es solo un juego… es una nueva era de Vice City."
+  },
+  {
+   "id": "p08",
+   "texto": "¿Volverás a Vice City?",
+   "ini": 36.932,
+   "fin": 38.325,
+   "palabras": [
+    {
+     "w": "¿Volverás",
+     "s": 36.932,
+     "e": 37.443
+    },
+    {
+     "w": "a",
+     "s": 37.489,
+     "e": 37.512
+    },
+    {
+     "w": "Vice",
+     "s": 37.559,
+     "e": 37.745
+    },
+    {
+     "w": "City?",
+     "s": 37.78,
+     "e": 38.325
+    }
+   ],
+   "oido": "¿Volverás a Vice City?"
+  }
+ ]
+}

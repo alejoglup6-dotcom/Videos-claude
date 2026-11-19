@@ -29,6 +29,7 @@ corre "validador de configuración" node pruebas/prueba_validador.mjs
 corre "ejemplos y plantilla validan (validar_config)" bash -c "$(declare -f ejemplos_validos); RAIZ='$RAIZ'; ejemplos_validos"
 if [ "$SIN_RENDER" = 1 ]; then corre "generador de borrador (sin render)" node pruebas/prueba_generador.mjs; else corre "generador de borrador (con render de 3 cuadros)" node pruebas/prueba_generador.mjs --con-render; corre "decorados genéricos (render de 15 cuadros)" node pruebas/prueba_decorados.mjs; corre "decorados cinemáticos (render de 45 cuadros)" node pruebas/prueba_decorados_cine.mjs; fi
 corre "voz con servidor falso (python)" python3 pruebas/prueba_voz_sin_creditos.py
+[ -x "$RAIZ/.venv/bin/python" ] && corre "efectos de sonido (numpy, base silenciosa)" "$RAIZ/.venv/bin/python" pruebas/prueba_efectos.py || { TOTAL=$((TOTAL+1)); FALLAS+=("efectos de sonido: falta .venv (ejecuta instalar.sh)"); echo "  [FALLA] efectos de sonido: falta .venv (ejecuta instalar.sh)" >&2; }
 echo
 if [ ${#FALLAS[@]} -eq 0 ]; then echo "TODO OK: $TOTAL pruebas en $(( $(date +%s)-T0 )) s"; exit 0; fi
 echo "FALLARON ${#FALLAS[@]} de $TOTAL:"; for f in "${FALLAS[@]}"; do echo "  - $f"; done; exit 1

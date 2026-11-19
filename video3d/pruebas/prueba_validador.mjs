@@ -34,6 +34,8 @@ const casos = [
   ['toma sin cámara', (c) => { delete c.tomas[3].camara; }, 'E', 'falta "camara"'],
   ['texto vacío', (c) => { c.tomas[0].texto.txt = '  '; }, 'E', 'texto.txt vacío'],
   ['color de texto inválido', (c) => { c.tomas[0].texto.color = 'rojo'; }, 'E', 'texto.color'],
+  ['texto.tam fuera de rango', (c) => { c.tomas[0].texto.tam = 500; }, 'E', 'texto.tam debe ser'],
+  ['texto.tam que no es número', (c) => { c.tomas[0].texto.tam = 'grande'; }, 'E', 'texto.tam debe ser'],
   ['subtítulo del texto vacío', (c) => { c.tomas[0].texto.sub = ''; }, 'E', 'texto.sub'],
   ['píldora con color inválido', (c) => { c.pildoras[1] = 'azul'; }, 'E', 'pildoras[1]'],
   ['sin píldoras', (c) => { c.pildoras = []; }, 'E', '"pildoras"'],
