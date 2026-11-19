@@ -23,6 +23,7 @@ Los scripts de voz y música se corren **desde la carpeta de tu proyecto** (dond
    Genera `voz/narracion_raw.wav` y `voz/tiempos.json`. Guarda cada respuesta en `voz/r_<id>.json` antes de procesarla y la reutiliza si el texto no cambió (no vuelve a gastar créditos). Hay un guion de ejemplo en `ejemplos/guion_ejemplo.json` (`--guion ruta` para usarlo).
    La respuesta guardada solo se reutiliza si coinciden texto, voz, modelo, idioma y ajustes (`--modelo`, `--idioma`, `--estabilidad`, `--similitud`, `--estilo`, velocidad); si cambia algo, vuelve a llamar.
    `ELEVENLABS_BASE_URL` cambia la dirección de la API (solo para pruebas).
+   Si existe `voz/r_<id>.json` sin su `.meta.json`, se detiene (no se sabe con qué voz y ajustes se generó); `--reutilizar-sin-meta` la reutiliza bajo tu responsabilidad. Rangos: velocidad 0.7-1.2; estabilidad, similitud y estilo 0-1 (se validan antes de llamar).
    Con Kokoro: `voz_kokoro.py` y luego `tiempos_whisper.py` (usa `MODELOS_DIR`).
 3. **Música:** `python3 herramientas/musica_synthwave.py` → `audio/musica.wav` y `audio/efectos.wav`.
 4. Copia `tiempos.json` a `plantilla/src/tiempos.json` y ajusta `PLAN`, `DEFS`, `TEXTOS` y `CLAVES` en `plantilla/src/`.
