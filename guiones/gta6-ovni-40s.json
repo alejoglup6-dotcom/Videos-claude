@@ -1,0 +1,402 @@
+{
+ "id": "gta6-ovni-40s",
+ "titulo": "GTA 6: el OVNI sí te abduce (parte 2)",
+ "tema": "neon-costero",
+ "audio": {
+  "voz": {
+   "volumen": 1
+  },
+  "sfx": {
+   "volumen": 0.45,
+   "auto": false
+  },
+  "lufs": -18
+ },
+ "fuentes": [
+  {
+   "dato": "El OVNI aparece en el condado de Kelly, al este de Port Gellhorn, después de las 2:00 a. m. del juego, tras completar el primer capítulo",
+   "estado": "no_verificado",
+   "nota": "Dato aportado por el creador como «confirmado por jugadores». No pude corroborarlo en fuentes públicas (no encontré guías ni prensa que lo describan). Confírmalo en tu copia o con capturas de jugadores antes de publicar"
+  },
+  {
+   "dato": "Señal: carro estacionado con luces parpadeando, maletero abierto y ropa tirada; al seguir el rastro entre los árboles se ve la nave y, al volver al carro, te abduce y despiertas 3 días después",
+   "estado": "no_verificado",
+   "nota": "Igual que el anterior: sin fuente pública encontrada. La escena es una recreación estilizada"
+  },
+  {
+   "dato": "Trofeo «The Truth Is Out There»",
+   "estado": "no_verificado",
+   "nota": "No aparece en la guía de trofeos de PowerPyx que revisé (su lista es parcial)"
+  },
+  {
+   "dato": "«Lo dije antes del lanzamiento y nadie me creyó»",
+   "estado": "no_verificado",
+   "nota": "Afirmación personal del creador; no verificable desde aquí"
+  }
+ ],
+ "escenas": [
+  {
+   "id": "e1a-gancho",
+   "tipo": "ovni",
+   "variante": "cielo",
+   "duracion": 4.0,
+   "camara": "ovni-cielo",
+   "texto": {
+    "contenido": "LO DIJE ANTES DEL LANZAMIENTO Y NADIE ME CREYÓ",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 96,
+    "sub": "EL OVNI DE GTA 6 SÍ TE ABDUCE",
+    "color": "#FF4FA8"
+   },
+   "animacion": {
+    "shake": 0.1
+   },
+   "transicion": {
+    "tipo": "flash",
+    "duracion": 0.25
+   },
+   "sfx": [
+    {
+     "nombre": "zumbido_suave",
+     "t": 0.0
+    }
+   ],
+   "voz": {
+    "texto": "Lo dije antes del lanzamiento y nadie me creyó: el OVNI de GTA 6 SÍ te abduce… y despiertas 3 días después.",
+    "claves": [
+     "OVNI",
+     "abduce",
+     "3 días"
+    ]
+   }
+  },
+  {
+   "id": "e1b-gancho",
+   "tipo": "ovni",
+   "variante": "abduccion",
+   "duracion": 4.5,
+   "camara": "ovni-abduccion",
+   "texto": {
+    "contenido": "…Y DESPIERTAS 3 DÍAS DESPUÉS",
+    "estilo": "glitch",
+    "posicion": "arriba",
+    "tam": 120
+   },
+   "animacion": {
+    "shake": 0.1
+   },
+   "transicion": {
+    "tipo": "corte"
+   },
+   "sfx": [
+    {
+     "nombre": "abduccion_suave",
+     "t": 0.2
+    }
+   ]
+  },
+  {
+   "id": "e2-recap",
+   "tipo": "ovni",
+   "variante": "cielo",
+   "duracion": 2.5,
+   "camara": "ovni-lejos",
+   "texto": {
+    "contenido": "YA ESTÁ CONFIRMADO POR JUGADORES",
+    "estilo": "neon",
+    "posicion": "arriba",
+    "tam": 100
+   },
+   "animacion": {
+    "shake": 0.1
+   },
+   "transicion": {
+    "tipo": "zoom",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "destello_suave",
+     "t": 0.0
+    }
+   ],
+   "voz": {
+    "texto": "Ya lo confirmaron jugadores.",
+    "claves": [
+     "predicción",
+     "confirmaron"
+    ]
+   }
+  },
+  {
+   "id": "e3-paso1",
+   "tipo": "vice",
+   "variante": "aerea",
+   "duracion": 3.0,
+   "camara": "vice-aerea",
+   "texto": {
+    "contenido": "1. TERMINA EL CAPÍTULO 1",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 100
+   },
+   "animacion": {
+    "shake": 0.1
+   },
+   "transicion": {
+    "tipo": "whip",
+    "duracion": 0.3
+   },
+   "sfx": [
+    {
+     "nombre": "whoosh_suave",
+     "t": -0.15
+    }
+   ],
+   "voz": {
+    "texto": "Paso uno: termina el primer capítulo.",
+    "claves": [
+     "primer capítulo"
+    ]
+   }
+  },
+  {
+   "id": "e4-paso2",
+   "tipo": "ovni",
+   "variante": "reloj",
+   "duracion": 3.0,
+   "camara": "ovni-reloj",
+   "texto": {
+    "contenido": "2. DESPUÉS DE LAS 2:00 A. M.",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 100
+   },
+   "animacion": {
+    "shake": 0.1
+   },
+   "transicion": {
+    "tipo": "zoom",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "combo_suave",
+     "t": 0.2
+    }
+   ],
+   "voz": {
+    "texto": "Paso dos: después de las dos de la mañana.",
+    "claves": [
+     "dos",
+     "mañana"
+    ]
+   }
+  },
+  {
+   "id": "e5-paso3",
+   "tipo": "mapasecretos",
+   "variante": "costa",
+   "duracion": 4.0,
+   "camara": "mapa-secretos",
+   "texto": {
+    "contenido": "3. CONDADO DE KELLY",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 100,
+    "sub": "AL ESTE DE PORT GELLHORN"
+   },
+   "animacion": {
+    "shake": 0.1
+   },
+   "transicion": {
+    "tipo": "slide",
+    "duracion": 0.5
+   },
+   "sfx": [
+    {
+     "nombre": "pulso_suave",
+     "t": 0.0
+    }
+   ],
+   "voz": {
+    "texto": "Paso tres: condado de Kelly, al este de Port Gellhorn.",
+    "claves": [
+     "Kelly",
+     "Port",
+     "Gellhorn"
+    ]
+   }
+  },
+  {
+   "id": "e6-carro",
+   "tipo": "ovni",
+   "variante": "carro",
+   "duracion": 4.5,
+   "camara": "ovni-carro",
+   "texto": {
+    "contenido": "LA SEÑAL: CARRO CON LUCES PARPADEANDO",
+    "estilo": "neon",
+    "posicion": "arriba",
+    "tam": 84
+   },
+   "animacion": {
+    "shake": 0.1
+   },
+   "transicion": {
+    "tipo": "fade",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "estatica_suave",
+     "t": 0.0
+    }
+   ],
+   "voz": {
+    "texto": "Busca un carro con luces parpadeando, maletero abierto y ropa tirada.",
+    "claves": [
+     "carro",
+     "maletero",
+     "ropa"
+    ]
+   }
+  },
+  {
+   "id": "e7-rastro",
+   "tipo": "ovni",
+   "variante": "rastro",
+   "duracion": 3.5,
+   "camara": "ovni-rastro",
+   "texto": {
+    "contenido": "SIGUE EL RASTRO ENTRE LOS ÁRBOLES",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 84
+   },
+   "animacion": {
+    "shake": 0.1
+   },
+   "transicion": {
+    "tipo": "zoom",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "lista_suave",
+     "t": 0.0
+    }
+   ],
+   "voz": {
+    "texto": "Sigue el rastro entre los árboles… ahí está la nave.",
+    "claves": [
+     "rastro",
+     "nave"
+    ]
+   }
+  },
+  {
+   "id": "e8-abduccion",
+   "tipo": "ovni",
+   "variante": "abduccion",
+   "duracion": 4.0,
+   "camara": "ovni-abduccion",
+   "texto": {
+    "contenido": "VUELVE AL CARRO… DESPIERTAS 3 DÍAS DESPUÉS",
+    "estilo": "glitch",
+    "posicion": "arriba",
+    "tam": 84
+   },
+   "animacion": {
+    "shake": 0.1
+   },
+   "transicion": {
+    "tipo": "zoom",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "abduccion_suave",
+     "t": 0.5
+    }
+   ],
+   "voz": {
+    "texto": "Vuelve al carro y te abduce. Despiertas tres días después.",
+    "claves": [
+     "abduce",
+     "tres días"
+    ]
+   }
+  },
+  {
+   "id": "e9-trofeo",
+   "tipo": "ovni",
+   "variante": "trofeo",
+   "duracion": 3.0,
+   "camara": "ovni-trofeo",
+   "texto": {
+    "contenido": "THE TRUTH IS OUT THERE",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 100,
+    "sub": "TROFEO"
+   },
+   "animacion": {
+    "shake": 0.1
+   },
+   "transicion": {
+    "tipo": "flash",
+    "duracion": 0.25
+   },
+   "sfx": [
+    {
+     "nombre": "notificacion_suave",
+     "t": 0.2
+    }
+   ],
+   "voz": {
+    "texto": "Trofeo: The Truth Is Out There.",
+    "claves": [
+     "trofeo"
+    ]
+   }
+  },
+  {
+   "id": "e10-pregunta",
+   "tipo": "fondo",
+   "variante": "particulas",
+   "duracion": 3.5,
+   "camara": "fondo-frente",
+   "elementos": [
+    {
+     "tipo": "particulas",
+     "intensidad": 0.8
+    }
+   ],
+   "texto": {
+    "contenido": "¿LO VAS A BUSCAR ESTA NOCHE? SÍ / NO",
+    "estilo": "slam",
+    "tam": 110
+   },
+   "transicion": {
+    "tipo": "fade",
+    "duracion": 0.5
+   },
+   "sfx": [
+    {
+     "nombre": "reverb_suave",
+     "t": 0.0
+    }
+   ],
+   "voz": {
+    "texto": "¿Lo vas a buscar esta noche: sí o no?",
+    "claves": [
+     "noche",
+     "sí",
+     "no"
+    ]
+   }
+  }
+ ]
+}

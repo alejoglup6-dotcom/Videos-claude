@@ -37,3 +37,7 @@ Object.assign(CAMARAS, {
 });
 Object.assign(CAMARAS, { 'radio-cerca': c([0.8, 2.7, 8], [0.8, 2.5, 0], 36, 0.8) });
 Object.assign(CAMARAS, { 'ui-frente': c([0, 0, 15], [0, 0, 0], 48, 0.6) });
+Object.assign(CAMARAS, {
+  'ovni-cielo': c([0, 2.4, 14], [0, 5.5, -24], 58, 2.5), 'ovni-lejos': c([3, 2.0, 18], [0, 6, -30], 50, 1.5), 'ovni-reloj': c([0, 3.2, 13], [0, 3.6, 0], 46, 0.8),
+  'ovni-carro': c([3.6, 1.7, 3.2], [0, 1.0, -6], 52, 1.2), 'ovni-rastro': c([0.6, 1.5, 9], [1.5, 2.6, -24], 56, 6), 'ovni-abduccion': c([5.5, 2.0, 5], [1.6, 3.6, -6], 58, 1.2), 'ovni-trofeo': c([0, 2.8, 17], [0, 2.6, 0], 44, 1.0),
+});

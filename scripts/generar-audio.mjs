@@ -65,6 +65,12 @@ Object.assign(sfx, {
   secuencia_suave: () => { const x = new Float32Array(SR * 1.5); [0, 0.25, 0.5, 0.75].forEach((o, i) => tick(x, 0.02 + o, 450 + i * 60, 0.07, 0.8)); return suave(x, 0.15, 0.01, 0.35); },
 });
 
+// efectos de misterio (muy suaves, graves-medios)
+Object.assign(sfx, {
+  zumbido_suave: () => { const n = SR * 1.8, x = new Float32Array(n); let ph = 0; for (let i = 0; i < n; i++) { const t = i / SR; ph += (95 + 6 * Math.sin(t * 3)) / SR; x[i] = (Math.sin(2 * Math.PI * ph) + 0.35 * Math.sin(4 * Math.PI * ph)) * (0.7 + 0.3 * Math.sin(t * 9)); } return suave(x, 0.2, 0.5, 0.8); },
+  abduccion_suave: () => { const n = SR * 1.6, x = new Float32Array(n); let ph = 0; for (let i = 0; i < n; i++) { const t = i / n; ph += (140 + 260 * t * t) / SR; x[i] = Math.sin(2 * Math.PI * ph) * (0.4 + 0.6 * t); } return suave(x, 0.17, 0.4, 0.6); },
+});
+
 // ---------- música ----------
 const ESC = { Am: [57, [[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]]], Dm: [50, [[50, 53, 57], [46, 50, 53], [41, 45, 48], [48, 52, 55]]], Em: [52, [[52, 55, 59], [48, 52, 55], [43, 47, 50], [50, 54, 57]]] };
 export const musica = (g, duracion) => {
