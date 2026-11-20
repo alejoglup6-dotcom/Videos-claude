@@ -1,0 +1,328 @@
+{
+ "id": "gta6-ruta-50k-parte1-35s",
+ "titulo": "GTA 6: ruta de 50 mil dólares (parte 1)",
+ "tema": "neon-costero",
+ "audio": {
+  "voz": {
+   "volumen": 1
+  },
+  "sfx": {
+   "volumen": 0.45,
+   "auto": false
+  },
+  "lufs": -18
+ },
+ "fuentes": [
+  {
+   "dato": "Ruta de dinero en GTA 6: almacén al norte del condado de Mariana con subametralladora y $6,000 en una mesa, rifle, vans con ladrillos de $400, oficina, caja fuerte y carta coleccionable de $6,000",
+   "estado": "no_verificado",
+   "nota": "Todo tomado del video del propio creador (cuenta nexiph en TikTok, audio en inglés transcrito con Whisper; la transcripción confunde «bricks» con «breaks», aquí se interpreta como ladrillos de dinero). No pude verificarlo en fuentes públicas"
+  },
+  {
+   "dato": "Cifras: ~8,500 dólares tras el almacén, más de 10,000 tras la oficina",
+   "estado": "no_verificado",
+   "nota": "Del creador; «50 mil» es la meta de la ruta completa (partes 1 y 2), no se alcanza en este video"
+  },
+  {
+   "dato": "Material de video: clips del video propio del creador, con el audio original en inglés reemplazado por voz en español (ElevenLabs, Liam)",
+   "estado": "no_verificado",
+   "nota": "El creador afirma que el video es suyo; no puedo comprobarlo. Contiene gameplay de GTA 6 (Rockstar)"
+  }
+ ],
+ "escenas": [
+  {
+   "id": "e1-gancho",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 4.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-parte1/fuente.mp4",
+    "desde": 0.0,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "RUTA DE $50,000",
+    "estilo": "slam",
+    "posicion": "abajo",
+    "tam": 130,
+    "sub": "PARTE 1"
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "flash",
+    "duracion": 0.25
+   },
+   "sfx": [
+    {
+     "nombre": "clic_suave",
+     "t": 0.1
+    }
+   ],
+   "voz": {
+    "texto": "Ruta de 50 mil dólares en GTA 6: parte uno.",
+    "claves": [
+     "50 mil",
+     "parte uno"
+    ]
+   }
+  },
+  {
+   "id": "e2-almacen",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 3.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-parte1/fuente.mp4",
+    "desde": 3.0,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "ALMACÉN · MARIANA",
+    "estilo": "slam",
+    "posicion": "abajo",
+    "tam": 100
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "whip",
+    "duracion": 0.3
+   },
+   "sfx": [
+    {
+     "nombre": "whoosh_suave",
+     "t": -0.15
+    }
+   ],
+   "voz": {
+    "texto": "Ve al almacén al norte del condado de Mariana.",
+    "claves": [
+     "almacén",
+     "Mariana"
+    ]
+   }
+  },
+  {
+   "id": "e3-smg",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 5.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-parte1/fuente.mp4",
+    "desde": 11.5,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "SUBAMETRALLADORA + $6,000",
+    "estilo": "neon",
+    "posicion": "abajo",
+    "tam": 92
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "zoom",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "notificacion_suave",
+     "t": 0.6
+    }
+   ],
+   "voz": {
+    "texto": "Entra al almacén: una subametralladora y 6 mil dólares en la mesa.",
+    "claves": [
+     "subametralladora",
+     "6 mil"
+    ]
+   }
+  },
+  {
+   "id": "e4-rifle",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 5.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-parte1/fuente.mp4",
+    "desde": 17.0,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "UN RIFLE + LADRILLOS DE $400",
+    "estilo": "slam",
+    "posicion": "abajo",
+    "tam": 92
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "slide",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "pulso_suave",
+     "t": 0.0
+    }
+   ],
+   "voz": {
+    "texto": "Y un rifle que no te puedes perder. Las vans traen ladrillos de 400.",
+    "claves": [
+     "rifle",
+     "vans",
+     "400"
+    ]
+   }
+  },
+  {
+   "id": "e5-oficina",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 5.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-parte1/fuente.mp4",
+    "desde": 30.0,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "OFICINA: +$10,000",
+    "estilo": "neon",
+    "posicion": "abajo",
+    "tam": 100
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "fade",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "combo_suave",
+     "t": 0.3
+    }
+   ],
+   "voz": {
+    "texto": "Ya llevas 8,500. Entra a la oficina y pasas de 10 mil.",
+    "claves": [
+     "8,500",
+     "oficina",
+     "10 mil"
+    ]
+   }
+  },
+  {
+   "id": "e5b-contadora",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 3.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-parte1/fuente.mp4",
+    "desde": 36.0,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "PISTOLA Y CONTADORA DE DINERO",
+    "estilo": "neon",
+    "posicion": "abajo",
+    "tam": 88
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "corte"
+   },
+   "sfx": []
+  },
+  {
+   "id": "e6-caja",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 5.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-parte1/fuente.mp4",
+    "desde": 46.0,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "CAJA FUERTE + CARTA: $6,000",
+    "estilo": "slam",
+    "posicion": "abajo",
+    "tam": 92
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "zoom",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "candado_suave",
+     "t": 0.4
+    }
+   ],
+   "voz": {
+    "texto": "La caja fuerte: más efectivo y una carta coleccionable de 6 mil.",
+    "claves": [
+     "caja fuerte",
+     "carta",
+     "6 mil"
+    ]
+   }
+  },
+  {
+   "id": "e7-cierre",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 5.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-parte1/fuente.mp4",
+    "desde": 58.5,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "PARTE 2 YA DISPONIBLE",
+    "estilo": "slam",
+    "posicion": "abajo",
+    "tam": 110
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "fade",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "reverb_suave",
+     "t": 0.3
+    }
+   ],
+   "voz": {
+    "texto": "Sígueme para la parte dos.",
+    "claves": [
+     "parte dos"
+    ]
+   }
+  }
+ ]
+}
