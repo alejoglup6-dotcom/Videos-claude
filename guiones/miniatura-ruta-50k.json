@@ -1,0 +1,37 @@
+{
+ "id": "miniatura-ruta-50k",
+ "titulo": "Miniatura ruta 50k",
+ "tema": "neon-costero",
+ "audio": {
+  "sfx": {
+   "auto": false
+  },
+  "lufs": -18
+ },
+ "grano": false,
+ "escenas": [
+  {
+   "id": "m1",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 3.5,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-50k/fuente.mp4",
+    "desde": 83.3,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "GTA 6: RUTA DE $50,000",
+    "estilo": "slam",
+    "posicion": "abajo",
+    "tam": 160,
+    "sub": "PARTE 2"
+   },
+   "transicion": {
+    "tipo": "corte"
+   },
+   "sfx": []
+  }
+ ]
+}

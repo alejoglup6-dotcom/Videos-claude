@@ -1,0 +1,372 @@
+{
+ "id": "gta6-ruta-50k-35s",
+ "titulo": "GTA 6: ruta de 50 mil dólares (parte 2)",
+ "tema": "neon-costero",
+ "audio": {
+  "voz": {
+   "volumen": 1
+  },
+  "sfx": {
+   "volumen": 0.45,
+   "auto": false
+  },
+  "lufs": -18
+ },
+ "fuentes": [
+  {
+   "dato": "Ruta de dinero en GTA 6: ~19 mil en el primer punto y ~34 mil en total tras el segundo (Pelican Valley)",
+   "estado": "no_verificado",
+   "nota": "Cifras y ruta tomadas del video del propio creador (cuenta nexiph en TikTok, audio en inglés transcrito con Whisper). No pude verificarlas en fuentes públicas. El título «50 mil» es la meta de la ruta completa, no se alcanza en este tramo"
+  },
+  {
+   "dato": "Códigos de caja fuerte 0072 y 0212, contraseña de la computadora y contenido (12 mil dólares y una subametralladora)",
+   "estado": "no_verificado",
+   "nota": "Del video del creador; los códigos podrían cambiar por partida. El video original muestra el nombre del arma («Crab Shack SMG»); aquí se dice solo «subametralladora»"
+  },
+  {
+   "dato": "Bote humeando que explota, ladrillos flotando ($1,600) y tiburón",
+   "estado": "no_verificado",
+   "nota": "Del video del creador; el propio creador dice no saber por qué explota el bote"
+  },
+  {
+   "dato": "Material de video: clips del video propio del creador, con audio original en inglés reemplazado por voz en español (ElevenLabs, Liam)",
+   "estado": "no_verificado",
+   "nota": "El creador afirma que el video es suyo; no puedo comprobarlo. Contiene gameplay de GTA 6 (Rockstar)"
+  }
+ ],
+ "escenas": [
+  {
+   "id": "e1-gancho",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 4.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-50k/fuente.mp4",
+    "desde": 0.0,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "RUTA DE $50,000",
+    "estilo": "slam",
+    "posicion": "abajo",
+    "tam": 130,
+    "sub": "PARTE 2"
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "flash",
+    "duracion": 0.25
+   },
+   "sfx": [
+    {
+     "nombre": "clic_suave",
+     "t": 0.1
+    }
+   ],
+   "voz": {
+    "texto": "Ruta de 50 mil dólares en GTA 6: parte dos.",
+    "claves": [
+     "50 mil",
+     "parte dos"
+    ]
+   }
+  },
+  {
+   "id": "e2-pelican",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 3.5,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-50k/fuente.mp4",
+    "desde": 8.0,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "PELICAN VALLEY",
+    "estilo": "slam",
+    "posicion": "abajo",
+    "tam": 110
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "whip",
+    "duracion": 0.3
+   },
+   "sfx": [
+    {
+     "nombre": "whoosh_suave",
+     "t": -0.15
+    }
+   ],
+   "voz": {
+    "texto": "Siguiente punto: los edificios de Pelican Valley.",
+    "claves": [
+     "Pelican Valley"
+    ]
+   }
+  },
+  {
+   "id": "e3-ruta",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 4.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-50k/fuente.mp4",
+    "desde": 14.9,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "NO USES EL MINIMAPA",
+    "estilo": "slam",
+    "posicion": "abajo",
+    "tam": 100
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "slide",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "pulso_suave",
+     "t": 0.0
+    }
+   ],
+   "voz": {
+    "texto": "Ve por esta ruta, no por el minimapa: hay un bote humeando.",
+    "claves": [
+     "ruta",
+     "minimapa",
+     "bote"
+    ]
+   }
+  },
+  {
+   "id": "e4-ladrillos",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 5.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-50k/fuente.mp4",
+    "desde": 22.6,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "LADRILLOS: $1,600",
+    "estilo": "neon",
+    "posicion": "abajo",
+    "tam": 100
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "zoom",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "destello_suave",
+     "t": 0.5
+    }
+   ],
+   "voz": {
+    "texto": "Ladrillos flotando: mil seiscientos. Ojo con el tiburón.",
+    "claves": [
+     "ladrillos",
+     "tiburón"
+    ]
+   }
+  },
+  {
+   "id": "e5-edificio",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 3.5,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-50k/fuente.mp4",
+    "desde": 35.2,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "EDIFICIO PRINCIPAL",
+    "estilo": "slam",
+    "posicion": "abajo",
+    "tam": 100
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "fade",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "combo_suave",
+     "t": 0.3
+    }
+   ],
+   "voz": {
+    "texto": "Enciende la luz del edificio y entra a la computadora.",
+    "claves": [
+     "edificio",
+     "luz",
+     "computadora"
+    ]
+   }
+  },
+  {
+   "id": "e6-caja",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 3.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-50k/fuente.mp4",
+    "desde": 46.0,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "CAJA FUERTE: 0072",
+    "estilo": "neon",
+    "posicion": "abajo",
+    "tam": 100
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "zoom",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "secuencia_suave",
+     "t": 0.5
+    }
+   ],
+   "voz": {
+    "texto": "Caja fuerte: cero cero siete dos.",
+    "claves": [
+     "contraseña",
+     "caja fuerte"
+    ]
+   }
+  },
+  {
+   "id": "e7-caseta",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 3.5,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-50k/fuente.mp4",
+    "desde": 66.0,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "CASETA: 0212",
+    "estilo": "neon",
+    "posicion": "abajo",
+    "tam": 110
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "whip",
+    "duracion": 0.3
+   },
+   "sfx": [
+    {
+     "nombre": "candado_suave",
+     "t": 0.4
+    }
+   ],
+   "voz": {
+    "texto": "Otro código: cero dos uno dos. En la caseta: doce mil y una subametralladora.",
+    "claves": [
+     "código",
+     "doce mil",
+     "subametralladora"
+    ]
+   }
+  },
+  {
+   "id": "e7b-bolsa",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 3.5,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-50k/fuente.mp4",
+    "desde": 70.0,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "BOLSA DE $12,000",
+    "estilo": "neon",
+    "posicion": "abajo",
+    "tam": 110
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "corte"
+   },
+   "sfx": []
+  },
+  {
+   "id": "e8-cierre",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 5.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-ruta-50k/fuente.mp4",
+    "desde": 82.0,
+    "cubrir": []
+   },
+   "texto": {
+    "contenido": "34 MIL EN 2 PUNTOS",
+    "estilo": "slam",
+    "posicion": "abajo",
+    "tam": 120
+   },
+   "animacion": {
+    "shake": 0.05
+   },
+   "transicion": {
+    "tipo": "fade",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "reverb_suave",
+     "t": 0.3
+    }
+   ],
+   "voz": {
+    "texto": "Total: 34 mil en dos puntos. Sígueme para la parte tres.",
+    "claves": [
+     "34 mil",
+     "probaste",
+     "parte tres"
+    ]
+   }
+  }
+ ]
+}
