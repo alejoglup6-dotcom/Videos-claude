@@ -143,6 +143,16 @@ export const Interfaz: React.FC<PropsEscena> = ({ t, u, k }) => {
       <Panel id="ui_ejemplo" w={4.2} h={0.6} pos={[0, 2.0, 0]} dibuja={(c, w, h) => { texto(c, 'SECUENCIA DE EJEMPLO', w / 2, h / 2, 24, '#8A93C8'); }} />
     </>);
   }
+  if (k === 8 || k === 9) {   // inventario con dos huecos que se llenan con las armas
+    const llena = k === 9; const r1 = llena ? 1 : cl((u - 0.6) / 0.2); const r2 = llena ? 1 : cl((u - 0.75) / 0.2);
+    cont = (<>
+      {[0, 1].map((i) => { const r = i ? r2 : r1; return (
+        <group key={i} position={[0, 1.6 - i * 2.8, 0]}>
+          <Panel id={`ui_slot_arma_${i}_${r > 0.5}`} w={5.2} h={2.3} pos={[0, 0, 0]} dibuja={(c, w, h) => { tarjeta(c, w, h, r > 0.5 ? C.ambar : '#3A4280', 30); if (r > 0.5) { c.fillStyle = '#E8ECFF'; if (i === 0) { c.beginPath(); c.roundRect(w * 0.3, h * 0.3, w * 0.28, h * 0.16, 8); c.fill(); c.beginPath(); c.roundRect(w * 0.58, h * 0.32, w * 0.2, h * 0.11, 8); c.fill(); c.beginPath(); c.moveTo(w * 0.33, h * 0.46); c.lineTo(w * 0.42, h * 0.46); c.lineTo(w * 0.4, h * 0.7); c.lineTo(w * 0.33, h * 0.7); c.closePath(); c.fill(); } else { c.beginPath(); c.roundRect(w * 0.28, h * 0.32, w * 0.5, h * 0.1, 8); c.fill(); c.beginPath(); c.roundRect(w * 0.28, h * 0.46, w * 0.4, h * 0.07, 8); c.fill(); c.beginPath(); c.moveTo(w * 0.28, h * 0.32); c.lineTo(w * 0.16, h * 0.5); c.lineTo(w * 0.16, h * 0.64); c.lineTo(w * 0.28, h * 0.5); c.closePath(); c.fill(); } texto(c, i === 0 ? 'PISTOLA CON SILENCIADOR' : 'ESCOPETA GORSE 425', w / 2, h * 0.86, 30, '#FFFFFF'); } else { texto(c, '?', w / 2, h / 2, 130, '#3A4280'); } }} />
+          {r > 0.5 ? <Brillo pos={[0, 0, 0.2]} esc={6} color={C.ambar} op={0.3 + 0.15 * pulso} /> : null}
+        </group>); })}
+    </>);
+  }
   return (<><Fondo t={t} /><group position={[0, 0.0, 0]} scale={0.68}>{cont}</group></>);
 };
 const PUNTO = new THREE.PlaneGeometry(0.2, 0.2); const PUNTO_M = new THREE.MeshBasicMaterial({ color: '#FFFFFF' });

@@ -13,6 +13,7 @@ import { TextoEscena } from '../components/TextoEscena';
 import { Subtitulos, crearTrozos } from '../components/Subtitulos';
 import { AudioVideo } from '../components/AudioVideo';
 import { Sello } from '../components/textoAnim';
+import { CapaVideo } from '../components/CapaVideo';
 import { Grano } from '../components/efectos';
 // @ts-ignore fuente local (SIL OFL)
 import fuenteUrl from '../assets/lilita-one-latin-400-normal.woff2';
@@ -44,6 +45,7 @@ export const VideoVertical: React.FC<Guion> = (g) => {
       <ConAberracion est={est}>
         <Escenario3D t={t} tr={tr} est={est} calidad={g._calidad ?? 'normal'} exposicion={tema.exposicion} />
       </ConAberracion>
+      {tr.escena.video ? <CapaVideo key={tr.escena.id} v={tr.escena.video} f0={tr.f0} f1={tr.f1} /> : null}
       <CapasElementos t={t} elementos={tr.escena.elementos} tema={tema} />
       <Grading tema={tema} />
       <TransicionCapas est={est} frame={frame} color={tr.i % 2 ? '#FFB0E0' : '#B0F0FF'} />

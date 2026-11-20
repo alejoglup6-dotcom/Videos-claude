@@ -22,6 +22,7 @@ export type Escena = {
   sfx?: (string | { nombre: string; t?: number; volumen?: number })[];
   voz?: { texto: string; inicio?: number; claves?: string[] };
   datos?: number[];
+  video?: { archivo: string; desde?: number; velocidad?: number; cubrir?: [number, number][] };   // clip de fondo (carpeta public/); cubrir = franjas (% de alto) que se difuminan para tapar subtítulos incrustados
   config?: Record<string, any>;                  // opciones libres que recibe el componente de la escena
 };
 

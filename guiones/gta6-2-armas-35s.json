@@ -1,0 +1,358 @@
+{
+ "id": "gta6-2-armas-35s",
+ "titulo": "GTA 6: 2 armas desde el inicio",
+ "tema": "neon-costero",
+ "audio": {
+  "voz": {
+   "volumen": 1
+  },
+  "sfx": {
+   "volumen": 0.45,
+   "auto": false
+  },
+  "lufs": -18
+ },
+ "fuentes": [
+  {
+   "dato": "Material de video: clips del video propio del creador (cuenta gustavoo2gh en TikTok), segmentados con la detección de escenas de OpenShorts",
+   "estado": "no_verificado",
+   "nota": "El creador afirma que el video es suyo; no puedo comprobarlo. Contiene gameplay de GTA 6 (Rockstar). Los subtítulos incrustados del original se difuminan"
+  },
+  {
+   "dato": "Ruta: casa → bote del muelle → Permit Keys (sur del mapa) → isla más al sur → barco espía abandonado → pistola con silenciador",
+   "estado": "no_verificado",
+   "nota": "Tomado del video del propio creador (subtítulos). No encontré fuentes públicas que lo confirmen; las búsquedas solo devolvieron listas de armas confirmadas, sin ubicaciones. Verifícalo en el juego antes de publicar"
+  },
+  {
+   "dato": "Segunda arma: escopeta «Gorse 425» en un bote abandonado junto a un tronco, más al norte",
+   "estado": "no_verificado",
+   "nota": "Igual: viene del video del creador. «Gorse 425» no aparece en las listas de armas que revisé (una lista menciona otra escopeta). El texto del video original se corta tras «425»"
+  },
+  {
+   "dato": "«Armas legendarias»",
+   "estado": "no_verificado",
+   "nota": "El video original lo dice en el título; aquí se usa solo «armas desde el inicio»"
+  }
+ ],
+ "escenas": [
+  {
+   "id": "e1-gancho",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 3.5,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-2-armas/fuente.mp4",
+    "desde": 3.9
+   },
+   "texto": {
+    "contenido": "2 ARMAS DESDE EL INICIO",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 110
+   },
+   "animacion": {
+    "shake": 0.06
+   },
+   "transicion": {
+    "tipo": "flash",
+    "duracion": 0.25
+   },
+   "sfx": [
+    {
+     "nombre": "clic_suave",
+     "t": 0.1
+    }
+   ],
+   "voz": {
+    "texto": "Cómo conseguir dos armas desde el inicio de GTA 6.",
+    "claves": [
+     "dos armas",
+     "inicio"
+    ]
+   }
+  },
+  {
+   "id": "e2-bote",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 3.5,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-2-armas/fuente.mp4",
+    "desde": 7.4
+   },
+   "texto": {
+    "contenido": "1. TOMA EL BOTE",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 110
+   },
+   "animacion": {
+    "shake": 0.06
+   },
+   "transicion": {
+    "tipo": "whip",
+    "duracion": 0.3
+   },
+   "sfx": [
+    {
+     "nombre": "whoosh_suave",
+     "t": -0.15
+    }
+   ],
+   "voz": {
+    "texto": "Primero ve a la casa y toma el bote del muelle.",
+    "claves": [
+     "casa",
+     "bote",
+     "muelle"
+    ]
+   }
+  },
+  {
+   "id": "e3-permit",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 4.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-2-armas/fuente.mp4",
+    "desde": 9.4
+   },
+   "texto": {
+    "contenido": "2. PERMIT KEYS",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 120,
+    "sub": "AL SUR DEL MAPA"
+   },
+   "animacion": {
+    "shake": 0.06
+   },
+   "transicion": {
+    "tipo": "slide",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "pulso_suave",
+     "t": 0.0
+    }
+   ],
+   "voz": {
+    "texto": "Abre el mapa y dirígete a Permit Keys, al sur del mapa.",
+    "claves": [
+     "mapa",
+     "Permit Keys",
+     "sur"
+    ]
+   }
+  },
+  {
+   "id": "e4-isla",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 3.5,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-2-armas/fuente.mp4",
+    "desde": 12.9
+   },
+   "texto": {
+    "contenido": "3. LA ISLA MÁS AL SUR",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 100
+   },
+   "animacion": {
+    "shake": 0.06
+   },
+   "transicion": {
+    "tipo": "zoom",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "motor_suave",
+     "t": 0.0
+    }
+   ],
+   "voz": {
+    "texto": "Ve hasta la isla más al sur.",
+    "claves": [
+     "isla",
+     "sur"
+    ]
+   }
+  },
+  {
+   "id": "e5-pistola",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 5.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-2-armas/fuente.mp4",
+    "desde": 16.4
+   },
+   "texto": {
+    "contenido": "PISTOLA CON SILENCIADOR",
+    "estilo": "neon",
+    "posicion": "arriba",
+    "tam": 96
+   },
+   "animacion": {
+    "shake": 0.06
+   },
+   "transicion": {
+    "tipo": "fade",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "destello_suave",
+     "t": 1.0
+    }
+   ],
+   "voz": {
+    "texto": "Junto a un barco espía abandonado encontrarás una pistola con silenciador.",
+    "claves": [
+     "barco espía",
+     "pistola",
+     "silenciador"
+    ]
+   }
+  },
+  {
+   "id": "e6-norte",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 3.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-2-armas/fuente.mp4",
+    "desde": 21.9
+   },
+   "texto": {
+    "contenido": "LA SEGUNDA: MÁS AL NORTE",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 100
+   },
+   "animacion": {
+    "shake": 0.06
+   },
+   "transicion": {
+    "tipo": "slide",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "pulso_suave",
+     "t": 0.0
+    }
+   ],
+   "voz": {
+    "texto": "La segunda: más al norte de esta isla, busca un bote abandonado junto a un tronco.",
+    "claves": [
+     "segunda",
+     "norte",
+     "tronco"
+    ]
+   }
+  },
+  {
+   "id": "e6b-norte",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 3.0,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-2-armas/fuente.mp4",
+    "desde": 25.0
+   },
+   "texto": {
+    "contenido": "UN BOTE JUNTO A UN TRONCO",
+    "estilo": "neon",
+    "posicion": "arriba",
+    "tam": 96
+   },
+   "animacion": {
+    "shake": 0.06
+   },
+   "transicion": {
+    "tipo": "corte"
+   },
+   "sfx": []
+  },
+  {
+   "id": "e7-escopeta",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 3.5,
+   "camara": "fondo-frente",
+   "video": {
+    "archivo": "clips/gta6-2-armas/fuente.mp4",
+    "desde": 29.4
+   },
+   "texto": {
+    "contenido": "ESCOPETA GORSE 425",
+    "estilo": "neon",
+    "posicion": "arriba",
+    "tam": 110
+   },
+   "animacion": {
+    "shake": 0.06
+   },
+   "transicion": {
+    "tipo": "zoom",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "notificacion_suave",
+     "t": 1.0
+    }
+   ],
+   "voz": {
+    "texto": "Ahí está la escopeta Gorse 425.",
+    "claves": [
+     "escopeta",
+     "Gorse"
+    ]
+   }
+  },
+  {
+   "id": "e8-cierre",
+   "tipo": "interfaz",
+   "variante": "armas-llenas",
+   "duracion": 6.0,
+   "camara": "ui-frente",
+   "texto": {
+    "contenido": "¿YA LAS TENÍAS?",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 130
+   },
+   "transicion": {
+    "tipo": "fade",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "reverb_suave",
+     "t": 0.3
+    }
+   ],
+   "voz": {
+    "texto": "Dos armas desde el inicio. ¿Ya las tenías? Sígueme para más trucos y secretos.",
+    "claves": [
+     "armas",
+     "trucos",
+     "secretos"
+    ]
+   }
+  }
+ ]
+}
