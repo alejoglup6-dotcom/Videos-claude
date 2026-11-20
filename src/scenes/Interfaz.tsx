@@ -66,7 +66,7 @@ const flecha = (dir: 'u' | 'r' | 'd' | 'l', on: boolean) => lienzo(`ui_flecha_${
 const ficha = (id: string, s: string, col: string) => lienzo(id, 256, 128, (c) => { tarjeta(c, 256, 128, col, 30); texto(c, s, 128, 68, 62, col); });
 const contador = (n: number) => lienzo(`ui_n_${n}`, 384, 128, (c) => { texto(c, `${n}/91`, 192, 68, 104, '#FFFFFF'); });
 
-export const Interfaz: React.FC<PropsEscena> = ({ t, u, k }) => {
+export const Interfaz: React.FC<PropsEscena> = ({ t, u, k, config }) => {
   const e = ease(u); const pulso = 0.5 + 0.5 * Math.sin(t * 3);
   let cont: React.ReactNode = null;
   if (k === 0) cont = (   // mando
@@ -153,7 +153,7 @@ export const Interfaz: React.FC<PropsEscena> = ({ t, u, k }) => {
         </group>); })}
     </>);
   }
-  return (<><Fondo t={t} /><group position={[0, 0.0, 0]} scale={0.68}>{cont}</group></>);
+  return (<><Fondo t={t} /><group position={[0, config?.y ?? 0.0, 0]} scale={config?.escala ?? 0.68}>{cont}</group></>);
 };
 const PUNTO = new THREE.PlaneGeometry(0.2, 0.2); const PUNTO_M = new THREE.MeshBasicMaterial({ color: '#FFFFFF' });
 const Puntos: React.FC<{ f: number }> = ({ f }) => {

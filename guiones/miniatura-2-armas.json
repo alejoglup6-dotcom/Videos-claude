@@ -1,0 +1,35 @@
+{
+ "id": "miniatura-2-armas",
+ "titulo": "Miniatura 2 armas",
+ "tema": "neon-costero",
+ "audio": {
+  "sfx": {
+   "auto": false
+  },
+  "lufs": -18
+ },
+ "grano": false,
+ "escenas": [
+  {
+   "id": "m1",
+   "tipo": "interfaz",
+   "variante": "armas-llenas",
+   "duracion": 3.5,
+   "camara": "ui-frente",
+   "texto": {
+    "contenido": "GTA 6: 2 ARMAS DESDE EL INICIO",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 135
+   },
+   "transicion": {
+    "tipo": "corte"
+   },
+   "sfx": [],
+   "config": {
+    "escala": 1.0,
+    "y": -1.5
+   }
+  }
+ ]
+}
