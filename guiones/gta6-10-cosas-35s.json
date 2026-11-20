@@ -1,0 +1,518 @@
+{
+ "id": "gta6-10-cosas-35s",
+ "titulo": "GTA 6: 10 cosas que debes hacer primero",
+ "tema": "neon-costero",
+ "audio": {
+  "musica": {
+   "generar": {
+    "bpm": 120,
+    "escala": "Dm",
+    "semilla": 31
+   },
+   "volumen": 0.5
+  },
+  "voz": {
+   "volumen": 1
+  },
+  "sfx": {
+   "volumen": 0.8
+  },
+  "ducking": 0.55
+ },
+ "fuentes": [
+  {
+   "dato": "Hay edificios y locales (bares, clubes, tiendas) en los que se puede entrar",
+   "estado": "verificado",
+   "nota": "Rob Nelson (Rockstar North) confirmó un número «enorme» de edificios enterables (Beebom, GTA Intel). No se afirma cuáles ni cuántos"
+  },
+  {
+   "dato": "El teléfono es un objeto físico en el mundo y sirve para varias funciones",
+   "estado": "verificado",
+   "nota": "Confirmado por Rockstar según Beebom y GTA Intel. No se nombra ninguna app en el video: la lista completa es en parte filtración"
+  },
+  {
+   "dato": "Las gasolineras existen y se puede repostar",
+   "estado": "verificado",
+   "nota": "Rob Nelson habló del repostaje (~10 s) según Dexerto, PC Gamer y GamesRadar; algunas guías aún lo marcan como «no confirmado del todo». El video solo dice «para en una gasolinera», no describe ninguna mecánica"
+  },
+  {
+   "dato": "Los pantanos de Grassrivers (inspirados en los Everglades) se pueden explorar",
+   "estado": "verificado",
+   "nota": "Beebom (guía de Grassrivers); ya usado en el video anterior"
+  },
+  {
+   "dato": "Hay autos que conducir y una ciudad abierta que explorar",
+   "estado": "verificado",
+   "nota": "Núcleo del juego; sin cifras ni mecánicas específicas"
+  },
+  {
+   "dato": "«Mira el atardecer»",
+   "estado": "no_verificado",
+   "nota": "Es una sugerencia de ambiente, no una mecánica. No se afirma ningún sistema horario ni recompensa. Revísalo si lo quieres como «cosa que hacer»"
+  }
+ ],
+ "escenas": [
+  {
+   "id": "e1-gancho",
+   "tipo": "vice",
+   "variante": "aerea",
+   "duracion": 4.5,
+   "camara": "vice-aerea",
+   "elementos": [
+    {
+     "tipo": "particulas",
+     "intensidad": 0.7
+    },
+    {
+     "tipo": "neon"
+    }
+   ],
+   "texto": {
+    "contenido": "SI ENTRAS A GTA 6…",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 200
+   },
+   "animacion": {
+    "shake": 0.4,
+    "empuje": 24,
+    "zoom_punch": true
+   },
+   "transicion": {
+    "tipo": "flash",
+    "duracion": 0.3
+   },
+   "musica": {
+    "intensidad": 0.95,
+    "golpe": true
+   },
+   "sfx": [
+    "motor",
+    "impacto"
+   ],
+   "voz": {
+    "texto": "Si acabas de entrar a GTA 6, haz estas 10 cosas primero.",
+    "claves": [
+     "10",
+     "primero"
+    ]
+   }
+  },
+  {
+   "id": "e2-ciudad",
+   "tipo": "vice",
+   "variante": "calle",
+   "duracion": 3.5,
+   "camara": "vice-calle",
+   "elementos": [
+    {
+     "tipo": "neon"
+    }
+   ],
+   "texto": {
+    "contenido": "1. EXPLORA LA CIUDAD",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 110
+   },
+   "transicion": {
+    "tipo": "flash",
+    "duracion": 0.3
+   },
+   "musica": {
+    "intensidad": 0.8
+   },
+   "sfx": [
+    "whoosh"
+   ],
+   "voz": {
+    "texto": "Explora la ciudad.",
+    "claves": [
+     "ciudad"
+    ]
+   }
+  },
+  {
+   "id": "e3-auto",
+   "tipo": "conduccion",
+   "variante": "avenida",
+   "duracion": 3.0,
+   "camara": "conduccion-lado",
+   "elementos": [
+    {
+     "tipo": "lineas_velocidad"
+    },
+    {
+     "tipo": "neon"
+    }
+   ],
+   "texto": {
+    "contenido": "2. PRUEBA UN AUTO",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 120
+   },
+   "transicion": {
+    "tipo": "whip",
+    "duracion": 0.36
+   },
+   "musica": {
+    "intensidad": 0.85
+   },
+   "sfx": [
+    "motor",
+    {
+     "nombre": "whoosh",
+     "t": 0.4
+    }
+   ],
+   "voz": {
+    "texto": "Prueba un auto.",
+    "claves": [
+     "auto"
+    ]
+   }
+  },
+  {
+   "id": "e4-atardecer",
+   "tipo": "playaatardecer",
+   "variante": "mar",
+   "duracion": 3.0,
+   "camara": "playa-atardecer",
+   "elementos": [
+    {
+     "tipo": "particulas",
+     "intensidad": 0.8
+    }
+   ],
+   "texto": {
+    "contenido": "3. MIRA EL ATARDECER",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 110
+   },
+   "transicion": {
+    "tipo": "zoom",
+    "duracion": 0.5
+   },
+   "musica": {
+    "intensidad": 0.6
+   },
+   "sfx": [
+    "agua",
+    "suave"
+   ],
+   "voz": {
+    "texto": "Mira el atardecer.",
+    "claves": [
+     "atardecer"
+    ]
+   }
+  },
+  {
+   "id": "e5-gasolinera",
+   "tipo": "gasolinera",
+   "variante": "noche",
+   "duracion": 3.0,
+   "camara": "gasolinera",
+   "elementos": [
+    {
+     "tipo": "neon"
+    }
+   ],
+   "texto": {
+    "contenido": "4. PARA EN UNA GASOLINERA",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 100
+   },
+   "transicion": {
+    "tipo": "fade",
+    "duracion": 0.3
+   },
+   "musica": {
+    "intensidad": 0.7
+   },
+   "sfx": [
+    "motor",
+    {
+     "nombre": "suave",
+     "t": 1.4
+    }
+   ],
+   "voz": {
+    "texto": "Para en una gasolinera.",
+    "claves": [
+     "gasolinera"
+    ]
+   }
+  },
+  {
+   "id": "e6-local",
+   "tipo": "local",
+   "variante": "bar",
+   "duracion": 3.0,
+   "camara": "local-bar",
+   "elementos": [
+    {
+     "tipo": "neon"
+    }
+   ],
+   "texto": {
+    "contenido": "5. ENTRA A UN LOCAL",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 110
+   },
+   "transicion": {
+    "tipo": "corte"
+   },
+   "musica": {
+    "intensidad": 0.75
+   },
+   "sfx": [
+    {
+     "nombre": "impacto",
+     "t": 0.05,
+     "volumen": 0.6
+    },
+    {
+     "nombre": "suave",
+     "t": 1.2
+    }
+   ],
+   "voz": {
+    "texto": "Entra a un local.",
+    "claves": [
+     "local"
+    ]
+   }
+  },
+  {
+   "id": "e7-telefono",
+   "tipo": "telefono",
+   "variante": "mano",
+   "duracion": 3.0,
+   "camara": "telefono-mano",
+   "elementos": [
+    {
+     "tipo": "neon"
+    }
+   ],
+   "texto": {
+    "contenido": "6. REVISA EL TELÉFONO",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 110
+   },
+   "transicion": {
+    "tipo": "whip",
+    "duracion": 0.36
+   },
+   "musica": {
+    "intensidad": 0.75
+   },
+   "sfx": [
+    {
+     "nombre": "ping",
+     "t": 0.7
+    },
+    {
+     "nombre": "whoosh",
+     "t": 0.1
+    }
+   ],
+   "voz": {
+    "texto": "Revisa el teléfono.",
+    "claves": [
+     "teléfono"
+    ]
+   }
+  },
+  {
+   "id": "e8-pantano",
+   "tipo": "pantano",
+   "variante": "orilla",
+   "duracion": 3.5,
+   "camara": "pantano-orilla",
+   "elementos": [
+    {
+     "tipo": "particulas",
+     "intensidad": 0.7
+    },
+    {
+     "tipo": "neon"
+    }
+   ],
+   "texto": {
+    "contenido": "7. EXPLORA LOS PANTANOS",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 100
+   },
+   "transicion": {
+    "tipo": "zoom",
+    "duracion": 0.45
+   },
+   "musica": {
+    "intensidad": 0.7
+   },
+   "sfx": [
+    "agua"
+   ],
+   "voz": {
+    "texto": "Explora los pantanos.",
+    "claves": [
+     "pantanos"
+    ]
+   }
+  },
+  {
+   "id": "e9a-montaje",
+   "tipo": "vice",
+   "variante": "calle",
+   "duracion": 1.0,
+   "camara": "vice-calle",
+   "texto": {
+    "contenido": "8, 9 Y 10: TÚ DECIDES",
+    "estilo": "neon",
+    "tam": 120
+   },
+   "transicion": {
+    "tipo": "slide",
+    "duracion": 0.4
+   },
+   "musica": {
+    "intensidad": 1.0,
+    "golpe": true
+   },
+   "sfx": [
+    "impacto"
+   ],
+   "voz": {
+    "texto": "Y las últimas tres… tú decides.",
+    "claves": [
+     "tres",
+     "decides"
+    ]
+   }
+  },
+  {
+   "id": "e9b-montaje",
+   "tipo": "conduccion",
+   "variante": "avenida",
+   "duracion": 1.0,
+   "camara": "conduccion-lado",
+   "texto": {
+    "contenido": "8, 9 Y 10: TÚ DECIDES",
+    "estilo": "neon",
+    "tam": 120
+   },
+   "transicion": {
+    "tipo": "camara_rapida",
+    "duracion": 0.3
+   },
+   "musica": {
+    "intensidad": 1.0
+   },
+   "sfx": [
+    "impacto"
+   ]
+  },
+  {
+   "id": "e9c-montaje",
+   "tipo": "playaatardecer",
+   "variante": "mar",
+   "duracion": 1.0,
+   "camara": "playa-atardecer",
+   "texto": {
+    "contenido": "8, 9 Y 10: TÚ DECIDES",
+    "estilo": "neon",
+    "tam": 120
+   },
+   "transicion": {
+    "tipo": "flash",
+    "duracion": 0.2
+   },
+   "musica": {
+    "intensidad": 1.0
+   },
+   "sfx": [
+    "impacto"
+   ]
+  },
+  {
+   "id": "e9d-montaje",
+   "tipo": "gasolinera",
+   "variante": "noche",
+   "duracion": 1.0,
+   "camara": "gasolinera",
+   "texto": {
+    "contenido": "8, 9 Y 10: TÚ DECIDES",
+    "estilo": "neon",
+    "tam": 120
+   },
+   "transicion": {
+    "tipo": "camara_rapida",
+    "duracion": 0.3
+   },
+   "musica": {
+    "intensidad": 1.0
+   },
+   "sfx": [
+    "impacto"
+   ]
+  },
+  {
+   "id": "e9e-montaje",
+   "tipo": "local",
+   "variante": "bar",
+   "duracion": 0.5,
+   "camara": "local-bar",
+   "texto": {
+    "contenido": "8, 9 Y 10: TÚ DECIDES",
+    "estilo": "neon",
+    "tam": 120
+   },
+   "transicion": {
+    "tipo": "flash",
+    "duracion": 0.2
+   },
+   "musica": {
+    "intensidad": 1.0,
+    "riser": true
+   },
+   "sfx": [
+    "impacto"
+   ]
+  },
+  {
+   "id": "e10-pregunta",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 4.0,
+   "camara": "fondo-frente",
+   "texto": {
+    "contenido": "¿QUÉ HARÍAS PRIMERO?",
+    "estilo": "slam",
+    "tam": 130
+   },
+   "transicion": {
+    "tipo": "fade",
+    "duracion": 0.6
+   },
+   "musica": {
+    "intensidad": 0.4
+   },
+   "sfx": [
+    "cierre"
+   ],
+   "voz": {
+    "texto": "¿Qué harías primero?",
+    "claves": [
+     "primero"
+    ]
+   }
+  }
+ ]
+}

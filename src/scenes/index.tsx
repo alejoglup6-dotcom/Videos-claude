@@ -17,6 +17,7 @@ import { MapaFauna } from './MapaFauna';
 import { MapaSecretos } from './MapaSecretos';
 import { RegistroFauna } from './RegistroFauna';
 import { PantanoLancha } from './PantanoLancha';
+import { Conduccion, PlayaAtardecer, Gasolinera, Local, Telefono } from './Primeros';
 
 const Vice: React.FC<PropsEscena> = (p) => (p.k === 1 ? <CalleSiluetas {...p} /> : p.k === 2 ? <PlayaNocturna {...p} /> : <CiudadAerea {...p} />);
 const NOCHE_LUZ = { amb: ['#7A5AFF', 0.7], sol: ['#8AA0FF', 1.2], relleno: ['#FF4FA8', 1.3] } as const;
@@ -35,6 +36,11 @@ export const ESCENAS: Record<string, DefinicionEscena> = {
   mapafauna: { variantes: ['costa'], niebla: ['#070B26', 45, 130], cielo: () => 'estudio', luz: { amb: ['#9AA8FF', 1.0], sol: ['#FFFFFF', 1.5], relleno: ['#FF4FA8', 0.8] }, camara: 'mapa-fauna', Componente: MapaFauna },
   mapasecretos: { variantes: ['costa'], niebla: ['#070B26', 45, 130], cielo: () => 'estudio', luz: { amb: ['#9AA8FF', 1.0], sol: ['#FFFFFF', 1.5], relleno: ['#FF4FA8', 0.8] }, camara: 'mapa-secretos', Componente: MapaSecretos },
   registro: { variantes: ['aves'], niebla: ['#060A24', 60, 160], cielo: () => 'negro', luz: { amb: ['#FFFFFF', 0.8], sol: ['#B07CFF', 0.5], relleno: ['#FF4FA8', 0.5] }, camara: 'registro-frente', Componente: RegistroFauna },
-  pantano: { variantes: ['lancha'], niebla: ['#0B2A30', 12, 85], cielo: () => 'noche', luz: { amb: ['#6A9AFF', 0.8], sol: ['#8AA0FF', 1.0], relleno: ['#FFE2CC', 0.9] }, camara: 'pantano-lancha', Componente: PantanoLancha },
+  pantano: { variantes: ['lancha', 'orilla'], niebla: ['#0B2A30', 12, 85], cielo: () => 'noche', luz: { amb: ['#6A9AFF', 0.8], sol: ['#8AA0FF', 1.0], relleno: ['#FFE2CC', 0.9] }, camara: 'pantano-lancha', Componente: PantanoLancha },
+  conduccion: { variantes: ['avenida'], niebla: ['#12082E', 25, 160], cielo: () => 'noche', luz: { amb: ['#7A5AFF', 0.7], sol: ['#8AA0FF', 1.0], relleno: ['#FFE2CC', 0.9] }, camara: 'conduccion-lado', Componente: Conduccion },
+  playaatardecer: { variantes: ['mar'], niebla: ['#8A2A7A', 60, 260], cielo: () => 'ocaso', luz: { amb: ['#E08AFF', 0.75], sol: ['#FF9A5A', 2.2], relleno: ['#FFD9C0', 0.9] }, camara: 'playa-atardecer', Componente: PlayaAtardecer },
+  gasolinera: { variantes: ['noche'], niebla: ['#12082E', 30, 150], cielo: () => 'noche', luz: { amb: ['#7A5AFF', 0.8], sol: ['#8AA0FF', 1.0], relleno: ['#FFE2CC', 1.0] }, camara: 'gasolinera', Componente: Gasolinera },
+  local: { variantes: ['bar'], niebla: ['#0A0618', 20, 60], cielo: () => 'negro', luz: { amb: ['#9A7AFF', 0.9], sol: ['#B07CFF', 0.6], relleno: ['#FF4FA8', 0.9] }, camara: 'local-bar', Componente: Local },
+  telefono: { variantes: ['mano'], niebla: ['#12082E', 30, 120], cielo: () => 'noche', luz: { amb: ['#7A5AFF', 0.8], sol: ['#8AA0FF', 1.1], relleno: ['#FFE2CC', 1.0] }, camara: 'telefono-mano', Componente: Telefono },
   datos: { variantes: ['barras', 'cifra', 'ascenso'], usaDatos: true, niebla: ['#0B1030', 30, 110], cielo: () => 'estudio', luz: { amb: ['#9AA8FF', 0.9], sol: ['#FFFFFF', 1.6], relleno: ['#FF4FA8', 0.8] }, camara: 'datos-frente', Componente: Datos },
 };

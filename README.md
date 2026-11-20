@@ -120,6 +120,15 @@ Solo usa datos que Rockstar ha publicado (ver `fuentes` en el guion). Dos datos 
 - Costo medido: 60 cuadros de la escena de la lancha en 15 s (4 núcleos) → ~4–5 min estimados para el video completo.
 - Imágenes: `docs/secretos-contacto-antes-revision.png` (primera pasada) y `docs/secretos-contacto-despues.png` (tras corregir cámaras y la pantalla de registro).
 
+## Video 4: «GTA 6: 10 cosas que debes hacer primero» (35 s)
+
+- Guion: `guiones/gta6-10-cosas-35s.json` · prompts: `guiones/gta6-10-cosas-35s.prompts.md` · voz ElevenLabs (Liam) ya subida en `public/voces/gta6-10-cosas-35s/` (sin secrets).
+- **Desde el móvil:** Actions → **Renderizar video** → **Run workflow** → guion `gta6-10-cosas-35s`, calidad `normal`, **voz desactivada**.
+- Escenas nuevas en `src/scenes/Primeros.tsx`: `conduccion`, `playaatardecer`, `gasolinera`, `local`, `telefono`; y la variante `pantano/orilla` (personaje en un muelle). Cámaras nuevas en `src/camaras.ts`.
+- Solo son 7 de las 10 cosas; las 3 últimas se dejan al público (como pide el guion).
+- **Datos:** lo verificable (locales enterables, teléfono físico, gasolineras, Grassrivers) tiene fuente en `fuentes`. «Mira el atardecer» queda `no_verificado`: es una sugerencia de ambiente, no una mecánica confirmada. El video no nombra apps ni describe mecánicas.
+- Imágenes de revisión: `docs/10cosas-escenas-antes-ajuste.png` y `docs/10cosas-escenas-despues-ajuste.png`.
+
 ## Versión del video
 El video final no lleva textos técnicos en pantalla. La versión (commit), la calidad y la voz quedan en los metadatos del MP4 (`comment`) y en el log del workflow (línea «Versión: …»).
 
