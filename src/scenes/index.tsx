@@ -14,6 +14,9 @@ import { Datos } from './Datos';
 import { AguaNeon } from './AguaNeon';
 import { CalleDetalle } from './CalleDetalle';
 import { MapaFauna } from './MapaFauna';
+import { MapaSecretos } from './MapaSecretos';
+import { RegistroFauna } from './RegistroFauna';
+import { PantanoLancha } from './PantanoLancha';
 
 const Vice: React.FC<PropsEscena> = (p) => (p.k === 1 ? <CalleSiluetas {...p} /> : p.k === 2 ? <PlayaNocturna {...p} /> : <CiudadAerea {...p} />);
 const NOCHE_LUZ = { amb: ['#7A5AFF', 0.7], sol: ['#8AA0FF', 1.2], relleno: ['#FF4FA8', 1.3] } as const;
@@ -30,5 +33,8 @@ export const ESCENAS: Record<string, DefinicionEscena> = {
   agua: { variantes: ['jetski', 'caiman'], niebla: ['#12082E', 30, 170], cielo: () => 'noche', luz: { amb: ['#7A5AFF', 0.75], sol: ['#8AA0FF', 1.1], relleno: ['#FFE2CC', 1.0] }, camara: 'agua-baja', Componente: AguaNeon },
   detalle: { variantes: ['basura', 'lagartija'], niebla: ['#12082E', 25, 150], cielo: () => 'noche', luz: { amb: ['#7A5AFF', 0.75], sol: ['#8AA0FF', 1.0], relleno: ['#FFE2CC', 1.1] }, camara: 'detalle-basura', Componente: CalleDetalle },
   mapafauna: { variantes: ['costa'], niebla: ['#070B26', 45, 130], cielo: () => 'estudio', luz: { amb: ['#9AA8FF', 1.0], sol: ['#FFFFFF', 1.5], relleno: ['#FF4FA8', 0.8] }, camara: 'mapa-fauna', Componente: MapaFauna },
+  mapasecretos: { variantes: ['costa'], niebla: ['#070B26', 45, 130], cielo: () => 'estudio', luz: { amb: ['#9AA8FF', 1.0], sol: ['#FFFFFF', 1.5], relleno: ['#FF4FA8', 0.8] }, camara: 'mapa-secretos', Componente: MapaSecretos },
+  registro: { variantes: ['aves'], niebla: ['#060A24', 60, 160], cielo: () => 'negro', luz: { amb: ['#FFFFFF', 0.8], sol: ['#B07CFF', 0.5], relleno: ['#FF4FA8', 0.5] }, camara: 'registro-frente', Componente: RegistroFauna },
+  pantano: { variantes: ['lancha'], niebla: ['#0B2A30', 12, 85], cielo: () => 'noche', luz: { amb: ['#6A9AFF', 0.8], sol: ['#8AA0FF', 1.0], relleno: ['#FFE2CC', 0.9] }, camara: 'pantano-lancha', Componente: PantanoLancha },
   datos: { variantes: ['barras', 'cifra', 'ascenso'], usaDatos: true, niebla: ['#0B1030', 30, 110], cielo: () => 'estudio', luz: { amb: ['#9AA8FF', 0.9], sol: ['#FFFFFF', 1.6], relleno: ['#FF4FA8', 0.8] }, camara: 'datos-frente', Componente: Datos },
 };

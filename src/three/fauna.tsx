@@ -106,3 +106,20 @@ export const Basurero: React.FC = () => (
     <mesh position={[0, 0.55, 0]} material={MAT.boteNeon}><cylinderGeometry args={[0.305, 0.3, 0.05, 18, 1, true]} /></mesh>
   </group>
 );
+
+/** Lancha rápida estilizada y original (sin marcas ni rótulos). Mira hacia +z. */
+const LANCHA = {
+  casco: M('#E9EEF8', { roughness: 0.3, metalness: 0.35 }), franja: new THREE.MeshBasicMaterial({ color: '#FF4FA8' }),
+  cristal: M('#0A1230', { roughness: 0.1, metalness: 0.9 }), cubierta: M('#1A1F3A', { roughness: 0.6 }), neon: new THREE.MeshBasicMaterial({ color: '#44E6FF' }),
+};
+export const Lancha: React.FC<{ t: number }> = ({ t }) => (
+  <group rotation={[0.04 * Math.sin(t * 5), 0, 0.05 * Math.sin(t * 3.1)]}>
+    <mesh position={[0, 0.3, -0.1]} material={LANCHA.casco}><RB a={[1.5, 0.55, 3.8]} r={0.22} /></mesh>
+    <mesh position={[0, 0.42, 1.75]} rotation={[0.25, 0, 0]} material={LANCHA.casco}><RB a={[1.0, 0.4, 0.9]} r={0.16} /></mesh>
+    <mesh position={[0, 0.58, -0.1]} material={LANCHA.cubierta}><RB a={[1.3, 0.1, 3.2]} r={0.04} /></mesh>
+    <mesh position={[0, 0.9, 0.5]} rotation={[-0.45, 0, 0]} material={LANCHA.cristal}><RB a={[1.1, 0.5, 0.06]} r={0.02} /></mesh>
+    <mesh position={[0, 0.5, 0.0]} material={LANCHA.franja}><boxGeometry args={[1.54, 0.07, 3.6]} /></mesh>
+    <mesh position={[0, 0.66, 2.1]} material={LANCHA.neon}><boxGeometry args={[0.7, 0.04, 0.3]} /></mesh>
+    <mesh position={[0, 0.35, -2.05]} material={LANCHA.cubierta}><RB a={[0.4, 0.6, 0.3]} r={0.08} /></mesh>
+  </group>
+);

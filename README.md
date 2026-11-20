@@ -110,6 +110,16 @@ Solo usa datos que Rockstar ha publicado (ver `fuentes` en el guion). Dos datos 
 - Música y efectos: generados por código (sin pistas externas ni licencias de terceros).
 - Costo medido (renders cortos, 1 proceso): ~7,5 min estimados en esta máquina; en GitHub suele tardar algo más.
 
+## Video 3: «GTA 6: secretos que debes encontrar antes que nadie» (35 s)
+
+- Guion: `guiones/gta6-secretos-35s.json` · prompts: `guiones/gta6-secretos-35s.prompts.md` · voz ElevenLabs (Liam) ya subida: `public/voces/gta6-secretos-35s/` (no hace falta ningún secret).
+- **Desde el móvil:** Actions → **Renderizar video** → **Run workflow** → guion `gta6-secretos-35s`, calidad `normal`, **voz desactivada**.
+- Escenas nuevas: `mapasecretos` (mapa con pines «?»), `registro` (pantalla de registro de fauna con fichas), `pantano` (lancha entre manglares, con `Lancha` en `src/three/fauna.tsx`). Cámaras nuevas en `src/camaras.ts`.
+- Duraciones ajustadas a la voz real (24,7 s de locución) y sumando 35,0 s. Música y efectos generados por código.
+- **Aviso de datos:** «62 aves» y «Grassrivers/Everglades» tienen fuente (ver `fuentes`). **«Caza de caimanes» está `no_verificado`**: solo hay wikis de fans que describen capturas oficiales; confírmalo antes de publicar. Ninguna teoría se presenta como hecho.
+- Costo medido: 60 cuadros de la escena de la lancha en 15 s (4 núcleos) → ~4–5 min estimados para el video completo.
+- Imágenes: `docs/secretos-contacto-antes-revision.png` (primera pasada) y `docs/secretos-contacto-despues.png` (tras corregir cámaras y la pantalla de registro).
+
 ## Versión del video
 El video final no lleva textos técnicos en pantalla. La versión (commit), la calidad y la voz quedan en los metadatos del MP4 (`comment`) y en el log del workflow (línea «Versión: …»).
 

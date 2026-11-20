@@ -16,3 +16,8 @@ export const CAMARAS: Record<string, Camara> = {
   'mapa-fauna': c([5, 17, 15], [1.5, 0, 0.8], 55, 2.5),
   'datos-frente': c([0, 3.4, 22], [0, 2.4, 0], 55, 3), 'datos-lateral': c([12, 4.5, 16], [0, 2.4, 0], 50, 2), 'datos-cerca': c([0, 3.2, 15], [0, 2.4, 0], 46, 1.5),
 };
+Object.assign(CAMARAS, {
+  'pantano-lancha': c([4.2, 2.0, 9.5], [0, 0.7, -1], 55, 1.4),
+  'registro-frente': c([0, 5.0, 13], [0, 5.0, 0], 50, 1.2),
+  'mapa-secretos': c([5, 17, 15], [1.5, 0, 0.8], 55, 3),
+});
