@@ -15,7 +15,7 @@ export type Escena = {
   camara?: string | Camara;                      // nombre de src/camaras.ts o valores propios
   fondo?: { cielo?: CieloTipo; niebla?: [string, number, number] };
   elementos?: Elemento[];                        // capas 2D encima del 3D
-  texto?: { contenido: string; estilo?: EstiloTexto; color?: string; tam?: number; sub?: string; posicion?: 'arriba' | 'centro' | 'abajo' };
+  texto?: { contenido: string; estilo?: EstiloTexto; color?: string; tam?: number; sub?: string; posicion?: 'arriba' | 'centro' | 'abajo'; sinEntrada?: boolean; sinSalida?: boolean };   // sinEntrada/sinSalida: el texto sigue fijo entre los planos de un montaje
   animacion?: { empuje?: number; shake?: number; zoom_punch?: boolean };
   transicion?: { tipo: TipoTransicion; duracion?: number };   // cómo ENTRA esta escena
   musica?: { intensidad?: number; golpe?: boolean; riser?: boolean };

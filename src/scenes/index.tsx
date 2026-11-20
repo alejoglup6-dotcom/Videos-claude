@@ -28,7 +28,7 @@ export const ESCENAS: Record<string, DefinicionEscena> = {
   calle: { variantes: ['avenida', 'plaza', 'esquina'], niebla: ['#CFE6FA', 45, 180], cielo: () => 'dia', luz: { amb: ['#FFFFFF', 1.0], sol: ['#FFF1D0', 2.4], relleno: ['#BFD8FF', 0.9] }, camara: 'calle-avenida', Componente: Calle },
   interior: { variantes: ['mesa', 'ventana', 'estante'], niebla: ['#EBDCC8', 40, 120], cielo: () => 'dia', luz: { amb: ['#FFE9CC', 1.0], sol: ['#FFF0DA', 1.7], relleno: ['#FFD9A8', 0.9] }, camara: 'interior-frente', Componente: Interior },
   agua: { variantes: ['jetski', 'caiman'], niebla: ['#12082E', 30, 170], cielo: () => 'noche', luz: { amb: ['#7A5AFF', 0.75], sol: ['#8AA0FF', 1.1], relleno: ['#FFE2CC', 1.0] }, camara: 'agua-baja', Componente: AguaNeon },
-  detalle: { variantes: ['basura', 'lagartija'], niebla: ['#12082E', 25, 150], cielo: () => 'noche', luz: { amb: ['#7A5AFF', 0.75], sol: ['#8AA0FF', 1.0], relleno: ['#FFE2CC', 1.1] }, camara: 'detalle-basura', Componente: CalleDetalle },
+  detalle: { variantes: ['basura', 'lagartija', 'iguana'], niebla: ['#12082E', 25, 150], cielo: () => 'noche', luz: { amb: ['#7A5AFF', 0.75], sol: ['#8AA0FF', 1.0], relleno: ['#FFE2CC', 1.1] }, camara: 'detalle-basura', Componente: CalleDetalle },
   mapafauna: { variantes: ['costa'], niebla: ['#070B26', 45, 130], cielo: () => 'estudio', luz: { amb: ['#9AA8FF', 1.0], sol: ['#FFFFFF', 1.5], relleno: ['#FF4FA8', 0.8] }, camara: 'mapa-fauna', Componente: MapaFauna },
   datos: { variantes: ['barras', 'cifra', 'ascenso'], usaDatos: true, niebla: ['#0B1030', 30, 110], cielo: () => 'estudio', luz: { amb: ['#9AA8FF', 0.9], sol: ['#FFFFFF', 1.6], relleno: ['#FF4FA8', 0.8] }, camara: 'datos-frente', Componente: Datos },
 };

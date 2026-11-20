@@ -15,6 +15,7 @@ const MAT = {
   caiman: M('#3E6B3A', { roughness: 0.7 }), caimanVientre: M('#9AA866'), escama: M('#1E3420', { roughness: 0.9 }), ojo: new THREE.MeshBasicMaterial({ color: '#FFE04A' }),
   dientes: M('#EDE6C8'),
   lagarto: M('#3FBF6A', { roughness: 0.6 }), lagartoOsc: M('#1F7A44'),
+  iguana: M('#6E9A4A', { roughness: 0.7 }), iguanaOsc: M('#3E5A2A', { roughness: 0.8 }), papada: M('#C9A24A', { roughness: 0.7 }), espina: M('#2E4422'),
   vaso: M('#F4F1EA', { roughness: 0.5 }), tapa: M('#FF4FA8', { roughness: 0.4 }), popote: M('#44E6FF', { roughness: 0.3 }),
   bote: M('#2A3550', { roughness: 0.55, metalness: 0.4 }), boteTapa: M('#1C2438', { roughness: 0.5, metalness: 0.5 }), boteNeon: new THREE.MeshBasicMaterial({ color: '#25C98B' }),
 };
@@ -106,3 +107,24 @@ export const Basurero: React.FC = () => (
     <mesh position={[0, 0.55, 0]} material={MAT.boteNeon}><cylinderGeometry args={[0.305, 0.3, 0.05, 18, 1, true]} /></mesh>
   </group>
 );
+
+/** Iguana verde estilizada (las iguanas verdes aparecen en material oficial de los Cayos de Leonida). Mira hacia +z; mide ~1 m con la cola. */
+export const Iguana: React.FC<{ t: number }> = ({ t }) => {
+  const resp = 0.01 * Math.sin(t * 2.2);
+  return (
+    <group>
+      {/* cuerpo alargado y bajo, en tres tramos */}
+      {[0, 1, 2].map((i) => <mesh key={i} position={[0.02 * Math.sin(t * 1.8 - i), 0.11 + resp, 0.16 - i * 0.16]} material={MAT.iguana}><RB a={[0.17 - i * 0.02, 0.12 - i * 0.01, 0.2]} r={0.05} /></mesh>)}
+      <group position={[0, 0.15, 0.36]} rotation={[0.12 + 0.08 * Math.sin(t * 1.5), 0.3 * Math.sin(t * 0.9), 0]}>
+        <mesh material={MAT.iguana}><RB a={[0.1, 0.09, 0.16]} r={0.04} /></mesh>
+        <mesh position={[0, -0.01, 0.1]} material={MAT.iguana}><RB a={[0.07, 0.06, 0.09]} r={0.025} /></mesh>
+        <mesh position={[0, -0.08, 0.02]} material={MAT.papada}><boxGeometry args={[0.015, 0.08, 0.1]} /></mesh>
+        {[-1, 1].map((s) => <mesh key={s} position={[s * 0.048, 0.02, 0.03]} material={MAT.negro}><sphereGeometry args={[0.013, 8, 6]} /></mesh>)}
+      </group>
+      {Array.from({ length: 9 }, (_, i) => <mesh key={i} position={[0, 0.2 - i * 0.008, 0.36 - i * 0.07]} material={MAT.espina}><coneGeometry args={[0.012, 0.06 - i * 0.004, 4]} /></mesh>)}
+      {/* cola larga con anillos oscuros */}
+      {Array.from({ length: 9 }, (_, i) => <mesh key={'c' + i} position={[0.05 * Math.sin(t * 2 - i * 0.6), 0.08 - i * 0.005, -0.32 - i * 0.1]} material={i % 2 ? MAT.iguanaOsc : MAT.iguana}><boxGeometry args={[0.07 - i * 0.006, 0.05 - i * 0.004, 0.11]} /></mesh>)}
+      {[-1, 1].map((s) => [0.18, -0.16].map((z, j) => <mesh key={s + '_' + j} position={[s * 0.12, 0.05, z]} rotation={[0, s * 0.4, s * 0.6]} material={MAT.iguanaOsc}><boxGeometry args={[0.11, 0.03, 0.04]} /></mesh>))}
+    </group>
+  );
+};

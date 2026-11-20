@@ -1,0 +1,538 @@
+{
+  "id": "gta6-easter-eggs-35s",
+  "titulo": "GTA 6: easter eggs que debes encontrar",
+  "tema": "neon-costero",
+  "audio": {
+    "musica": {
+      "generar": {
+        "bpm": 120,
+        "escala": "Dm",
+        "semilla": 23
+      },
+      "volumen": 0.5
+    },
+    "voz": {
+      "volumen": 1
+    },
+    "sfx": {
+      "volumen": 0.8
+    },
+    "ducking": 0.55
+  },
+  "fuentes": [
+    {
+      "dato": "Leonida tiene más de 170 especies animales",
+      "estado": "verificado",
+      "nota": "Cifra de Rockstar (portada de Game Informer); Vandal, Insider Gaming, 80.lv, Gfinity"
+    },
+    {
+      "dato": "Hay caimanes, iguanas, serpientes y tiburones",
+      "estado": "verificado",
+      "nota": "Caimanes y serpiente: Kotaku. Iguanas: capturas oficiales de los Cayos de Leonida (Red Bull, GamesRadar, Gfinity). Tiburones: Yahoo Tech"
+    },
+    {
+      "dato": "Osos",
+      "estado": "no_verificado",
+      "nota": "No se encontró confirmación de Rockstar ni avistamientos en juego; se quitó de la voz y del mapa"
+    },
+    {
+      "dato": "Los caimanes pueden atacar al jugador",
+      "estado": "verificado",
+      "nota": "Kotaku (clips de Jason «being eaten by animals»)"
+    },
+    {
+      "dato": "Se puede tirar el vaso vacío de una bebida a un basurero",
+      "estado": "verificado",
+      "nota": "Kotaku («Wow, GTA 6 Has Some Incredible Animations»). «Milkshake» no aparece en fuentes: se dice «vaso»"
+    },
+    {
+      "dato": "Hay lagartijas que aparecen al azar",
+      "estado": "verificado",
+      "nota": "Kotaku («18 Coolest Details Players Have Spotted In GTA 6 So Far»)"
+    },
+    {
+      "dato": "Otros secretos o guiños de los tráilers",
+      "estado": "no_verificado",
+      "nota": "No se afirma ninguno: el video solo pregunta «¿qué otros secretos habrá?»"
+    }
+  ],
+  "escenas": [
+    {
+      "id": "e1a-gancho",
+      "tipo": "vice",
+      "variante": "calle",
+      "duracion": 4.0,
+      "camara": "vice-calle-baja",
+      "elementos": [
+        {
+          "tipo": "neon"
+        }
+      ],
+      "texto": {
+        "contenido": "EN GTA 6…",
+        "estilo": "slam",
+        "tam": 230,
+        "posicion": "arriba"
+      },
+      "animacion": {
+        "empuje": 6,
+        "shake": 0.25
+      },
+      "transicion": {
+        "tipo": "flash",
+        "duracion": 0.3
+      },
+      "musica": {
+        "intensidad": 0.9,
+        "golpe": true
+      },
+      "sfx": [
+        "whoosh",
+        "impacto"
+      ],
+      "voz": {
+        "texto": "En GTA 6, hay detalles en los que casi nadie se fija…",
+        "claves": [
+          "detalles",
+          "fija…"
+        ]
+      },
+      "config": {
+        "activar": [
+          "acera-2",
+          "farolas-inst",
+          "bolardos-inst",
+          "semaforo"
+        ],
+        "sombras": false
+      }
+    },
+    {
+      "id": "e1b-encuentras",
+      "tipo": "detalle",
+      "variante": "iguana",
+      "camara": "detalle-iguana",
+      "elementos": [
+        {
+          "tipo": "particulas",
+          "intensidad": 0.6
+        }
+      ],
+      "texto": {
+        "contenido": "¿LO VISTE?",
+        "estilo": "glitch",
+        "posicion": "arriba"
+      },
+      "transicion": {
+        "tipo": "zoom",
+        "duracion": 0.35
+      },
+      "musica": {
+        "intensidad": 0.8
+      },
+      "sfx": [
+        {
+          "nombre": "ping",
+          "t": 0.4,
+          "volumen": 0.6
+        }
+      ],
+      "voz": {
+        "texto": "hasta que los encuentras.",
+        "claves": [
+          "encuentras"
+        ]
+      },
+      "duracion": 3.0
+    },
+    {
+      "id": "e2a-especies",
+      "tipo": "mapafauna",
+      "variante": "costa",
+      "duracion": 3.0,
+      "camara": "mapa-fauna",
+      "elementos": [
+        {
+          "tipo": "particulas"
+        }
+      ],
+      "texto": {
+        "contenido": "MÁS DE 170 ESPECIES",
+        "estilo": "letras",
+        "posicion": "abajo"
+      },
+      "transicion": {
+        "tipo": "slide",
+        "duracion": 0.5
+      },
+      "musica": {
+        "intensidad": 0.65
+      },
+      "voz": {
+        "texto": "Leonida tiene más de 170 especies,",
+        "claves": [
+          "170",
+          "especies"
+        ]
+      },
+      "config": {
+        "pines": false
+      }
+    },
+    {
+      "id": "e2b-fauna",
+      "tipo": "mapafauna",
+      "variante": "costa",
+      "duracion": 4.5,
+      "camara": "mapa-costa",
+      "elementos": [
+        {
+          "tipo": "particulas"
+        }
+      ],
+      "transicion": {
+        "tipo": "zoom",
+        "duracion": 0.35
+      },
+      "musica": {
+        "intensidad": 0.65
+      },
+      "voz": {
+        "texto": "desde caimanes hasta iguanas, serpientes y tiburones.",
+        "claves": [
+          "caimanes",
+          "iguanas",
+          "serpientes",
+          "tiburones"
+        ]
+      },
+      "config": {
+        "pines": [
+          "CAIMANES",
+          "IGUANAS",
+          "SERPIENTES",
+          "TIBURONES"
+        ]
+      },
+      "sfx": [
+        {
+          "nombre": "ping",
+          "t": 0.3,
+          "volumen": 0.6
+        },
+        {
+          "nombre": "ping",
+          "t": 0.9,
+          "volumen": 0.6
+        },
+        {
+          "nombre": "ping",
+          "t": 1.5,
+          "volumen": 0.6
+        },
+        {
+          "nombre": "ping",
+          "t": 2.1,
+          "volumen": 0.6
+        }
+      ]
+    },
+    {
+      "id": "e3-caiman",
+      "tipo": "agua",
+      "variante": "caiman",
+      "duracion": 3.0,
+      "camara": "agua-caiman",
+      "elementos": [
+        {
+          "tipo": "neon"
+        }
+      ],
+      "texto": {
+        "contenido": "CUIDADO CON EL CAIMÁN",
+        "estilo": "glitch"
+      },
+      "animacion": {
+        "zoom_punch": false
+      },
+      "transicion": {
+        "tipo": "zoom",
+        "duracion": 0.6
+      },
+      "musica": {
+        "intensidad": 0.7
+      },
+      "sfx": [
+        "agua",
+        {
+          "nombre": "rugido",
+          "t": 1.4
+        }
+      ],
+      "voz": {
+        "texto": "Y sí, los caimanes pueden atacarte.",
+        "claves": [
+          "caimanes",
+          "atacarte"
+        ]
+      }
+    },
+    {
+      "id": "e4-vaso",
+      "tipo": "detalle",
+      "variante": "basura",
+      "duracion": 3.0,
+      "camara": "detalle-basura",
+      "texto": {
+        "contenido": "HASTA ESO IMPORTA",
+        "estilo": "slam",
+        "posicion": "arriba"
+      },
+      "transicion": {
+        "tipo": "corte"
+      },
+      "musica": {
+        "intensidad": 0.6
+      },
+      "sfx": [
+        {
+          "nombre": "whoosh",
+          "t": 0.6,
+          "volumen": 0.5
+        },
+        {
+          "nombre": "suave",
+          "t": 1.8
+        }
+      ],
+      "voz": {
+        "texto": "Hasta puedes tirar tu vaso vacío al basurero.",
+        "claves": [
+          "vaso",
+          "basurero"
+        ]
+      }
+    },
+    {
+      "id": "e5-lagartija",
+      "tipo": "detalle",
+      "variante": "lagartija",
+      "duracion": 3.0,
+      "camara": "detalle-pared",
+      "texto": {
+        "contenido": "LAGARTIJAS RANDOM",
+        "estilo": "neon",
+        "posicion": "arriba"
+      },
+      "transicion": {
+        "tipo": "whip",
+        "duracion": 0.36
+      },
+      "musica": {
+        "intensidad": 0.65
+      },
+      "sfx": [
+        {
+          "nombre": "chirrido",
+          "t": 0.7
+        },
+        {
+          "nombre": "chirrido",
+          "t": 1.9,
+          "volumen": 0.7
+        }
+      ],
+      "voz": {
+        "texto": "También hay lagartijas que aparecen por ahí.",
+        "claves": [
+          "lagartijas"
+        ]
+      }
+    },
+    {
+      "id": "e6a-montaje",
+      "tipo": "agua",
+      "variante": "caiman",
+      "duracion": 1.0,
+      "camara": "agua-caiman",
+      "texto": {
+        "contenido": "ROCKSTAR METIÓ DETALLES QUE NADIE ESPERABA",
+        "estilo": "slam",
+        "tam": 105,
+        "sinSalida": true,
+        "color": "#FFE45C"
+      },
+      "transicion": {
+        "tipo": "camara_rapida",
+        "duracion": 0.3
+      },
+      "musica": {
+        "intensidad": 1.0,
+        "golpe": true
+      },
+      "voz": {
+        "texto": "Rockstar metió detalles que nadie esperaba encontrar.",
+        "claves": [
+          "detalles",
+          "nadie"
+        ]
+      }
+    },
+    {
+      "id": "e6b-montaje",
+      "tipo": "detalle",
+      "variante": "iguana",
+      "duracion": 1.0,
+      "camara": "detalle-iguana",
+      "texto": {
+        "contenido": "ROCKSTAR METIÓ DETALLES QUE NADIE ESPERABA",
+        "estilo": "slam",
+        "tam": 105,
+        "sinEntrada": true,
+        "sinSalida": true,
+        "color": "#FFE45C"
+      },
+      "transicion": {
+        "tipo": "flash",
+        "duracion": 0.2
+      },
+      "musica": {
+        "intensidad": 1.0
+      }
+    },
+    {
+      "id": "e6c-montaje",
+      "tipo": "detalle",
+      "variante": "basura",
+      "duracion": 1.0,
+      "camara": "detalle-basura",
+      "texto": {
+        "contenido": "ROCKSTAR METIÓ DETALLES QUE NADIE ESPERABA",
+        "estilo": "slam",
+        "tam": 105,
+        "sinEntrada": true,
+        "sinSalida": true,
+        "color": "#FFE45C"
+      },
+      "transicion": {
+        "tipo": "camara_rapida",
+        "duracion": 0.3
+      },
+      "musica": {
+        "intensidad": 1.0
+      }
+    },
+    {
+      "id": "e6d-montaje",
+      "tipo": "detalle",
+      "variante": "lagartija",
+      "duracion": 1.0,
+      "camara": "detalle-pared",
+      "texto": {
+        "contenido": "ROCKSTAR METIÓ DETALLES QUE NADIE ESPERABA",
+        "estilo": "slam",
+        "tam": 105,
+        "sinEntrada": true,
+        "sinSalida": true,
+        "color": "#FFE45C"
+      },
+      "transicion": {
+        "tipo": "flash",
+        "duracion": 0.2
+      },
+      "musica": {
+        "intensidad": 1.0
+      }
+    },
+    {
+      "id": "e6e-montaje",
+      "tipo": "vice",
+      "variante": "aerea",
+      "duracion": 1.0,
+      "camara": "vice-aerea",
+      "texto": {
+        "contenido": "ROCKSTAR METIÓ DETALLES QUE NADIE ESPERABA",
+        "estilo": "slam",
+        "tam": 105,
+        "sinEntrada": true,
+        "color": "#FFE45C"
+      },
+      "transicion": {
+        "tipo": "camara_rapida",
+        "duracion": 0.3
+      },
+      "musica": {
+        "intensidad": 1.0,
+        "riser": true
+      }
+    },
+    {
+      "id": "e7-secretos",
+      "tipo": "fondo",
+      "variante": "particulas",
+      "duracion": 3.0,
+      "camara": "fondo-frente",
+      "elementos": [
+        {
+          "tipo": "particulas",
+          "intensidad": 1.3
+        },
+        {
+          "tipo": "neon"
+        }
+      ],
+      "texto": {
+        "contenido": "¿QUÉ OTROS SECRETOS HAY?",
+        "estilo": "glitch",
+        "tam": 130
+      },
+      "transicion": {
+        "tipo": "glitch",
+        "duracion": 0.4
+      },
+      "musica": {
+        "intensidad": 0.9,
+        "golpe": true
+      },
+      "sfx": [
+        "glitch",
+        "impacto"
+      ],
+      "voz": {
+        "texto": "¿Qué otros secretos habrá escondidos?",
+        "claves": [
+          "secretos",
+          "escondidos"
+        ]
+      }
+    },
+    {
+      "id": "e8-buscar",
+      "tipo": "fondo",
+      "variante": "negro",
+      "duracion": 3.0,
+      "camara": "fondo-frente",
+      "texto": {
+        "contenido": "¿CUÁL VAS A BUSCAR PRIMERO?",
+        "estilo": "slam",
+        "tam": 125
+      },
+      "transicion": {
+        "tipo": "fade",
+        "duracion": 0.6
+      },
+      "musica": {
+        "intensidad": 0.4
+      },
+      "sfx": [
+        "cierre"
+      ],
+      "voz": {
+        "texto": "¿Cuál vas a buscar primero?",
+        "claves": [
+          "buscar"
+        ]
+      }
+    }
+  ]
+}

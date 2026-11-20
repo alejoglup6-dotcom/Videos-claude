@@ -8,7 +8,7 @@ import type { Ropa } from '../three/Personaje';
 import { Acera, Letrero } from '../three/Ciudad';
 import { Instancias } from '../three/Instancias';
 import type { Colocacion } from '../three/Instancias';
-import { Vaso, Basurero, Lagartija } from '../three/fauna';
+import { Vaso, Basurero, Lagartija, Iguana } from '../three/fauna';
 
 // Calle de neón a escala humana. k=0: alguien tira un vaso vacío al basurero · k=1: una lagartija recorre una pared.
 const ROPA: Ropa = { chaqueta: '#1F6F8B', pantalon: '#1A1A24', zapatos: '#F2F2F2' };
@@ -28,7 +28,13 @@ export const CalleDetalle: React.FC<PropsEscena> = ({ t, u, k }) => {
       {[-1, 1].map((s) => [1, 2, 3].map((i) => <Edificio key={s + '_' + i} x={s * (11 + (i % 2) * 2)} z={-4 - i * 15} w={9} h={16 + ((i * 7) % 5) * 5} d={9} k={i + (s > 0 ? 3 : 0)} neon={i % 2 ? '#FF4FA8' : '#44E6FF'} />))}
       <Letrero txt="ABIERTO 24 H" color="#FF4FA8" pos={[-6.2, 3.4, -10]} rot={0.9} w={3} />
       {[-6.4, 6.4].map((x, i) => [-14, -28].map((z, j) => <Palmera key={i + '_' + j} x={x} z={z} h={5.2} t={t} i={i * 2 + j} />))}
-      {k === 0 ? (
+      {k === 2 ? (
+        <group position={[4.6, 0.18, -1]}>
+          {/* iguana en la acera, junto a una palmera, girando la cabeza */}
+          <group position={[0, 0, 0]} rotation={[0, -0.9 + 0.15 * Math.sin(t * 0.7), 0]} scale={1.1}><Iguana t={t} /></group>
+          <Palmera x={1.3} z={-1.2} h={5} t={t} i={7} />
+        </group>
+      ) : k === 0 ? (
         <group position={[4.2, 0.18, 0]}>
           <group position={[-0.5, 0, 0.1]}><PersonajeA genero="h" ropa={ROPA} pelo="#1E140E" barba pose={{ t, paso: 0, brazos: v < 1 ? 0.25 * Math.sin(Math.PI * cl(u / 0.3)) : 0, giro: Math.PI / 2 - 0.3 }} /></group>
           <group position={[0.7, 0, 0]}><Basurero /></group>

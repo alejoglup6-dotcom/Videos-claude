@@ -7,23 +7,23 @@ import type { PropsEscena } from '../three/tipos';
 import { Mapa } from './MapaEstado';
 
 // Mapa estilizado de Leonida con marcadores de fauna. Solo especies con fuente (ver guion: «fuentes»). Los osos NO se incluyen: no están confirmados.
-const PINES: { txt: string; color: string; p: [number, number] }[] = [
-  { txt: 'PERROS', color: '#FFB02E', p: [2.4, -1.0] },
-  { txt: 'SERPIENTES', color: '#25C98B', p: [0.4, 5.2] },
-  { txt: 'TIBURONES', color: '#44E6FF', p: [6.6, -4.2] },
-  { txt: 'CAIMANES', color: '#7CFF3A', p: [-2.6, 3.4] },
-];
+const TODOS: Record<string, { color: string; p: [number, number] }> = {
+  PERROS: { color: '#FFB02E', p: [2.4, -1.0] }, SERPIENTES: { color: '#25C98B', p: [0.4, 5.2] }, TIBURONES: { color: '#44E6FF', p: [5.2, -3.6] },
+  CAIMANES: { color: '#7CFF3A', p: [-2.6, 3.4] }, IGUANAS: { color: '#B6FF5A', p: [3.6, -7.6] },
+};
+const POR_DEFECTO = ['PERROS', 'SERPIENTES', 'TIBURONES', 'CAIMANES'];
 const etiqueta = (txt: string, color: string) => lienzo(`pin_${txt}`, 512, 128, (c) => {
   c.fillStyle = 'rgba(8,10,30,0.85)'; c.beginPath(); c.roundRect(8, 16, 496, 96, 40); c.fill(); c.strokeStyle = color; c.lineWidth = 8; c.stroke();
   c.font = 'bold 62px Arial, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillStyle = '#FFFFFF'; c.fillText(txt, 256, 66);
 });
 export const MapaFauna: React.FC<PropsEscena> = (p) => {
-  const { t, u, config } = p; const pines = config?.pines ?? true;
+  const { t, u, config } = p; const lista: string[] = config?.pines === false ? [] : Array.isArray(config?.pines) ? config.pines : POR_DEFECTO;
+  const PINES = lista.filter((n) => TODOS[n]).map((txt) => ({ txt, ...TODOS[txt] }));
   return (
     <>
       <Mapa {...p} k={0} />
       <group position={[1.4, 0, -1.3]}>
-        {!pines ? null : PINES.map((pin, i) => {
+        {PINES.map((pin, i) => {
           const a = cl((u - 0.06 - i * 0.17) / 0.07); if (a <= 0) return null;   // aparecen uno a uno, al ritmo de la voz
           const s = a < 1 ? 1.25 - 0.25 * a : 1 + 0.04 * Math.sin(t * 5 + i);
           return (

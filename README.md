@@ -110,6 +110,12 @@ Solo usa datos que Rockstar ha publicado (ver `fuentes` en el guion). Dos datos 
 - Música y efectos: generados por código (sin pistas externas ni licencias de terceros).
 - Costo medido (renders cortos, 1 proceso): ~7,5 min estimados en esta máquina; en GitHub suele tardar algo más.
 
+## Video 3: «GTA 6: easter eggs que debes encontrar» (34,5 s)
+
+- Guion: `guiones/gta6-easter-eggs-35s.json` · prompts: `guiones/gta6-easter-eggs-35s.prompts.md` · voz ya generada: `public/voces/gta6-easter-eggs-35s/`.
+- Desde el móvil: Actions → **Renderizar video** → **Run workflow** → guion `gta6-easter-eggs-35s`, calidad `normal`, voz desactivada.
+- Ajustes por falta de fuentes: sin «osos» (no confirmados) y «vaso» en lugar de «milkshake». No se afirma ningún easter egg concreto de los tráilers: solo se pregunta.
+
 ## Versión del video
 El video final no lleva textos técnicos en pantalla. La versión (commit), la calidad y la voz quedan en los metadatos del MP4 (`comment`) y en el log del workflow (línea «Versión: …»).
 
