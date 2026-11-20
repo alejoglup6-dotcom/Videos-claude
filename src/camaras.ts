@@ -29,3 +29,10 @@ Object.assign(CAMARAS, {
   'telefono-mano': c([0.4, 1.6, 5.4], [0.1, 1.6, 0], 44, 0.6),
   'pantano-orilla': c([2.6, 1.7, 5.4], [0, 1.2, -1], 48, 0.8),
 });
+Object.assign(CAMARAS, {
+  'puerta-cerca': c([0.15, 1.5, 5.2], [0.15, 1.5, 0], 40, 1.2),
+  'puerta-neon': c([0.15, 1.5, 4.4], [0.15, 1.5, 0], 38, 0.8),
+  'puerta-media': c([1.2, 1.7, 6.0], [0.2, 1.5, 0], 46, 1.6),
+  'radio-frente': c([0, 2.6, 13.5], [0, 2.3, 0], 42, 1.2),
+});
+Object.assign(CAMARAS, { 'radio-cerca': c([0.8, 2.7, 8], [0.8, 2.5, 0], 36, 0.8) });

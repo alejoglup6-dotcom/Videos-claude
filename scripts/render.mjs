@@ -26,13 +26,14 @@ if (opt('frames')) ra.push(`--frames=${opt('frames')}`);
 run('npx', ra);
 console.log(`\nRender crudo: ${((Date.now() - t0) / 1000).toFixed(0)} s`);
 
-// normalización de volumen (2 pasadas loudnorm, objetivo -14 LUFS para redes) + faststart; el video no se vuelve a codificar
+// normalización de volumen (2 pasadas loudnorm; objetivo -14 LUFS por defecto o guion.audio.lufs) + faststart; el video no se vuelve a codificar
 const ff = (a) => spawnSync('npx', ['remotion', 'ffmpeg', ...a], { encoding: 'utf8', cwd: RAIZ });
-const an = ff(['-hide_banner', '-i', crudo, '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json', '-vn', '-f', 'null', '-']);
+const LUFS = Number(guion.audio?.lufs ?? -14);
+const an = ff(['-hide_banner', '-i', crudo, '-af', `loudnorm=I=${LUFS}:TP=-2:LRA=11:print_format=json`, '-vn', '-f', 'null', '-']);
 const m = /\{[^{}]*"input_i"[^{}]*\}/s.exec(an.stderr || '');
-let af = 'loudnorm=I=-14:TP=-1.5:LRA=11';
+let af = `loudnorm=I=${LUFS}:TP=-2:LRA=11`;
 const j = m ? JSON.parse(m[0]) : null;
-if (j && Number.isFinite(Number(j.input_i)) && Number(j.input_i) > -70) { af = `loudnorm=I=-14:TP=-1.5:LRA=11:measured_I=${j.input_i}:measured_TP=${j.input_tp}:measured_LRA=${j.input_lra}:measured_thresh=${j.input_thresh}:offset=${j.target_offset}:linear=true`; }
+if (j && Number.isFinite(Number(j.input_i)) && Number(j.input_i) > -70) { af = `loudnorm=I=${LUFS}:TP=-2:LRA=11:measured_I=${j.input_i}:measured_TP=${j.input_tp}:measured_LRA=${j.input_lra}:measured_thresh=${j.input_thresh}:offset=${j.target_offset}:linear=true`; }
 else console.warn('⚠ No pude medir el volumen (audio casi mudo o muy corto); uso loudnorm de una pasada');
 run('npx', ['remotion', 'ffmpeg', '-y', '-hide_banner', '-loglevel', 'error', '-i', crudo, '-c:v', 'copy', '-af', af, '-c:a', 'aac', '-b:a', '192k', '-ar', '44100', '-metadata', `comment=version ${guion._version} · calidad ${calidad} · voz ${guion._vozProveedor ?? 'sin voz'}`, '-movflags', '+faststart', final]);
 console.log(`\n✔ ${final}  (${(fs.statSync(final).size / 1e6).toFixed(1)} MB, total ${((Date.now() - t0) / 1000).toFixed(0)} s)`);

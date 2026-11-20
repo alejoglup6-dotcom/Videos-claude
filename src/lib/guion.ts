@@ -33,7 +33,8 @@ export type Guion = {
   audio?: {
     musica?: { generar?: { bpm?: number; escala?: 'Am' | 'Dm' | 'Em'; semilla?: number }; archivo?: string; volumen?: number };
     voz?: { volumen?: number };
-    sfx?: { volumen?: number };
+    sfx?: { volumen?: number; auto?: boolean };   // auto:false = sin efecto automático en cada transición
+    lufs?: number;                               // volumen objetivo del MP4 (por defecto -14; este video: -18)
     ducking?: number;                            // cuánto baja la música mientras habla la voz (0-1)
   };
   fuentes?: { dato: string; estado: 'verificado' | 'no_verificado'; nota?: string }[];

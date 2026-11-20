@@ -17,6 +17,7 @@ import { MapaFauna } from './MapaFauna';
 import { MapaSecretos } from './MapaSecretos';
 import { RegistroFauna } from './RegistroFauna';
 import { PantanoLancha } from './PantanoLancha';
+import { PuertaPegatina, RadioAntigua } from './Petty';
 import { Conduccion, PlayaAtardecer, Gasolinera, Local, Telefono } from './Primeros';
 
 const Vice: React.FC<PropsEscena> = (p) => (p.k === 1 ? <CalleSiluetas {...p} /> : p.k === 2 ? <PlayaNocturna {...p} /> : <CiudadAerea {...p} />);
@@ -42,5 +43,7 @@ export const ESCENAS: Record<string, DefinicionEscena> = {
   gasolinera: { variantes: ['noche'], niebla: ['#12082E', 30, 150], cielo: () => 'noche', luz: { amb: ['#7A5AFF', 0.8], sol: ['#8AA0FF', 1.0], relleno: ['#FFE2CC', 1.0] }, camara: 'gasolinera', Componente: Gasolinera },
   local: { variantes: ['bar'], niebla: ['#0A0618', 20, 60], cielo: () => 'negro', luz: { amb: ['#9A7AFF', 0.9], sol: ['#B07CFF', 0.6], relleno: ['#FF4FA8', 0.9] }, camara: 'local-bar', Componente: Local },
   telefono: { variantes: ['mano'], niebla: ['#12082E', 30, 120], cielo: () => 'noche', luz: { amb: ['#7A5AFF', 0.8], sol: ['#8AA0FF', 1.1], relleno: ['#FFE2CC', 1.0] }, camara: 'telefono-mano', Componente: Telefono },
+  puerta: { variantes: ['cerca', 'neon', 'detalle'], niebla: ['#12082E', 20, 80], cielo: () => 'noche', luz: { amb: ['#7A5AFF', 0.9], sol: ['#8AA0FF', 0.9], relleno: ['#FF4FA8', 1.0] }, camara: 'puerta-cerca', Componente: PuertaPegatina },
+  radio: { variantes: ['antigua'], niebla: ['#0A0620', 20, 60], cielo: () => 'negro', luz: { amb: ['#9A7AFF', 1.0], sol: ['#FFE2CC', 1.1], relleno: ['#FF4FA8', 0.7] }, camara: 'radio-frente', Componente: RadioAntigua },
   datos: { variantes: ['barras', 'cifra', 'ascenso'], usaDatos: true, niebla: ['#0B1030', 30, 110], cielo: () => 'estudio', luz: { amb: ['#9AA8FF', 0.9], sol: ['#FFFFFF', 1.6], relleno: ['#FF4FA8', 0.8] }, camara: 'datos-frente', Componente: Datos },
 };

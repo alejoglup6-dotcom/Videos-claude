@@ -23,7 +23,7 @@ export const AudioVideo: React.FC<{ g: Guion; tl: Tramo[] }> = ({ g, tl }) => {
       {a.musica ? <Audio src={staticFile(rutaAudio(g.id, 'musica.wav'))} volume={volMusica} /> : null}
       {tl.map((tr) => {
         const e = tr.escena; const lista: { nombre: string; t: number; volumen: number }[] = [];
-        const auto = e.transicion ? SFX_TRANSICION[e.transicion.tipo] : undefined; if (auto && tr.i > 0) lista.push({ nombre: auto, t: tr.t0 - 0.05, volumen: 0.8 });
+        const auto = e.transicion ? SFX_TRANSICION[e.transicion.tipo] : undefined; if (auto && a.sfx?.auto !== false && tr.i > 0) lista.push({ nombre: auto, t: tr.t0 - 0.05, volumen: 0.8 });
         (e.sfx ?? []).forEach((s) => { const o = typeof s === 'string' ? { nombre: s } : s; lista.push({ nombre: o.nombre, t: tr.t0 + (('t' in o && o.t) || 0), volumen: ('volumen' in o && o.volumen) || 1 }); });
         return lista.map((s, j) => (
           <Sequence key={`${tr.i}-s${j}`} from={Math.max(0, Math.round(s.t * FPS))} durationInFrames={Math.round(2.5 * FPS)} layout="none">

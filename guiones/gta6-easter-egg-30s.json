@@ -1,0 +1,345 @@
+{
+ "id": "gta6-easter-egg-30s",
+ "titulo": "GTA 6: el easter egg que casi nadie vio",
+ "tema": "neon-costero",
+ "audio": {
+  "voz": {
+   "volumen": 1
+  },
+  "sfx": {
+   "volumen": 0.45,
+   "auto": false
+  },
+  "lufs": -18
+ },
+ "fuentes": [
+  {
+   "dato": "En el primer tráiler de GTA 6 aparece una pegatina con el texto «PETTY FOREVER» en el vidrio de la puerta de un local",
+   "estado": "verificado",
+   "nota": "Den of Geek, Uproxx, Stereogum y Gamingbible la recogen (tráiler 1, dic. 2023). OJO con el minuto: Den of Geek la sitúa hacia 1:17; el guion dice 1:16. Compruébalo en el video oficial antes de publicar"
+  },
+  {
+   "dato": "Es un homenaje a Tom Petty",
+   "estado": "no_verificado",
+   "nota": "Es la lectura de la prensa y los fans (el tráiler usa además una canción de Tom Petty, confirmada por tompetty.com). No encontré una declaración de Rockstar que lo confirme como easter egg intencional. Se dice «es un homenaje», tal como pide el guion"
+  },
+  {
+   "dato": "Tom Petty ya había aparecido en GTA: San Andreas, en la radio K-DST",
+   "estado": "verificado",
+   "nota": "tompetty.com recuerda que «Runnin' Down a Dream» sonó en GTA: San Andreas (2004), cuya emisora de rock es K-DST"
+  },
+  {
+   "dato": "«Rockstar no deja nada al azar»",
+   "estado": "verificado",
+   "nota": "Frase de opinión del guion, no un dato"
+  }
+ ],
+ "escenas": [
+  {
+   "id": "e1-gancho",
+   "tipo": "vice",
+   "variante": "calle",
+   "duracion": 4.0,
+   "camara": "vice-calle-baja",
+   "elementos": [
+    {
+     "tipo": "neon"
+    },
+    {
+     "tipo": "particulas",
+     "intensidad": 0.5
+    }
+   ],
+   "texto": {
+    "contenido": "EN GTA 6…",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 200
+   },
+   "animacion": {
+    "shake": 0.25,
+    "empuje": 6,
+    "zoom_punch": true
+   },
+   "transicion": {
+    "tipo": "flash",
+    "duracion": 0.3
+   },
+   "sfx": [
+    {
+     "nombre": "motor_suave",
+     "t": 0.0,
+     "volumen": 0.8
+    }
+   ],
+   "voz": {
+    "texto": "En GTA 6, hay un detalle que casi nadie vio.",
+    "claves": [
+     "detalle",
+     "nadie"
+    ]
+   }
+  },
+  {
+   "id": "e2-pegatina",
+   "tipo": "puerta",
+   "variante": "cerca",
+   "duracion": 3.0,
+   "camara": "puerta-cerca",
+   "elementos": [
+    {
+     "tipo": "neon"
+    }
+   ],
+   "texto": {
+    "contenido": "PETTY FOREVER",
+    "estilo": "neon",
+    "posicion": "arriba",
+    "tam": 110
+   },
+   "transicion": {
+    "tipo": "zoom",
+    "duracion": 0.6
+   },
+   "sfx": [
+    {
+     "nombre": "whoosh_suave",
+     "t": -0.2,
+     "volumen": 0.9
+    }
+   ],
+   "voz": {
+    "texto": "En el minuto uno dieciséis del tráiler aparece una pegatina que dice ‘Petty Forever’.",
+    "claves": [
+     "pegatina",
+     "Petty",
+     "Forever"
+    ]
+   }
+  },
+  {
+   "id": "e2b-pegatina",
+   "tipo": "puerta",
+   "variante": "cerca",
+   "duracion": 2.5,
+   "camara": "puerta-neon",
+   "elementos": [
+    {
+     "tipo": "neon"
+    }
+   ],
+   "texto": {
+    "contenido": "PETTY FOREVER",
+    "estilo": "neon",
+    "posicion": "arriba",
+    "tam": 110
+   },
+   "transicion": {
+    "tipo": "corte"
+   },
+   "sfx": []
+  },
+  {
+   "id": "e3-homenaje",
+   "tipo": "puerta",
+   "variante": "neon",
+   "duracion": 3.0,
+   "camara": "puerta-neon",
+   "elementos": [
+    {
+     "tipo": "neon"
+    },
+    {
+     "tipo": "particulas",
+     "intensidad": 0.6
+    }
+   ],
+   "texto": {
+    "contenido": "HOMENAJE A TOM PETTY",
+    "estilo": "neon",
+    "posicion": "arriba",
+    "tam": 100
+   },
+   "transicion": {
+    "tipo": "fade",
+    "duracion": 0.6
+   },
+   "sfx": [
+    {
+     "nombre": "pulso_suave",
+     "t": 0.0,
+     "volumen": 0.9
+    }
+   ],
+   "voz": {
+    "texto": "Es un homenaje a Tom Petty.",
+    "claves": [
+     "homenaje",
+     "Tom",
+     "Petty"
+    ]
+   }
+  },
+  {
+   "id": "e4-radio",
+   "tipo": "radio",
+   "variante": "antigua",
+   "duracion": 3.5,
+   "camara": "radio-frente",
+   "texto": {
+    "contenido": "TOM PETTY EN GTA: SAN ANDREAS",
+    "estilo": "slam",
+    "posicion": "abajo",
+    "tam": 92
+   },
+   "transicion": {
+    "tipo": "zoom",
+    "duracion": 0.5
+   },
+   "sfx": [
+    {
+     "nombre": "estatica_suave",
+     "t": -0.1,
+     "volumen": 0.9
+    }
+   ],
+   "voz": {
+    "texto": "Tom Petty ya había aparecido en la saga con GTA: San Andreas, en la radio K-D-S-T.",
+    "claves": [
+     "San",
+     "Andreas",
+     "K-D-S-T"
+    ]
+   }
+  },
+  {
+   "id": "e4b-radio",
+   "tipo": "radio",
+   "variante": "antigua",
+   "duracion": 3.5,
+   "camara": "radio-cerca",
+   "texto": {
+    "contenido": "TOM PETTY EN GTA: SAN ANDREAS",
+    "estilo": "slam",
+    "posicion": "abajo",
+    "tam": 92
+   },
+   "transicion": {
+    "tipo": "corte"
+   },
+   "sfx": []
+  },
+  {
+   "id": "e5-detalle",
+   "tipo": "puerta",
+   "variante": "detalle",
+   "duracion": 3.5,
+   "camara": "puerta-media",
+   "elementos": [
+    {
+     "tipo": "neon"
+    },
+    {
+     "tipo": "particulas",
+     "intensidad": 0.5
+    }
+   ],
+   "texto": {
+    "contenido": "ROCKSTAR NO DEJA NADA AL AZAR",
+    "estilo": "neon",
+    "posicion": "arriba",
+    "tam": 92
+   },
+   "transicion": {
+    "tipo": "zoom",
+    "duracion": 0.6
+   },
+   "sfx": [
+    {
+     "nombre": "destello_suave",
+     "t": 0.0,
+     "volumen": 0.9
+    }
+   ],
+   "voz": {
+    "texto": "Rockstar no deja nada al azar.",
+    "claves": [
+     "azar"
+    ]
+   }
+  },
+  {
+   "id": "e6-otros",
+   "tipo": "fondo",
+   "variante": "particulas",
+   "duracion": 3.5,
+   "camara": "fondo-frente",
+   "elementos": [
+    {
+     "tipo": "particulas",
+     "intensidad": 1.0
+    },
+    {
+     "tipo": "neon"
+    }
+   ],
+   "texto": {
+    "contenido": "¿QUÉ OTROS DETALLES HAY?",
+    "estilo": "glitch",
+    "posicion": "arriba",
+    "tam": 120
+   },
+   "animacion": {
+    "shake": 0.1
+   },
+   "transicion": {
+    "tipo": "glitch",
+    "duracion": 0.4
+   },
+   "sfx": [
+    {
+     "nombre": "glitch_suave",
+     "t": 0.0,
+     "volumen": 0.9
+    }
+   ],
+   "voz": {
+    "texto": "¿Qué otros detalles habrá escondidos?",
+    "claves": [
+     "detalles",
+     "escondidos"
+    ]
+   }
+  },
+  {
+   "id": "e7-cierre",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 3.5,
+   "camara": "fondo-frente",
+   "texto": {
+    "contenido": "¿LO HABÍAS VISTO?",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 130
+   },
+   "transicion": {
+    "tipo": "fade",
+    "duracion": 0.6
+   },
+   "sfx": [
+    {
+     "nombre": "reverb_suave",
+     "t": 0.0,
+     "volumen": 0.9
+    }
+   ],
+   "voz": {
+    "texto": "¿Lo habías visto?",
+    "claves": [
+     "visto"
+    ]
+   }
+  }
+ ]
+}

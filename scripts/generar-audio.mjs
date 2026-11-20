@@ -38,6 +38,21 @@ const sfx = {
   ping: () => { const n = SR * 0.8, x = new Float32Array(n); for (let i = 0; i < n; i++) { const t = i / SR; x[i] = (Math.sin(2 * Math.PI * 1318 * t) + 0.4 * Math.sin(2 * Math.PI * 2637 * t)) * Math.exp(-t * 6); } return norm(x, 0.6); },
 };
 
+
+// ---------- efectos SUAVES (video sin música): cortos, con fade de entrada y salida, pico bajo y sin componentes agudos ----------
+const suave = (x, pico = 0.3, fin = 0.12, fout = 0.35) => { const n = x.length, a = Math.floor(SR * fin), b = Math.floor(SR * fout);
+  for (let i = 0; i < n; i++) { const e = Math.min(1, i / a) * Math.min(1, (n - i) / b); x[i] *= 0.5 - 0.5 * Math.cos(Math.PI * e); } return norm(x, pico); };
+const lp1 = (r, k) => { let s = 0; return () => (s += k * ((r() * 2 - 1) - s)); };
+Object.assign(sfx, {
+  motor_suave: () => { const n = SR * 1.6, x = new Float32Array(n); let ph = 0; for (let i = 0; i < n; i++) { const t = i / SR; ph += (62 + 8 * Math.sin(t * 5)) / SR; x[i] = Math.sin(2 * Math.PI * ph) * 0.8 + Math.sin(4 * Math.PI * ph) * 0.25; } return suave(x, 0.22, 0.4, 0.7); },
+  whoosh_suave: () => { const n = SR * 0.8, x = new Float32Array(n), f = lp1(rng(21), 0.04); for (let i = 0; i < n; i++) { const t = i / n; x[i] = f() * Math.sin(Math.PI * t) ** 2 * 3; } return suave(x, 0.2, 0.25, 0.4); },
+  pulso_suave: () => { const n = SR * 1.0, x = new Float32Array(n); for (let i = 0; i < n; i++) { const t = i / SR; x[i] = Math.sin(2 * Math.PI * 58 * t) * (Math.sin(2 * Math.PI * 2 * t) ** 2); } return suave(x, 0.22, 0.25, 0.5); },
+  estatica_suave: () => { const n = SR * 1.4, x = new Float32Array(n), f = lp1(rng(22), 0.1); for (let i = 0; i < n; i++) { const t = i / SR; x[i] = f() * (0.7 + 0.3 * Math.sin(t * 23)); } return suave(x, 0.12, 0.3, 0.6); },
+  destello_suave: () => { const n = SR * 0.9, x = new Float32Array(n); for (let i = 0; i < n; i++) { const t = i / SR; x[i] = (Math.sin(2 * Math.PI * 523 * t) + 0.5 * Math.sin(2 * Math.PI * 784 * t)) * Math.exp(-t * 4); } return suave(x, 0.14, 0.12, 0.5); },
+  glitch_suave: () => { const n = SR * 0.4, x = new Float32Array(n), f = lp1(rng(23), 0.07); for (let i = 0; i < n; i++) x[i] = f() * (Math.floor(i / 1500) % 2 ? 1 : 0.3); return suave(x, 0.12, 0.05, 0.2); },
+  reverb_suave: () => { const n = SR * 2.4, x = new Float32Array(n), f = lp1(rng(24), 0.03); for (let i = 0; i < n; i++) { const t = i / SR; x[i] = (Math.sin(2 * Math.PI * 80 * t) * 0.7 + f() * 1.5) * Math.exp(-t * 1.3); } return suave(x, 0.2, 0.3, 1.2); },
+});
+
 // ---------- música ----------
 const ESC = { Am: [57, [[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]]], Dm: [50, [[50, 53, 57], [46, 50, 53], [41, 45, 48], [48, 52, 55]]], Em: [52, [[52, 55, 59], [48, 52, 55], [43, 47, 50], [50, 54, 57]]] };
 export const musica = (g, duracion) => {
