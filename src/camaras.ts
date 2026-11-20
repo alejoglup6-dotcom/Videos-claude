@@ -36,3 +36,4 @@ Object.assign(CAMARAS, {
   'radio-frente': c([0, 2.6, 13.5], [0, 2.3, 0], 42, 1.2),
 });
 Object.assign(CAMARAS, { 'radio-cerca': c([0.8, 2.7, 8], [0.8, 2.5, 0], 36, 0.8) });
+Object.assign(CAMARAS, { 'ui-frente': c([0, 0, 15], [0, 0, 0], 48, 0.6) });

@@ -129,6 +129,14 @@ Solo usa datos que Rockstar ha publicado (ver `fuentes` en el guion). Dos datos 
 - **Datos:** lo verificable (locales enterables, teléfono físico, gasolineras, Grassrivers) tiene fuente en `fuentes`. «Mira el atardecer» queda `no_verificado`: es una sugerencia de ambiente, no una mecánica confirmada. El video no nombra apps ni describe mecánicas.
 - Imágenes de revisión: `docs/10cosas-escenas-antes-ajuste.png` y `docs/10cosas-escenas-despues-ajuste.png`.
 
+## Video 6: «GTA 6: así se desbloquean los trucos» (35 s, estética de interfaz, sin música)
+
+- Guion: `guiones/gta6-trucos-35s.json` · prompts: `guiones/gta6-trucos-35s.prompts.md` · voz ElevenLabs (Liam) ya subida en `public/voces/gta6-trucos-35s/` (sin secrets).
+- **Desde el móvil:** Actions → **Renderizar video** → **Run workflow** → guion `gta6-trucos-35s`, calidad `normal`, **voz desactivada**.
+- Escenas: `src/scenes/Interfaz.tsx` (tipo `interfaz`, variantes `mando · progreso · trucos · candado · guardado · sesion · combo · cruceta`). Sin ciudad, autos ni lluvia.
+- **Audio sin música:** el guion no tiene `audio.musica`; `audio.sfx.auto:false` quita los efectos automáticos de transición; `audio.lufs:-18` fija el volumen (render.mjs usa `TP=-2`). Efectos suaves nuevos en `scripts/generar-audio.mjs` (`clic_suave`, `barra_suave`, `lista_suave`, `candado_suave`, `notificacion_suave`, `combo_suave`, `secuencia_suave`, y los de video 5), cada uno con fades.
+- **Aviso de datos:** «91 misiones» está `no_verificado`: solo Dexerto cuenta 91; otras fuentes dan ~97–101 y Rockstar no lo ha confirmado. Lo común en las fuentes es «terminar la historia». El método (cruceta arriba, L1+R1 / LB+RB) lo describen varias guías, pero una avisa de que no está del todo confirmado. La secuencia de flechas de la escena 7 es de ejemplo.
+
 ## Versión del video
 El video final no lleva textos técnicos en pantalla. La versión (commit), la calidad y la voz quedan en los metadatos del MP4 (`comment`) y en el log del workflow (línea «Versión: …»).
 

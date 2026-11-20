@@ -53,6 +53,18 @@ Object.assign(sfx, {
   reverb_suave: () => { const n = SR * 2.4, x = new Float32Array(n), f = lp1(rng(24), 0.03); for (let i = 0; i < n; i++) { const t = i / SR; x[i] = (Math.sin(2 * Math.PI * 80 * t) * 0.7 + f() * 1.5) * Math.exp(-t * 1.3); } return suave(x, 0.2, 0.3, 1.2); },
 });
 
+// efectos de interfaz (clics suaves, tonos graves-medios, sin agudos): cada escena usa uno distinto
+const tick = (x, t0, f, dur = 0.05, a = 1) => { const i0 = Math.floor(t0 * SR), m = Math.floor(dur * SR); for (let i = 0; i < m && i0 + i < x.length; i++) { const t = i / SR; x[i0 + i] += Math.sin(2 * Math.PI * f * t) * Math.exp(-t * 70) * a; } };
+Object.assign(sfx, {
+  clic_suave: () => { const x = new Float32Array(SR * 0.3); tick(x, 0.02, 520, 0.08); return suave(x, 0.18, 0.01, 0.12); },
+  barra_suave: () => { const x = new Float32Array(SR * 1.2); for (let k = 0; k < 8; k++) tick(x, 0.05 + k * 0.12, 420 + k * 45, 0.06, 0.6 + k * 0.05); return suave(x, 0.15, 0.03, 0.3); },
+  lista_suave: () => { const n = SR * 0.5, x = new Float32Array(n), f = lp1(rng(31), 0.05); for (let i = 0; i < n; i++) x[i] = f() * Math.sin(Math.PI * i / n) ** 2 * 2; return suave(x, 0.14, 0.12, 0.2); },
+  candado_suave: () => { const x = new Float32Array(SR * 0.6); tick(x, 0.02, 330, 0.07, 1); tick(x, 0.2, 440, 0.12, 0.8); return suave(x, 0.18, 0.01, 0.2); },
+  notificacion_suave: () => { const n = SR * 0.7, x = new Float32Array(n); for (let i = 0; i < n; i++) { const t = i / SR; x[i] = (Math.sin(2 * Math.PI * 587 * t) * Math.exp(-t * 7) + (t > 0.14 ? Math.sin(2 * Math.PI * 784 * (t - 0.14)) * Math.exp(-(t - 0.14) * 7) : 0)) * 0.8; } return suave(x, 0.14, 0.01, 0.3); },
+  combo_suave: () => { const x = new Float32Array(SR * 0.7); tick(x, 0.02, 480, 0.07); tick(x, 0.3, 640, 0.07, 0.9); return suave(x, 0.16, 0.01, 0.2); },
+  secuencia_suave: () => { const x = new Float32Array(SR * 1.5); [0, 0.25, 0.5, 0.75].forEach((o, i) => tick(x, 0.02 + o, 450 + i * 60, 0.07, 0.8)); return suave(x, 0.15, 0.01, 0.35); },
+});
+
 // ---------- música ----------
 const ESC = { Am: [57, [[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]]], Dm: [50, [[50, 53, 57], [46, 50, 53], [41, 45, 48], [48, 52, 55]]], Em: [52, [[52, 55, 59], [48, 52, 55], [43, 47, 50], [50, 54, 57]]] };
 export const musica = (g, duracion) => {

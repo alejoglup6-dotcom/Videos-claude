@@ -1,0 +1,328 @@
+{
+ "id": "gta6-trucos-35s",
+ "titulo": "GTA 6: así se desbloquean los trucos",
+ "tema": "mapa-frio",
+ "audio": {
+  "voz": {
+   "volumen": 1
+  },
+  "sfx": {
+   "volumen": 0.45,
+   "auto": false
+  },
+  "lufs": -18
+ },
+ "fuentes": [
+  {
+   "dato": "Los trucos requieren terminar la historia y están en el menú Progreso (lista de trucos)",
+   "estado": "verificado",
+   "nota": "Red Bull, Keengamer, Dexerto y TweakTown coinciden: se desbloquean al terminar la historia y cumplir desafíos; se consultan en Progreso"
+  },
+  {
+   "dato": "Hay que completar las 91 misiones de la campaña principal",
+   "estado": "no_verificado",
+   "nota": "Solo Dexerto cuenta 91 misiones; Technerdiness cuenta ~97 y otras fuentes ~100 o 101. Rockstar no ha confirmado la cifra. Lo que sí coincide en las fuentes es «terminar la historia». Considera decir «termina la historia» en vez de «91 misiones» antes de publicar"
+  },
+  {
+   "dato": "Cada truco se desbloquea con un desafío específico",
+   "estado": "verificado",
+   "nota": "Keengamer, Metaforge y Dexerto (guías de trucos). Una guía menciona 61 trucos; el video NO da esa cifra"
+  },
+  {
+   "dato": "Activar trucos desactiva trofeos/logros y el guardado en esa sesión; no funcionan en GTA Online",
+   "estado": "verificado",
+   "nota": "Varias guías coinciden en trofeos y guardado. «No funcionan en GTA Online» viene del brief del usuario"
+  },
+  {
+   "dato": "Activación: ARRIBA en la cruceta (teléfono), mantener L1 (PS5) / LB (Xbox) y pulsar R1 / RB, y luego una secuencia con la cruceta",
+   "estado": "verificado",
+   "nota": "Varias guías lo describen igual, pero al menos una avisa de que nadie lo ha confirmado del todo: compruébalo en tu copia. No se muestran secuencias reales: la de la pantalla es de EJEMPLO y no corresponde a ningún truco"
+  },
+  {
+   "dato": "No se marcan números de teléfono",
+   "estado": "verificado",
+   "nota": "Red Bull: no parecen existir trucos por número en GTA 6"
+  }
+ ],
+ "escenas": [
+  {
+   "id": "e1-gancho",
+   "tipo": "interfaz",
+   "variante": "mando",
+   "duracion": 4.0,
+   "camara": "ui-frente",
+   "texto": {
+    "contenido": "EN GTA 6…",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 200
+   },
+   "animacion": {
+    "shake": 0.08
+   },
+   "transicion": {
+    "tipo": "glitch",
+    "duracion": 0.3
+   },
+   "sfx": [
+    {
+     "nombre": "clic_suave",
+     "t": 0.1
+    }
+   ],
+   "voz": {
+    "texto": "En GTA 6, los trucos ya no se activan así de fácil.",
+    "claves": [
+     "trucos",
+     "fácil"
+    ]
+   }
+  },
+  {
+   "id": "e2-misiones",
+   "tipo": "interfaz",
+   "variante": "progreso",
+   "duracion": 4.5,
+   "camara": "ui-frente",
+   "texto": {
+    "contenido": "91 MISIONES",
+    "estilo": "neon",
+    "posicion": "arriba",
+    "tam": 150
+   },
+   "animacion": {
+    "shake": 0.08
+   },
+   "transicion": {
+    "tipo": "glitch",
+    "duracion": 0.3
+   },
+   "sfx": [
+    {
+     "nombre": "barra_suave",
+     "t": 0.3
+    }
+   ],
+   "voz": {
+    "texto": "Primero tienes que completar las 91 misiones de la campaña principal.",
+    "claves": [
+     "91",
+     "misiones"
+    ]
+   }
+  },
+  {
+   "id": "e3-trucos",
+   "tipo": "interfaz",
+   "variante": "trucos",
+   "duracion": 4.0,
+   "camara": "ui-frente",
+   "texto": {
+    "contenido": "PROGRESO > TRUCOS",
+    "estilo": "neon",
+    "posicion": "arriba",
+    "tam": 110
+   },
+   "animacion": {
+    "shake": 0.08
+   },
+   "transicion": {
+    "tipo": "slide",
+    "duracion": 0.5
+   },
+   "sfx": [
+    {
+     "nombre": "lista_suave",
+     "t": -0.1
+    }
+   ],
+   "voz": {
+    "texto": "Después revisa los requisitos en Progreso y Trucos.",
+    "claves": [
+     "Progreso",
+     "Trucos"
+    ]
+   }
+  },
+  {
+   "id": "e4-candado",
+   "tipo": "interfaz",
+   "variante": "candado",
+   "duracion": 4.0,
+   "camara": "ui-frente",
+   "texto": {
+    "contenido": "CADA TRUCO TIENE SU DESAFÍO",
+    "estilo": "slam",
+    "posicion": "arriba",
+    "tam": 96
+   },
+   "animacion": {
+    "shake": 0.08
+   },
+   "transicion": {
+    "tipo": "fade",
+    "duracion": 0.3
+   },
+   "sfx": [
+    {
+     "nombre": "candado_suave",
+     "t": 1.0
+    }
+   ],
+   "voz": {
+    "texto": "Cada truco se desbloquea cumpliendo un desafío específico.",
+    "claves": [
+     "desafío"
+    ]
+   }
+  },
+  {
+   "id": "e5-guardado",
+   "tipo": "interfaz",
+   "variante": "guardado",
+   "duracion": 3.5,
+   "camara": "ui-frente",
+   "texto": {
+    "contenido": "GUARDA ANTES DE USARLOS",
+    "estilo": "neon",
+    "posicion": "arriba",
+    "tam": 100
+   },
+   "animacion": {
+    "shake": 0.08
+   },
+   "transicion": {
+    "tipo": "flash",
+    "duracion": 0.2
+   },
+   "sfx": [
+    {
+     "nombre": "notificacion_suave",
+     "t": 0.1
+    }
+   ],
+   "voz": {
+    "texto": "Guarda antes de usarlos: desactivan trofeos, logros y el guardado durante la sesión.",
+    "claves": [
+     "Guarda",
+     "trofeos",
+     "logros"
+    ]
+   }
+  },
+  {
+   "id": "e5b-sesion",
+   "tipo": "interfaz",
+   "variante": "sesion",
+   "duracion": 3.0,
+   "camara": "ui-frente",
+   "texto": {
+    "contenido": "SIN TROFEOS NI GUARDADO",
+    "estilo": "neon",
+    "posicion": "arriba",
+    "tam": 100
+   },
+   "animacion": {
+    "shake": 0.08
+   },
+   "transicion": {
+    "tipo": "corte"
+   },
+   "sfx": []
+  },
+  {
+   "id": "e6-combo",
+   "tipo": "interfaz",
+   "variante": "combo",
+   "duracion": 5.0,
+   "camara": "ui-frente",
+   "texto": {
+    "contenido": "TELÉFONO + L1 + R1",
+    "estilo": "neon",
+    "posicion": "arriba",
+    "tam": 110
+   },
+   "animacion": {
+    "shake": 0.08
+   },
+   "transicion": {
+    "tipo": "corte"
+   },
+   "sfx": [
+    {
+     "nombre": "combo_suave",
+     "t": 0.2
+    }
+   ],
+   "voz": {
+    "texto": "Pulsa arriba para abrir el teléfono, mantén L1 y pulsa R1.",
+    "claves": [
+     "arriba",
+     "teléfono",
+     "L1",
+     "R1"
+    ]
+   }
+  },
+  {
+   "id": "e7-cruceta",
+   "tipo": "interfaz",
+   "variante": "cruceta",
+   "duracion": 4.5,
+   "camara": "ui-frente",
+   "texto": {
+    "contenido": "INTRODUCE LA SECUENCIA",
+    "estilo": "neon",
+    "posicion": "arriba",
+    "tam": 100
+   },
+   "animacion": {
+    "shake": 0.08
+   },
+   "transicion": {
+    "tipo": "corte"
+   },
+   "sfx": [
+    {
+     "nombre": "secuencia_suave",
+     "t": 0.4
+    }
+   ],
+   "voz": {
+    "texto": "Luego introduce la secuencia direccional. Ya no se marcan números.",
+    "claves": [
+     "secuencia",
+     "números"
+    ]
+   }
+  },
+  {
+   "id": "e8-pregunta",
+   "tipo": "fondo",
+   "variante": "negro",
+   "duracion": 2.5,
+   "camara": "fondo-frente",
+   "texto": {
+    "contenido": "¿YA TERMINASTE LA HISTORIA?",
+    "estilo": "slam",
+    "tam": 120
+   },
+   "transicion": {
+    "tipo": "fade",
+    "duracion": 0.6
+   },
+   "sfx": [
+    {
+     "nombre": "reverb_suave",
+     "t": 0.0
+    }
+   ],
+   "voz": {
+    "texto": "¿Ya terminaste la historia?",
+    "claves": [
+     "historia"
+    ]
+   }
+  }
+ ]
+}
